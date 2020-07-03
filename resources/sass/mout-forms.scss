@@ -1,0 +1,141 @@
+/** MOUT GESTION DES FORMS **/
+
+.mout-form {
+    min-width: 35%;
+    margin: 2em 0 2em;
+}
+
+.mout-form-double-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    & div.left-form-container {
+        padding: 0 20px 20px 0;
+    }
+
+    & H3 {
+        text-transform: uppercase;
+        font-size: 20px;
+        font-family: $bo-font;
+        font-weight: 600;
+    }
+}
+
+/** delete box shadow bootstrap **/
+.form-control:focus {
+  box-shadow: none !important;
+}
+
+/** SPECIFICITES SITE EN COURS **/
+legend {
+  font-family: "AristaProAlternateExtraLight";
+  color:#707070; /*couleur  label à changer si besoin*/
+  font-size:22px;
+  font-weight:bold;
+  margin-top: 2rem;
+  margin-bottom: 0;
+}
+
+.legend-contact {
+  display: none;
+}
+
+.floating-label {
+  position:relative;
+  margin-bottom:30px;
+}
+
+.floating-input,
+.floating-select {
+  font-family: $bo-font;
+  font-weight: 200;
+  font-size:14px !important;
+  padding:4px 4px !important;
+  display:block;
+  width:100% !important;
+  height:30px !important;
+  background-color: transparent !important;
+  border:none !important;
+  border-bottom:1px solid #757575 !important;
+  border-radius: 0 !important;
+
+  &:focus {
+    outline:none;
+    border-bottom:2px solid #707070;
+    background: transparent;
+  }
+}
+
+label.float {
+  color:#707070;
+  font-family: $mout-font;
+  font-weight: 200;
+  font-size:16px;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:2px;
+  transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
+  -webkit-transition:0.2s ease all;
+}
+
+
+.floating-input:focus ~ label.float, .floating-input:not(:placeholder-shown) ~ label.float {
+  top:-18px;
+  font-size:14px;
+  color:#343a40;
+}
+
+.floating-select:focus ~ label.float , .floating-select:not([value=""]):valid ~ label.float {
+  top:-18px !important;
+  font-size:14px !important;
+  color:#343a40 !important;
+}
+
+/* active state */
+.floating-input:focus ~ .bar:before, .floating-input:focus ~ .bar:after, .floating-select:focus ~ .bar:before, .floating-select:focus ~ .bar:after {
+  width:50%;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.floating-input.floating-textarea {
+  height: auto;
+}
+
+/* highlighter */
+.highlight {
+  position:absolute;
+  height:50%;
+  width:100%;
+  top:15%;
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+.floating-input:focus ~ .highlight , .floating-select:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+/* animation */
+@-webkit-keyframes inputHighlighter {
+  from { background:#ffec00; }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+  from { background:#ffec00; }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+  from { background:#ffec00; }
+  to 	{ width:0; background:transparent; }
+}
