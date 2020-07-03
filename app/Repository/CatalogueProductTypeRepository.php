@@ -4,7 +4,7 @@
 namespace App\Repository;
 
 
-class ContactShopRepository
+class CatalogueProductTypeRepository
 {
 
 }
