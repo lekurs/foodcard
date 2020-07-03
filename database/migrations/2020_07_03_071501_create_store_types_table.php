@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEavAttributeLanguagesTable extends Migration
+class CreateStoreTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateEavAttributeLanguagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('eav_attribute_languages', function (Blueprint $table) {
+        Schema::create('store_types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('libelle', 255);
+            $table->timestamps();
         });
     }
 
@@ -26,6 +27,6 @@ class CreateEavAttributeLanguagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('eav_attribute_languages');
+        Schema::dropIfExists('store_types');
     }
 }

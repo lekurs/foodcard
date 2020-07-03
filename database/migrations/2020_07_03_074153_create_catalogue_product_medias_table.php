@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEavAttributeTypesTable extends Migration
+class CreateCatalogueProductMediasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateEavAttributeTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('eav_attribute_types', function (Blueprint $table) {
+        Schema::create('catalogue_product_medias', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('fields', 255);
+            $table->string('path', 255)->unique();
+            $table->integer('position')->unsigned();
+            $table->timestamps();
         });
     }
 
@@ -26,6 +28,6 @@ class CreateEavAttributeTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('eav_attribute_types');
+        Schema::dropIfExists('catalogue_product_medias');
     }
 }
