@@ -20,12 +20,14 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('phone', 10);
+            $table->string('phone', 10)->nullable();
             $table->string('slug', 255);
-            $table->integer('user_fonction_id')->unsigned();
-            $table->integer('store_id')->unsigned();
+            $table->integer('user_fonction_id')->unsigned()->nullable();
+            $table->integer('store_id')->unsigned()->nullable();
             $table->integer('user_role_id')->unsigned();
+            $table->boolean('active')->default(true);
             $table->rememberToken();
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('user_fonction_id')->references('id')

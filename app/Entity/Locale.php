@@ -17,4 +17,9 @@ class Locale extends Model
     {
         return $this->hasMany(CatalogueProductLocale::class);
     }
+
+    public function catalogueCategoriesLocal(): HasMany
+    {
+        return $this->hasMany(CatalogueCategoryLocale::class);
+    }
 }
