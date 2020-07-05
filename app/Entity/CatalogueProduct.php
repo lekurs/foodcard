@@ -28,4 +28,9 @@ class CatalogueProduct extends Model
     {
         return $this->hasMany(CatalogueProductMedia::class);
     }
+
+    public function catalogueProductCategories(): HasMany
+    {
+        return $this->hasMany(CatalogueProductCategory::class);
+    }
 }

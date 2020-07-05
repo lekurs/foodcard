@@ -1,0 +1,41 @@
+div.container-fluid {
+    padding: 0;
+}
+
+form#loginform, form#registerForm {
+    width: 45%;
+}
+
+div.mout-public-login-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    height: 100vh;
+
+    & div.mout-public-login-left-panel {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        & h1 {
+            font-family: Assistant;
+            color: black;
+            font-size: 60px;
+            font-weight: 700;
+        }
+
+    }
+
+    & div.mout-public-login-right-panel {
+        background: #000000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & h2 {
+            font-family: Assistant;
+            font-size: 80px;
+            color: white;
+        }
+    }
+}
