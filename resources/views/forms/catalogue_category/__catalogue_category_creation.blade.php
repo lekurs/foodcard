@@ -1,38 +1,28 @@
-<form action="{{route('catalogueCategoryStore')}}" method="post">
+<form action="{{route('categoryMenuUpdate')}}" method="post">
     @csrf
     @include('flashes.errors')
 
-    <div class="input-group floating-label">
-        @foreach($locales as $locale)
-        <input type="text" name="category[{{$locale->id}}]" id="category_{{$locale->id}}" class="form-control floating-input category_{{$locale->id}} category_label" aria-label="Text input with dropdown button" placeholder="Category">
-        @endforeach
-        <input type="hidden" name="category_id" value="" id="category">
-        <div class="input-group-append">
-            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Langues</button>
-            <div class="dropdown-menu">
-                @foreach($locales as $locale)
-                <a class="dropdown-item" href="#">
-                    <img src="{{asset('images/flags/'. $locale->label . '.png')}}" class="img-fluid choice-lg" data-id="{{$locale->id}}">
-                </a>
-                @endforeach
+    <div class="row">
+        <div class="col-12">
+            <div id="navigation">
+                <div class="dd">
+                    <ol class="dd-list">
+                        @foreach($categoryLocales as $categoryLocale)
+                            <li class="dd-item" data-libelle="{{$categoryLocale->libelle}}" data-id="{{$categoryLocale->catalogue_category_id}}">
+                                <div class="dd-handle">{{$categoryLocale->libelle}}</div>
+                            </li>
+                        @endforeach
+                    </ol>
+                    <form action="" id="form-navigation">
+                        <textarea name="navigation" id="nestable-output"></textarea>
+                    </form>
+                    <button type="submit" class="btn btn-dark mout-add-menus-button">Enregistrer</button>
+                </div>
             </div>
+            <p>Pas de navigation</p>
         </div>
+        <button type="button" class="btn mout-btn-add" data-toggle="modal" data-target="#addCategory">
+            Ajouter une catégorie
+        </button>
     </div>
-
-    <div class="input-group floating-label">
-        <select name="category-parent" id="category-parent">
-            <option value=""></option>
-            @foreach($categoryLocales as $locale)
-            <option value="">{{$locale->libelle}}</option>
-            @endforeach
-        </select>
-    </div>
-
-    <div class="input-group floating-label">
-
-    </div>
-
-
-    <button type="submit" class="btn mout-btn-add">
-        <span class="btn-label"><i class="fas fa-chevron-right"></i></span> Ajouter une catégorie</button>
 </form>

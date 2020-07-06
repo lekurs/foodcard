@@ -60,11 +60,42 @@ class CatalogueCategoryFormController extends Controller
         ]);
     }
 
+    private function searchItemsByKey($array, $key)
+    {
+        $results = array();
+
+        if (is_array($array))
+        {
+            if (isset($array[$key])){
+                $children = [];
+                foreach($array[$key] as $k => $v){
+                    $children[] = $v["id"];
+                }
+                $results[] = ["parent" => $array["id"], "children" =>  $children];
+            }
+
+
+            foreach ($array as $sub_array)
+                $results = array_merge($results, $this->searchItemsByKey($sub_array, $key));
+        }
+
+        return $results;
+    }
+
+    public function navUpdate()
+    {
+        $json = json_decode(request()->request->get('navigation'), true);
+
+        dd($this->searchItemsByKey($json, 'children'));
+    }
+
     public function store(CatalogueCategoryCreation $validator)
     {
 //        dd($validates->all());
         $validates = $validator->all();
 
         $this->catalogueCategoryRepository->store($validates);
+
+        return back()->with('success', 'Catégorie ajoutée');
     }
 }
