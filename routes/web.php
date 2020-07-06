@@ -27,6 +27,10 @@ Route::group(['prefix' => 'admin'], function () {
       Route::post('/category/menu/update', 'Admin\Category\CatalogueCategoryFormController@navUpdate')->name('categoryMenuUpdate');
    });
 
+   Route::group(['prefix' => 'produits'], function () {
+      Route::get('/', 'Admin\Product\CatalogueProductShowController@show')->name('productShow');
+   });
+
    Route::group(['prefix' => 'utilisateurs'], function () {
       Route::get('/', 'Admin\Users\UserShowController@show')->name('users');
 

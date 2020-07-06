@@ -782,3 +782,24 @@ li.placeholder-list {
 }
 
 //Section END
+
+//Add Elements for forms
+div.slider-add-form {
+    width: 0;
+    position: absolute;
+    top: 0;
+    right: -100%;
+    height: 100%;
+    background-color: #ffffff;
+    transition: width .5s ease-in-out;
+
+    &.active {
+        width: 50%;
+        right: 0;
+    }
+
+    & form {
+        width: 80%;
+        margin: 0 auto;
+    }
+}

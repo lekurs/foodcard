@@ -13,7 +13,7 @@ class StoreTypeShowController extends Controller
     /**
      * @var StoreTypeRepository $storeTypeRepository
      */
-    private $storeTypeRepository;
+    private StoreTypeRepository $storeTypeRepository;
 
     /**
      * StoreTypeShowController constructor.
