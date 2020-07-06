@@ -29,12 +29,12 @@
             </div>
             <ul class="nav-children">
                 <li>
-                    <a href="#">
+                    <a href="{{route('users')}}">
                         Liste
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{route('storeTypesShow')}}">
                         Type
                     </a>
                 </li>

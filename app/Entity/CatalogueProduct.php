@@ -11,18 +11,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class CatalogueProduct extends Model
 {
     protected $fillable = [
-      'price'
+      'active'
     ];
 
-    public function store(): BelongsTo
-    {
-        return $this->belongsTo(Store::class);
-    }
-
-    public function catalogueProductType(): BelongsTo
-    {
-        return $this->belongsTo(CatalogueProductType::class);
-    }
 
     public function catalogueProductMedias(): HasMany
     {

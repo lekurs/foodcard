@@ -22,7 +22,7 @@ class StoreCreation extends FormRequest
     public function rules(): array
     {
         return [
-
+            'store_type' => 'required|max:255'
         ];
     }
 }

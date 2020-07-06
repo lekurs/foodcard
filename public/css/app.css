@@ -1159,11 +1159,6 @@ table.mout-bo-table tbody > tr {
   line-height: 2em;
 }
 
-table.mout-bo-table td:nth-of-type(1) {
-  padding: 0;
-  line-height: 1em;
-}
-
 table.mout-bo-table td:nth-of-type(2) {
   text-align: left;
 }
@@ -1454,6 +1449,29 @@ input:checked + .slider:before {
   opacity: 0;
 }
 
+table.dataTable thead th,
+table.dataTable thead td,
+table.dataTable.no-footer {
+  border-bottom: 0 !important;
+}
+
+div.dropdown-actions a {
+  color: #262b36;
+}
+
+div.dropdown-actions > a {
+  font-size: 18px;
+}
+
+div.dropdown-actions div.dropdown-menu {
+  border-top: 1px solid #262b36;
+}
+
+div.dropdown-actions div.dropdown-menu a.dropdown-item {
+  font-size: 13px;
+  line-height: 15px;
+}
+
 div.mout-bo-top-search-bar form {
   display: flex;
   width: 100%;
@@ -1464,6 +1482,10 @@ div.mout-bo-top-search-bar form {
 div.mout-bo-top-search-bar form div.floating-label {
   width: 30%;
   margin-bottom: 0 !important;
+}
+
+input.category_label:not(.category_1) {
+  display: none;
 }
 
 div.user-card {
@@ -1529,5 +1551,49 @@ div.user-card div.user-card-description-container div.user-card-description {
 div.user-card div.user-card-description-container div.contact-name {
   font-size: 20px;
   font-weight: 700;
+}
+
+div.roles-menu {
+  margin-top: 20px;
+}
+
+div.roles-menu ul {
+  background-color: #fff;
+  border: 1px solid #e3e3e3;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+div.roles-menu ul li {
+  display: block;
+  position: relative;
+}
+
+div.roles-menu ul li a {
+  border-left: 3px solid transparent;
+  color: #333;
+  display: block;
+  padding: 10px 15px;
+  position: relative;
+  text-decoration: none;
+}
+
+div.roles-menu ul li a.active {
+  border-color: #ff9b44;
+  color: #ff9b44;
+}
+
+div.roles-menu ul li a span.roles-options {
+  float: right;
+  display: none;
+}
+
+div.roles-menu ul li a span.roles-options i {
+  margin: 10px;
+}
+
+div.modal-body form {
+  margin: 2em auto;
 }
 

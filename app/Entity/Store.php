@@ -21,9 +21,9 @@ class Store extends Model
       'slug'
     ];
 
-    public function storeType(): BelongsTo
+    public function catalogueProductStore(): HasMany
     {
-        return $this->belongsTo(StoreType::class);
+        return $this->hasMany(CatalogueProductStore::class);
     }
 
     public function Users(): HasMany
@@ -39,5 +39,10 @@ class Store extends Model
     public function catalogueProducts(): HasMany
     {
         return $this->hasMany(CatalogueProduct::class);
+    }
+
+    public function storeType(): BelongsTo
+    {
+        return $this->belongsTo(StoreType::class);
     }
 }

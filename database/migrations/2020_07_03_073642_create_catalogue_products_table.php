@@ -15,15 +15,8 @@ class CreateCatalogueProductsTable extends Migration
     {
         Schema::create('catalogue_products', function (Blueprint $table) {
             $table->increments('id');
-            $table->float('price');
-            $table->unsignedInteger('store_id');
-            $table->unsignedInteger('catalogue_product_type');
+            $table->boolean('active')->default(true);
             $table->timestamps();
-
-            $table->foreign('store_id')->references('id')
-                ->on('stores');
-            $table->foreign('catalogue_product_type')->references('id')
-                ->on('catalogue_product_types');
         });
     }
 

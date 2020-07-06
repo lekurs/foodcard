@@ -12,3 +12,8 @@ div.mout-bo-top-search-bar {
         }
     }
 }
+
+//Categories
+input.category_label:not(.category_1) {
+    display: none;
+}

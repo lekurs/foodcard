@@ -66,8 +66,8 @@
                     <li class="header-bar-right-menu-list">
                         <div class="btn-group dropdown-nav">
                             <button class="btn btn-logged" id="logged-dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="{{ asset('assets/images/uploads/users/clairegindre.png') }}" alt="Claire Gindre" class="img-fluid mout-login-portrait">
-                                Claire Gindre
+                                <img src="{{ asset('assets/images/uploads/users/' . strtolower(auth()->user()->name) . strtolower(auth()->user()->lastname)) }}" alt="{{auth()->user()->lastname . ' ' . auth()->user()->name}}" class="img-fluid mout-login-portrait">
+                                {{auth()->user()->lastname . ' ' . auth()->user()->name}}
                                 <span class="mout-log-arrow"></span>
                             </button>
                             <ul class="drop-menu pull-right">
@@ -101,7 +101,7 @@
         <div class="mout-left-panel-informations">
             <div class="mout-left-panel-profil">
                 <div class="mout-profil-left">
-                @if(auth()->user()->roles == "admin")
+                @if(auth()->user()->roles == "Admin")
                     <img src="{{ asset('assets/images/uploads/users/clairegindre.png') }}" alt="{{auth()->user()->username}} {{auth()->user()->name}}" class="img-fluid img-portrait-bo-left-side">
                 @endif
                 </div>

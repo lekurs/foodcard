@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class CatalogueCategoryLocale extends Model
 {
     protected $fillable = [
-      'name'
+      'libelle'
     ];
 
     public function locale(): BelongsTo

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Users;
 
 
 use App\Http\Controllers\Controller;
+use App\Repository\StoreTypeRepository;
 use App\Repository\UserRepository;
 use Illuminate\View\View;
 
@@ -26,6 +27,10 @@ class UserShowController extends Controller
 
     public function show(): View
     {
-        return view('admin.users.user_show');
+        $storeTypes = ['1', '2'];
+
+        return view('admin.users.user_show', [
+//            'storeTypes' => $storeTypes
+        ]);
     }
 }

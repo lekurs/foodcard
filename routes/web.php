@@ -20,8 +20,31 @@ Route::get('/', function () {
 Route::group(['prefix' => 'admin'], function () {
    Route::get('/', 'Admin\AdminController')->name('admin');
 
+   Route::group(['prefix' => 'category'], function () {
+      Route::get('/', 'Admin\Category\CatalogueCategoryShowController@show')->name('catalogueCategoryShow');
+      Route::get('/create', 'Admin\Category\CatalogueCategoryFormController@create')->name('catalogueCategoryCreation');
+      Route::post('/store', 'Admin\Category\CatalogueCategoryFormController@store')->name('catalogueCategoryStore');
+   });
+
    Route::group(['prefix' => 'utilisateurs'], function () {
       Route::get('/', 'Admin\Users\UserShowController@show')->name('users');
+
+      Route::group(['prefix' => 'roles'], function() {
+         Route::get('/', 'Admin\Users\Roles\UserRolesShowController@show')->name('userRoleShow');
+         Route::post('/update/{id}', 'Admin\Users\Roles\UserRolesFormController@update')->name('userRoleUpdate');
+         Route::post('/delete/{id}', 'Admin\Users\Roles\UserRolesFormController@delete')->name('userRoleDelete');
+      });
+   });
+
+   Route::group(['prefix' => 'magasins'], function () {
+
+
+      Route::group(['prefix' => 'types'], function () {
+          Route::get('/', 'Admin\Stores\Types\StoreTypeShowController@show')->name('storeTypesShow');
+          Route::get('/add', 'Admin\Stores\Types\StoreTypeFormController@show')->name('storesTypesShowCreation');
+          Route::post('/store', 'Admin\Stores\Types\StoreTypeFormController@create')->name('storesTypesShowStore');
+          Route::get('/trash/{id}', 'Admin\Stores\Types\StoreTypeFormController@trash')->name('storeTypeTrash');
+      });
    });
 });
 
