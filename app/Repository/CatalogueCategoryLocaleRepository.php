@@ -13,4 +13,9 @@ class CatalogueCategoryLocaleRepository
     {
         return CatalogueCategoryLocale::whereLocaleId(1)->get();
     }
+
+    public function getAllWithCatalogueCategories(): Collection
+    {
+        return CatalogueCategoryLocale::whereLocaleId(1)->with('catalogueCategoryByOrder')->get();
+    }
 }

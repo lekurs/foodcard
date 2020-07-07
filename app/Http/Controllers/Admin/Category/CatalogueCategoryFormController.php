@@ -52,7 +52,9 @@ class CatalogueCategoryFormController extends Controller
     public function create(): View
     {
         $locales = $this->localeRepository->getAll();
-        $categoryLocales = $this->catalogueCategoryLocaleRepository->getAll();
+        $categoryLocales = $this->catalogueCategoryLocaleRepository->getAllWithCatalogueCategories();
+
+//        dd($categoryLocales);
 
         return \view('admin.category.catalogue_category_creation', [
             'locales' => $locales,
@@ -60,33 +62,31 @@ class CatalogueCategoryFormController extends Controller
         ]);
     }
 
-    private function searchItemsByKey($array, $key)
+    private function getChildren($array, $noeud, $parent)
     {
-        $results = array();
-
-        if (is_array($array))
-        {
-            if (isset($array[$key])){
-                $children = [];
-                foreach($array[$key] as $k => $v){
-                    $children[] = $v["id"];
+        static $output = array();
+            foreach($array as $key => $sub){
+                $output[] = [
+                    "id" => $sub["id"],
+                    "parent" => $parent
+                ];
+                if(isset($sub[$noeud])){
+                    //il y a un enfant on recommence
+                    $this->getChildren($sub[$noeud], $noeud, $sub["id"]);
                 }
-                $results[] = ["parent" => $array["id"], "children" =>  $children];
             }
-
-
-            foreach ($array as $sub_array)
-                $results = array_merge($results, $this->searchItemsByKey($sub_array, $key));
-        }
-
-        return $results;
+        return $output;
     }
 
-    public function navUpdate()
+    public function catalogueCategoriesPositionUpdate()
     {
         $json = json_decode(request()->request->get('navigation'), true);
 
-        dd($this->searchItemsByKey($json, 'children'));
+        $datas = $this->getChildren($json, 'children', null);
+
+        $this->catalogueCategoryRepository->update($datas);
+
+        //Ordre = clé => parent => 'parent', entity_id => 'id'
     }
 
     public function store(CatalogueCategoryCreation $validator)

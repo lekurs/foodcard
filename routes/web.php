@@ -24,7 +24,7 @@ Route::group(['prefix' => 'admin'], function () {
       Route::get('/', 'Admin\Category\CatalogueCategoryShowController@show')->name('catalogueCategoryShow');
       Route::get('/create', 'Admin\Category\CatalogueCategoryFormController@create')->name('catalogueCategoryCreation');
       Route::post('/store', 'Admin\Category\CatalogueCategoryFormController@store')->name('catalogueCategoryStore');
-      Route::post('/category/menu/update', 'Admin\Category\CatalogueCategoryFormController@navUpdate')->name('categoryMenuUpdate');
+      Route::post('/category/menu/update', 'Admin\Category\CatalogueCategoryFormController@catalogueCategoriesPositionUpdate')->name('categoryMenuUpdate');
    });
 
    Route::group(['prefix' => 'produits'], function () {
@@ -42,7 +42,6 @@ Route::group(['prefix' => 'admin'], function () {
    });
 
    Route::group(['prefix' => 'magasins'], function () {
-
 
       Route::group(['prefix' => 'types'], function () {
           Route::get('/', 'Admin\Stores\Types\StoreTypeShowController@show')->name('storeTypesShow');

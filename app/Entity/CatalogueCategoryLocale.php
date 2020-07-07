@@ -17,4 +17,16 @@ class CatalogueCategoryLocale extends Model
     {
         return $this->belongsTo(Locale::class);
     }
+
+    public function catalogueCategory(): BelongsTo
+    {
+        return $this->belongsTo(CatalogueCategory::class);
+    }
+
+    public function catalogueCategoryByOrder(): BelongsTo
+    {
+        return $this->belongsTo(CatalogueCategory::class, 'catalogue_category_id')
+            ->orderBy('parent', 'ASC')
+            ->orderBy('position', 'ASC');
+    }
 }

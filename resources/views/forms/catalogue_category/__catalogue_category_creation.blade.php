@@ -8,9 +8,11 @@
                 <div class="dd">
                     <ol class="dd-list">
                         @foreach($categoryLocales as $categoryLocale)
-                            <li class="dd-item" data-libelle="{{$categoryLocale->libelle}}" data-id="{{$categoryLocale->catalogue_category_id}}">
-                                <div class="dd-handle">{{$categoryLocale->libelle}}</div>
-                            </li>
+                            @foreach($categoryLocale->catalogueCategory()->get() as $catalogueCategory)
+                                <li class="dd-item" data-libelle="{{$categoryLocale->libelle}}" data-position="{{$catalogueCategory->position}}" data-id="{{$categoryLocale->catalogue_category_id}}">
+                                    <div class="dd-handle">{{$categoryLocale->libelle}}</div>
+                                </li>
+                            @endforeach
                         @endforeach
                     </ol>
                     <form action="" id="form-navigation">

@@ -15,9 +15,9 @@
                 <div class="select floating-label">
                         <select name="type-shop" id="type-shop" class="select-hidden custom-select">
                             <option value="hide">Type de magasin</option>
-{{--                            @foreach($storeTypes as $storeType)--}}
-{{--                            <option value="{{$storeType->id}}">{{$storeType->libelle}}</option>--}}
-{{--                            @endforeach--}}
+                            @foreach($storeTypes as $storeType)
+                            <option value="{{$storeType->id}}">{{$storeType->type}}</option>
+                            @endforeach
                         </select>
                 </div>
 

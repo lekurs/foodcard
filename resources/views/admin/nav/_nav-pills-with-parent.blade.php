@@ -49,7 +49,7 @@
 
             <ul class="nav-children">
                 <li>
-                    <a href="#">
+                    <a href="{{route('catalogueCategoryCreation')}}">
                         Nos catégories
                     </a>
                 </li>

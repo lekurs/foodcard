@@ -37,4 +37,15 @@ class CatalogueCategoryRepository
         }
     }
 
+    public function update(array $datas): void
+    {
+        foreach ($datas as $key => $value) {
+            $catalogueCategory = CatalogueCategory::find($value['id']);
+            $catalogueCategory->parent = $value['parent'];
+            $catalogueCategory->position = $key;
+
+            $catalogueCategory->save();
+        }
+    }
+
 }
