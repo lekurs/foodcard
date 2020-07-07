@@ -20,13 +20,13 @@
                             <td>{{$product->catalogueProductLocales()->first()->libelle}}</td>
                             <td>
                                 <div class="dropdown-actions text-right">
-                                    <a href="#" class="dropdown-actions-icons" role="button" id="dropdown-action-{{$product->libelle}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <a href="#" class="dropdown-actions-icons" role="button" id="dropdown-action-{{$product->id}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="fal fa-ellipsis-v-alt"></i>
                                     </a>
 
                                     <div class="dropdown-menu" aria-labelledby="dropdown-action-{{$product->libelle}}">
-                                        <a class="dropdown-item" href="#"><i class="far fa-pen"></i> Modifier</a>
-                                        <a class="dropdown-item" href="#"><i class="fal fa-trash"></i> Supprimer</a>
+                                        <a class="dropdown-item edit-elt" href="#" data-id="{{$product->id}}"><i class="far fa-pen"></i> Modifier</a>
+                                        <a class="dropdown-item trash-elt" href="#" data-id="{{$product->id}}"><i class="fal fa-trash"></i> Supprimer</a>
                                     </div>
                                 </div>
                             </td>
@@ -45,26 +45,27 @@
     </div>
 
     <div class="slider-add-form">
-        <span class="times-container">
+        <div class="times-container">
             <i class="fas fa-times"></i>
-        </span>
-
-        @include('forms.products.__product_creation')
+        </div>
+        <div id="content-form-product">
+            @include('forms.products.__product_creation')
+        </div>
     </div>
 @endsection
 
 @section('js')
     <script src="{{asset('js/admin/products-admin.js')}}"></script>
-    <script src="{{asset('js/admin/product-creation-admin.js')}}"></script>
+    <script src="{{asset('js/admin/manage-product-admin.js')}}"></script>
     <script src="{{asset('js/admin/manage-allergy.js')}}"></script>
     <script>
         $(document).ready(function() {
             $('#product-type').DataTable();
-
-            tinymce.init({
-                selector: 'textarea:not(.textarea-allergy)',
-                toolbar_mode: 'floating',
-            });
+            //
+            // tinymce.init({
+            //     selector: 'textarea:not(.textarea-allergy)',
+            //     toolbar_mode: 'floating',
+            // });
         });
     </script>
 @endsection

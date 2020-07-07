@@ -1371,9 +1371,17 @@ div.slider-add-form.active {
   right: 0;
 }
 
+div.slider-add-form div.times-container {
+  right: 15px;
+  position: absolute;
+  top: 10px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
 div.slider-add-form form {
   width: 80%;
-  margin: 0 auto;
+  margin: 5em auto 0;
 }
 
 .switch {

@@ -798,8 +798,16 @@ div.slider-add-form {
         right: 0;
     }
 
+    & div.times-container {
+        right: 15px;
+        position: absolute;
+        top: 10px;
+        font-size: 30px;
+        cursor: pointer;
+    }
+
     & form {
         width: 80%;
-        margin: 0 auto;
+        margin: 5em auto 0;
     }
 }

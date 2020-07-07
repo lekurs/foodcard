@@ -20,11 +20,11 @@
                             <td>{{$category->libelle}}</td>
                             <td>
                                 <div class="dropdown-actions text-right">
-                                    <a href="#" class="dropdown-actions-icons" role="button" id="dropdown-action-{{$type->libelle}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <a href="#" class="dropdown-actions-icons" role="button" id="dropdown-action-{{$type->id}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="fal fa-ellipsis-v-alt"></i>
                                     </a>
 
-                                    <div class="dropdown-menu" aria-labelledby="dropdown-action-{{$type->libelle}}">
+                                    <div class="dropdown-menu" aria-labelledby="dropdown-action-{{$type->id}}">
                                         <a class="dropdown-item" href="#"><i class="far fa-pen"></i> Modifier</a>
                                         <a class="dropdown-item" href="#"><i class="fal fa-trash"></i> Supprimer</a>
                                     </div>

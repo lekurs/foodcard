@@ -4,10 +4,13 @@
 namespace App\Http\Controllers\Admin\Product;
 
 
+use App\Entity\Locale;
 use App\Http\Controllers\Controller;
 use App\Repository\CatalogueProductLocaleRepository;
 use App\Repository\CatalogueProductRepository;
+use App\Repository\LocaleRepository;
 use App\Requests\Catalogue\Product\ProductCreation;
+use Illuminate\View\View;
 
 class CatalogueProductFormController extends Controller
 {
@@ -42,5 +45,18 @@ class CatalogueProductFormController extends Controller
 //        $this->catalogueProductLocaleRepository->store($validates);
 
         return back()->with('success', 'Produit crée');
+    }
+
+    public function formProductUpdate()
+    {
+        $product = $this->catalogueProductRepository->getOneWithLocales(request()->request->get('id'));
+        $locales = Locale::all();
+
+        $html = \view('forms.products.__product_creation', [
+            'product' => $product,
+            'locales' => $locales
+        ])->render();
+
+        echo $html;
     }
 }
