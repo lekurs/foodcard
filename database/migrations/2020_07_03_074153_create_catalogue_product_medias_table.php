@@ -18,6 +18,10 @@ class CreateCatalogueProductMediasTable extends Migration
             $table->string('path', 255)->unique();
             $table->integer('position')->unsigned();
             $table->timestamps();
+            $table->unsignedInteger('product_id');
+
+            $table->foreign('product_id')->references('id')
+                ->on('catalogue_products');
         });
     }
 

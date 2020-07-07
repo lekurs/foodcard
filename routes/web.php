@@ -29,6 +29,7 @@ Route::group(['prefix' => 'admin'], function () {
 
    Route::group(['prefix' => 'produits'], function () {
       Route::get('/', 'Admin\Product\CatalogueProductShowController@show')->name('productShow');
+      Route::post('/store', 'Admin\Product\CatalogueProductFormController@store')->name('productStore');
    });
 
    Route::group(['prefix' => 'utilisateurs'], function () {

@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     $('body').on('click', '.choice-lg', function () {
         let target = $(this).data('id');
 

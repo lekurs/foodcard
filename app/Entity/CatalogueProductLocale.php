@@ -11,8 +11,7 @@ class CatalogueProductLocale extends Model
 {
     protected $fillable = [
         'libelle',
-        'description',
-        'allergy'
+        'description'
     ];
 
     public function locale(): BelongsTo

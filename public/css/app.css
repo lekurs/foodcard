@@ -1516,6 +1516,12 @@ input.category_label:not(.category_1) {
   display: none;
 }
 
+input.product_label:not(.product_1),
+div.textarea-container:not(.product_1),
+textarea.textarea-allergy {
+  display: none;
+}
+
 div.user-card {
   display: flex;
   flex-direction: column;

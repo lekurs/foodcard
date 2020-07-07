@@ -11,7 +11,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class CatalogueProduct extends Model
 {
     protected $fillable = [
-      'active'
+      'active',
+        'allergy'
     ];
 
 
@@ -23,5 +24,15 @@ class CatalogueProduct extends Model
     public function catalogueProductCategories(): HasMany
     {
         return $this->hasMany(CatalogueProductCategory::class);
+    }
+
+    public function catalogueProductLocales(): HasMany
+    {
+        return $this->hasMany(CatalogueProductLocale::class, 'product_id')->where('locale_id', '=', 1);
+    }
+
+    public function catalogueProductFloats(): HasMany
+    {
+        return $this->hasMany(CatalogueProductFloat::class);
     }
 }

@@ -17,14 +17,14 @@
                     @foreach($products as $product)
                         <tr>
                             <td>{{$loop->index+1}}</td>
-                            <td>{{$product->libelle}}</td>
+                            <td>{{$product->catalogueProductLocales()->first()->libelle}}</td>
                             <td>
                                 <div class="dropdown-actions text-right">
-                                    <a href="#" class="dropdown-actions-icons" role="button" id="dropdown-action-{{$type->libelle}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <a href="#" class="dropdown-actions-icons" role="button" id="dropdown-action-{{$product->libelle}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="fal fa-ellipsis-v-alt"></i>
                                     </a>
 
-                                    <div class="dropdown-menu" aria-labelledby="dropdown-action-{{$type->libelle}}">
+                                    <div class="dropdown-menu" aria-labelledby="dropdown-action-{{$product->libelle}}">
                                         <a class="dropdown-item" href="#"><i class="far fa-pen"></i> Modifier</a>
                                         <a class="dropdown-item" href="#"><i class="fal fa-trash"></i> Supprimer</a>
                                     </div>
@@ -56,14 +56,13 @@
 @section('js')
     <script src="{{asset('js/admin/products-admin.js')}}"></script>
     <script src="{{asset('js/admin/product-creation-admin.js')}}"></script>
+    <script src="{{asset('js/admin/manage-allergy.js')}}"></script>
     <script>
         $(document).ready(function() {
             $('#product-type').DataTable();
 
             tinymce.init({
-                selector: 'textarea',
-                // plugins: 'a11ychecker advcode linkchecker autolink media mediaembed powerpaste tinymcespellchecker',
-                // toolbar: 'a11ycheck code',
+                selector: 'textarea:not(.textarea-allergy)',
                 toolbar_mode: 'floating',
             });
         });

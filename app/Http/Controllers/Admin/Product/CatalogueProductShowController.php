@@ -35,7 +35,7 @@ class CatalogueProductShowController extends Controller
 
     public function show(): View
     {
-        $products = $this->catalogueProductRepository->getAll();
+        $products = $this->catalogueProductRepository->getAllWithLocales();
         $locales = $this->localeRepository->getAll();
 
         return \view('admin.product.catalogue_product_show', [
