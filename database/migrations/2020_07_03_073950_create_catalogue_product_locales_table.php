@@ -14,13 +14,14 @@ class CreateCatalogueProductLocalesTable extends Migration
     public function up()
     {
         Schema::create('catalogue_product_locales', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('libelle', 255)->nullable();
             $table->text('description')->nullable();
-            $table->unsignedInteger('locale_id');
             $table->unsignedInteger('product_id');
+            $table->unsignedInteger('locale_id');
             $table->timestamps();
 
-            $table->primary(['product_id', 'locale_id']);
+//            $table->primary(['product_id', 'locale_id']);
 
             $table->foreign('product_id')->references('id')
                 ->on('catalogue_products');

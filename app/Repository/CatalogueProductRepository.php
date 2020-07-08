@@ -33,7 +33,7 @@ class CatalogueProductRepository
 
     public function getAllWithLocales(): Collection
     {
-        return $this->catalogueProduct::with('catalogueProductLocales')->get();
+        return $this->catalogueProduct::with('locales')->get();
     }
 
     public function getOne(int $id): CatalogueProduct
@@ -43,7 +43,7 @@ class CatalogueProductRepository
 
     public function getOneWithLocales(int $id)
     {
-        return $this->catalogueProduct::whereId($id)->with('catalogueProductLocalesAllLanguages')->with('catalogueProductFloats')->first();
+        return $this->catalogueProduct::whereId($id)->with('locales')->with('catalogueProductFloats')->first();
     }
 
     public function store(array $datas): void
@@ -80,12 +80,9 @@ class CatalogueProductRepository
 
             foreach($datas['locale'] as $localeID => $values) {
                 $productLocale = CatalogueProductLocale::whereProductId($datas['product_id'])->whereLocaleId($localeID)->first();
-//                foreach($values as $field => $value) {
-//                    $productLocale->$field = $value;
-//                }
-                $productLocale->libelle = 'blablablbalba';
-                $productLocale->description = 'blablablbalba';
-                $productLocale->product_id = 6;
+                foreach($values as $field => $value) {
+                    $productLocale->$field = $value;
+                }
                 $productLocale->locale_id = $localeID;
                 $productLocale->save();
             }

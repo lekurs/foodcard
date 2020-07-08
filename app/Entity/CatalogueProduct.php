@@ -26,14 +26,14 @@ class CatalogueProduct extends Model
         return $this->hasMany(CatalogueProductCategory::class);
     }
 
-    public function catalogueProductLocales(): HasMany
-    {
-        return $this->hasMany(CatalogueProductLocale::class, 'product_id')->where('locale_id', '=', 1);
-    }
-
-    public function catalogueProductLocalesAllLanguages(): HasMany
+    public function locales(): HasMany
     {
         return $this->hasMany(CatalogueProductLocale::class, 'product_id');
+    }
+
+    public function langeFR()
+    {
+        return $this->catalogueProductLocales()->whereLocaleID(1);
     }
 
     public function catalogueProductFloats(): HasMany

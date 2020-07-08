@@ -3,7 +3,7 @@
     @include('flashes.errors')
     <div class="input-group floating-label">
         @foreach($locales as $locale)
-            <input type="text" name="locale[{{$locale->id}}][libelle]" id="product_{{$locale->id}}" class="form-control floating-input product_{{$locale->id}} product_label" placeholder="Produit" value="@if(isset($product->catalogueProductLocalesAllLanguages()->whereLocaleId($locale->id)->first()->libelle)){{$product->catalogueProductLocalesAllLanguages()->whereLocaleId($locale->id)->first()->libelle}}@endif">
+            <input type="text" name="locale[{{$locale->id}}][libelle]" id="product_{{$locale->id}}" class="form-control floating-input product_{{$locale->id}} product_label" placeholder="Produit" value="@if(isset($product->locales()->whereLocaleId($locale->id)->first()->libelle)){{$product->locales()->whereLocaleId($locale->id)->first()->libelle}}@endif">
         @endforeach
         <input type="hidden" name="product_id" value="@if(isset($product->id)){{$product->id}}@endif" id="product">
         <div class="input-group-append">
@@ -22,14 +22,14 @@
         @foreach($locales as $locale)
             <div class="textarea-container product_label product_{{$locale->id}}">
                 <textarea name="locale[{{$locale->id}}][description]" id="product_description_{{$locale->id}}" class="floating-textarea">
-                    {{$product->catalogueProductLocalesAllLanguages()->whereLocaleId($locale->id)->first()->description}}
+                    {{$product->locales()->whereLocaleId($locale->id)->first()->description}}
                 </textarea>
             </div>
         @endforeach
     </div>
 
     <div class="floating-label">
-      <input type="text" name="float[price]" id="product_price" class="floating-input product_price" placeholder=" " value="@if(isset($product->catalogueProductFloats()->first()->price)){{$product->catalogueProductFloats()->first()->price}}@endif">
+      <input type="text" name="float[price]" id="product_price" class="floating-input product_price" placeholder=" " value="@if(isset($product->locales()->first()->price)){{$product->catalogueProductFloats()->first()->price}}@endif">
         <label for="price" class="float">Prix</label>
     </div>
 

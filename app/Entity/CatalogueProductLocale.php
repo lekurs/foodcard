@@ -16,7 +16,7 @@ class CatalogueProductLocale extends Model
         'description'
     ];
 
-    protected $primaryKey = ['locale_id', 'product_id'];
+    protected $primaryKey = ['product_id', 'locale_id'];
 
     protected function setKeysForSaveQuery(Builder $query)
     {
