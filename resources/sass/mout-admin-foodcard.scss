@@ -12,3 +12,15 @@ div.mout-bo-top-search-bar {
         }
     }
 }
+
+//Categories
+input.category_label:not(.category_1) {
+    display: none;
+}
+
+//Produits
+input.product_label:not(.product_1),
+div.textarea-container:not(.product_1),
+textarea.textarea-allergy {
+    display: none;
+}

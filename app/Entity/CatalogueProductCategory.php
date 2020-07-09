@@ -20,4 +20,9 @@ class CatalogueProductCategory extends Model
     {
         return $this->belongsTo(CatalogueProduct::class);
     }
+
+    public function store(): BelongsTo
+    {
+        return $this->belongsTo(Store::class);
+    }
 }

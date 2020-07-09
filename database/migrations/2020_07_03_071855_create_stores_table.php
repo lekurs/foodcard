@@ -27,7 +27,7 @@ class CreateStoresTable extends Migration
             $table->timestamps();
 
             $table->foreign('store_type_id')->references('id')
-                ->on('store_types');
+                ->on('store_types')->onDelete('cascade');
         });
     }
 

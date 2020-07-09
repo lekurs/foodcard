@@ -15,7 +15,7 @@ class CreateStoreTypesTable extends Migration
     {
         Schema::create('store_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('libelle', 255);
+            $table->string('type');
             $table->timestamps();
         });
     }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCatalogueCatagoryLocalesTable extends Migration
+class CreateCatalogueProductLocalesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,19 @@ class CreateCatalogueCatagoryLocalesTable extends Migration
      */
     public function up()
     {
-        Schema::create('catalogue_catagory_locales', function (Blueprint $table) {
+        Schema::create('catalogue_product_locales', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('libelle', 255)->nullable();
+            $table->text('description')->nullable();
+            $table->unsignedInteger('product_id');
             $table->unsignedInteger('locale_id');
             $table->timestamps();
 
+            $table->foreign('product_id')->references('id')
+                ->on('catalogue_products')->onDelete('cascade');
+
             $table->foreign('locale_id')->references('id')
-                ->on('locales');
+                ->on('locales')->onDelete('cascade');
         });
     }
 
@@ -31,6 +36,6 @@ class CreateCatalogueCatagoryLocalesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('catalogue_catagory_locales');
+        Schema::dropIfExists('catalogue_product_locales');
     }
 }

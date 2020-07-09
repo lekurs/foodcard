@@ -11,18 +11,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class CatalogueProduct extends Model
 {
     protected $fillable = [
-      'price'
+      'active',
+        'allergy'
     ];
 
-    public function store(): BelongsTo
-    {
-        return $this->belongsTo(Store::class);
-    }
-
-    public function catalogueProductType(): BelongsTo
-    {
-        return $this->belongsTo(CatalogueProductType::class);
-    }
 
     public function catalogueProductMedias(): HasMany
     {
@@ -32,5 +24,20 @@ class CatalogueProduct extends Model
     public function catalogueProductCategories(): HasMany
     {
         return $this->hasMany(CatalogueProductCategory::class);
+    }
+
+    public function locales(): HasMany
+    {
+        return $this->hasMany(CatalogueProductLocale::class, 'product_id');
+    }
+
+    public function langueFR()
+    {
+        return $this->locales()->where('locale_id', '=', 1);
+    }
+
+    public function catalogueProductFloats(): HasMany
+    {
+        return $this->hasMany(CatalogueProductFloat::class, 'product_id');
     }
 }

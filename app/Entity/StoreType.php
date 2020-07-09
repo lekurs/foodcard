@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class StoreType extends Model
 {
     protected $fillable = [
-      'libelle'
+        'type'
     ];
 
     public function stores(): HasMany

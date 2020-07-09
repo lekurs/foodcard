@@ -72,6 +72,10 @@ input:checked + .slider:before {
         .btn-label {
             opacity: 1;
             margin-right: 10px;
+
+            & i {
+                width: auto;
+            }
         }
     }
 }
@@ -95,4 +99,8 @@ input:checked + .slider:before {
 
 .btn-label {
     opacity: 0;
+
+    & i {
+        width: 0;
+    }
 }

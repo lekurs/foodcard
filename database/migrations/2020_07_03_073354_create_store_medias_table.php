@@ -21,7 +21,7 @@ class CreateStoreMediasTable extends Migration
             $table->timestamps();
 
             $table->foreign('store_id')->references('id')
-                ->on('stores');
+                ->on('stores')->onDelete('cascade');
         });
     }
 
