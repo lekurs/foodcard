@@ -23,9 +23,9 @@ class CreateCatalogueCategoryLocalesTable extends Migration
 //            $table->primary(['locale_id', 'catalogue_category_id'], 'category_id');
 
             $table->foreign('locale_id')->references('id')
-                ->on('locales');
+                ->on('locales')->onDelete('cascade');
             $table->foreign('catalogue_category_id', 'catalogue_id')->references('id')
-                ->on('catalogue_categories');
+                ->on('catalogue_categories')->onDelete('cascade');
         });
     }
 

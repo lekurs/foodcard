@@ -17,7 +17,7 @@
                     @foreach($products as $product)
                         <tr>
                             <td>{{$loop->index+1}}</td>
-                            <td>{{$product->locales()->first()->libelle}}</td>
+                            <td>{{$product->langueFR()->first()->libelle}}</td>
                             <td>
                                 <div class="dropdown-actions text-right">
                                     <a href="#" class="dropdown-actions-icons" role="button" id="dropdown-action-{{$product->id}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -26,7 +26,7 @@
 
                                     <div class="dropdown-menu" aria-labelledby="dropdown-action-{{$product->libelle}}">
                                         <a class="dropdown-item edit-elt" href="#" data-id="{{$product->id}}"><i class="far fa-pen"></i> Modifier</a>
-                                        <a class="dropdown-item trash-elt" href="#" data-id="{{$product->id}}"><i class="fal fa-trash"></i> Supprimer</a>
+                                        <a class="dropdown-item trash-elt" href="{{route('productTrash', $product->id)}}" data-id="{{$product->id}}"><i class="fal fa-trash"></i> Supprimer</a>
                                     </div>
                                 </div>
                             </td>
@@ -38,7 +38,7 @@
         </div>
         <div class="row no-gutters">
             <div class="col-12">
-                <a href="#" class="btn mout-btn-add mout-btn-add-product">
+                <a href="#" class="btn mout-btn-add mout-btn-add-product edit-elt" data-id="">
                     <span class="btn-label"><i class="fas fa-chevron-right"></i></span> Ajouter un produit</a>
             </div>
         </div>
@@ -55,17 +55,16 @@
 @endsection
 
 @section('js')
-    <script src="{{asset('js/admin/products-admin.js')}}"></script>
     <script src="{{asset('js/admin/manage-product-admin.js')}}"></script>
     <script src="{{asset('js/admin/manage-allergy.js')}}"></script>
     <script>
         $(document).ready(function() {
             $('#product-type').DataTable();
-            //
-            // tinymce.init({
-            //     selector: 'textarea:not(.textarea-allergy)',
-            //     toolbar_mode: 'floating',
-            // });
+
+            tinymce.init({
+                selector: 'textarea:not(.textarea-allergy)',
+                toolbar_mode: 'floating',
+            });
         });
     </script>
 @endsection

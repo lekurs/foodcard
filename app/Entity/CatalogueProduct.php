@@ -31,9 +31,9 @@ class CatalogueProduct extends Model
         return $this->hasMany(CatalogueProductLocale::class, 'product_id');
     }
 
-    public function langeFR()
+    public function langueFR()
     {
-        return $this->catalogueProductLocales()->whereLocaleID(1);
+        return $this->locales()->where('locale_id', '=', 1);
     }
 
     public function catalogueProductFloats(): HasMany

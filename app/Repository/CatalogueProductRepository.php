@@ -59,6 +59,7 @@ class CatalogueProductRepository
                 foreach($values as $field => $value) {
                     $productLocale->$field = $value;
                 }
+
                 $productLocale->locale_id = $localeID;
                 $productLocale->product_id = $lastId;
                 $productLocale->save();
@@ -94,5 +95,11 @@ class CatalogueProductRepository
             }
             $productFloats->save();
         }
+    }
+
+    public function trash(int $id): void
+    {
+        $product = CatalogueProduct::find($id);
+        $product->delete();
     }
 }

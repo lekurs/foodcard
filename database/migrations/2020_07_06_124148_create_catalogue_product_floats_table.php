@@ -22,7 +22,7 @@ class CreateCatalogueProductFloatsTable extends Migration
 
             $table->primary(['product_id']);
             $table->foreign('product_id')->references('id')
-                ->on('catalogue_products');
+                ->on('catalogue_products')->onDelete('cascade');
         });
     }
 

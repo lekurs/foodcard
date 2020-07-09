@@ -19,11 +19,11 @@ class CreateCatalogueProductCategoriesTable extends Migration
             $table->unsignedInteger('store_id');
 
             $table->foreign('product_id')->references('id')
-                ->on('catalogue_products');
+                ->on('catalogue_products')->onDelete('cascade');
             $table->foreign('category_id')->references('id')
-                ->on('catalogue_categories');
+                ->on('catalogue_categories')->onDelete('cascade');
             $table->foreign('store_id')->references('id')
-                ->on('stores');
+                ->on('stores')->onDelete('cascade');
         });
     }
 

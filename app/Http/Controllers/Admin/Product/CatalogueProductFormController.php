@@ -42,20 +42,30 @@ class CatalogueProductFormController extends Controller
 
         $this->catalogueProductRepository->store($datas);
 
-//        $this->catalogueProductLocaleRepository->store($validates);
-
         return back()->with('success', 'Produit crée');
     }
 
     public function formProductUpdate()
     {
-        $product = $this->catalogueProductRepository->getOneWithLocales(request()->request->get('id'));
+        if(request()->request->get('id') != "") {
+            $product = $this->catalogueProductRepository->getOneWithLocales(request()->request->get('id'));
+        }
+
         $locales = Locale::all();
 
-        $html = \view('forms.products.__product_creation', [
-            'product' => $product,
-            'locales' => $locales
-        ])->render();
+        if(request()->request->get('id') != "") {
+            $allergy = explode('|' , $product->allergy);
+            $html = \view('forms.products.__product_creation', [
+                'product' => $product,
+                'locales' => $locales,
+                'allergy' => $allergy
+            ])->render();
+        } else {
+            $html = \view('forms.products.__product_creation', [
+                'locales' => $locales
+            ])->render();
+        }
+
 
         echo $html;
     }

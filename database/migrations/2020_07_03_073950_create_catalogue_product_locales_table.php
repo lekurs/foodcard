@@ -21,13 +21,11 @@ class CreateCatalogueProductLocalesTable extends Migration
             $table->unsignedInteger('locale_id');
             $table->timestamps();
 
-//            $table->primary(['product_id', 'locale_id']);
-
             $table->foreign('product_id')->references('id')
-                ->on('catalogue_products');
+                ->on('catalogue_products')->onDelete('cascade');
 
             $table->foreign('locale_id')->references('id')
-                ->on('locales');
+                ->on('locales')->onDelete('cascade');
         });
     }
 

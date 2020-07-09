@@ -11,7 +11,7 @@ class LocalSeeder extends Seeder
      */
     public function run()
     {
-        foreach (['FR', 'EN', 'ES'] as $localeStr) {
+        foreach (['FR', 'US', 'ES'] as $localeStr) {
             $locale = new \App\Entity\Locale();
             $locale->label = $localeStr;
             $locale->save();

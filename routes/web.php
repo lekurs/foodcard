@@ -31,6 +31,7 @@ Route::group(['prefix' => 'admin'], function () {
       Route::get('/', 'Admin\Product\CatalogueProductShowController@show')->name('productShow');
       Route::post('/store', 'Admin\Product\CatalogueProductFormController@store')->name('productStore');
       Route::post('/update/view', 'Admin\Product\CatalogueProductFormController@formProductUpdate')->name('updateViewStore');
+      Route::get('/del/{id}', 'Admin\Product\CatalogueProductActionsController@trash')->name('productTrash');
    });
 
    Route::group(['prefix' => 'utilisateurs'], function () {

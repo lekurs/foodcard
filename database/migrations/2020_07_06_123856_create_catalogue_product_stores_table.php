@@ -14,17 +14,17 @@ class CreateCatalogueProductStoresTable extends Migration
     public function up()
     {
         Schema::create('catalogue_product_stores', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('field', 255);
             $table->text('value');
             $table->unsignedInteger('store_id');
             $table->unsignedInteger('product_id');
             $table->timestamps();
 
-            $table->primary(['field', 'store_id', 'product_id']);
             $table->foreign('store_id')->references('id')
-                ->on('stores');
+                ->on('stores')->onDelete('cascade');
             $table->foreign('product_id')->references('id')
-                ->on('catalogue_products');
+                ->on('catalogue_products')->onDelete('cascade');
         });
     }
 

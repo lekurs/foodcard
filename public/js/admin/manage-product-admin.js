@@ -4,6 +4,12 @@ $(document).ready(function () {
         $(this).closest('.slider-add-form.active').removeClass('active');
     });
 
+    // $('body').on('click', '.mout-btn-add-product', function () {
+    //     let form = $('.slider-add-form');
+    //
+    //     form.toggleClass('active');
+    // });
+
     $('body').on('click', '.choice-lg', function () {
         let target = $(this).data('id');
 
@@ -16,8 +22,8 @@ $(document).ready(function () {
     $('body').on('click', '.edit-elt', function () {
         $('.slider-add-form').addClass('active');
         let idProduct = $(this).data('id');
-
         $.post('/admin/produits/update/view', {id:idProduct}, function (data) {
+            console.log(data);
             $('#content-form-product').html(data);
 
             tinymce.remove();
@@ -25,8 +31,6 @@ $(document).ready(function () {
                 selector: 'textarea:not(.textarea-allergy)',
                 toolbar_mode: 'floating',
             });
-            // tinyMCE.execCommand('mceAddEditor', true, '.floating-textarea');
-            // tinymce.EditorManager.execCommand('mceAddEditor', false, ".floating-textarea");
         });
     });
 });
