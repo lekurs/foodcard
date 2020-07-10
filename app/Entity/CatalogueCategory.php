@@ -21,6 +21,11 @@ class CatalogueCategory extends Model
 
     public function catalogueCategoryLocales(): HasMany
     {
-        return $this->hasMany(CatalogueCategoryLocale::class);
+        return $this->hasMany(CatalogueCategoryLocale::class, 'catalogue_category_id');
+    }
+
+    public function categoryLocalesFR(): HasMany
+    {
+        return $this->catalogueCategoryLocales()->where('locale_id', '=', 1);
     }
 }

@@ -50,44 +50,6 @@ class CatalogueCategoryFormController extends Controller
         $this->catalogueCategoryLocaleRepository = $catalogueCategoryLocaleRepository;
     }
 
-    public function create(): View
-    {
-        $locales = $this->localeRepository->getAll();
-        $categoryLocales = $this->catalogueCategoryLocaleRepository->getAllWithCatalogueCategories();
-        $tab = [];
-
-//        foreach($categoryLocales->catalogueCategoryByOrder()->get() as $catalogueByOrder)
-//        {
-//            $tab[$catalogueByOrder->id] = [];
-
-//            if (!is_null($catalogueByOrder->parent)) {
-//
-//            }
-//        }
-//        dd($categoryLocales);
-
-        return \view('admin.category.catalogue_category_creation', [
-            'locales' => $locales,
-            'categoryLocales' => $categoryLocales
-        ]);
-    }
-
-    private function getChildren($array, $noeud, $parent)
-    {
-        static $output = array();
-            foreach($array as $key => $sub){
-                $output[] = [
-                    "id" => $sub["id"],
-                    "parent" => $parent
-                ];
-                if(isset($sub[$noeud])){
-                    //il y a un enfant on recommence
-                    $this->getChildren($sub[$noeud], $noeud, $sub["id"]);
-                }
-            }
-        return $output;
-    }
-
     public function catalogueCategoriesPositionUpdate()
     {
         $json = json_decode(request()->request->get('navigation'), true);
@@ -95,6 +57,8 @@ class CatalogueCategoryFormController extends Controller
         $datas = $this->getChildren($json, 'children', null);
 
         $this->catalogueCategoryRepository->update($datas);
+
+        return redirect()->back()->with('success', 'Catégories mises à jour');
     }
 
     public function store(CatalogueCategoryCreation $validator)
@@ -104,5 +68,22 @@ class CatalogueCategoryFormController extends Controller
         $this->catalogueCategoryRepository->store($validates);
 
         return back()->with('success', 'Catégorie ajoutée');
+    }
+
+
+    private function getChildren($array, $noeud, $parent)
+    {
+        static $output = array();
+        foreach($array as $key => $sub){
+            $output[] = [
+                "id" => $sub["id"],
+                "parent" => $parent
+            ];
+            if(isset($sub[$noeud])){
+                //il y a un enfant on recommence
+                $this->getChildren($sub[$noeud], $noeud, $sub["id"]);
+            }
+        }
+        return $output;
     }
 }

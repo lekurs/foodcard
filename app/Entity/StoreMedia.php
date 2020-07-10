@@ -11,7 +11,8 @@ class StoreMedia extends Model
 {
     protected $fillable = [
       'position',
-      'path'
+      'path',
+      'type'
     ];
 
     public function store(): BelongsTo
