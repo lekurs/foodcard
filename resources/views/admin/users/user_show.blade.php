@@ -31,7 +31,7 @@
 
     <div class="mout-bo-section">
         <div class="mout-bo-shop-container">
-            @include('layouts.UserCards.usercards')
+            @include('layouts.storecards.usercards')
         </div>
     </div>
 
