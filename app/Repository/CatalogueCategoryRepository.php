@@ -19,10 +19,6 @@ class CatalogueCategoryRepository
     public function store(array $datas)
     {
         $catalogueCategory = new CatalogueCategory();
-//            $catalogueCategory->parent = $datas['category-parent'];
-//            $catalogueCategory->position = $datas['category-position'];
-//            $catalogueCategory->position = 0;
-
         $catalogueCategory->save();
 
         $lastid = $catalogueCategory->id;

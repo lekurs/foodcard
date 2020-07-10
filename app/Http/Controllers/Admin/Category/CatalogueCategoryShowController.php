@@ -17,6 +17,7 @@ class CatalogueCategoryShowController extends Controller
 
     /**
      * CatalogueCategoryShowController constructor.
+     * 
      * @param CatalogueCategoryRepository $catalogueCategoryRepository
      */
     public function __construct(CatalogueCategoryRepository $catalogueCategoryRepository)

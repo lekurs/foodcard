@@ -52,7 +52,7 @@
     <div class="mout-header-panel">
         <div class="mout-logo-panel">
             <h2>
-                <a href="{{ route('admin') }}" class="mout-logo-panel-link">Mout</a>
+                <a href="{{ route('admin') }}" class="mout-logo-panel-link">FoodCard</a>
             </h2>
         </div>
         <div class="mout-header-bar">

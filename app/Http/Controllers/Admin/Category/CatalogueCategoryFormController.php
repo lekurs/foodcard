@@ -16,12 +16,12 @@ class CatalogueCategoryFormController extends Controller
     /**
      * @var CatalogueCategoryRepository
      */
-    private $catalogueCategoryRepository;
+    private CatalogueCategoryRepository $catalogueCategoryRepository;
 
     /**
      * @var LocaleRepository $localeRepository
      */
-    private $localeRepository;
+    private LocaleRepository $localeRepository;
 
     /**
      * @var CatalogueCategoryLocaleRepository $categoryLocaleRepository
@@ -34,6 +34,7 @@ class CatalogueCategoryFormController extends Controller
 
     /**
      * CatalogueCategoryFormController constructor.
+     *
      * @param CatalogueCategoryRepository $catalogueCategoryRepository
      * @param LocaleRepository $localeRepository
      * @param CatalogueCategoryLocaleRepository $catalogueCategoryLocaleRepository
@@ -53,7 +54,16 @@ class CatalogueCategoryFormController extends Controller
     {
         $locales = $this->localeRepository->getAll();
         $categoryLocales = $this->catalogueCategoryLocaleRepository->getAllWithCatalogueCategories();
+        $tab = [];
 
+//        foreach($categoryLocales->catalogueCategoryByOrder()->get() as $catalogueByOrder)
+//        {
+//            $tab[$catalogueByOrder->id] = [];
+
+//            if (!is_null($catalogueByOrder->parent)) {
+//
+//            }
+//        }
 //        dd($categoryLocales);
 
         return \view('admin.category.catalogue_category_creation', [
@@ -85,13 +95,10 @@ class CatalogueCategoryFormController extends Controller
         $datas = $this->getChildren($json, 'children', null);
 
         $this->catalogueCategoryRepository->update($datas);
-
-        //Ordre = clé => parent => 'parent', entity_id => 'id'
     }
 
     public function store(CatalogueCategoryCreation $validator)
     {
-//        dd($validates->all());
         $validates = $validator->all();
 
         $this->catalogueCategoryRepository->store($validates);
