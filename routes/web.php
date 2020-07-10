@@ -45,7 +45,8 @@ Route::group(['prefix' => 'admin'], function () {
    });
 
    Route::group(['prefix' => 'magasins'], function () {
-
+       Route::get('/', 'Admin\Stores\StoresShowController@show')->name('storeShow');
+       Route::get('/search', 'Admin\Stores\StoresShowController@show')->name('storeSearch');
       Route::group(['prefix' => 'types'], function () {
           Route::get('/', 'Admin\Stores\Types\StoreTypeShowController@show')->name('storeTypesShow');
           Route::get('/add', 'Admin\Stores\Types\StoreTypeFormController@show')->name('storesTypesShowCreation');

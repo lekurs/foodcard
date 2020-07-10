@@ -1539,6 +1539,7 @@ div.user-card {
   border-radius: 10px;
   border: 1px solid #eeeeee;
   background: #fff;
+  margin-bottom: 10px;
 }
 
 div.user-card div.user-card-img-container {
