@@ -41,12 +41,44 @@
 </head>
 <body>
 <header>
-
+    @yield('header')
 </header>
 
 <section>
+    <div class="mout-admin-middle-container">
     @include('flashes.flash-message')
-    @yield('body')
+    @section('navigation')
+        <div class="container-fluid">
+            <div class="mout-admin-middle-content">
+                <div class="mout-admin-middle-user-informations-container">
+                    <div class="test-fix">
+                        <p class="mout--regular mout-admin-middle-user-description">Bienvenue Maxime GINDRE <a href="{{route('logout')}}"><i class="fal fa-user-times"></i></a></p>
+
+                        <div class="mout-admin-middle-store-informations-container">
+                            <div class="mout-admin-middle-store-icon-container">
+                                <i class="fal fa-map-marker-alt fa-3x"></i>
+                            </div>
+                            <div class="mout-admin-middle-store-description">
+                                <h4 class="mout--regular" id="mout-admin-middle-store-title">Restaurant</h4>
+                                <p class="mout--regular" id="store-name">Nom du store</p>
+                                <p class="mout--light" id="store-address">55 rue de paris</p>
+                                <p class="mout--light" id="store-zip-city">78000 Versailles</p>
+                                <p class="mout--light" id="store-phone">01 39 00 00 00</p>
+                                <p class="mout--regular" id="store-mail">store@store.com</p>
+                                <p class="edit-store" data-store=""><span class="mout-middle-edit-magic-icon"><i class="fal fa-magic"></i></span></p>
+                                @show
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mout-admin-middle-main-panel col-12 col-md-12 col-lg-9">
+                    @yield('body')
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <script

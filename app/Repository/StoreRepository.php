@@ -56,4 +56,10 @@ class StoreRepository
             ->where('store_type_id', '=', $typeId)
             ->paginate(12);
     }
+
+//    public function getOneByUserId($userId)
+//    {
+////        ->where('user_id', '=', $userId)
+//        return Store::with('users')->get();
+//    }
 }

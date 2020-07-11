@@ -36,4 +36,9 @@ class UserRepository
         $user->save();
         return $user;
     }
+
+    public function getOneWithStore()
+    {
+        return User::with('stores')->get();
+    }
 }

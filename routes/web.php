@@ -56,6 +56,13 @@ Route::group(['prefix' => 'admin'], function () {
    });
 });
 
+Route::group(['prefix' => 'foodcard'], function () {
+    Route::group(['prefix' => 'admin'], function () {
+        Route::get('/', 'Middle\Admin\AdminShowController@show')->name('adminMiddleShow');
+        Route::get('/store', 'Middle\Admin\Store\StoreShowController@show')->name('adminMiddleStoreShow');
+    });
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

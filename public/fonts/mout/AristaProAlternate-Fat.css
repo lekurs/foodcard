@@ -1,0 +1,12 @@
+/* Webfont: AristaProAlternate-Fat */@font-face {
+    font-family: 'AristaProAlternateFat';
+    src: url('AristaProAlternate-Fat.eot'); /* IE9 Compat Modes */
+    src: url('AristaProAlternate-Fat.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('AristaProAlternate-Fat.woff') format('woff'), /* Modern Browsers */
+         url('AristaProAlternate-Fat.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('AristaProAlternate-Fat.svg#AristaProAlternate-Fat') format('svg'); /* Legacy iOS */
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+

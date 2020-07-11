@@ -1,0 +1,12 @@
+/* Webfont: AristaProAlternate-Hairline */@font-face {
+    font-family: 'AristaProAlternateHairline';
+    src: url('AristaProAlternate-Hairline.eot'); /* IE9 Compat Modes */
+    src: url('AristaProAlternate-Hairline.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('AristaProAlternate-Hairline.woff') format('woff'), /* Modern Browsers */
+         url('AristaProAlternate-Hairline.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('AristaProAlternate-Hairline.svg#AristaProAlternate-Hairline') format('svg'); /* Legacy iOS */
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
