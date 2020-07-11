@@ -33,7 +33,7 @@ class Store extends Model
 
     public function storeMedias(): HasMany
     {
-        return $this->hasMany(StoreMedia::class);
+        return $this->hasMany(StoreMedia::class, 'store_media_id');
     }
 
     public function catalogueProducts(): HasMany
@@ -45,4 +45,9 @@ class Store extends Model
     {
         return $this->belongsTo(StoreType::class, 'store_type_id');
     }
+
+//    public function mediasAndUsers(): HasMany
+//    {
+//        return $this->Users()->with($this->storeMedias());
+//    }
 }

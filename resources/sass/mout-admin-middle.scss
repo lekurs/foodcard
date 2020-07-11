@@ -1,0 +1,287 @@
+//Medias mobile + tablet
+@media all and (max-width: 1024px) {
+
+}
+
+//Medias desktop
+@media all and (min-width: 1024px) {
+    header {
+        & div.mout-admin-middle-header-container {
+            height: 550px;
+        }
+    }
+
+    div.mout-admin-middle-container {
+        //margin-left: 400px;
+    }
+}
+
+header {
+    & div.mout-admin-middle-header-container {
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+        &#home {
+        background: url("images/admin/middle/foodcard-admin-middle-header.jpg");
+        }
+
+        &#store {
+            background: url("images/admin/middle/header-store.jpg");
+        }
+
+        & div.mout-admin-middle-header-nav-ariane {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(213, 14, 14, .8);
+            width: 400px;
+            color: #ffffff;
+
+            & i {
+                font-size: 100px;
+            }
+
+            & p {
+                font-family: $arista-regular;
+                font-size: 30px;
+            }
+        }
+    }
+}
+
+div.mout-admin-middle-user-informations-container {
+    width: 400px;
+    background: #F7F7F7;
+    padding: 40px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    min-height: 56vh;
+
+    & p.mout--regular.mout-admin-middle-user-description {
+        font-size: 20px;
+
+        & a {
+            margin-left: 15px;
+            color: #000000;
+        }
+    }
+
+    & div.mout-admin-middle-store-informations-container {
+        display: grid;
+        grid-template-columns: 80px auto;
+
+        & div.mout-admin-middle-store-icon-container {
+            justify-self: center;
+            align-self: start;
+            padding-top: 40px;
+
+            & i {
+                color: #FF0000;
+            }
+        }
+
+        & div.mout-admin-middle-store-description {
+            font-size: 20px;
+
+            & H4#mout-admin-middle-store-title {
+                color: #A0A0A0;
+                margin-bottom: 0;
+            }
+
+            & p {
+                margin-bottom: 0;
+
+                &#store-zip-city {
+                    margin-bottom: 2em;
+                }
+            }
+
+            & div.mout-admin-middle-nav-buttons-container {
+                margin: 2em auto;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    }
+}
+
+//Core Middle admin
+div.mout-admin-middle-container {
+    display: flex;
+    min-height: 56vh;
+
+    & div.mout-admin-middle-content {
+        display: flex;
+    }
+
+    div.mout-admin-middle-main-panel {
+        //width: calc(100% - 400px);
+
+        & div.mout-admin-middle-nav-buttons-max-container {
+            padding: 20px;
+            overflow-x: hidden;
+            overflow-y: auto;
+            min-height: 56vh;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+    }
+
+    & div.mout-admin-middle-content-panel {
+        padding: 20px;
+    }
+
+    & div.mout-middle-admin-usercards {
+        position: relative;
+        margin-bottom: 2em;
+        & p {
+            margin-bottom: 10px;
+        }
+
+        &:nth-child(4n)::before {
+            content: "";
+            height: 100%;
+            width: 2px;
+            background-color: #FF0000;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        &::after {
+            content: "";
+            height: 100%;
+            width: 2px;
+            background-color: #FF0000;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    }
+
+    span.circle {
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #ffffff;
+
+        &.circle-username {
+            width: 60px;
+            height: 60px;
+            background: rgb(255, 137, 0);
+            background: linear-gradient(157deg, rgba(255, 137, 0, 1) 0%, rgba(239, 67, 0, 1) 50%, rgba(224, 0, 0, 1) 100%);
+            margin: 0 auto 1em;
+        }
+
+        &.edit-user-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #00C332;
+            cursor: pointer;
+        }
+
+        &.trash-user-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #FF0000;
+            cursor: pointer;
+        }
+    }
+
+    div.usercards-circle-container {
+        display: flex;
+        width: 50%;
+        justify-content: space-around;
+        margin: 0 auto;
+        position: relative;
+
+        &::after {
+            content: "";
+            height: 1px;
+            width: 225%;
+            background-color: #00C332;
+            position: absolute;
+            bottom: -15px;
+        }
+    }
+}
+
+p.edit-store, .edit-user {
+    margin: 2em 0;
+
+    & span {
+        border-radius: 50%;
+        background: #000000;
+        cursor: pointer;
+
+        &.mout-middle-edit-magic-icon {
+            padding: 10px;
+        }
+
+        &.mout-middle-edit-user-icon {
+            padding: 20px;
+
+            & i {
+                font-size: 1.4em;
+            }
+        }
+
+        & i {
+            color: #ffffff;
+        }
+    }
+}
+
+a.mout-admin-middle-nav-buttons {
+    width: 100px;
+    height: 100px;
+    border: transparent;
+    border-radius: 15px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    color: #fff;
+    font-size: 50px;
+
+    &.btn-nav-max-size {
+        width: 400px;
+        height: 400px;
+        flex-direction: column;
+
+        & i {
+            font-size: 100px;
+        }
+
+        & span.btn-description {
+            font-size: 30px;
+            padding: 20px;
+        }
+    }
+}
+
+.btn-store {
+    background: rgb(255,137,0);
+    background: linear-gradient(157deg, rgba(255,137,0,1) 0%, rgba(239,67,0,1) 50%, rgba(224,0,0,1) 100%);
+}
+
+.btn-account {
+    background: rgb(253,234,0);
+    background: linear-gradient(157deg, rgba(253,234,0,1) 0%, rgba(254,197,0,1) 50%, rgba(255,154,0,1) 100%);
+}
+
+.btn-menu {
+    background: rgb(17,72,31);
+    background: linear-gradient(157deg, rgba(17,72,31,1) 0%, rgba(8,142,43,1) 50%, rgba(17,72,31,1) 100%);
+}

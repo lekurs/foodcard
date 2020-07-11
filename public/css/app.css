@@ -1,5 +1,73 @@
 @charset "UTF-8";
 
+.mout--regular {
+  font-family: "AristaProAlternate";
+}
+
+.mout--light {
+  font-family: "AristaProAlternateLight";
+}
+
+.mout--ex-light {
+  font-family: "AristaProAlternateHairline";
+}
+
+.mout--fat {
+  font-family: "AristaProAlternateFat";
+}
+
+/* Webfont: AristaProAlternate-Regular */
+
+@font-face {
+  font-family: "AristaProAlternate";
+  src: url("/fonts/mout/AristaProAlternate-Regular.eot");
+  /* IE9 Compat Modes */
+  src: url("/fonts/mout/AristaProAlternate-Regular.eot?#iefix") format("embedded-opentype"), url("/fonts/mout/AristaProAlternate-Regular.woff") format("woff"), url("/fonts/mout/AristaProAlternate-Regular.ttf") format("truetype"), url("/fonts/mout/AristaProAlternate-Regular.svg#AristaProAlternate-Regular") format("svg");
+  /* Legacy iOS */
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+
+/* Webfont: AristaProAlternate-Fat */
+
+@font-face {
+  font-family: "AristaProAlternateFat";
+  src: url("/fonts/mout/AristaProAlternate-Fat.eot");
+  /* IE9 Compat Modes */
+  src: url("/fonts/mout/AristaProAlternate-Fat.eot?#iefix") format("embedded-opentype"), url("/fonts/mout/AristaProAlternate-Fat.woff") format("woff"), url("/fonts/mout/AristaProAlternate-Fat.ttf") format("truetype"), url("/fonts/mout/AristaProAlternate-Fat.svg#AristaProAlternate-Fat") format("svg");
+  /* Legacy iOS */
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+
+/* Webfont: AristaProAlternate-Hairline */
+
+@font-face {
+  font-family: "AristaProAlternateHairline";
+  src: url("/fonts/mout/AristaProAlternate-Hairline.eot");
+  /* IE9 Compat Modes */
+  src: url("/fonts/mout/AristaProAlternate-Hairline.eot?#iefix") format("embedded-opentype"), url("/fonts/mout/AristaProAlternate-Hairline.woff") format("woff"), url("/fonts/mout/AristaProAlternate-Hairline.ttf") format("truetype"), url("/fonts/mout/AristaProAlternate-Hairline.svg#AristaProAlternate-Hairline") format("svg");
+  /* Legacy iOS */
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+
+/* Webfont: AristaProAlternate-Light */
+
+@font-face {
+  font-family: "AristaProAlternateLight";
+  src: url("/fonts/mout/AristaProAlternate-Light.eot");
+  /* IE9 Compat Modes */
+  src: url("/fonts/mout/AristaProAlternate-Light.eot?#iefix") format("embedded-opentype"), url("/fonts/mout/AristaProAlternate-Light.woff") format("woff"), url("/fonts/mout/AristaProAlternate-Light.ttf") format("truetype"), url("/fonts/mout/AristaProAlternate-Light.svg#AristaProAlternate-Light") format("svg");
+  /* Legacy iOS */
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+
 /** MOUT GESTION DES FORMS **/
 
 .mout-form {
@@ -1485,6 +1553,15 @@ input:checked + .slider:before {
   width: 0;
 }
 
+.mout-btn-add-middle {
+  background-color: #FF0000 !important;
+  display: flex;
+}
+
+.mout-btn-add-middle.active {
+  background-color: #00C332 !important;
+}
+
 table.dataTable thead th,
 table.dataTable thead td,
 table.dataTable.no-footer {
@@ -1638,5 +1715,281 @@ div.roles-menu ul li a span.roles-options i {
 
 div.modal-body form {
   margin: 2em auto;
+}
+
+@media all and (min-width: 1024px) {
+  header div.mout-admin-middle-header-container {
+    height: 550px;
+  }
+}
+
+header div.mout-admin-middle-header-container {
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+header div.mout-admin-middle-header-container#home {
+  background: url(/images/foodcard-admin-middle-header.jpg?8569772b0a2232c34461999ae02b85e7);
+}
+
+header div.mout-admin-middle-header-container#store {
+  background: url(/images/header-store.jpg?280f489588a4392f2416b57118950102);
+}
+
+header div.mout-admin-middle-header-container div.mout-admin-middle-header-nav-ariane {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(213, 14, 14, 0.8);
+  width: 400px;
+  color: #ffffff;
+}
+
+header div.mout-admin-middle-header-container div.mout-admin-middle-header-nav-ariane i {
+  font-size: 100px;
+}
+
+header div.mout-admin-middle-header-container div.mout-admin-middle-header-nav-ariane p {
+  font-family: "AristaProAlternate";
+  font-size: 30px;
+}
+
+div.mout-admin-middle-user-informations-container {
+  width: 400px;
+  background: #F7F7F7;
+  padding: 40px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  min-height: 56vh;
+}
+
+div.mout-admin-middle-user-informations-container p.mout--regular.mout-admin-middle-user-description {
+  font-size: 20px;
+}
+
+div.mout-admin-middle-user-informations-container p.mout--regular.mout-admin-middle-user-description a {
+  margin-left: 15px;
+  color: #000000;
+}
+
+div.mout-admin-middle-user-informations-container div.mout-admin-middle-store-informations-container {
+  display: grid;
+  grid-template-columns: 80px auto;
+}
+
+div.mout-admin-middle-user-informations-container div.mout-admin-middle-store-informations-container div.mout-admin-middle-store-icon-container {
+  justify-self: center;
+  align-self: start;
+  padding-top: 40px;
+}
+
+div.mout-admin-middle-user-informations-container div.mout-admin-middle-store-informations-container div.mout-admin-middle-store-icon-container i {
+  color: #FF0000;
+}
+
+div.mout-admin-middle-user-informations-container div.mout-admin-middle-store-informations-container div.mout-admin-middle-store-description {
+  font-size: 20px;
+}
+
+div.mout-admin-middle-user-informations-container div.mout-admin-middle-store-informations-container div.mout-admin-middle-store-description H4#mout-admin-middle-store-title {
+  color: #A0A0A0;
+  margin-bottom: 0;
+}
+
+div.mout-admin-middle-user-informations-container div.mout-admin-middle-store-informations-container div.mout-admin-middle-store-description p {
+  margin-bottom: 0;
+}
+
+div.mout-admin-middle-user-informations-container div.mout-admin-middle-store-informations-container div.mout-admin-middle-store-description p#store-zip-city {
+  margin-bottom: 2em;
+}
+
+div.mout-admin-middle-user-informations-container div.mout-admin-middle-store-informations-container div.mout-admin-middle-store-description div.mout-admin-middle-nav-buttons-container {
+  margin: 2em auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+div.mout-admin-middle-container {
+  display: flex;
+  min-height: 56vh;
+}
+
+div.mout-admin-middle-container div.mout-admin-middle-content {
+  display: flex;
+}
+
+div.mout-admin-middle-container div.mout-admin-middle-main-panel div.mout-admin-middle-nav-buttons-max-container {
+  padding: 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  min-height: 56vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+div.mout-admin-middle-container div.mout-admin-middle-content-panel {
+  padding: 20px;
+}
+
+div.mout-admin-middle-container div.mout-middle-admin-usercards {
+  position: relative;
+  margin-bottom: 2em;
+}
+
+div.mout-admin-middle-container div.mout-middle-admin-usercards p {
+  margin-bottom: 10px;
+}
+
+div.mout-admin-middle-container div.mout-middle-admin-usercards:nth-child(4n)::before {
+  content: "";
+  height: 100%;
+  width: 2px;
+  background-color: #FF0000;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+div.mout-admin-middle-container div.mout-middle-admin-usercards::after {
+  content: "";
+  height: 100%;
+  width: 2px;
+  background-color: #FF0000;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+div.mout-admin-middle-container span.circle {
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+}
+
+div.mout-admin-middle-container span.circle.circle-username {
+  width: 60px;
+  height: 60px;
+  background: #ff8900;
+  background: linear-gradient(157deg, #ff8900 0%, #ef4300 50%, #e00000 100%);
+  margin: 0 auto 1em;
+}
+
+div.mout-admin-middle-container span.circle.edit-user-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #00C332;
+  cursor: pointer;
+}
+
+div.mout-admin-middle-container span.circle.trash-user-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #FF0000;
+  cursor: pointer;
+}
+
+div.mout-admin-middle-container div.usercards-circle-container {
+  display: flex;
+  width: 50%;
+  justify-content: space-around;
+  margin: 0 auto;
+  position: relative;
+}
+
+div.mout-admin-middle-container div.usercards-circle-container::after {
+  content: "";
+  height: 1px;
+  width: 225%;
+  background-color: #00C332;
+  position: absolute;
+  bottom: -15px;
+}
+
+p.edit-store,
+.edit-user {
+  margin: 2em 0;
+}
+
+p.edit-store span,
+.edit-user span {
+  border-radius: 50%;
+  background: #000000;
+  cursor: pointer;
+}
+
+p.edit-store span.mout-middle-edit-magic-icon,
+.edit-user span.mout-middle-edit-magic-icon {
+  padding: 10px;
+}
+
+p.edit-store span.mout-middle-edit-user-icon,
+.edit-user span.mout-middle-edit-user-icon {
+  padding: 20px;
+}
+
+p.edit-store span.mout-middle-edit-user-icon i,
+.edit-user span.mout-middle-edit-user-icon i {
+  font-size: 1.4em;
+}
+
+p.edit-store span i,
+.edit-user span i {
+  color: #ffffff;
+}
+
+a.mout-admin-middle-nav-buttons {
+  width: 100px;
+  height: 100px;
+  border: transparent;
+  border-radius: 15px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  color: #fff;
+  font-size: 50px;
+}
+
+a.mout-admin-middle-nav-buttons.btn-nav-max-size {
+  width: 400px;
+  height: 400px;
+  flex-direction: column;
+}
+
+a.mout-admin-middle-nav-buttons.btn-nav-max-size i {
+  font-size: 100px;
+}
+
+a.mout-admin-middle-nav-buttons.btn-nav-max-size span.btn-description {
+  font-size: 30px;
+  padding: 20px;
+}
+
+.btn-store {
+  background: #ff8900;
+  background: linear-gradient(157deg, #ff8900 0%, #ef4300 50%, #e00000 100%);
+}
+
+.btn-account {
+  background: #fdea00;
+  background: linear-gradient(157deg, #fdea00 0%, #fec500 50%, #ff9a00 100%);
+}
+
+.btn-menu {
+  background: #11481f;
+  background: linear-gradient(157deg, #11481f 0%, #088e2b 50%, #11481f 100%);
 }
 

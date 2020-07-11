@@ -104,3 +104,12 @@ input:checked + .slider:before {
         width: 0;
     }
 }
+
+.mout-btn-add-middle {
+    background-color: #FF0000 !important;
+    display: flex;
+
+    &.active {
+        background-color: #00C332 !important;
+    }
+}
