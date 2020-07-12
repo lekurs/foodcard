@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('phone', 10)->nullable();
             $table->string('slug', 255);
             $table->integer('user_fonction_id')->unsigned()->nullable();
-            $table->integer('store_id')->unsigned()->nullable();
+//            $table->integer('store_id')->unsigned()->nullable();
             $table->integer('user_role_id')->unsigned();
             $table->boolean('active')->default(true);
             $table->rememberToken();
@@ -32,8 +32,8 @@ class CreateUsersTable extends Migration
 
             $table->foreign('user_fonction_id')->references('id')
                 ->on('user_fonctions');
-            $table->foreign('store_id')->references('id')
-                ->on('stores');
+//            $table->foreign('store_id')->references('id')
+//                ->on('stores');
             $table->foreign('user_role_id')->references('id')
                 ->on('user_roles');
         });

@@ -1562,6 +1562,10 @@ input:checked + .slider:before {
   background-color: #00C332 !important;
 }
 
+.mout-btn-edit-middle {
+  background-color: #FFB100 !important;
+}
+
 table.dataTable thead th,
 table.dataTable thead td,
 table.dataTable.no-footer {
@@ -1766,6 +1770,15 @@ div.modal-body form {
     grid-row-gap: 50px;
   }
 
+  div.mout-admin-middle-main-panel div.mout-admin-middle-users-container div.mout-admin-middle-usercards-container a {
+    justify-self: center;
+    font-size: 20px;
+  }
+
+  div.mout-admin-middle-main-panel div.mout-admin-middle-users-container div.mout-admin-middle-usercards-container a i {
+    font-size: 70px;
+  }
+
   div.mout-admin-middle-nav-buttons-container {
     display: block;
   }
@@ -1778,6 +1791,11 @@ div.modal-body form {
 
   a.mout-admin-middle-nav-buttons i {
     font-size: 35px;
+  }
+
+  a.mout-admin-middle-nav-buttons-account {
+    width: 150px;
+    height: 150px;
   }
 }
 
@@ -1828,6 +1846,10 @@ div.modal-body form {
     grid-template-columns: 1fr 1fr;
   }
 
+  div.mout-admin-middle-nav-buttons-container.nav-four-buttons {
+    grid-template-rows: repeat(2, 150px);
+  }
+
   a.mout-admin-middle-nav-buttons {
     width: 100px;
     height: 100px;
@@ -1836,6 +1858,11 @@ div.modal-body form {
 
   a.mout-admin-middle-nav-buttons i {
     font-size: 50px;
+  }
+
+  a.mout-admin-middle-nav-buttons-account {
+    width: 250px;
+    height: 250px;
   }
 }
 
@@ -1864,8 +1891,15 @@ header div.mout-admin-middle-header-container div.mout-admin-middle-header-nav-a
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(213, 14, 14, 0.8);
   color: #ffffff;
+}
+
+header div.mout-admin-middle-header-container div.mout-admin-middle-header-nav-ariane#store {
+  background-color: rgba(213, 14, 14, 0.8);
+}
+
+header div.mout-admin-middle-header-container div.mout-admin-middle-header-nav-ariane#account {
+  background-color: rgba(255, 177, 0, 0.8);
 }
 
 header div.mout-admin-middle-header-container div.mout-admin-middle-header-nav-ariane p {
@@ -1919,8 +1953,18 @@ div.mout-admin-middle-container {
   min-height: 56vh;
 }
 
+div.mout-admin-middle-container#invoices {
+  flex-direction: column;
+}
+
 div.mout-admin-middle-container div.mout-admin-middle-content {
   display: flex;
+}
+
+div.mout-admin-middle-container div.mout-admin-middle-content#invoices {
+  width: 80%;
+  margin: 0 auto;
+  flex-direction: column;
 }
 
 div.mout-admin-middle-container div.mout-admin-middle-main-panel {
@@ -1942,9 +1986,14 @@ div.mout-admin-middle-container div.mout-admin-middle-content-panel {
   padding: 20px;
 }
 
+div.mout-admin-middle-container div.mout-admin-middle-content-panel#invoices {
+  padding: 0;
+}
+
 div.mout-admin-middle-container div.mout-admin-middle-content-panel div.mout-admin-middle-users-container {
   display: grid;
   text-align: center;
+  margin-top: 1em;
 }
 
 div.mout-admin-middle-container div.mout-middle-admin-usercards {
@@ -2029,11 +2078,28 @@ div.mout-admin-middle-container div.mout-admin-middle-form-container {
   bottom: 0;
   width: 35%;
   padding: 50px 0;
-  background: #ff8900;
-  background: linear-gradient(157deg, #ff8900 0%, #ef4300 50%, #e00000 100%);
   visibility: hidden;
   opacity: 0;
   transition: all 0.5s ease-in-out;
+}
+
+div.mout-admin-middle-container div.mout-admin-middle-form-container#add-user {
+  background: #ff8900;
+  background: linear-gradient(157deg, #ff8900 0%, #ef4300 50%, #e00000 100%);
+}
+
+div.mout-admin-middle-container div.mout-admin-middle-form-container#edit-account {
+  background: #fdea00;
+  background: linear-gradient(157deg, #fdea00 0%, #febf00 50%, #ff9300 100%);
+}
+
+div.mout-admin-middle-container div.mout-admin-middle-form-container span.close-form-container {
+  right: 15px;
+  top: 15px;
+  position: absolute;
+  font-size: 30px;
+  color: #ffffff;
+  cursor: pointer;
 }
 
 div.mout-admin-middle-container div.mout-admin-middle-form-container form {
@@ -2062,6 +2128,45 @@ div.mout-admin-middle-container div.mout-admin-middle-form-container.active {
   visibility: visible;
   opacity: 1;
   transition: all 0.5s ease-in-out;
+}
+
+div.mout-admin-middle-container div.mout-admin-middle-container-ariane {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  padding-left: 100px;
+  font-size: 20px;
+  color: #ffffff;
+  background: #ffce00;
+  background: linear-gradient(90deg, #ffce00 0%, #ff6800 50%, red 100%);
+}
+
+div.mout-admin-middle-container div.mout-admin-middle-container-ariane span.invoice-icon {
+  margin-right: 20px;
+}
+
+div.mout-admin-middle-container div.mout-admin-middle-container-ariane span.invoice-icon i {
+  font-size: 40px;
+}
+
+div.mout-admin-middle-container table.mout-admin-middle-invoices-table {
+  margin: 2em auto 0;
+  font-family: "AristaProAlternate";
+  font-size: 16px;
+  text-align: center;
+}
+
+div.mout-admin-middle-container table.mout-admin-middle-invoices-table th {
+  border-bottom: 2px solid #FFB100;
+  border-top: none;
+}
+
+div.mout-admin-middle-container table.mout-admin-middle-invoices-table td {
+  border-bottom: 1px solid #FFB100;
+}
+
+div.mout-admin-middle-container table.mout-admin-middle-invoices-table i {
+  font-size: 25px;
 }
 
 p.edit-store,
@@ -2121,6 +2226,21 @@ a.mout-admin-middle-nav-buttons.btn-nav-max-size span.btn-description {
   padding: 20px;
 }
 
+a.mout-admin-middle-nav-buttons-account {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  border: 0;
+  border-radius: 25px;
+}
+
+a.mout-admin-middle-nav-buttons-account i {
+  font-size: 100px;
+}
+
 .btn-store {
   background: #ff8900;
   background: linear-gradient(157deg, #ff8900 0%, #ef4300 50%, #e00000 100%);
@@ -2134,5 +2254,20 @@ a.mout-admin-middle-nav-buttons.btn-nav-max-size span.btn-description {
 .btn-menu {
   background: #11481f;
   background: linear-gradient(157deg, #11481f 0%, #088e2b 50%, #11481f 100%);
+}
+
+.btn-qrcode {
+  background: #05ffe2;
+  background: linear-gradient(157deg, #05ffe2 0%, #07dc82 50%, #08b923 100%);
+}
+
+.btn-invoices {
+  background: #ffeb00;
+  background: linear-gradient(157deg, #ffeb00 0%, #ff7600 50%, red 100%);
+}
+
+.btn-payment {
+  background: #0019ff;
+  background: linear-gradient(157deg, #0019ff 0%, #0010a3 50%, #000645 100%);
 }
 

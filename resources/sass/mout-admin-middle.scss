@@ -56,6 +56,15 @@
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
                 grid-row-gap: 50px;
+
+                & a {
+                    justify-self: center;
+                    font-size: 20px;
+
+                    & i {
+                        font-size: 70px;
+                    }
+                }
             }
         }
     }
@@ -63,6 +72,7 @@
     //Bouttons
     div.mout-admin-middle-nav-buttons-container {
      display: block;
+
     }
 
     a.mout-admin-middle-nav-buttons {
@@ -73,6 +83,11 @@
         & i {
             font-size: 35px;
         }
+    }
+
+    a.mout-admin-middle-nav-buttons-account {
+        width: 150px;
+        height: 150px;
     }
 }
 
@@ -123,6 +138,10 @@
     div.mout-admin-middle-nav-buttons-container {
         display: grid;
         grid-template-columns: 1fr 1fr;
+
+        &.nav-four-buttons {
+            grid-template-rows: repeat(2,150px);
+        }
     }
 
     a.mout-admin-middle-nav-buttons {
@@ -133,6 +152,11 @@
         & i {
             font-size: 50px;
         }
+    }
+
+    a.mout-admin-middle-nav-buttons-account {
+        width: 250px;
+        height: 250px;
     }
 }
 
@@ -161,8 +185,15 @@ header {
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: rgba(213, 14, 14, .8);
             color: #ffffff;
+
+            &#store {
+                background-color: rgba(213, 14, 14, .8);
+            }
+
+            &#account {
+                background-color: rgba(255, 177, 0, .8);
+            }
 
             & p {
                 font-family: $arista-regular;
@@ -225,8 +256,18 @@ div.mout-admin-middle-container {
     display: flex;
     min-height: 56vh;
 
+    &#invoices {
+        flex-direction: column;
+    }
+
     & div.mout-admin-middle-content {
         display: flex;
+
+        &#invoices {
+            width: 80%;
+            margin: 0 auto;
+            flex-direction: column;
+        }
     }
 
     div.mout-admin-middle-main-panel {
@@ -247,9 +288,14 @@ div.mout-admin-middle-container {
     & div.mout-admin-middle-content-panel {
         padding: 20px;
 
+        &#invoices {
+            padding: 0;
+        }
+
         & div.mout-admin-middle-users-container {
             display: grid;
             text-align: center;
+            margin-top: 1em;
         }
     }
 
@@ -335,11 +381,28 @@ div.mout-admin-middle-container {
         bottom: 0;
         width: 35%;
         padding: 50px 0;
-        background: rgb(255, 137, 0);
-        background: linear-gradient(157deg, rgba(255, 137, 0, 1) 0%, rgba(239, 67, 0, 1) 50%, rgba(224, 0, 0, 1) 100%);
         visibility: hidden;
         opacity: 0;
         transition: all .5s ease-in-out;
+
+        &#add-user {
+            background: rgb(255, 137, 0);
+            background: linear-gradient(157deg, rgba(255, 137, 0, 1) 0%, rgba(239, 67, 0, 1) 50%, rgba(224, 0, 0, 1) 100%);
+        }
+
+        &#edit-account {
+            background: rgb(253,234,0);
+            background: linear-gradient(157deg, rgba(253,234,0,1) 0%, rgba(254,191,0,1) 50%, rgba(255,147,0,1) 100%);
+        }
+
+        & span.close-form-container {
+            right: 15px;
+            top: 15px;
+            position: absolute;
+            font-size: 30px;
+            color: #ffffff;
+            cursor: pointer;
+        }
 
         & form {
             height: 100%;
@@ -367,6 +430,46 @@ div.mout-admin-middle-container {
             visibility: visible;
             opacity: 1;
             transition: all .5s ease-in-out;
+        }
+    }
+
+    //page invoices
+    & div.mout-admin-middle-container-ariane {
+        height: 100px;
+        display: flex;
+        align-items: center;
+        padding-left: 100px;
+        font-size: 20px;
+        color: #ffffff;
+        background: rgb(255,206,0);
+        background: linear-gradient(90deg, rgba(255,206,0,1) 0%, rgba(255,104,0,1) 50%, rgba(255,0,0,1) 100%);
+
+        & span.invoice-icon {
+            margin-right: 20px;
+
+            & i {
+                font-size: 40px;
+            }
+        }
+    }
+
+    & table.mout-admin-middle-invoices-table {
+        margin: 2em auto 0;
+        font-family: $arista-regular;
+        font-size: 16px;
+        text-align: center;
+
+        & th {
+            border-bottom: 2px solid #FFB100;
+            border-top: none;
+        }
+
+        & td {
+            border-bottom: 1px solid #FFB100;
+        }
+
+        & i {
+            font-size: 25px;
         }
     }
 }
@@ -398,8 +501,6 @@ p.edit-store, .edit-user {
 }
 
 a.mout-admin-middle-nav-buttons {
-    //width: 100px;
-    //height: 100px;
     border: transparent;
     border-radius: 15px;
     justify-content: center;
@@ -424,6 +525,21 @@ a.mout-admin-middle-nav-buttons {
     }
 }
 
+a.mout-admin-middle-nav-buttons-account {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    border: 0;
+    border-radius: 25px;
+
+    & i {
+        font-size: 100px;
+    }
+}
+
 .btn-store {
     background: rgb(255,137,0);
     background: linear-gradient(157deg, rgba(255,137,0,1) 0%, rgba(239,67,0,1) 50%, rgba(224,0,0,1) 100%);
@@ -437,4 +553,19 @@ a.mout-admin-middle-nav-buttons {
 .btn-menu {
     background: rgb(17,72,31);
     background: linear-gradient(157deg, rgba(17,72,31,1) 0%, rgba(8,142,43,1) 50%, rgba(17,72,31,1) 100%);
+}
+
+.btn-qrcode {
+    background: rgb(5,255,226);
+    background: linear-gradient(157deg, rgba(5,255,226,1) 0%, rgba(7,220,130,1) 50%, rgba(8,185,35,1) 100%);
+}
+
+.btn-invoices {
+    background: rgb(255,235,0);
+    background: linear-gradient(157deg, rgba(255,235,0,1) 0%, rgba(255,118,0,1) 50%, rgba(255,0,0,1) 100%);
+}
+
+.btn-payment {
+    background: rgb(0,25,255);
+    background: linear-gradient(157deg, rgba(0,25,255,1) 0%, rgba(0,16,163,1) 50%, rgba(0,6,69,1) 100%);
 }
