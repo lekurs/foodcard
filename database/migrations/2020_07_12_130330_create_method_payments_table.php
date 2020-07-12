@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCatalogueProductsTable extends Migration
+class CreateMethodPaymentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateCatalogueProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('catalogue_products', function (Blueprint $table) {
+        Schema::create('method_payments', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('allergy', 255)->nullable();
-            $table->boolean('active')->default(true);
-            $table->enum('visibility',['all', 'local'])->default('all');
+            $table->string('method', 255);
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateCatalogueProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('catalogue_products');
+        Schema::dropIfExists('method_payments');
     }
 }

@@ -16,16 +16,12 @@
 
 @section('navigation')
     @parent
-{{--        <div class="mout-admin-middle-nav-buttons-container">--}}
-{{--            <a href="#" class="btn mout-admin-middle-nav-buttons btn-account"><i class="fal fa-smile"></i></a>--}}
-{{--            <a href="#" class="btn mout-admin-middle-nav-buttons btn-menu"><i class="fal fa-concierge-bell"></i></a>--}}
-{{--        </div>--}}
 @endsection
 
 @section('body')
     <div class="mout-admin-middle-nav-buttons-max-container">
         <a href="{{route('adminMiddleStoreShow')}}" class="btn mout-admin-middle-nav-buttons btn-store btn-nav-max-size"><i class="fal fa-home"></i><span class="btn-description">Mon établissement</span></a>
-        <a href="#" class="btn mout-admin-middle-nav-buttons btn-account btn-nav-max-size"><i class="fal fa-smile"></i><span class="btn-description">Mon établissement</span></a>
+        <a href="{{route('adminMiddleAccountShow')}}" class="btn mout-admin-middle-nav-buttons btn-account btn-nav-max-size"><i class="fal fa-smile"></i><span class="btn-description">Mon établissement</span></a>
         <a href="#" class="btn mout-admin-middle-nav-buttons btn-menu btn-nav-max-size"><i class="fal fa-concierge-bell"></i><span class="btn-description">Mon établissement</span></a>
     </div>
 @endsection
