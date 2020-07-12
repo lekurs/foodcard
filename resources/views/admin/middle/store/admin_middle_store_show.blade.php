@@ -28,14 +28,13 @@
 
 @section('body')
     <div class="mout-admin-middle-content-panel">
-        <div class="mout-admin-middle-users-container row">
-            <div class="col-12 col-md-12 col-lg-3 text-center">
+        <div class="mout-admin-middle-users-container">
+            <div class="mout-admin-middle-users-manager">
                 <p class="edit-user" data-user=""><span class="mout-middle-edit-user-icon"><i class="fal fa-user"></i></span></p>
                 <p class="mout--fat">collaborateurs</p>
                 <a href="#" class="btn mout-btn-add-middle"><span><i class="fal fa-plus"></i> collaborateur</span></a>
             </div>
-            <div class="col-12 col-md-12 col-lg-7 offset-lg-1">
-                <div class="row justify-content-around usercards-container">
+            <div class="mout-admin-middle-usercards-container">
                 @include('layouts.usercards.usercards')
                 @include('layouts.usercards.usercards')
                 @include('layouts.usercards.usercards')
@@ -45,9 +44,16 @@
                 @include('layouts.usercards.usercards')
                 @include('layouts.usercards.usercards')
                 @include('layouts.usercards.usercards')
-                </div>
             </div>
+        </div>
+
+        <div class="mout-admin-middle-form-container">
+            @include('forms.middle.users.__user_creation_middle')
         </div>
     </div>
 {{--</div>--}}
+@endsection
+
+@section('js')
+    <script src="{{asset('js/middle-admin/users-manager.js')}}"></script>
 @endsection

@@ -73,7 +73,7 @@
                     </div>
                 </div>
 
-                <div class="mout-admin-middle-main-panel col-12 col-md-12 col-lg-9">
+                <div class="mout-admin-middle-main-panel">
                     @yield('body')
                 </div>
             </div>

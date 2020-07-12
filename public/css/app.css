@@ -1723,6 +1723,122 @@ div.modal-body form {
   }
 }
 
+@media all and (min-width: 960px) and (max-width: 1599px) {
+  div.mout-admin-middle-header-nav-ariane {
+    width: 200px;
+  }
+
+  div.mout-admin-middle-header-nav-ariane i {
+    font-size: 80px;
+  }
+
+  div.mout-admin-middle-header-nav-ariane p {
+    font-size: 20px;
+  }
+
+  div.mout-admin-middle-user-informations-container {
+    width: 200px;
+  }
+
+  div.mout-admin-middle-user-informations-container div.mout-admin-middle-store-informations-container {
+    display: block;
+  }
+
+  div.mout-admin-middle-user-informations-container div.mout-admin-middle-store-informations-container div.mout-admin-middle-store-description {
+    font-size: 16px;
+  }
+
+  div.mout-admin-middle-user-informations-container div.mout-admin-middle-store-informations-container div.mout-admin-middle-store-icon-container {
+    display: none;
+  }
+
+  div.mout-admin-middle-main-panel {
+    width: calc(100% - 200px);
+  }
+
+  div.mout-admin-middle-main-panel div.mout-admin-middle-users-container {
+    grid-template-columns: 250px auto;
+  }
+
+  div.mout-admin-middle-main-panel div.mout-admin-middle-users-container div.mout-admin-middle-usercards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-row-gap: 50px;
+  }
+
+  div.mout-admin-middle-nav-buttons-container {
+    display: block;
+  }
+
+  a.mout-admin-middle-nav-buttons {
+    width: 60px;
+    height: 60px;
+    margin: 0.5em 0;
+  }
+
+  a.mout-admin-middle-nav-buttons i {
+    font-size: 35px;
+  }
+}
+
+@media all and (min-width: 1600px) {
+  div.mout-admin-middle-header-nav-ariane {
+    width: 400px;
+  }
+
+  div.mout-admin-middle-header-nav-ariane i {
+    font-size: 100px;
+  }
+
+  div.mout-admin-middle-header-nav-ariane p {
+    font-family: "AristaProAlternate";
+    font-size: 30px;
+  }
+
+  div.mout-admin-middle-user-informations-container {
+    width: 400px;
+  }
+
+  div.mout-admin-middle-user-informations-container div.mout-admin-middle-store-informations-container {
+    display: grid;
+    grid-template-columns: 80px auto;
+  }
+
+  div.mout-admin-middle-user-informations-container div.mout-admin-middle-store-informations-container div.mout-admin-middle-store-description {
+    font-size: 20px;
+  }
+
+  div.mout-admin-middle-main-panel {
+    width: calc(100% - 400px);
+  }
+
+  div.mout-admin-middle-main-panel div.mout-admin-middle-users-container {
+    grid-template-columns: 300px auto;
+    margin-right: 60px;
+  }
+
+  div.mout-admin-middle-main-panel div.mout-admin-middle-users-container div.mout-admin-middle-usercards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-row-gap: 50px;
+  }
+
+  div.mout-admin-middle-nav-buttons-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  a.mout-admin-middle-nav-buttons {
+    width: 100px;
+    height: 100px;
+    margin: 1em 0;
+  }
+
+  a.mout-admin-middle-nav-buttons i {
+    font-size: 50px;
+  }
+}
+
 header div.mout-admin-middle-header-container {
   background-size: cover;
   display: flex;
@@ -1749,21 +1865,14 @@ header div.mout-admin-middle-header-container div.mout-admin-middle-header-nav-a
   justify-content: center;
   align-items: center;
   background-color: rgba(213, 14, 14, 0.8);
-  width: 400px;
   color: #ffffff;
-}
-
-header div.mout-admin-middle-header-container div.mout-admin-middle-header-nav-ariane i {
-  font-size: 100px;
 }
 
 header div.mout-admin-middle-header-container div.mout-admin-middle-header-nav-ariane p {
   font-family: "AristaProAlternate";
-  font-size: 30px;
 }
 
 div.mout-admin-middle-user-informations-container {
-  width: 400px;
   background: #F7F7F7;
   padding: 40px;
   top: 0;
@@ -1782,11 +1891,6 @@ div.mout-admin-middle-user-informations-container p.mout--regular.mout-admin-mid
   color: #000000;
 }
 
-div.mout-admin-middle-user-informations-container div.mout-admin-middle-store-informations-container {
-  display: grid;
-  grid-template-columns: 80px auto;
-}
-
 div.mout-admin-middle-user-informations-container div.mout-admin-middle-store-informations-container div.mout-admin-middle-store-icon-container {
   justify-self: center;
   align-self: start;
@@ -1795,10 +1899,6 @@ div.mout-admin-middle-user-informations-container div.mout-admin-middle-store-in
 
 div.mout-admin-middle-user-informations-container div.mout-admin-middle-store-informations-container div.mout-admin-middle-store-icon-container i {
   color: #FF0000;
-}
-
-div.mout-admin-middle-user-informations-container div.mout-admin-middle-store-informations-container div.mout-admin-middle-store-description {
-  font-size: 20px;
 }
 
 div.mout-admin-middle-user-informations-container div.mout-admin-middle-store-informations-container div.mout-admin-middle-store-description H4#mout-admin-middle-store-title {
@@ -1814,12 +1914,6 @@ div.mout-admin-middle-user-informations-container div.mout-admin-middle-store-in
   margin-bottom: 2em;
 }
 
-div.mout-admin-middle-user-informations-container div.mout-admin-middle-store-informations-container div.mout-admin-middle-store-description div.mout-admin-middle-nav-buttons-container {
-  margin: 2em auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
 div.mout-admin-middle-container {
   display: flex;
   min-height: 56vh;
@@ -1827,6 +1921,11 @@ div.mout-admin-middle-container {
 
 div.mout-admin-middle-container div.mout-admin-middle-content {
   display: flex;
+}
+
+div.mout-admin-middle-container div.mout-admin-middle-main-panel {
+  position: relative;
+  overflow-x: hidden;
 }
 
 div.mout-admin-middle-container div.mout-admin-middle-main-panel div.mout-admin-middle-nav-buttons-max-container {
@@ -1843,19 +1942,23 @@ div.mout-admin-middle-container div.mout-admin-middle-content-panel {
   padding: 20px;
 }
 
+div.mout-admin-middle-container div.mout-admin-middle-content-panel div.mout-admin-middle-users-container {
+  display: grid;
+  text-align: center;
+}
+
 div.mout-admin-middle-container div.mout-middle-admin-usercards {
   position: relative;
-  margin-bottom: 2em;
 }
 
 div.mout-admin-middle-container div.mout-middle-admin-usercards p {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 div.mout-admin-middle-container div.mout-middle-admin-usercards:nth-child(4n)::before {
   content: "";
   height: 100%;
-  width: 2px;
+  width: 1px;
   background-color: #FF0000;
   position: absolute;
   left: 0;
@@ -1865,7 +1968,7 @@ div.mout-admin-middle-container div.mout-middle-admin-usercards:nth-child(4n)::b
 div.mout-admin-middle-container div.mout-middle-admin-usercards::after {
   content: "";
   height: 100%;
-  width: 2px;
+  width: 1px;
   background-color: #FF0000;
   position: absolute;
   right: 0;
@@ -1906,17 +2009,59 @@ div.mout-admin-middle-container div.usercards-circle-container {
   display: flex;
   width: 50%;
   justify-content: space-around;
-  margin: 0 auto;
+  margin: 2em auto;
   position: relative;
 }
 
 div.mout-admin-middle-container div.usercards-circle-container::after {
   content: "";
   height: 1px;
-  width: 225%;
+  width: 200%;
   background-color: #00C332;
   position: absolute;
-  bottom: -15px;
+  bottom: -55px;
+}
+
+div.mout-admin-middle-container div.mout-admin-middle-form-container {
+  position: absolute;
+  top: 0;
+  right: -100%;
+  bottom: 0;
+  width: 35%;
+  padding: 50px 0;
+  background: #ff8900;
+  background: linear-gradient(157deg, #ff8900 0%, #ef4300 50%, #e00000 100%);
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+
+div.mout-admin-middle-container div.mout-admin-middle-form-container form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+div.mout-admin-middle-container div.mout-admin-middle-form-container form div.input-groupe {
+  width: 45%;
+}
+
+div.mout-admin-middle-container div.mout-admin-middle-form-container form input {
+  color: #ffffff;
+  border-bottom: 1px solid #ffffff !important;
+}
+
+div.mout-admin-middle-container div.mout-admin-middle-form-container form label {
+  color: #ffffff;
+}
+
+div.mout-admin-middle-container div.mout-admin-middle-form-container.active {
+  right: 0;
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.5s ease-in-out;
 }
 
 p.edit-store,
@@ -1952,8 +2097,6 @@ p.edit-store span i,
 }
 
 a.mout-admin-middle-nav-buttons {
-  width: 100px;
-  height: 100px;
   border: transparent;
   border-radius: 15px;
   justify-content: center;
