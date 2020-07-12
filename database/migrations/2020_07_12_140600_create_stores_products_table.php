@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersStoresTable extends Migration
+class CreateStoresProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateUsersStoresTable extends Migration
      */
     public function up()
     {
-        Schema::create('users_stores', function (Blueprint $table) {
+        Schema::create('stores_products', function (Blueprint $table) {
             $table->unsignedInteger('store_id');
-            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('product_id');
         });
     }
 
@@ -26,6 +26,6 @@ class CreateUsersStoresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users_stores');
+        Schema::dropIfExists('stores_products');
     }
 }

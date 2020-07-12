@@ -17,6 +17,7 @@ class CreateCatalogueProductsTable extends Migration
             $table->increments('id');
             $table->string('allergy', 255)->nullable();
             $table->boolean('active')->default(true);
+            $table->enum('visibility',['all', 'local'])->default('all');
             $table->timestamps();
         });
     }
