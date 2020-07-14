@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Entity\User;
+use App\Repository\StoreTypeRepository;
 use App\Repository\UserRepository;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -28,6 +29,8 @@ class RegisterController extends Controller
 
     private UserRepository $userRepository;
 
+    private StoreTypeRepository $storeTypeRepository;
+
     /**
      * Where to redirect users after registration.
      *
@@ -39,16 +42,22 @@ class RegisterController extends Controller
      * Create a new controller instance.
      *
      * @param UserRepository $userRepository
+     * @param StoreTypeRepository $storeTypeRepository
      */
-    public function __construct(UserRepository $userRepository)
+    public function __construct(UserRepository $userRepository, StoreTypeRepository $storeTypeRepository)
     {
         $this->middleware('guest');
         $this->userRepository = $userRepository;
+        $this->storeTypeRepository = $storeTypeRepository;
     }
 
     public function showRegistrationForm()
     {
-        return view('auth.mout-register');
+        $storeTypes = $this->storeTypeRepository->getAll();
+
+        return view('auth.mout-register', [
+            'storeTypes' => $storeTypes
+        ]);
     }
 
     /**
@@ -63,6 +72,8 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'store' => ['required', 'max:255'],
+            'store-type' => ['required'],
             'password' => ['required', 'string', 'min:8', 'confirmed']
         ]);
     }
@@ -75,14 +86,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+//        dd($data);
         return $this->userRepository->createUser($data);
-//        return User::create([
-//        'name' => $data['name'],
-//        'lastname' => $data['lastname'],
-//        'email' => $data['email'],
-//        'password' => Hash::make($data['password']),
-//        'user_role_id' => 3,
-//        'slug' => Str::slug($data['name'] . '-' .$data['lastname']),
-//        ]);
     }
 }

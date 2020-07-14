@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -60,5 +62,15 @@ class User extends Authenticatable
     public function userFonction(): BelongsTo
     {
         return $this->belongsTo(UserFonction::class);
+    }
+
+    public function stores(): BelongsToMany
+    {
+        return $this->belongsToMany(Store::class, 'users_stores');
+    }
+
+    public function mainStore(): BelongsToMany
+    {
+        return $this->belongsToMany(Store::class, 'users_stores')->whereMain();
     }
 }

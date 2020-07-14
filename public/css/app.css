@@ -666,6 +666,13 @@ form#registerForm {
   width: 45%;
 }
 
+form#registerForm {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
 div.mout-public-login-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -677,6 +684,13 @@ div.mout-public-login-container div.mout-public-login-left-panel {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background: #01100a;
+  background: linear-gradient(180deg, #01100a 0%, #01311b 50%, #01522c 100%);
+}
+
+div.mout-public-login-container div.mout-public-login-left-panel input,
+div.mout-public-login-container div.mout-public-login-left-panel label {
+  color: #ffffff;
 }
 
 div.mout-public-login-container div.mout-public-login-left-panel h1 {
@@ -687,16 +701,62 @@ div.mout-public-login-container div.mout-public-login-left-panel h1 {
 }
 
 div.mout-public-login-container div.mout-public-login-right-panel {
-  background: #000000;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
+  background: url(/images/admin/middle/login-register-foodcard.jpg);
+  background-size: cover;
 }
 
 div.mout-public-login-container div.mout-public-login-right-panel h2 {
   font-family: Assistant;
   font-size: 80px;
   color: white;
+}
+
+div.mout-public-login-container div.mout-public-login-right-panel svg {
+  width: 30%;
+  margin-top: 15%;
+}
+
+input#name,
+select#store-type {
+  border-bottom: 2px solid #FF7F00 !important;
+}
+
+.floating-input:not(:-moz-placeholder-shown) ~ label.float {
+  color: #FF7F00 !important;
+}
+
+.floating-input:not(:-ms-input-placeholder) ~ label.float {
+  color: #FF7F00 !important;
+}
+
+.floating-input:not(:placeholder-shown) ~ label.float {
+  color: #FF7F00 !important;
+}
+
+input#lastname,
+input#password {
+  border-bottom: 2px solid #FFCD00 !important;
+}
+
+input#email,
+input#password-confirm {
+  border-bottom: 2px solid #FF0000 !important;
+}
+
+input#store {
+  border-bottom: 2px solid #00C332 !important;
+}
+
+select#store-type {
+  width: 100%;
+  background: none;
+  color: #fff;
+  border-top: none;
+  border-left: none;
+  border-right: none;
 }
 
 body {
@@ -1532,6 +1592,10 @@ input:checked + .slider:before {
   background-color: #D90000 !important;
 }
 
+.mout-btn-register {
+  background-color: #00C332 !important;
+}
+
 .mout-btn-login,
 .mout-btn-edit {
   background-color: #7A63F9 !important;
@@ -1875,11 +1939,13 @@ header div.mout-admin-middle-header-container {
 }
 
 header div.mout-admin-middle-header-container#home {
-  background: url(/images/foodcard-admin-middle-header.jpg?8569772b0a2232c34461999ae02b85e7);
+  background: url(/images/foodcard-admin-middle-header.jpg?8569772b0a2232c34461999ae02b85e7) no-repeat;
+  background-size: cover;
 }
 
 header div.mout-admin-middle-header-container#store {
   background: url(/images/header-store.jpg?280f489588a4392f2416b57118950102);
+  background-size: cover;
 }
 
 header div.mout-admin-middle-header-container div.mout-admin-middle-header-nav-ariane {

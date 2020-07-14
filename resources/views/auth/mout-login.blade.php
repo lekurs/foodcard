@@ -48,6 +48,7 @@
 <div class="container-fluid">
     <div class="mout-public-login-container">
         <div class="mout-public-login-left-panel">
+            <i class="fal fa-home welcome-register"></i>
             <h1>Bienvenue !</h1>
             <form method="POST" action="{{ route('login') }}" name="loginform" id="loginform">
                 @csrf
