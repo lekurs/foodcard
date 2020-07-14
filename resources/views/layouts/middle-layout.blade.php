@@ -52,7 +52,12 @@
             <div class="mout-admin-middle-content">
                 <div class="mout-admin-middle-user-informations-container">
                     <div class="test-fix">
-                        <p class="mout--regular mout-admin-middle-user-description">Bienvenue Maxime GINDRE <a href="{{route('logout')}}"><i class="fal fa-user-times"></i></a></p>
+                        <p class="mout--regular mout-admin-middle-user-description">Bienvenue <span class="userlogs">{{auth()->user()->name . ' ' . auth()->user()->lastname}}</span>
+                            <a href="{{route('logout')}}" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();"><i class="fal fa-user-times"></i></a></p>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
 
                         <div class="mout-admin-middle-store-informations-container">
                             <div class="mout-admin-middle-store-icon-container">

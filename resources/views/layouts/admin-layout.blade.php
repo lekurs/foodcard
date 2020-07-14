@@ -72,7 +72,10 @@
                             </button>
                             <ul class="drop-menu pull-right">
                                 <li>
-                                    <a href="{{route('logout')}}">logout</a>
+                                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: block;">
+                                        {{ csrf_field() }}
+                                        logout
+                                    </form>
                                 </li>
                                 <li>
                                     <a href="#">2</a>

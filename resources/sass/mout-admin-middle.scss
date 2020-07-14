@@ -216,6 +216,10 @@ div.mout-admin-middle-user-informations-container {
     & p.mout--regular.mout-admin-middle-user-description {
         font-size: 20px;
 
+        & span.userlogs {
+            text-transform: capitalize;
+        }
+
         & a {
             margin-left: 15px;
             color: #000000;

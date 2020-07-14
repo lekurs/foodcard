@@ -1986,6 +1986,10 @@ div.mout-admin-middle-user-informations-container p.mout--regular.mout-admin-mid
   font-size: 20px;
 }
 
+div.mout-admin-middle-user-informations-container p.mout--regular.mout-admin-middle-user-description span.userlogs {
+  text-transform: capitalize;
+}
+
 div.mout-admin-middle-user-informations-container p.mout--regular.mout-admin-middle-user-description a {
   margin-left: 15px;
   color: #000000;

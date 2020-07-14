@@ -29,4 +29,11 @@ class StoreShowController extends Controller
 
         ]);
     }
+
+
+    public function showOne(string $slug)
+    {
+//        dd($slug);
+        dump('ici');
+    }
 }
