@@ -7,9 +7,9 @@
 {{--        <img src="{{asset('images/restaurant/' . $store->name . '/' . $store->medias()->first()->logo)}}" alt="{{$store->name}}" class="img-fluid">--}}
 
         @else
-        <h2>Nom du magasin
-{{--            {{$store->name}}--}}
-        </h2>
+            @foreach($stores as $store)
+                <h2>{{$store->name}}</h2>
+            @endforeach
         @endif
     </div>
 @endsection

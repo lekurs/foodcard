@@ -16,24 +16,27 @@ class AdminShowController extends Controller
      */
     private StoreRepository $storeRepository;
 
+    private UserRepository $userRepository;
+
     /**
      * AdminShowController constructor.
      * @param StoreRepository $storeRepository
+     * @param UserRepository $userRepository
      */
-    public function __construct(StoreRepository $storeRepository)
+    public function __construct(StoreRepository $storeRepository, UserRepository $userRepository)
     {
         $this->storeRepository = $storeRepository;
+        $this->userRepository = $userRepository;
     }
 
 
     public function show(): View
     {
-//        $store = $this->storeRepository->getOneByUserId(auth()->user()->id);
-//
-//        dd($store);
+        $user = $this->userRepository->getStoresByUser(auth()->user());
+        $stores = $user->stores;
 
         return view('admin.middle.admin_middle', [
-//            'store' => $store
+            'stores' => $stores
         ]);
     }
 }

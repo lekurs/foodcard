@@ -21,7 +21,8 @@ class CreateStoresTable extends Migration
             $table->string('address_complement',255)->nullable();
             $table->integer('zip')->nullable();
             $table->string('city',255)->nullable();
-            $table->boolean('active');
+            $table->boolean('main');
+            $table->boolean('active')->default(true);
             $table->string('slug',255);
             $table->unsignedInteger('store_type_id');
             $table->timestamps();

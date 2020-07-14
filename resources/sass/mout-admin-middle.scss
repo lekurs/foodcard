@@ -169,11 +169,13 @@ header {
         position: relative;
 
         &#home {
-        background: url("images/admin/middle/foodcard-admin-middle-header.jpg");
+            background: url("images/admin/middle/foodcard-admin-middle-header.jpg") no-repeat;
+            background-size: cover;
         }
 
         &#store {
             background: url("images/admin/middle/header-store.jpg");
+            background-size: cover;
         }
 
         & div.mout-admin-middle-header-nav-ariane {

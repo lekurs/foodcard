@@ -6,7 +6,9 @@ namespace App\Entity;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Query\Builder;
 
 class Store extends Model
 {
@@ -17,6 +19,7 @@ class Store extends Model
       'address_complement',
       'zip',
       'city',
+      'main',
       'active',
       'slug'
     ];
@@ -26,9 +29,9 @@ class Store extends Model
         return $this->hasMany(CatalogueProductStore::class);
     }
 
-    public function Users(): HasMany
+    public function Users(): BelongsToMany
     {
-        return $this->HasMany(User::class);
+        return $this->belongsToMany(User::class, 'users_stores');
     }
 
     public function storeMedias(): HasMany
@@ -46,8 +49,8 @@ class Store extends Model
         return $this->belongsTo(StoreType::class, 'store_type_id');
     }
 
-//    public function mediasAndUsers(): HasMany
-//    {
-//        return $this->Users()->with($this->storeMedias());
-//    }
+    public function scopeStoreMain(Builder $query)
+    {
+        return $query->whereMain(true);
+    }
 }
