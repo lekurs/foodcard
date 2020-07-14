@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -51,6 +54,25 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             return redirect()->intended('admin');
+        } else {
+            return redirect('login');
+        }
+    }
+
+    /**
+     * @param Request $request
+     * @return Application|RedirectResponse|Redirector
+     */
+    public function login(Request $request): RedirectResponse
+    {
+       $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            if (Auth::user()->role == 1) {
+                return redirect()->intended('admin');
+            } else {
+                return redirect()->intended('foodcard/admin');
+            }
         } else {
             return redirect('login');
         }
