@@ -19,7 +19,7 @@
 //Large Medias
 @media all and (min-width: 960px) and (max-width: 1599px) {
     div.mout-admin-middle-header-nav-ariane {
-        width: 200px;
+        width: 300px;
 
         & i {
             font-size: 80px;
@@ -31,7 +31,7 @@
     }
 
     div.mout-admin-middle-user-informations-container {
-        width: 200px;
+        width: 300px;
 
         & div.mout-admin-middle-store-informations-container {
             display: block;
@@ -88,6 +88,11 @@
     a.mout-admin-middle-nav-buttons-account {
         width: 150px;
         height: 150px;
+    }
+
+    a.btn-nav-max-size {
+        width: 300px;
+        height: 300px;
     }
 }
 
@@ -157,6 +162,11 @@
     a.mout-admin-middle-nav-buttons-account {
         width: 250px;
         height: 250px;
+    }
+
+    a.btn-nav-max-size {
+        width: 400px;
+        height: 400px;
     }
 }
 
@@ -516,8 +526,6 @@ a.mout-admin-middle-nav-buttons {
     font-size: 50px;
 
     &.btn-nav-max-size {
-        width: 400px;
-        height: 400px;
         flex-direction: column;
 
         & i {

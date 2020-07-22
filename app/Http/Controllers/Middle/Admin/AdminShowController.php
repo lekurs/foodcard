@@ -32,8 +32,10 @@ class AdminShowController extends Controller
 
     public function show(): View
     {
-        $user = $this->userRepository->getStoresByUser(auth()->user());
+        $user = $this->userRepository->getStoresByUser(request()->user());
         $stores = $user->stores;
+
+        session()->put('store', $stores->first());
 
         return view('admin.middle.admin_middle', [
             'stores' => $stores

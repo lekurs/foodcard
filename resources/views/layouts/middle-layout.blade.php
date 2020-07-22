@@ -65,11 +65,15 @@
                             </div>
                             <div class="mout-admin-middle-store-description">
                                 <h4 class="mout--regular" id="mout-admin-middle-store-title">Restaurant</h4>
-                                <p class="mout--regular" id="store-name">Nom du store</p>
-                                <p class="mout--light" id="store-address">55 rue de paris</p>
-                                <p class="mout--light" id="store-zip-city">78000 Versailles</p>
-                                <p class="mout--light" id="store-phone">01 39 00 00 00</p>
-                                <p class="mout--regular" id="store-mail">store@store.com</p>
+                                <p class="mout--regular" id="store-name">{{session('store')->name}}</p>
+                                <p class="mout--light" id="store-address">{{session('store')->address}}</p>
+                                <p class="mout--light" id="store-zip-city">{{session('store')->zip . ' ' . session('store')->city}}</p>
+                                <p class="mout--light" id="store-phone">{{auth()->user()->phone}}</p>
+
+                                @if(count($stores) > 1)
+                                    <p class="mout--light" id="store-change" data-toggle="modal" data-target="#changeStore"><i class="fal fa-store"></i> Changer de magasin</p>
+                                @endif
+                                <p class="mout--regular text-break" id="store-mail">{{auth()->user()->email}}</p>
                                 <p class="edit-store" data-store=""><span class="mout-middle-edit-magic-icon"><i class="fal fa-magic"></i></span></p>
                                 @show
 
@@ -85,6 +89,35 @@
         </div>
     </div>
 </section>
+
+<!-- Modal -->
+<div class="modal fade" id="changeStore" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+{{--            <form action="#" method="post">--}}
+            <div class="modal-body">
+                <div class="form-group">
+                    <select name="changeStore" id="change-store">
+                        @foreach($stores as $store)
+                            <option value="{{$store->id}}">{{$store->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Voir ce magasin</button>
+            </div>
+{{--            </form>--}}
+        </div>
+    </div>
+</div>
 
 <script
     src="https://code.jquery.com/jquery-3.5.1.js"

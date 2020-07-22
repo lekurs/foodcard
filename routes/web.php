@@ -58,7 +58,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:1']], function
 
 Route::group(['prefix' => 'foodcard', 'middleware' => ['auth', 'role']], function () {
     Route::group(['prefix' => 'admin'], function () {
-        Route::get('/', 'Middle\Admin\AdminShowController@show')->name('adminMiddleShow');
+        Route::get('/{store?}', 'Middle\Admin\AdminShowController@show')->name('adminMiddleShow');
         Route::get('/store', 'Middle\Admin\Store\StoreShowController@show')->name('adminMiddleStoreShow');
         Route::get('/compte', 'Middle\Admin\Account\AccountShowController@show')->name('adminMiddleAccountShow');
         Route::get('/compte/factures', 'Middle\Admin\Account\InvoicesShowController@show')->name('adminMiddleAccountInvoicesShow');
