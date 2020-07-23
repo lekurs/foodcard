@@ -1940,6 +1940,11 @@ div.modal-body form {
   }
 }
 
+header H2.mout-admin-middle-store-name {
+  font-size: 60px;
+  color: #ffffff;
+}
+
 header div.mout-admin-middle-header-container {
   background-size: cover;
   display: flex;

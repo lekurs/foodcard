@@ -58,10 +58,23 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:1']], function
 
 Route::group(['prefix' => 'foodcard', 'middleware' => ['auth', 'role']], function () {
     Route::group(['prefix' => 'admin'], function () {
-        Route::get('/{store?}', 'Middle\Admin\AdminShowController@show')->name('adminMiddleShow');
-        Route::get('/store', 'Middle\Admin\Store\StoreShowController@show')->name('adminMiddleStoreShow');
-        Route::get('/compte', 'Middle\Admin\Account\AccountShowController@show')->name('adminMiddleAccountShow');
-        Route::get('/compte/factures', 'Middle\Admin\Account\InvoicesShowController@show')->name('adminMiddleAccountInvoicesShow');
+        Route::get('/', 'Middle\Admin\AdminShowController@show')->name('adminMiddleShow');
+
+        Route::group(['prefix' => 'compte'], function () {
+            Route::get('/', 'Middle\Admin\Account\AccountShowController@show')->name('adminMiddleAccountShow');
+            Route::get('/factures', 'Middle\Admin\Account\InvoicesShowController@show')->name('adminMiddleAccountInvoicesShow');
+        });
+
+        Route::group(['prefix' => 'store'], function () {
+            Route::get('/', 'Middle\Admin\Store\StoreShowController@show')->name('adminMiddleStoreShow');
+            Route::post('/change', 'Middle\Admin\AdminShowController@changeStore')->name('adminMiddleStoreChange');
+
+                Route::group(['prefix' => 'utilisateur'], function () {
+                    Route::post('/ajouter', 'Middle\Admin\Account\UsersActionsController@createUser')->name('adminMiddleUserCreation');
+                    Route::post('/edit', 'Middle\Admin\Account\UsersActionsController@editUser')->name('adminMiddleUserEdit');
+                });
+
+        });
 
         Route::group(['prefix' => 'store/{slug}', 'middleware' => 'restrictionStore'], function() {
             Route::get('/', 'Middle\Admin\Store\StoreShowController@showOne')->name('adminMiddleStoreOne');

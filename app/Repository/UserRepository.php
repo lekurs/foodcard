@@ -31,6 +31,12 @@ class UserRepository
         return $this->user->newQuery()->with('stores')->whereId($user->id)->first();
     }
 
+    public function getOneById(int $id): User
+    {
+        return $this->user->newQuery()->whereId($id)->first();
+    }
+
+
     public function createUser(array $datas)
     {
         $user = new User();
@@ -53,5 +59,38 @@ class UserRepository
         $user->stores()->sync([$store->id]);
 
         return $user;
+    }
+
+    public function createUserInStore(array $datas): void
+    {
+        if (is_null($datas['userid'])) {
+            $user = new User();
+            $user->name = $datas['username'];
+            $user->lastname = $datas['lastname'];
+            $user->user_fonction_id = $datas['user-fonction'];
+            $user->email = $datas['email'];
+            $user->phone = $datas['user-phone'];
+            $user->password = Hash::make($datas['password']);
+            $user->user_role_id = 3;
+            $user->slug = Str::slug($datas['username'] . '-' .$datas['lastname']);
+            $user->save();
+
+            $user->stores()->sync([request()->session()->get('store')->id]);
+        } else {
+            $user = $this->user->newQuery()->whereId($datas['userid'])->first();
+            $user->name = $datas['username'];
+            $user->lastname = $datas['lastname'];
+            $user->user_fonction_id = $datas['user-fonction'];
+            $user->email = $datas['email'];
+            $user->phone = $datas['user-phone'];
+            if (!is_null($datas['password'])) {
+                $user->password = Hash::make($datas['password']);
+            }
+            $user->user_role_id = 3;
+            $user->slug = Str::slug($datas['username'] . '-' .$datas['lastname']);
+            $user->save();
+
+            $user->stores()->sync([request()->session()->get('store')->id]);
+        }
     }
 }

@@ -171,6 +171,11 @@
 }
 
 header {
+
+    & H2.mout-admin-middle-store-name {
+        font-size: 60px;
+        color: $bo-white-color;
+    }
     & div.mout-admin-middle-header-container {
         background-size: cover;
         display: flex;

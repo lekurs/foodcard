@@ -68,7 +68,7 @@ class LoginController extends Controller
        $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            if (Auth::user()->role == 1) {
+            if (Auth::user()->role === 1) {
                 return redirect()->intended('admin');
             } else {
                 return redirect()->intended('foodcard/admin');
