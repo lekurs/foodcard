@@ -2089,6 +2089,16 @@ div.mout-admin-middle-container div.mout-middle-admin-usercards p {
   margin-bottom: 5px;
 }
 
+div.mout-admin-middle-container div.mout-middle-admin-usercards:nth-of-type(1)::before {
+  content: "";
+  height: 100%;
+  width: 1px;
+  background-color: #FF0000;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
 div.mout-admin-middle-container div.mout-middle-admin-usercards:nth-child(4n)::before {
   content: "";
   height: 100%;
