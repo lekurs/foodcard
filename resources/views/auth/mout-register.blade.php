@@ -133,7 +133,7 @@
                 </div>
 
                 <div class="form-group">
-                    <button type="submit" class="btn mout-btn-register">
+                    <button type="submit" class="btn mout-btn-login mout--regular">
                         je valide
                     </button>
                 </div>

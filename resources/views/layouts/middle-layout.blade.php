@@ -64,7 +64,7 @@
                                 <i class="fal fa-map-marker-alt fa-3x"></i>
                             </div>
                             <div class="mout-admin-middle-store-description">
-                                <h4 class="mout--regular" id="mout-admin-middle-store-title">Restaurant</h4>
+                                <h4 class="mout--regular" id="mout-admin-middle-store-title">{{request()->session()->get('store')->storeType()->first()->type}}</h4>
                                 <p class="mout--regular" id="store-name">{{request()->session()->get('store')->name}}</p>
                                 <p class="mout--light" id="store-address">{{request()->session()->get('store')->address}}</p>
                                 <p class="mout--light" id="store-zip-city">{{request()->session()->get('store')->zip . ' ' . request()->session()->get('store')->city}}</p>

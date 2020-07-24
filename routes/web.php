@@ -69,9 +69,14 @@ Route::group(['prefix' => 'foodcard', 'middleware' => ['auth', 'role']], functio
             Route::get('/', 'Middle\Admin\Store\StoreShowController@show')->name('adminMiddleStoreShow');
             Route::post('/change', 'Middle\Admin\AdminShowController@changeStore')->name('adminMiddleStoreChange');
 
+            Route::group(['prefix' => 'qrcode'], function() {
+                Route::get('/', 'Middle\Admin\QRCode\QRCodeController@show')->name('adminMiddleQRCorde');
+            });
+
                 Route::group(['prefix' => 'utilisateur'], function () {
                     Route::post('/ajouter', 'Middle\Admin\Account\UsersActionsController@createUser')->name('adminMiddleUserCreation');
                     Route::post('/edit', 'Middle\Admin\Account\UsersActionsController@editUser')->name('adminMiddleUserEdit');
+                    Route::post('/trash', 'Middle\Admin\Account\UsersActionsController@trashUser')->name('adminMiddleUserTrash');
                 });
 
         });

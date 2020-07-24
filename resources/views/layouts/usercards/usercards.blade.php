@@ -8,7 +8,7 @@
         <a href="#" class="middle-edit-user" data-user="{{$userByStore->id}}">
             <span class="circle edit-user-icon" ><i class="fal fa-magic"></i></span>
         </a>
-        <a href="#" data-user="{{$userByStore->id}}">
+        <a href="#" class="middle-trash-user" data-user="{{$userByStore->id}}">
             <span class="circle trash-user-icon"><i class="fal fa-trash"></i></span>
         </a>
     </div>

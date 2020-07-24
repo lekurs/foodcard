@@ -22,4 +22,13 @@ $(document).ready(function () {
             $('.mout-admin-middle-form-container').html(data);
         });
     });
+
+    $('body').on('click', '.middle-trash-user', function () {
+        let idUser = $(this).attr('data-user');
+        let elt = $(this);
+
+        $.post('/foodcard/admin/store/utilisateur/trash', {id: idUser}, function (data) {
+            elt.closest('.mout-middle-admin-usercards').remove();
+        });
+    });
 });

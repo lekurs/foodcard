@@ -13,6 +13,7 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         '/admin/produits/update/view',
-        '/foodcard/admin/store/utilisateur/edit'
+        '/foodcard/admin/store/utilisateur/edit',
+        '/foodcard/admin/store/utilisateur/trash',
     ];
 }

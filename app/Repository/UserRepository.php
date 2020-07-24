@@ -93,4 +93,10 @@ class UserRepository
             $user->stores()->sync([request()->session()->get('store')->id]);
         }
     }
+
+    public function trashUser(int $id)
+    {
+        $user = $this->getOneById($id);
+        $user->delete();
+    }
 }

@@ -63,4 +63,9 @@ class UsersActionsController extends Controller
 
         echo $html;
     }
+
+    public function trashUser()
+    {
+        $this->userRepository->trashUser(request()->request->get('id'));
+    }
 }
