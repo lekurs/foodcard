@@ -7,9 +7,7 @@
             {{--        <img src="{{asset('images/restaurant/' . $store->name . '/' . $store->medias()->first()->logo)}}" alt="{{$store->name}}" class="img-fluid">--}}
 
         @else
-            <h2>Nom du magasin
-                {{--            {{$store->name}}--}}
-            </h2>
+            <h2 class="mout-admin-middle-store-name mout--regular">{{request()->session()->get('store')->name}}</h2>
         @endif
 
         <div class="mout-admin-middle-header-nav-ariane" id="store">
@@ -35,15 +33,9 @@
                 <a href="#" class="btn mout-btn-add-middle mout-btn-form-middle"><span><i class="fal fa-plus"></i> collaborateur</span></a>
             </div>
             <div class="mout-admin-middle-usercards-container">
-                @include('layouts.usercards.usercards')
-                @include('layouts.usercards.usercards')
-                @include('layouts.usercards.usercards')
-                @include('layouts.usercards.usercards')
-                @include('layouts.usercards.usercards')
-                @include('layouts.usercards.usercards')
-                @include('layouts.usercards.usercards')
-                @include('layouts.usercards.usercards')
-                @include('layouts.usercards.usercards')
+                @foreach($usersByStore->users()->get() as $userByStore)
+                    @include('layouts.usercards.usercards')
+                @endforeach
             </div>
         </div>
 
@@ -51,7 +43,6 @@
             @include('forms.middle.users.__user_creation_middle')
         </div>
     </div>
-{{--</div>--}}
 @endsection
 
 @section('js')

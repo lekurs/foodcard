@@ -97,20 +97,6 @@ class CatalogueProductRepository
         }
     }
 
-        //M2M table pivot => methode sync !!!
-//    public function saveDownPaimentInvoice(array $datas, Estimation $estimation): void
-//    {
-//        $downPaimentInvoice = new DownPaiementInvoice();
-//        $downPaimentInvoice->number = $datas['down-invoice-number'];
-//        $downPaimentInvoice->title = $datas['down-invoice-title'];
-//        $downPaimentInvoice->amount = $datas['down-invoice-price'];
-//
-//
-//        $downPaimentInvoice->save();
-//
-//        $downPaimentInvoice->estimations()->sync($estimation->id);
-//    }
-
     public function trash(int $id): void
     {
         $product = CatalogueProduct::find($id);

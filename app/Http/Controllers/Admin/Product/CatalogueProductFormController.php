@@ -29,8 +29,10 @@ class CatalogueProductFormController extends Controller
      * @param CatalogueProductLocaleRepository $catalogueProductLocaleRepository
      * @param CatalogueProductRepository $catalogueProductRepository
      */
-    public function __construct(CatalogueProductLocaleRepository $catalogueProductLocaleRepository, CatalogueProductRepository $catalogueProductRepository)
-    {
+    public function __construct(
+        CatalogueProductLocaleRepository $catalogueProductLocaleRepository,
+        CatalogueProductRepository $catalogueProductRepository
+    ) {
         $this->catalogueProductLocaleRepository = $catalogueProductLocaleRepository;
         $this->catalogueProductRepository = $catalogueProductRepository;
     }
@@ -59,11 +61,11 @@ class CatalogueProductFormController extends Controller
                 'product' => $product,
                 'locales' => $locales,
                 'allergy' => $allergy
-            ])->render();
+            ]);
         } else {
             $html = \view('forms.products.__product_creation', [
                 'locales' => $locales
-            ])->render();
+            ]);
         }
 
 

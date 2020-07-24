@@ -43,10 +43,10 @@
 <header>
     @yield('header')
 </header>
+@include('flashes.flash-message')
 
 <section>
     <div class="mout-admin-middle-container">
-    @include('flashes.flash-message')
     @section('navigation')
         <div class="container-fluid">
             <div class="mout-admin-middle-content">
@@ -64,10 +64,10 @@
                                 <i class="fal fa-map-marker-alt fa-3x"></i>
                             </div>
                             <div class="mout-admin-middle-store-description">
-                                <h4 class="mout--regular" id="mout-admin-middle-store-title">Restaurant</h4>
-                                <p class="mout--regular" id="store-name">{{session('store')->name}}</p>
-                                <p class="mout--light" id="store-address">{{session('store')->address}}</p>
-                                <p class="mout--light" id="store-zip-city">{{session('store')->zip . ' ' . session('store')->city}}</p>
+                                <h4 class="mout--regular" id="mout-admin-middle-store-title">{{request()->session()->get('store')->storeType()->first()->type}}</h4>
+                                <p class="mout--regular" id="store-name">{{request()->session()->get('store')->name}}</p>
+                                <p class="mout--light" id="store-address">{{request()->session()->get('store')->address}}</p>
+                                <p class="mout--light" id="store-zip-city">{{request()->session()->get('store')->zip . ' ' . request()->session()->get('store')->city}}</p>
                                 <p class="mout--light" id="store-phone">{{auth()->user()->phone}}</p>
 
                                 @if(count($stores) > 1)
@@ -100,21 +100,22 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-{{--            <form action="#" method="post">--}}
+            <form action="{{route('adminMiddleStoreChange')}}" method="post">
+                @csrf
             <div class="modal-body">
                 <div class="form-group">
                     <select name="changeStore" id="change-store">
                         @foreach($stores as $store)
-                            <option value="{{$store->id}}">{{$store->name}}</option>
+                            <option value="{{$store->slug}}">{{$store->name}}</option>
                         @endforeach
                     </select>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Voir ce magasin</button>
+                <button type="submit" class="btn btn-primary">Voir ce magasin</button>
             </div>
-{{--            </form>--}}
+            </form>
         </div>
     </div>
 </div>

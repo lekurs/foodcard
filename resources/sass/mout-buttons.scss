@@ -85,12 +85,21 @@ input:checked + .slider:before {
 }
 
 .mout-btn-register {
-    background-color: #00C332 !important;
+    background-color: #FF7F00 !important;
+    border-radius: 20px !important;
+    padding: .275rem 1rem !important;
+    text-transform: lowercase !important;
 }
 
-.mout-btn-login,
 .mout-btn-edit {
     background-color: #7A63F9 !important;
+}
+
+.mout-btn-login {
+    background-color: #00C332 !important;
+    border-radius: 20px !important;
+    padding: .275rem 1rem !important;
+    text-transform: lowercase !important;
 }
 
 .mout-btn-other {

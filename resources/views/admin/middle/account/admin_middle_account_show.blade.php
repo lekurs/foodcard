@@ -7,9 +7,7 @@
             {{--        <img src="{{asset('images/restaurant/' . $store->name . '/' . $store->medias()->first()->logo)}}" alt="{{$store->name}}" class="img-fluid">--}}
 
         @else
-            <h2>Nom du magasin
-                {{--            {{$store->name}}--}}
-            </h2>
+            <h2 class="mout-admin-middle-store-name mout--regular">{{request()->session()->get('store')->name}}</h2>
         @endif
 
         <div class="mout-admin-middle-header-nav-ariane" id="account">
@@ -31,11 +29,11 @@
         <div class="mout-admin-middle-users-container">
             <div class="mout-admin-middle-users-manager">
                 <p class="edit-user" data-user=""><span class="mout-middle-edit-user-icon"><i class="fal fa-user"></i></span></p>
-                <p class="mout--fat">collaborateurs</p>
+                <p class="mout--fat">{{auth()->user()->name . ' ' . auth()->user()->lastname}}</p>
                 <a href="#" class="btn mout-btn-edit-middle mout-btn-form-middle">modifier</a>
             </div>
             <div class="mout-admin-middle-usercards-container">
-                <a href="#" class="btn mout-admin-middle-nav-buttons-account btn-qrcode mout--regular">
+                <a href="{{route('adminMiddleQRCorde')}}" class="btn mout-admin-middle-nav-buttons-account btn-qrcode mout--regular">
                     <i class="fal fa-qrcode"></i>QRcode
                 </a>
                 <a href="{{route('adminMiddleAccountInvoicesShow')}}" class="btn mout-admin-middle-nav-buttons-account btn-invoices mout--regular">

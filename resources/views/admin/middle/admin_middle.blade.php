@@ -7,9 +7,7 @@
 {{--        <img src="{{asset('images/restaurant/' . $store->name . '/' . $store->medias()->first()->logo)}}" alt="{{$store->name}}" class="img-fluid">--}}
 
         @else
-{{--            @foreach($stores as $store)--}}
-                <h2>{{session('firstStore')->name}}</h2>
-{{--            @endforeach--}}
+            <h2 class="mout-admin-middle-store-name mout--regular">{{request()->session()->get('store')->name}}</h2>
         @endif
     </div>
 @endsection
