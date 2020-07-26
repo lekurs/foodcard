@@ -213,6 +213,10 @@ header {
                 background-color: rgba(255, 177, 0, .8);
             }
 
+            &#menu {
+                background-color: rgba(1, 103, 1, .8);
+            }
+
             & p {
                 font-family: $arista-regular;
             }
@@ -614,8 +618,25 @@ div.min-nav-container {
     }
 }
 
+//My-menu pages
+div.my-menu-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+//!!My-menu pages!!
+
+
+//Features
 img.qrcode-img {
     width: 300px;
+}
+
+a.btn.mout-admin-middle-nav-buttons, .mout-admin-middle-nav-buttons-account {
+    &:hover {
+        color: $bo-white-color !important;
+    }
 }
 
 .btn-store {
