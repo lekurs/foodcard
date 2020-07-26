@@ -142,7 +142,8 @@
     //Bouttons
     div.mout-admin-middle-nav-buttons-container {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 150px 150px;
+        grid-template-rows: 150px;
 
         &.nav-four-buttons {
             grid-template-rows: repeat(2,150px);
@@ -210,6 +211,10 @@ header {
 
             &#account {
                 background-color: rgba(255, 177, 0, .8);
+            }
+
+            &#menu {
+                background-color: rgba(1, 103, 1, .8);
             }
 
             & p {
@@ -566,6 +571,71 @@ a.mout-admin-middle-nav-buttons-account {
 
     & i {
         font-size: 100px;
+    }
+}
+
+
+//min-nav
+div.min-nav-container {
+    display: grid;
+    grid-template-columns: 100px auto;
+    grid-gap: 10px;
+    height: 100px;
+    width: 230px;
+
+    & div.min-nav-double-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        & a.btn-min-nav {
+            width: 45px;
+            height: 45px;
+            margin: 0 !important;
+
+            & > i {
+                font-size: 20px !important;
+            }
+        }
+    }
+
+    & div.min-nav-one-content {
+        align-self: center;
+
+        & a.btn-max {
+            width: 100px;
+            height: 100px;
+            margin: 0 !important;
+        }
+    }
+
+
+
+    a.btn-min-nav {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+//My-menu pages
+div.my-menu-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+//!!My-menu pages!!
+
+
+//Features
+img.qrcode-img {
+    width: 300px;
+}
+
+a.btn.mout-admin-middle-nav-buttons, .mout-admin-middle-nav-buttons-account {
+    &:hover {
+        color: $bo-white-color !important;
     }
 }
 

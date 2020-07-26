@@ -22,8 +22,8 @@
     @parent
     <div class="mout-admin-middle-nav-buttons-container nav-four-buttons">
         <a href="{{route('adminMiddleStoreShow')}}" class="btn mout-admin-middle-nav-buttons btn-store"><i class="fal fa-home"></i></a>
-        <a href="#" class="btn mout-admin-middle-nav-buttons btn-menu"><i class="fal fa-concierge-bell"></i></a>
-        <a href="#" class="btn mout-admin-middle-nav-buttons btn-qrcode"><i class="fal fa-qrcode"></i></a>
+        <a href="{{route('adminMiddleMenuShow')}}" class="btn mout-admin-middle-nav-buttons btn-menu"><i class="fal fa-concierge-bell"></i></a>
+        <a href="{{route('adminMiddleQRCorde')}}" class="btn mout-admin-middle-nav-buttons btn-qrcode"><i class="fal fa-qrcode"></i></a>
         <a href="#" class="btn mout-admin-middle-nav-buttons btn-payment"><i class="fal fa-credit-card"></i></a>
     </div>
 @endsection

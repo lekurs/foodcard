@@ -21,11 +21,22 @@
     <div class="mout-admin-middle-nav-buttons-container">
         <a href="{{route('adminMiddleStoreShow')}}" class="btn mout-admin-middle-nav-buttons btn-store"><i class="fal fa-home"></i></a>
         <a href="#" class="btn mout-admin-middle-nav-buttons btn-menu"><i class="fal fa-concierge-bell"></i></a>
+        <a href="{{route('adminMiddleAccountInvoicesShow')}}" class="btn btn-min-nav btn-store btn-min-nav mout-admin-middle-nav-buttons btn-invoices"><i class="fal fa-file-alt"></i></a>
+        <a href="{{route('adminMiddleAccountInvoicesShow')}}" class="btn btn-menu btn-min-nav mout-admin-middle-nav-buttons btn-payment"><i class="fal fa-credit-card"></i></a>
     </div>
 @endsection
 
 @section('body')
-
+    <div class="mout-admin-middle-content-panel">
+        <div class="mout-admin-middle-qrcode-container text-center">
+            <div class="qrcode-container">
+                {!! $qrcode !!}
+                <div class="btn-container text-center mt-3">
+                    <button class="btn mout-btn-login" id="print-qrcode" onclick="window.print()">Imprimer</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('js')
