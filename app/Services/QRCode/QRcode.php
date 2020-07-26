@@ -43,7 +43,8 @@ class QRcode
             "cht=qr",
             "chs=".$this->size."x".$this->size,
             "chl=".urlencode($this->target()),
-            "chld=".$this->frame."|".$this->margin
+            "chld=".$this->frame."|".$this->margin,
+            "chco=".$this->color
         ];
 
         $this->qr = imagecreatefrompng($this->api . implode("&", $query));
@@ -96,10 +97,12 @@ class QRcode
 
         if(is_null($this->output)) // on envoi l'image au navigateur
         {
-            request()->header('Content-type: image/png');
-//            header('Content-type: image/png');
+            ob_start();
             imagepng($this->qr);
-            imagedestroy($this->qr);
+//            imagedestroy($this->qr);
+            $imagedata = ob_get_clean();
+
+            return $imagedata;
         }
         else{
             imagepng($this->qr, $this->output);

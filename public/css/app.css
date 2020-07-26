@@ -1890,6 +1890,23 @@ div.modal-body form {
   margin: 2em auto;
 }
 
+@media print {
+  div.mout-admin-middle-header-container,
+  div.mout-admin-middle-user-informations-container,
+  div.btn-container {
+    display: none !important;
+  }
+
+  div.mout-admin-qrcode-container {
+    padding: inherit !important;
+  }
+
+  div.mout-admin-qrcode-container img.qrcode-img {
+    width: 600px !important;
+    margin: 0 11cm !important;
+  }
+}
+
 @media all and (min-width: 1024px) {
   header div.mout-admin-middle-header-container {
     height: 550px;
@@ -2017,7 +2034,8 @@ div.modal-body form {
 
   div.mout-admin-middle-nav-buttons-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 150px 150px;
+    grid-template-rows: 150px;
   }
 
   div.mout-admin-middle-nav-buttons-container.nav-four-buttons {
@@ -2437,6 +2455,50 @@ a.mout-admin-middle-nav-buttons-account {
 
 a.mout-admin-middle-nav-buttons-account i {
   font-size: 100px;
+}
+
+div.min-nav-container {
+  display: grid;
+  grid-template-columns: 100px auto;
+  grid-gap: 10px;
+  height: 100px;
+  width: 230px;
+}
+
+div.min-nav-container div.min-nav-double-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+div.min-nav-container div.min-nav-double-content a.btn-min-nav {
+  width: 45px;
+  height: 45px;
+  margin: 0 !important;
+}
+
+div.min-nav-container div.min-nav-double-content a.btn-min-nav > i {
+  font-size: 20px !important;
+}
+
+div.min-nav-container div.min-nav-one-content {
+  align-self: center;
+}
+
+div.min-nav-container div.min-nav-one-content a.btn-max {
+  width: 100px;
+  height: 100px;
+  margin: 0 !important;
+}
+
+div.min-nav-container a.btn-min-nav {
+  width: 30px;
+  height: 30px;
+}
+
+img.qrcode-img {
+  width: 300px;
 }
 
 .btn-store {

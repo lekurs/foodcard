@@ -1,0 +1,16 @@
+@media print {
+    div.mout-admin-middle-header-container,
+    div.mout-admin-middle-user-informations-container,
+    div.btn-container {
+        display: none !important;
+    }
+
+    div.mout-admin-qrcode-container {
+        padding: inherit !important;
+
+        & img.qrcode-img {
+            width: 600px !important;
+            margin: 0 11cm !important;
+        }
+    }
+}
