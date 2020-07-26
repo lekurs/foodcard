@@ -1943,7 +1943,8 @@ div.my-menu-search-container div.my-menu-search-content#left-content {
   flex-basis: 31%;
   margin-left: 10px;
   border-radius: 4px;
-  height: 220px;
+  min-height: 220px;
+  height: 300px;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -1999,7 +2000,6 @@ div.my-menu-search-container div.my-menu-search-content#left-content {
   background-color: #F5F7FA;
   align-self: center;
   text-align: center;
-  padding: 40px 0;
   text-transform: uppercase;
   color: #848EA1;
   font-size: 12px;
@@ -2017,6 +2017,7 @@ div.my-menu-search-container div.my-menu-search-content#left-content {
   right: 0;
   opacity: 0;
   z-index: 1;
+  cursor: pointer;
 }
 
 .add-media-block span {
@@ -2040,8 +2041,12 @@ div.my-menu-search-container div.my-menu-search-content#left-content {
   opacity: 1;
 }
 
-.add-media-block span img.add-media-preview-img {
+.add-media-block img.add-media-preview-img {
+  max-width: 100%;
   height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .uploader {
@@ -2068,6 +2073,10 @@ div.my-menu-search-container div.my-menu-search-content#left-content {
 
   div.mout-admin-middle-header-nav-ariane p {
     font-size: 20px;
+  }
+
+  H2.mout-admin-middle-store-name {
+    margin-left: 300px;
   }
 
   div.mout-admin-middle-user-informations-container {
@@ -2146,6 +2155,10 @@ div.my-menu-search-container div.my-menu-search-content#left-content {
   div.mout-admin-middle-header-nav-ariane p {
     font-family: "AristaProAlternate";
     font-size: 30px;
+  }
+
+  H2.mout-admin-middle-store-name {
+    margin-left: 400px;
   }
 
   div.mout-admin-middle-user-informations-container {
@@ -2653,6 +2666,10 @@ div.my-menu-container {
 
 img.qrcode-img {
   width: 300px;
+}
+
+p#store-change {
+  cursor: pointer;
 }
 
 a.btn.mout-admin-middle-nav-buttons:hover,

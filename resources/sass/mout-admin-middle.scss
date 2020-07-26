@@ -30,6 +30,10 @@
         }
     }
 
+    H2.mout-admin-middle-store-name {
+        margin-left: 300px;
+    }
+
     div.mout-admin-middle-user-informations-container {
         width: 300px;
 
@@ -109,6 +113,10 @@
             font-family: $arista-regular;
             font-size: 30px;
         }
+    }
+
+    H2.mout-admin-middle-store-name {
+        margin-left: 400px;
     }
 
     div.mout-admin-middle-user-informations-container {
@@ -631,6 +639,10 @@ div.my-menu-container {
 //Features
 img.qrcode-img {
     width: 300px;
+}
+
+p#store-change {
+    cursor: pointer;
 }
 
 a.btn.mout-admin-middle-nav-buttons, .mout-admin-middle-nav-buttons-account {
