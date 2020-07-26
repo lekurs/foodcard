@@ -1911,6 +1911,27 @@ div.modal-body form {
   }
 }
 
+input.search-menu {
+  width: 250px;
+  margin: 0 auto;
+  color: #11491F;
+  border: none;
+  background: whitesmoke;
+  background: linear-gradient(90deg, whitesmoke 0%, #dddddd 50%, #c6c6c6 100%);
+}
+
+div.my-menu-search-container {
+  display: grid;
+  width: 400px;
+  min-height: 250px;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 2em auto;
+}
+
+div.my-menu-search-container div.my-menu-search-content#left-content {
+  border-right: 1px solid #D1D1D1;
+}
+
 .images {
   display: flex;
   flex-wrap: wrap;
