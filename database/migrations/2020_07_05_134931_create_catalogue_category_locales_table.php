@@ -18,7 +18,7 @@ class CreateCatalogueCategoryLocalesTable extends Migration
             $table->string('libelle');
             $table->text('icon');
             $table->string('slug');
-            $table->string('color');
+            $table->text('color');
             $table->unsignedInteger('locale_id');
             $table->unsignedInteger('catalogue_category_id');
             $table->timestamps();

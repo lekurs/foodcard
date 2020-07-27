@@ -631,31 +631,59 @@ div.my-menu-container {
     display: flex;
     justify-content: space-around;
     width: 50%;
-    margin: 0 auto;
+    margin: 2em auto 0;
 
-    & a.btn-my-menu {
+    & a {
         display: flex;
         flex-direction: column;
         padding: 15px;
-        width: 130px;
-        height: 130px;
         align-items: center;
         justify-content: center;
         color: #ffffff;
-        line-height: 16px;
-        font-size: 18px;
-        background: rgb(1,18,11);
-        background: linear-gradient(311deg, rgba(1,18,11,1) 0%, rgba(1,49,27,1) 50%, rgba(1,82,44,1) 100%);
+        border: none;
+        border-radius: 15px;
 
-        & span {
-         margin-bottom: 10px;
+        &.btn-my-menu {
+            width: 130px;
+            height: 130px;
+            line-height: 16px;
+            font-size: 18px;
+            background: rgb(1,18,11);
+            background: linear-gradient(311deg, rgba(1,18,11,1) 0%, rgba(1,49,27,1) 50%, rgba(1,82,44,1) 100%);
 
-            & i {
-                font-size: 50px;
-                color: #ffffff;
+            & span {
+                margin-bottom: 10px;
+
+                & i {
+                    font-size: 50px;
+                    color: #ffffff;
+                }
             }
         }
+
+        &.btn-my-category {
+            width: 100px;
+            height: 100px;
+            color: #ffffff;
+
+            & span {
+                margin-bottom: 10px;
+
+                & i {
+                    font-size: 35px;
+                }
+
+                & svg {
+                    width: 50%;
+                }
+            }
+        }
+
+        &:hover {
+            color: #ffffff !important;
+        }
     }
+
     &#category-menu {
         width: 35%;
     }

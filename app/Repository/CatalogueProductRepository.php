@@ -60,6 +60,7 @@ class CatalogueProductRepository
                     $productLocale->$field = $value;
                 }
 
+                $productLocale->homemade = $datas['homemade'];
                 $productLocale->locale_id = $localeID;
                 $productLocale->product_id = $lastId;
                 $productLocale->save();

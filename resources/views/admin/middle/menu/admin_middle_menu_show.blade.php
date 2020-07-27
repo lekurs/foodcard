@@ -37,7 +37,7 @@
 
         <div class="my-menu-container" id="category-menu">
             @foreach($categories as $category)
-                <a href="#" class="btn btn-search-menu btn-my-category mout--regular" id="{{$category->slug}}"><span class="btn-my-menu-icon-container">{!! $category->icon !!}</span>Je recherche</a>
+                <a href="#" class="btn btn-search-menu btn-my-category mout--regular" id="{{$category->slug}}" style="{{$category->color}}"><span class="btn-my-menu-icon-container">{!! $category->icon !!}</span>{{$category->libelle}}</a>
             @endforeach
         </div>
     </div>

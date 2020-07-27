@@ -58,6 +58,11 @@
         <textarea name="allergy" class="textarea-allergy" id="textarea-allergy">@if(isset($allergy)) {{implode('|', $allergy)}} @endif</textarea>
     </div>
 
+    <div class="floating-label">
+        <input type="checkbox" value="1" name="homemade" id="homemade">
+        <label for="homemade">Fait maison</label>
+    </div>
+
     <button type="submit" class="btn mout-btn-add">
         <span class="btn-label"><i class="fas fa-chevron-right"></i></span>Ajouter
     </button>

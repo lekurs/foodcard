@@ -13,16 +13,9 @@ class CatalogueProductLocale extends Model
 {
     protected $fillable = [
         'libelle',
-        'description'
+        'description',
+        'homemade'
     ];
-
-//    protected $primaryKey = ['product_id', 'locale_id'];
-//
-//    protected function setKeysForSaveQuery(Builder $query)
-//    {
-//        return $query->where('locale_id', $this->getAttribute('locale_id'))
-//            ->where('product_id', $this->getAttribute('product_id'));
-//    }
 
     public function locale(): BelongsTo
     {

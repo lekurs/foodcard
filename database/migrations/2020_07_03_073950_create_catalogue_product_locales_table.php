@@ -17,6 +17,7 @@ class CreateCatalogueProductLocalesTable extends Migration
             $table->increments('id');
             $table->string('libelle', 255)->nullable();
             $table->text('description')->nullable();
+            $table->boolean('homemade')->default(false);
             $table->unsignedInteger('product_id');
             $table->unsignedInteger('locale_id');
             $table->timestamps();

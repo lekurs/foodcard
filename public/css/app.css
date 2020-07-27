@@ -2662,18 +2662,23 @@ div.my-menu-container {
   display: flex;
   justify-content: space-around;
   width: 50%;
-  margin: 0 auto;
+  margin: 2em auto 0;
 }
 
-div.my-menu-container a.btn-my-menu {
+div.my-menu-container a {
   display: flex;
   flex-direction: column;
   padding: 15px;
-  width: 130px;
-  height: 130px;
   align-items: center;
   justify-content: center;
   color: #ffffff;
+  border: none;
+  border-radius: 15px;
+}
+
+div.my-menu-container a.btn-my-menu {
+  width: 130px;
+  height: 130px;
   line-height: 16px;
   font-size: 18px;
   background: #01120b;
@@ -2687,6 +2692,28 @@ div.my-menu-container a.btn-my-menu span {
 div.my-menu-container a.btn-my-menu span i {
   font-size: 50px;
   color: #ffffff;
+}
+
+div.my-menu-container a.btn-my-category {
+  width: 100px;
+  height: 100px;
+  color: #ffffff;
+}
+
+div.my-menu-container a.btn-my-category span {
+  margin-bottom: 10px;
+}
+
+div.my-menu-container a.btn-my-category span i {
+  font-size: 35px;
+}
+
+div.my-menu-container a.btn-my-category span svg {
+  width: 50%;
+}
+
+div.my-menu-container a:hover {
+  color: #ffffff !important;
 }
 
 div.my-menu-container#category-menu {
