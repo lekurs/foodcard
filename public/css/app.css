@@ -2660,8 +2660,42 @@ div.min-nav-container a.btn-min-nav {
 
 div.my-menu-container {
   display: flex;
+  justify-content: space-around;
+  width: 50%;
+  margin: 0 auto;
+}
+
+div.my-menu-container a.btn-my-menu {
+  display: flex;
   flex-direction: column;
+  padding: 15px;
+  width: 130px;
+  height: 130px;
+  align-items: center;
   justify-content: center;
+  color: #ffffff;
+  line-height: 16px;
+  font-size: 18px;
+  background: #01120b;
+  background: linear-gradient(311deg, #01120b 0%, #01311b 50%, #01522c 100%);
+}
+
+div.my-menu-container a.btn-my-menu span {
+  margin-bottom: 10px;
+}
+
+div.my-menu-container a.btn-my-menu span i {
+  font-size: 50px;
+  color: #ffffff;
+}
+
+div.my-menu-container#category-menu {
+  width: 35%;
+}
+
+p.my-menu-search-wording {
+  font-size: 30px;
+  margin: 3em auto;
 }
 
 img.qrcode-img {

@@ -629,8 +629,41 @@ div.min-nav-container {
 //My-menu pages
 div.my-menu-container {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
+    width: 50%;
+    margin: 0 auto;
+
+    & a.btn-my-menu {
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+        width: 130px;
+        height: 130px;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        line-height: 16px;
+        font-size: 18px;
+        background: rgb(1,18,11);
+        background: linear-gradient(311deg, rgba(1,18,11,1) 0%, rgba(1,49,27,1) 50%, rgba(1,82,44,1) 100%);
+
+        & span {
+         margin-bottom: 10px;
+
+            & i {
+                font-size: 50px;
+                color: #ffffff;
+            }
+        }
+    }
+    &#category-menu {
+        width: 35%;
+    }
+}
+
+p.my-menu-search-wording {
+    font-size: 30px;
+    margin: 3em auto;
 }
 
 //!!My-menu pages!!

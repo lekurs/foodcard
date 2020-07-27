@@ -55,8 +55,11 @@ class CatalogueCategoryRepository
         foreach ($datas['category'] as $locale_id => $category) {
             $catalogueCategoryLocale = new CatalogueCategoryLocale();
             $catalogueCategoryLocale->libelle = $category;
+            $catalogueCategoryLocale->icon = $datas['icon'];
+            $catalogueCategoryLocale->color = $datas['color'];
             $catalogueCategoryLocale->locale_id = $locale_id;
             $catalogueCategoryLocale->catalogue_category_id = $lastid;
+            $catalogueCategoryLocale->slug = $category;
 
             $catalogueCategoryLocale->save();
         }

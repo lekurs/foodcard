@@ -37,6 +37,14 @@
                             </div>
                         </div>
                     </div>
+                    <div class="input-group floating-label">
+                        <input type="text" name="icon" id="icon" class="floating-input" placeholder=" ">
+                        <label for="icon" class="float">Enregistrez votre icone ou svg</label>
+                        <span class="highlight"></span>
+                    </div>
+                    <div class="input-group floating-label">
+                        Ajouter la couleur
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
