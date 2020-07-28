@@ -38,8 +38,6 @@ class MenuShowController extends AdminMiddleController
         $stores = $this->userRepository->getStoresByUser(request()->user())->stores;
         $categories = $this->catalogueCategoryLocaleRepository->getAllWithCatalogueCategories();
 
-        dd($categories);
-
         return view('admin.middle.menu.admin_middle_menu_show', [
             'stores' => $stores,
             'userFonctions' => $this->userFonctions,

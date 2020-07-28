@@ -1,10 +1,10 @@
 $(document).ready(function () {
     $('body').on('click', '.btn-allergy', function () {
         let select = [];
-        if($(this).hasClass('btn-dark')) {
-            $(this).removeClass('btn-dark').addClass('btn-light');
+        if($(this).hasClass('btn-allergy-inactive')) {
+            $(this).removeClass('btn-allergy-inactive').addClass('btn-allergy-active');
         } else {
-            $(this).removeClass('btn-light').addClass('btn-dark');
+            $(this).removeClass('btn-allergy-active').addClass('btn-allergy-inactive');
         }
 
         $('.btn-allergy.btn-light').each(function () {
