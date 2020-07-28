@@ -2057,19 +2057,19 @@ div.my-menu-search-container div.my-menu-search-content#left-content {
   display: flex;
   flex-wrap: wrap;
   margin-top: 20px;
+  justify-content: space-between;
 }
 
 .images .img,
 .images .add-media-block {
   flex-basis: 31%;
-  margin-left: 10px;
   border-radius: 4px;
   min-height: 220px;
   height: 300px;
   justify-content: center;
   align-items: center;
   display: flex;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .images .img {
@@ -2221,31 +2221,6 @@ label > span {
 
 .field::-moz-placeholder {
   color: #CFD7E0;
-}
-
-button {
-  float: left;
-  display: block;
-  background: #666EE8;
-  color: white;
-  box-shadow: 0 7px 14px 0 rgba(49, 49, 93, 0.1), 0 3px 6px 0 rgba(0, 0, 0, 0.08);
-  border-radius: 4px;
-  border: 0;
-  margin-top: 20px;
-  font-size: 15px;
-  font-weight: 400;
-  width: 100%;
-  height: 40px;
-  line-height: 38px;
-  outline: none;
-}
-
-button:focus {
-  background: #555ABF;
-}
-
-button:active {
-  background: #43458B;
 }
 
 .outcome {
@@ -3039,6 +3014,7 @@ div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-men
   margin: 0 auto;
   padding: 2em 0;
   color: #ffffff;
+  min-height: 1300px;
 }
 
 div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content .textarea-container.product_label.product_1 {
@@ -3058,7 +3034,8 @@ div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-men
 }
 
 div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content label.float,
-div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content .floating-input {
+div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content .floating-input,
+div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content label.check {
   color: #ffffff !important;
   font-family: "AristaProAlternate" !important;
   font-size: 1.25rem !important;

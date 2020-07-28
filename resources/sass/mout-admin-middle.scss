@@ -776,6 +776,7 @@ div.mout-admin-middle-content-panel {
                 margin: 0 auto;
                 padding: 2em 0;
                 color: #ffffff;
+                min-height: 1300px;
 
                 & .textarea-container.product_label.product_1 {
                     margin-top: 5em;
@@ -793,7 +794,7 @@ div.mout-admin-middle-content-panel {
                     margin-bottom: 4em;
                 }
 
-                & label.float, .floating-input {
+                & label.float, .floating-input, label.check {
                     color: #ffffff !important;
                     font-family: $mout-font !important;
                     font-size: 1.25rem !important;

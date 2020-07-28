@@ -89,7 +89,7 @@
 
             <div class="floating-label">
                 <input type="checkbox" value="1" name="homemade" id="homemade">
-                <label for="homemade">Fait maison</label>
+                <label for="homemade" class="mout--regular check">Fait maison</label>
             </div>
             <div class="button-container text-center">
                 <button type="submit" class="btn mout-btn-login">
