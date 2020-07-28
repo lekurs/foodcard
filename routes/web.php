@@ -63,6 +63,8 @@ Route::group(['prefix' => 'foodcard', 'middleware' => ['auth', 'role']], functio
         Route::group(['prefix' => 'compte'], function () {
             Route::get('/', 'Middle\Admin\Account\AccountShowController@show')->name('adminMiddleAccountShow');
             Route::get('/factures', 'Middle\Admin\Account\InvoicesShowController@show')->name('adminMiddleAccountInvoicesShow');
+            Route::get('/paiement', 'Middle\Admin\Account\BillingPortalController@show')->name('adminMiddleBillingPortalShow');
+            Route::post('/store', 'Middle\Admin\Account\BillingPortalController@store')->name('adminMiddleBillingPortalStore');
         });
 
         Route::group(['prefix' => 'store'], function () {
@@ -83,7 +85,6 @@ Route::group(['prefix' => 'foodcard', 'middleware' => ['auth', 'role']], functio
 
         Route::group(['prefix' => 'ma-carte'], function () {
            Route::get('/', 'Middle\Admin\Menu\MenuShowController@show')->name('adminMiddleMenuShow');
-//           Route::get('/chercher', 'Middle\Admin\Menu\MenuShowController@search')->name('adminMiddleMenuSearch');
            Route::get('/creer/{category}', 'Middle\Admin\Menu\MenuFormController@show')->name('adminMiddleMenuCreateShow');
            Route::post('/creer/{category}/store', 'Middle\Admin\Menu\MenuFormController@store')->name('adminMiddleMenuCreateStore');
         });
