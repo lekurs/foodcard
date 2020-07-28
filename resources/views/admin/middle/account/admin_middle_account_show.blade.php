@@ -39,7 +39,7 @@
                 <a href="{{route('adminMiddleAccountInvoicesShow')}}" class="btn mout-admin-middle-nav-buttons-account btn-invoices mout--regular">
                     <i class="fal fa-file-alt"></i>mes factures
                 </a>
-                <a href="#" class="btn mout-admin-middle-nav-buttons-account btn-payment mout--regular">
+                <a href="{{route('adminMiddleBillingPortalShow')}}" class="btn mout-admin-middle-nav-buttons-account btn-payment mout--regular">
                     <i class="fal fa-credit-card"></i>mon mode de paiement
                 </a>
             </div>
