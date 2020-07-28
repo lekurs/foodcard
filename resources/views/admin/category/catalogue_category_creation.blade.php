@@ -17,7 +17,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{route('catalogueCategoryStore')}}" method="post">
+                <form action="{{route('catalogueCategoryStore')}}" method="post" enctype="multipart/form-data">
                 <div class="modal-body">
                         @csrf
                         @include('flashes.errors')
@@ -46,6 +46,11 @@
                         <input class="floating-input" id="color" name="color" type="text" placeholder=" ">
                         <label for="color" class="float">Insérer le css de la couleur</label>
                         <span class="highlight"></span>
+                    </div>
+
+                    <div class="input-group floating-label">
+                        <input type="file" class="floating-input" id="img-category" name="img-category" placeholder=" " accept="image/*">
+                        <label for="img-category">Ajouter une image</label>
                     </div>
                 </div>
                 <div class="modal-footer">
