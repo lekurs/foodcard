@@ -21,7 +21,8 @@ class ProductCreation extends FormRequest
             'price' => '',
             'special_price' => '',
             'buying_price' => '',
-            'allergy' => ''
+            'allergy' => '',
+            'homemade' => ''
         ];
     }
 }

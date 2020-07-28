@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('vendor/bootstrap/css/bootstrap-grid.min.css')}}">
     <link rel="stylesheet" href="{{asset('vendor/bootstrap/css/bootstrap-reboot.min.css')}}">
+    <link rel="stylesheet" href="{{asset('vendor/colorpicker/color-picker.css')}}">
 {{--    <link rel="stylesheet" href="{{asset('css/content-tools/content-tools.min.css')}}">--}}
 {{--    <link rel="stylesheet" href="{{asset('css/content-tools/sandbox.css')}}">--}}
     <link rel="stylesheet" href="{{asset('css/nestable.css')}}">

@@ -1,0 +1,107 @@
+.mout-dropdown {
+    position: relative;
+    text-align: center;
+    width: 100px;
+    margin: 0 0 7px 10px;
+    display: inline-block;
+
+}
+.mout-dropdown-text {
+    cursor: pointer;
+    position: absolute;
+    padding: 1px 20px 1px 5px;
+    //background-color: #35516a;
+    border-radius: 1px;
+    width: 100%;
+
+    & img {
+        width: 60%;
+    }
+}
+.mout-dropdown-text:after {
+    position: absolute;
+    right: 10px;
+    top: 11px;
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 5px 4px 0 4px;
+    border-color: #fff transparent transparent transparent;
+}
+.mout-dropdown-text,
+.mout-dropdown-content a {
+    color: #fff;
+}
+.mout-dropdown-toggle {
+    font-size: 0;
+    z-index: 1;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    border: none;
+    padding: 0;
+    margin: 0 0 0 1px;
+    background: transparent;
+    text-indent: -10px;
+    height: 30px;
+    width: 100%;
+}
+.mout-dropdown-toggle:focus {
+    outline: 0;
+}
+.mout-dropdown-content {
+    -webkit-transition: all .10s ease;
+    -moz-transition: all .10s ease;
+    -ms-transition: all .10s ease;
+    -o-transition: all .10s ease;
+    transition: all .10s ease;
+    list-style-type: none;
+    position: absolute;
+    top: 10px;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+    visibility: hidden;
+    border-radius: 1px;
+    //background-color: #FFC400;
+    width: 100%;
+    margin-left: -8px;
+    z-index: 1001;
+}
+.mout-dropdown-content a {
+    display: block;
+    border-radius: 1px;
+    color: #35516a;
+    padding: 3px 10px;
+}
+
+.mout-dropdown-content a:hover {
+    background: #35516a;
+    text-decoration: none;
+    //color: #FFC400;
+}
+.mout-dropdown-toggle:hover ~ .mout-dropdown-text,
+.mout-dropdown-toggle:focus ~ .mout-dropdown-text {
+    //background-color: #FFC400;
+    //color: #35516a;
+}
+.mout-dropdown-toggle:hover ~ .mout-dropdown-text:after,
+.mout-dropdown-toggle:focus ~ .mout-dropdown-text:after {
+    //border-color: #35516a transparent transparent transparent;
+
+}
+.mout-dropdown-toggle:focus ~ .mout-dropdown-text {
+    z-index: 2;
+}
+.mout-dropdown-toggle:focus ~ .mout-dropdown-text:after {
+    border-width: 0 4px 5px 4px;
+    border-color: transparent transparent #555 transparent;
+}
+.mout-dropdown-content:hover,
+.mout-dropdown-toggle:focus ~ .mout-dropdown-content {
+    opacity: 1;
+    visibility:visible;
+    top: 40px;
+}

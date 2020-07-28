@@ -37,6 +37,16 @@
                             </div>
                         </div>
                     </div>
+                    <div class="input-group floating-label">
+                        <input type="text" name="icon" id="icon" class="floating-input" placeholder=" ">
+                        <label for="icon" class="float">Enregistrez votre icone ou svg</label>
+                        <span class="highlight"></span>
+                    </div>
+                    <div class="input-group floating-label">
+                        <input class="floating-input" id="color" name="color" type="text" placeholder=" ">
+                        <label for="color" class="float">Insérer le css de la couleur</label>
+                        <span class="highlight"></span>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -50,6 +60,7 @@
 
 @section('js')
     <script src="{{asset('js/admin/category-admin.js')}}"></script>
+    <script src="{{asset('vendor/colorpicker/color-picker.js')}}"></script>
     <script>
         $('.dd').on('change', function () {
             $('#nestable-output').val(JSON.stringify($('.dd').nestable('serialize')));

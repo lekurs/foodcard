@@ -29,7 +29,7 @@
                     $(value).addClass('img-fluid').addClass('add-media-preview-img');
                     $(value).wrap(block);
 
-                      let remove = $('<span>remove</span>').addClass('mout--regular').addClass('add-media-remove').click(function () {
+                      let remove = $('<span>Supprimer</span>').addClass('mout--regular').addClass('add-media-remove').click(function () {
                           $(this).parent().remove();
 
                           if (options.onDelete) {

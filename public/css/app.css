@@ -1739,6 +1739,27 @@ input:checked + .slider:before {
   color: #000000;
 }
 
+.btn-allergy {
+  padding: 0.6rem 0.75rem !important;
+  border: none !important;
+  width: 100px;
+  height: 100px;
+  border-radius: 15px;
+  line-height: 16px;
+  color: #ffffff !important;
+}
+
+.btn-allergy i {
+  font-size: 40px;
+}
+
+.btn-allergy-active {
+  border: none !important;
+  background: #fdea00;
+  background: linear-gradient(120deg, #fdea00 0%, #feb500 50%, #ff7f00 100%);
+  transition: all 0.3s ease-in-out !important;
+}
+
 table.dataTable thead th,
 table.dataTable thead td,
 table.dataTable.no-footer {
@@ -1932,6 +1953,106 @@ div.my-menu-search-container div.my-menu-search-content#left-content {
   border-right: 1px solid #D1D1D1;
 }
 
+.mout-dropdown {
+  position: relative;
+  text-align: center;
+  width: 100px;
+  margin: 0 0 7px 10px;
+  display: inline-block;
+}
+
+.mout-dropdown-text {
+  cursor: pointer;
+  position: absolute;
+  padding: 1px 20px 1px 5px;
+  border-radius: 1px;
+  width: 100%;
+}
+
+.mout-dropdown-text img {
+  width: 60%;
+}
+
+.mout-dropdown-text:after {
+  position: absolute;
+  right: 10px;
+  top: 11px;
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 4px 0 4px;
+  border-color: #fff transparent transparent transparent;
+}
+
+.mout-dropdown-text,
+.mout-dropdown-content a {
+  color: #fff;
+}
+
+.mout-dropdown-toggle {
+  font-size: 0;
+  z-index: 1;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  border: none;
+  padding: 0;
+  margin: 0 0 0 1px;
+  background: transparent;
+  text-indent: -10px;
+  height: 30px;
+  width: 100%;
+}
+
+.mout-dropdown-toggle:focus {
+  outline: 0;
+}
+
+.mout-dropdown-content {
+  transition: all 0.1s ease;
+  list-style-type: none;
+  position: absolute;
+  top: 10px;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  visibility: hidden;
+  border-radius: 1px;
+  width: 100%;
+  margin-left: -8px;
+  z-index: 1001;
+}
+
+.mout-dropdown-content a {
+  display: block;
+  border-radius: 1px;
+  color: #35516a;
+  padding: 3px 10px;
+}
+
+.mout-dropdown-content a:hover {
+  background: #35516a;
+  text-decoration: none;
+}
+
+.mout-dropdown-toggle:focus ~ .mout-dropdown-text {
+  z-index: 2;
+}
+
+.mout-dropdown-toggle:focus ~ .mout-dropdown-text:after {
+  border-width: 0 4px 5px 4px;
+  border-color: transparent transparent #555 transparent;
+}
+
+.mout-dropdown-content:hover,
+.mout-dropdown-toggle:focus ~ .mout-dropdown-content {
+  opacity: 1;
+  visibility: visible;
+  top: 40px;
+}
+
 .images {
   display: flex;
   flex-wrap: wrap;
@@ -1943,7 +2064,8 @@ div.my-menu-search-container div.my-menu-search-content#left-content {
   flex-basis: 31%;
   margin-left: 10px;
   border-radius: 4px;
-  height: 220px;
+  min-height: 220px;
+  height: 300px;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -1999,7 +2121,6 @@ div.my-menu-search-container div.my-menu-search-content#left-content {
   background-color: #F5F7FA;
   align-self: center;
   text-align: center;
-  padding: 40px 0;
   text-transform: uppercase;
   color: #848EA1;
   font-size: 12px;
@@ -2017,6 +2138,7 @@ div.my-menu-search-container div.my-menu-search-content#left-content {
   right: 0;
   opacity: 0;
   z-index: 1;
+  cursor: pointer;
 }
 
 .add-media-block span {
@@ -2040,8 +2162,12 @@ div.my-menu-search-container div.my-menu-search-content#left-content {
   opacity: 1;
 }
 
-.add-media-block span img.add-media-preview-img {
+.add-media-block img.add-media-preview-img {
+  max-width: 100%;
   height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .uploader {
@@ -2068,6 +2194,10 @@ div.my-menu-search-container div.my-menu-search-content#left-content {
 
   div.mout-admin-middle-header-nav-ariane p {
     font-size: 20px;
+  }
+
+  H2.mout-admin-middle-store-name {
+    margin-left: 300px;
   }
 
   div.mout-admin-middle-user-informations-container {
@@ -2146,6 +2276,10 @@ div.my-menu-search-container div.my-menu-search-content#left-content {
   div.mout-admin-middle-header-nav-ariane p {
     font-family: "AristaProAlternate";
     font-size: 30px;
+  }
+
+  H2.mout-admin-middle-store-name {
+    margin-left: 400px;
   }
 
   div.mout-admin-middle-user-informations-container {
@@ -2339,7 +2473,7 @@ div.mout-admin-middle-container div.mout-admin-middle-main-panel div.mout-admin-
 }
 
 div.mout-admin-middle-container div.mout-admin-middle-content-panel {
-  padding: 20px;
+  padding: 20px 4em;
 }
 
 div.mout-admin-middle-container div.mout-admin-middle-content-panel#invoices {
@@ -2647,12 +2781,307 @@ div.min-nav-container a.btn-min-nav {
 
 div.my-menu-container {
   display: flex;
+  justify-content: space-around;
+  width: 50%;
+  margin: 2em auto 0;
+}
+
+div.my-menu-container a,
+div.my-menu-container button {
+  display: flex;
   flex-direction: column;
+  padding: 15px;
+  align-items: center;
   justify-content: center;
+  color: #ffffff;
+  border: none;
+  border-radius: 15px;
+}
+
+div.my-menu-container a.btn-my-menu,
+div.my-menu-container button.btn-my-menu {
+  width: 130px;
+  height: 130px;
+  line-height: 16px;
+  font-size: 18px;
+  background: #01120b;
+  background: linear-gradient(311deg, #01120b 0%, #01311b 50%, #01522c 100%);
+}
+
+div.my-menu-container a.btn-my-menu span,
+div.my-menu-container button.btn-my-menu span {
+  margin-bottom: 10px;
+}
+
+div.my-menu-container a.btn-my-menu span i,
+div.my-menu-container button.btn-my-menu span i {
+  font-size: 50px;
+  color: #ffffff;
+}
+
+div.my-menu-container a.btn-my-category,
+div.my-menu-container button.btn-my-category {
+  width: 100px;
+  height: 100px;
+  color: #ffffff;
+}
+
+div.my-menu-container a.btn-my-category span,
+div.my-menu-container button.btn-my-category span {
+  margin-bottom: 10px;
+}
+
+div.my-menu-container a.btn-my-category span i,
+div.my-menu-container button.btn-my-category span i {
+  font-size: 35px;
+}
+
+div.my-menu-container a.btn-my-category span svg,
+div.my-menu-container button.btn-my-category span svg {
+  width: 50%;
+}
+
+div.my-menu-container a:hover,
+div.my-menu-container button:hover {
+  color: #ffffff !important;
+}
+
+div.my-menu-container#category-menu {
+  width: 35%;
+}
+
+div.my-menu-container#category-menu-modal {
+  width: 100%;
+  margin: inherit;
+}
+
+div.mout-admin-middle-content-panel div.my-menu-category-container {
+  display: flex;
+}
+
+div.mout-admin-middle-content-panel div.my-menu-category-container div.my-menu-category-buttons-container {
+  width: 40%;
+}
+
+div.mout-admin-middle-content-panel div.my-menu-category-container div.my-menu-container#my-menu-container-creation {
+  width: 60%;
+  margin: 0;
+}
+
+div.mout-admin-middle-content-panel div.my-menu-category-container div.my-menu-container#my-menu-container-creation a,
+div.mout-admin-middle-content-panel div.my-menu-category-container div.my-menu-container#my-menu-container-creation button {
+  width: 100px;
+  height: 100px;
+  font-size: 16px;
+}
+
+div.mout-admin-middle-content-panel div.my-menu-category-container div.my-menu-container#my-menu-container-creation a span i,
+div.mout-admin-middle-content-panel div.my-menu-category-container div.my-menu-container#my-menu-container-creation button span i {
+  font-size: 40px;
+}
+
+div.mout-admin-middle-content-panel div.my-menu-category-container div.my-menu-container#my-menu-container-creation a svg,
+div.mout-admin-middle-content-panel div.my-menu-category-container div.my-menu-container#my-menu-container-creation button svg {
+  width: 40%;
+}
+
+div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container {
+  background: #01100a;
+  background: linear-gradient(180deg, #01100a 0%, #01301a 50%, #01522c 100%);
+  position: relative;
+}
+
+div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container .input-group-prepend.choose-langage {
+  position: absolute;
+  left: -20%;
+}
+
+div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.product-langage-selection {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100px;
+  top: 0;
+  left: 0;
+  background-color: rgba(247, 247, 247, 0.22);
+}
+
+div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container .input-group-append.category span.btn-my-category {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  color: #fff;
+  flex-direction: column;
+  border: none;
+  border-radius: 15px;
+  position: absolute;
+  right: -16%;
+  top: -15px;
+}
+
+div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container .input-group-append.category span.btn-my-category i {
+  font-size: 25px;
+}
+
+div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container .input-group-append.category span.btn-my-category svg {
+  width: 60%;
+}
+
+div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content {
+  width: 70%;
+  margin: 0 auto;
+  padding: 2em 0;
+  color: #ffffff;
+}
+
+div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content .textarea-container.product_label.product_1 {
+  margin-top: 5em;
+}
+
+div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content textarea {
+  width: 100%;
+  height: 90px;
+  border: none;
+  border-radius: 15px;
+  color: #000000 !important;
+}
+
+div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content .floating-label {
+  margin-bottom: 4em;
+}
+
+div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content label.float,
+div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content .floating-input {
+  color: #ffffff !important;
+  font-family: "AristaProAlternate" !important;
+  font-size: 1.25rem !important;
+  top: -5px !important;
+}
+
+div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content .floating-input:not(:-moz-placeholder-shown) ~ label.float {
+  font-size: 14px !important;
+  top: -20px !important;
+}
+
+div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content .floating-input:not(:-ms-input-placeholder) ~ label.float {
+  font-size: 14px !important;
+  top: -20px !important;
+}
+
+div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content .floating-input:focus ~ label.float,
+div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content .floating-input:not(:placeholder-shown) ~ label.float {
+  font-size: 14px !important;
+  top: -20px !important;
+}
+
+div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content input.product_label {
+  border-bottom: 1px solid #00C332 !important;
+}
+
+div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content input#product_price {
+  border-bottom: 1px solid #FF7F00 !important;
+}
+
+div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content input#product_special_price {
+  border-bottom: 1px solid #FFCD00 !important;
+}
+
+div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content input#product_buying_price {
+  border-bottom: 1px solid #FF0000 !important;
+}
+
+div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content H5.allergy {
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid #00C332;
+  margin-bottom: 1em;
+}
+
+div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content div.button-allergy-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content div.button-allergy-container .btn-allergy {
+  flex-basis: 14% !important;
+  margin: 10px;
+}
+
+div.my-submenu-category-container {
+  margin: 5em auto 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+div.my-submenu-category-container div.submenu-category-content {
+  flex-basis: 23%;
+  margin: 0 10px 4em;
+  cursor: pointer;
+  border-right: 1px solid #000000;
+}
+
+div.my-submenu-category-container div.submenu-category-content:nth-child(4n) {
+  border-right: none;
+}
+
+div.my-submenu-category-container div.submenu-category-content img {
+  height: 200px;
+  width: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 30px;
+  margin-bottom: 20px;
+}
+
+div.my-submenu-category-container div.submenu-category-content p {
+  font-size: 18px;
+  margin-bottom: 0;
+}
+
+div.products-table-container table.mout-table.products-table {
+  font-family: "AristaProAlternate";
+  width: 90%;
+  margin: 0 auto;
+}
+
+div.products-table-container table.mout-table.products-table thead th {
+  font-size: 20px;
+  border-bottom: 2px solid #00C332;
+  border-top: none;
+}
+
+div.products-table-container table.mout-table.products-table tbody td {
+  vertical-align: middle;
+  padding: 1.3em;
+  border-top: 1px solid #00C332;
+  border-bottom: 1px solid #00C332;
+}
+
+div.products-table-container table.mout-table.products-table tbody img {
+  width: 100px;
+  height: 100px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+div.products-table-container table.mout-table.products-table tbody td.product-table-icon-container {
+  cursor: pointer;
+}
+
+H2.category-menu-modal-title {
+  font-size: 22px;
+}
+
+p.my-menu-search-wording {
+  font-size: 30px;
+  margin: 3em auto;
 }
 
 img.qrcode-img {
   width: 300px;
+}
+
+p#store-change {
+  cursor: pointer;
 }
 
 a.btn.mout-admin-middle-nav-buttons:hover,

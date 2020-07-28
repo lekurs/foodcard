@@ -27,7 +27,7 @@
 @section('body')
     <div class="mout-admin-middle-content-panel">
         <div class="mout-admin-middle-menus-container">
-            
+
         </div>
     </div>
 @endsection

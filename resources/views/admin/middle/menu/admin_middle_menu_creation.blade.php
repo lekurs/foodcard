@@ -26,11 +26,22 @@
 
 @section('body')
     <div class="mout-admin-middle-content-panel">
-        <div class="mout-admin-middle-menus-container">
-            <div class="images">
-                <img src="{{asset('images/admin/middle/header-store.jpg')}}" alt="">
-                <img src="{{asset('images/admin/middle/foodcard-admin-middle-header.jpg')}}" alt="">
+        <div class="my-menu-category-container">
+            <div class="my-menu-category-buttons-container">
+                @foreach($categories as $category)
+                    <a href="#" class="btn btn-search-menu btn-my-category mout--regular @if(request()->query->get('category')) test @endif" id="{{$category->slug}}" style="{{$category->color}}"><span class="btn-my-menu-icon-container">{!! $category->icon !!}</span>{{$category->libelle}}</a>
+                @endforeach
             </div>
+            <div class="my-menu-container" id="my-menu-container-creation">
+                <a href="#" class="btn btn-search-menu btn-my-menu mout--regular"><span class="btn-my-menu-icon-container"><i class="fal fa-search"></i></span>Je recherche</a>
+                <button class="btn btn-create-menu btn-my-menu mout--regular" data-toggle="modal" data-target="#productCreation"><span class="btn-my-menu-icon-container"><i class="fal fa-bell"></i></span>Je crée </button>
+                <a href="#" class="btn btn-create-menu btn-my-menu mout--regular"><span class="btn-my-menu-icon-container"><i class="fal fa-concierge-bell"></i></span>Voir ma carte</a>
+                <a href="#" class="btn btn-create-menu btn-my-menu mout--regular"><span class="btn-my-menu-icon-container"><i class="fal fa-hat-chef"></i></span>Créer ma<br>formule</a>
+            </div>
+        </div>
+
+        <div class="my-menu-add-product-container">
+            @include('forms.middle.menu.__menu_creation')
         </div>
     </div>
 @endsection
@@ -38,6 +49,8 @@
 @section('js')
     <script src="{{asset('js/middle-admin/users-manager.js')}}"></script>
     <script src="{{asset('/js/plugins/add-media.js')}}"></script>
+    <script src="{{asset('js/admin/manage-allergy.js')}}"></script>
+    <script src="{{asset('js/admin/manage-product-admin.js')}}"></script>
     <script>
         $(document).ready(function () {
             $('.images').addMedia({
@@ -50,4 +63,14 @@
             });
         })
     </script>
+{{--    <script>--}}
+{{--        $(document).ready(function() {--}}
+{{--            $('#product-type').DataTable();--}}
+
+{{--            tinymce.init({--}}
+{{--                selector: 'textarea:not(.textarea-allergy)',--}}
+{{--                toolbar_mode: 'floating',--}}
+{{--            });--}}
+{{--        });--}}
+{{--    </script>--}}
 @endsection

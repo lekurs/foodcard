@@ -30,6 +30,10 @@
         }
     }
 
+    H2.mout-admin-middle-store-name {
+        margin-left: 300px;
+    }
+
     div.mout-admin-middle-user-informations-container {
         width: 300px;
 
@@ -109,6 +113,10 @@
             font-family: $arista-regular;
             font-size: 30px;
         }
+    }
+
+    H2.mout-admin-middle-store-name {
+        margin-left: 400px;
     }
 
     div.mout-admin-middle-user-informations-container {
@@ -312,7 +320,7 @@ div.mout-admin-middle-container {
     }
 
     & div.mout-admin-middle-content-panel {
-        padding: 20px;
+        padding: 20px 4em;
 
         &#invoices {
             padding: 0;
@@ -621,8 +629,294 @@ div.min-nav-container {
 //My-menu pages
 div.my-menu-container {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
+    width: 50%;
+    margin: 2em auto 0;
+
+    & a, button {
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        border: none;
+        border-radius: 15px;
+
+        &.btn-my-menu {
+            width: 130px;
+            height: 130px;
+            line-height: 16px;
+            font-size: 18px;
+            background: rgb(1,18,11);
+            background: linear-gradient(311deg, rgba(1,18,11,1) 0%, rgba(1,49,27,1) 50%, rgba(1,82,44,1) 100%);
+
+            & span {
+                margin-bottom: 10px;
+
+                & i {
+                    font-size: 50px;
+                    color: #ffffff;
+                }
+            }
+        }
+
+        &.btn-my-category {
+            width: 100px;
+            height: 100px;
+            color: #ffffff;
+
+            & span {
+                margin-bottom: 10px;
+
+                & i {
+                    font-size: 35px;
+                }
+
+                & svg {
+                    width: 50%;
+                }
+            }
+        }
+
+        &:hover {
+            color: #ffffff !important;
+        }
+    }
+
+    &#category-menu {
+        width: 35%;
+    }
+
+    &#category-menu-modal {
+        width: 100%;
+        margin: inherit;
+    }
+}
+
+//Menu creation
+
+div.mout-admin-middle-content-panel {
+
+    & div.my-menu-category-container {
+        display: flex;
+
+        & div.my-menu-category-buttons-container {
+            width: 40%;
+        }
+
+        & div.my-menu-container#my-menu-container-creation {
+            width: 60%;
+            margin: 0;
+
+            & a, button {
+                width: 100px;
+                height: 100px;
+                font-size: 16px;
+
+                & span i {
+                    font-size: 40px;
+                }
+
+                & svg {
+                    width: 40%;
+                }
+            }
+        }
+    }
+
+    & div.my-menu-add-product-container {
+
+        & div.my-menu-creation-form-container {
+            background: rgb(1,16,10);
+            background: linear-gradient(180deg, rgba(1,16,10,1) 0%, rgba(1,48,26,1) 50%, rgba(1,82,44,1) 100%);
+            position: relative;
+
+            & .input-group-prepend.choose-langage {
+                position: absolute;
+                left: -20%;
+            }
+
+            & div.product-langage-selection {
+                position: absolute;
+                content: "";
+                width: 100%;
+                height: 100px;
+                top: 0;
+                left: 0;
+                background-color: rgba(247, 247, 247, .22);
+            }
+
+            & .input-group-append.category {
+
+                & span.btn-my-category {
+                    width: 70px;
+                    height: 70px;
+                    display: flex;
+                    color: #fff;
+                    flex-direction: column;
+                    border: none;
+                    border-radius: 15px;
+                    position: absolute;
+                    right: -16%;
+                    top: -15px;
+
+                    & i {
+                        font-size: 25px;
+                    }
+
+                    & svg {
+                        width: 60%;
+                    }
+                }
+            }
+
+            & div.my-menu-creation-form-content {
+                width: 70%;
+                margin: 0 auto;
+                padding: 2em 0;
+                color: #ffffff;
+
+                & .textarea-container.product_label.product_1 {
+                    margin-top: 5em;
+                }
+
+                & textarea {
+                    width: 100%;
+                    height: 90px;
+                    border: none;
+                    border-radius: 15px;
+                    color: #000000 !important;
+                }
+
+                & .floating-label {
+                    margin-bottom: 4em;
+                }
+
+                & label.float, .floating-input {
+                    color: #ffffff !important;
+                    font-family: $mout-font !important;
+                    font-size: 1.25rem !important;
+                    top: -5px !important;
+                }
+
+                & .floating-input:focus ~ label.float, .floating-input:not(:placeholder-shown) ~ label.float {
+                    font-size: 14px !important;
+                    top: -20px !important;
+                }
+
+                & input {
+
+                    &.product_label {
+                        border-bottom: 1px solid #00C332 !important;
+                    }
+
+                    &#product_price {
+                        border-bottom: 1px solid #FF7F00 !important;
+                    }
+                    &#product_special_price {
+                        border-bottom: 1px solid #FFCD00 !important;
+                    }
+
+                    &#product_buying_price {
+                        border-bottom: 1px solid #FF0000 !important;
+                    }
+                }
+
+                & H5.allergy {
+                    padding-bottom: .5em;
+                    border-bottom: 1px solid #00C332;
+                    margin-bottom: 1em;
+                }
+
+                & div.button-allergy-container {
+                    display: flex;
+                    flex-wrap: wrap;
+
+                    & .btn-allergy {
+                        flex-basis: 14% !important;
+                        margin: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//!! Menu Creation !!//
+
+div.my-submenu-category-container {
+    margin: 5em auto 0;
+    display: flex;
+    flex-wrap: wrap;
+
+    & div.submenu-category-content {
+        flex-basis: 23%;
+        margin: 0 10px 4em;
+        cursor: pointer;
+        border-right: 1px solid #000000;
+
+        &:nth-child(4n) {
+            border-right: none;
+        }
+
+        & img {
+            height: 200px;
+            width: 200px;
+            object-fit: cover;
+            border-radius: 30px;
+            margin-bottom: 20px;
+        }
+
+        & p {
+            font-size: 18px;
+            margin-bottom: 0;
+        }
+    }
+}
+
+div.products-table-container {
+    & table.mout-table.products-table {
+        font-family: $mout-font;
+        width: 90%;
+        margin: 0 auto;
+
+        & thead {
+            & th {
+                font-size: 20px;
+                border-bottom: 2px solid #00C332;
+                border-top: none;
+            }
+        }
+
+        & tbody {
+            & td {
+                vertical-align: middle;
+                padding: 1.3em;
+                border-top: 1px solid #00C332;
+                border-bottom: 1px solid #00C332;
+            }
+
+            & img {
+                width: 100px;
+                height: 100px;
+                object-fit: cover;
+            }
+
+            & td.product-table-icon-container {
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+H2.category-menu-modal-title {
+    font-size: 22px;
+}
+
+p.my-menu-search-wording {
+    font-size: 30px;
+    margin: 3em auto;
 }
 
 //!!My-menu pages!!
@@ -631,6 +925,10 @@ div.my-menu-container {
 //Features
 img.qrcode-img {
     width: 300px;
+}
+
+p#store-change {
+    cursor: pointer;
 }
 
 a.btn.mout-admin-middle-nav-buttons, .mout-admin-middle-nav-buttons-account {

@@ -18,4 +18,9 @@ class CatalogueCategoryLocaleRepository
     {
         return CatalogueCategoryLocale::whereLocaleId(1)->with('catalogueCategoryByOrder')->get();
     }
+
+    public function getOneBySlug(string $slug): CatalogueCategoryLocale
+    {
+        return CatalogueCategoryLocale::whereSlug($slug)->with('catalogueCategoryByOrder')->first();
+    }
 }

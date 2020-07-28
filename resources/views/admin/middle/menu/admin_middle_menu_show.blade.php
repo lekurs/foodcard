@@ -27,8 +27,106 @@
 @section('body')
     <div class="mout-admin-middle-content-panel text-center">
         <div class="my-menu-container">
-            <a href="#" class="btn btn-search-menu btn-my-menu">Je recherche</a>
-            <a href="#" class="btn btn-create-menu btn-my-menu">Je crée</a>
+            <a href="#" class="btn btn-search-menu btn-my-menu mout--regular"><span class="btn-my-menu-icon-container"><i class="fal fa-search"></i></span>Je recherche</a>
+            <button class="btn btn-create-menu btn-my-menu mout--regular" data-toggle="modal" data-target="#productCreation"><span class="btn-my-menu-icon-container"><i class="fal fa-bell"></i></span>Je crée </button>
+            <a href="#" class="btn btn-create-menu btn-my-menu mout--regular"><span class="btn-my-menu-icon-container"><i class="fal fa-concierge-bell"></i></span>Voir ma carte</a>
+            <a href="#" class="btn btn-create-menu btn-my-menu mout--regular"><span class="btn-my-menu-icon-container"><i class="fal fa-hat-chef"></i></span>Créer ma<br>formule</a>
+        </div>
+
+        <p class="my-menu-search-wording mout--regular">Rechercher par catégories</p>
+
+        <div class="my-menu-container" id="category-menu">
+            @foreach($categories as $category)
+                <a href="#" class="btn btn-search-menu btn-my-category mout--regular" id="{{$category->slug}}" style="{{$category->color}}"><span class="btn-my-menu-icon-container">{!! $category->icon !!}</span>{{$category->libelle}}</a>
+            @endforeach
+        </div>
+
+        <div class="my-submenu-category-container">
+            <div class="submenu-category-content">
+                <img src="{{asset('images/entree-froide.jpg')}}" alt="" class="img-fluid submenu-category">
+                <p class="submenu-category mout--regular">Entrée froide</p>
+            </div>
+
+            <div class="submenu-category-content">
+                <img src="{{asset('images/entree-froide.jpg')}}" alt="" class="img-fluid submenu-category">
+                <p class="submenu-category mout--regular">Entrée froide</p>
+            </div>
+
+            <div class="submenu-category-content">
+                <img src="{{asset('images/entree-froide.jpg')}}" alt="" class="img-fluid submenu-category">
+                <p class="submenu-category mout--regular">Entrée froide</p>
+            </div>
+
+            <div class="submenu-category-content">
+                <img src="{{asset('images/entree-froide.jpg')}}" alt="" class="img-fluid submenu-category">
+                <p class="submenu-category mout--regular">Entrée froide</p>
+            </div>
+
+            <div class="submenu-category-content">
+                <img src="{{asset('images/entree-froide.jpg')}}" alt="" class="img-fluid submenu-category">
+                <p class="submenu-category mout--regular">Entrée froide</p>
+            </div>
+
+            <div class="submenu-category-content">
+                <img src="{{asset('images/entree-froide.jpg')}}" alt="" class="img-fluid submenu-category">
+                <p class="submenu-category mout--regular">Entrée froide</p>
+            </div>
+
+            <div class="submenu-category-content">
+                <img src="{{asset('images/entree-froide.jpg')}}" alt="" class="img-fluid submenu-category">
+                <p class="submenu-category mout--regular">Entrée froide</p>
+            </div>
+        </div>
+
+        <div class="products-table-container">
+            <table class="table mout-table products-table">
+                <thead>
+                <tr>
+                    <th>entrées</th>
+                    <th>type</th>
+                    <th>libellé</th>
+                    <th>action</th>
+                    <th></th>
+                </tr>
+                <tbody>
+                <tr>
+                    <td>@isset($product)<img src="{{asset('images/entree-froide.jpg')}}" alt="" class="img-fluid product-table-img-mini">@endisset <i class="fal fa-image fa-2x"></i></td>
+                    <td>Entrée froide</td>
+                    <td>Salade César</td>
+                    <td><a href="#" class="btn mout-btn-login" data-product="">Renseigner ce plat</a></td>
+                    <td><i class="fal fa-eye fa-2x"></i></td>
+                </tr>
+                <tr>
+                    <td><img src="{{asset('images/entree-froide.jpg')}}" alt="" class="img-fluid product-table-img-mini"></td>
+                    <td>Entrée froide</td>
+                    <td>Salade César</td>
+                    <td><a href="#" class="btn mout-btn-login" data-product="">Renseigner ce plat</a></td>
+                    <td class="product-table-icon-container"><i class="fal fa-eye fa-2x"></i></td>
+                </tr>
+                </tbody>
+                </thead>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="productCreation" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mout--regular" id="staticBackdropLabel">Choisissez votre catégorie de produit à ajouter</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="my-menu-container" id="category-menu-modal">
+                        @foreach($categories as $category)
+                            <a href="{{route('adminMiddleMenuCreateShow', $category->slug)}}" class="btn btn-search-menu btn-my-category mout--regular" id="{{$category->slug}}" style="{{$category->color}}"><span class="btn-my-menu-icon-container">{!! $category->icon !!}</span>{{$category->libelle}}</a>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

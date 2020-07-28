@@ -135,3 +135,28 @@ input:checked + .slider:before {
 .btn-my-menu {
     color: $bo-black-color;
 }
+
+.btn-allergy {
+    padding: .6rem .75rem !important;
+    border: none !important;
+    width: 100px;
+    height: 100px;
+    border-radius: 15px;
+    line-height: 16px;
+    color: #ffffff !important;
+
+    & i {
+        font-size: 40px;
+    }
+
+    & svg {
+
+    }
+}
+
+.btn-allergy-active {
+    border: none !important;
+    background: rgb(253,234,0);
+    background: linear-gradient(120deg, rgba(253,234,0,1) 0%, rgba(254,181,0,1) 50%, rgba(255,127,0,1) 100%);
+    transition: all .3s ease-in-out !important;
+}

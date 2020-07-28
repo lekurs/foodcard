@@ -8,6 +8,7 @@ use App\Entity\CatalogueCategory;
 use App\Entity\CatalogueCategoryLocale;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class CatalogueCategoryRepository
 {
@@ -55,8 +56,11 @@ class CatalogueCategoryRepository
         foreach ($datas['category'] as $locale_id => $category) {
             $catalogueCategoryLocale = new CatalogueCategoryLocale();
             $catalogueCategoryLocale->libelle = $category;
+            $catalogueCategoryLocale->icon = $datas['icon'];
+            $catalogueCategoryLocale->color = $datas['color'];
             $catalogueCategoryLocale->locale_id = $locale_id;
             $catalogueCategoryLocale->catalogue_category_id = $lastid;
+            $catalogueCategoryLocale->slug = Str::slug($category);
 
             $catalogueCategoryLocale->save();
         }
