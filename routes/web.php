@@ -65,6 +65,7 @@ Route::group(['prefix' => 'foodcard', 'middleware' => ['auth', 'role']], functio
             Route::get('/factures', 'Middle\Admin\Account\InvoicesShowController@show')->name('adminMiddleAccountInvoicesShow');
             Route::get('/paiement', 'Middle\Admin\Account\BillingPortalController@show')->name('adminMiddleBillingPortalShow');
             Route::post('/store', 'Middle\Admin\Account\BillingPortalController@store')->name('adminMiddleBillingPortalStore');
+            Route::post('/subscribe', 'Middle\Admin\Account\BillingPortalController@subscribe')->name('adminMiddleBillingPortalSubscribe');
         });
 
         Route::group(['prefix' => 'store'], function () {
