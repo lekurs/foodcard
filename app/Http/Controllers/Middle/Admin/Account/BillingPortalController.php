@@ -11,8 +11,12 @@ use App\Repository\StoreRepository;
 use App\Repository\UserFonctionRepository;
 use App\Repository\UserRepository;
 use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\DeclareDeclare;
+use Stripe\Customer;
 use Stripe\PaymentIntent;
 use Stripe\Stripe;
+use Stripe\StripeClient;
+use Stripe\Subscription;
 
 class BillingPortalController extends AdminMiddleController
 {
@@ -38,13 +42,13 @@ class BillingPortalController extends AdminMiddleController
         $stores = $this->userRepository->getStoresByUser(request()->user())->stores;
 
         $subscribes = [
-            'prod_HjjddOoY1eZ5GI' => 'Mois'
+            'price_1HAGA5LNXgoErTPaONjZ2QgL' => 'Mois'
         ];
 
         return view('admin.middle.account.admin_middle_billing_portal_show', [
             'stores' => $stores,
             'userFonctions' => $this->userFonctions,
-            'intent' => auth()->user()->createSetupIntent([
+            'intent' => request()->user()->createSetupIntent([
 //                'amount' => 14.99,
 //                'currency' => 'eur',
 
@@ -54,77 +58,32 @@ class BillingPortalController extends AdminMiddleController
     }
 
     public function subscribe(Request $request) {
-        $user = auth()->user();
+        $user = request()->user();
 
         $paymentMethod = $request->payment_method;
         $planId = $request->plan;
 
-        $user->newSubscription('main', $planId)->create($paymentMethod);
-
-        return response(['status' => 'success']);
-    }
-
-    public function store() {
 
         Stripe::setApiKey(env('STRIPE_SECRET'));
-        dd(request()->all());
 
-        header('Content-Type: application/json');
+        $customer = Customer::create([
+            'source' => $request->stripeToken
+        ]);
+
+//        $user->newSubscription('default', $planId)->create($paymentMethod);
 
 
-        # retrieve json from POST body
-        $json_str = file_get_contents('php://input');
-        $json_obj = json_decode($json_str);
+        $subscription = Subscription::create([
+            'customer' => $customer->id,
+            'items' => [
+                ['price' => 'price_1HAJeVLNXgoErTPaxHB6IYCw'],
+            ],
+        ]);
 
-        $intent = null;
+        dd($customer, $subscription);
 
-        try {
-            if (isset($json_obj->payment_method_id)) {
-                # Create the PaymentIntent
-                $intent = PaymentIntent::create([
-                    'payment_method' => $json_obj->payment_method_id,
-                    'confirmation_method' => 'manual',
-                    'confirm' => true,
-                    'amount'   => 1499,
-                    'currency' => 'eur',
-                    'description' => "Mon paiement",
-                ]);
-            }
-            if (isset($json_obj->payment_intent_id)) {
-                $intent = PaymentIntent::retrieve(
-                    $json_obj->payment_intent_id
-                );
-                $intent->confirm();
-            }
-            if ($intent->status == 'requires_action' &&
-                $intent->next_action->type == 'use_stripe_sdk') {
-                # Tell the client to handle the action
-                echo json_encode([
-                    'requires_action' => true,
-                    'payment_intent_client_secret' => $intent->client_secret
-                ]);
-            } else if ($intent->status == 'succeeded') {
-                // Paiement Stripe accepté
-                $user = request()->user();
-                $user->createOrGetStripeCustomer();
-                if (!$user->hasDefaultPaymentMethod()) {
-                    $user->addPaymentMethod($json_obj->payment_method_id);
-                }
-//                $user->newSubscription('default', 'price_monthly')->add();
-                $user->newSubscription('default', 'price_monthly')->create('prod_HjjddOoY1eZ5GI');
+//        $user->newSubscription('foodcard', $planId)->create($paymentMethod);
 
-                echo json_encode([
-                    "success" => true
-                ]);
-            } else {
-                http_response_code(500);
-                echo json_encode(['error' => 'Invalid PaymentIntent status']);
-            }
-        } catch (\Exception $e) {
-            # Display error on client
-            echo json_encode([
-                'error' => $e->getMessage()
-            ]);
-        }
+        return response(['status' => 'success']);
     }
 }

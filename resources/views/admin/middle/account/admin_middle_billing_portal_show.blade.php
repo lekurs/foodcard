@@ -26,12 +26,12 @@
 
 @section('body')
     <div class="mout-admin-middle-content-panel">
-        <div class="mout-admin-middle-users-container">
-            <div class="mout-admin-middle-users-manager">
-                <p class="edit-user" data-user=""><span class="mout-middle-edit-user-icon"><i class="fal fa-user"></i></span></p>
-                <p class="mout--fat">{{auth()->user()->name . ' ' . auth()->user()->lastname}}</p>
-                <a href="#" class="btn mout-btn-edit-middle mout-btn-form-middle">modifier</a>
-            </div>
+        <div class="mout-admin-middle-stripe-container">
+{{--            <div class="mout-admin-middle-stripe-content">--}}
+{{--                <p class="edit-user" data-user=""><span class="mout-middle-edit-user-icon"><i class="fal fa-user"></i></span></p>--}}
+{{--                <p class="mout--fat">{{auth()->user()->name . ' ' . auth()->user()->lastname}}</p>--}}
+{{--                <a href="#" class="btn mout-btn-edit-middle mout-btn-form-middle">modifier</a>--}}
+{{--            </div>--}}
             <div class="mout-admin-middle-container">
                 @include('forms.stripe.__payment_informations_creation')
             </div>
@@ -45,41 +45,61 @@
     <script src="https://js.stripe.com/v3/"></script>
 
     <script>
+        var style = {
+            base: {
+                color: "#32325d",
+                fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+                fontSmoothing: "antialiased",
+                fontSize: "16px",
+                "::placeholder": {
+                    color: "#aab7c4"
+                }
+            },
+            invalid: {
+                color: "#fa755a",
+                iconColor: "#fa755a"
+            }
+        };
+
         const stripe = Stripe('{{env('STRIPE_KEY')}}');
 
-        const elements = stripe.elements();
-        const cardElement = elements.create('card');
+        const elements = stripe.elements({locale: 'fr'});
+        const cardElement = elements.create('card', {style: style});
 
         cardElement.mount('#card-element');
 
-        const cardHolderName = document.getElementById('card-holder-name');
-        const cardButton = document.getElementById('card-button');
-        const clientSecret = cardButton.dataset.secret;
+        cardElement.on('change', showCardError);
 
-        const plan = document.getElementById('plan').value;
-
-        cardButton.addEventListener('click', async (e) => {
-            const { setupIntent, error } = await stripe.confirmCardSetup(
-                clientSecret, {
-                    payment_method: {
-                        card: cardElement,
-                        billing_details: { name: cardHolderName.value }
-                    }
-                }
-            );
-
-            if (error) {
-                // Display "error.message" to the user...
+        function showCardError(event) {
+            let displayError = document.getElementById('card-errors');
+            if (event.error) {
+                displayError.textContent = event.error.message;
             } else {
-                // The card has been verified successfully...
-                console.log('handling', setupIntent.payment_method);
-
-                axios.post({{route('adminMiddleBillingPortalSubscribe')}}, {
-                    payment_method: setupIntent.payment_method,
-                    plan: plan
-                })
+                displayError.textContent = '';
             }
+        }
+
+        var form = document.getElementById('payment-form');
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            stripe.createToken(cardElement).then(function (result) {
+                if(result.error) {
+                    var errorElement = document.getElementById('card-errors');
+                    errorElement.textContent = result.error.message;
+                } else {
+                    stripeTokenHandler(result.token);
+                }
+            });
         });
+
+        function stripeTokenHandler(token) {
+            // Insert the token ID into the form so it gets submitted to the server
+            document.getElementById('stripeToken').value = token.id;
+            // Submit the form
+            form.submit();
+        }
+
     </script>
 
 {{--    <script>--}}
