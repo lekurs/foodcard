@@ -10,8 +10,13 @@ use App\Repository\CatalogueCategoryLocaleRepository;
 use App\Repository\StoreRepository;
 use App\Repository\UserFonctionRepository;
 use App\Repository\UserRepository;
+use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\DeclareDeclare;
+use Stripe\Customer;
 use Stripe\PaymentIntent;
 use Stripe\Stripe;
+use Stripe\StripeClient;
+use Stripe\Subscription;
 
 class BillingPortalController extends AdminMiddleController
 {
@@ -36,6 +41,10 @@ class BillingPortalController extends AdminMiddleController
     public function show() {
         $stores = $this->userRepository->getStoresByUser(request()->user())->stores;
 
+        $subscribes = [
+            'price_1HAGA5LNXgoErTPaONjZ2QgL' => 'Mois'
+        ];
+
         return view('admin.middle.account.admin_middle_billing_portal_show', [
             'stores' => $stores,
             'userFonctions' => $this->userFonctions,
@@ -43,63 +52,38 @@ class BillingPortalController extends AdminMiddleController
 //                'amount' => 14.99,
 //                'currency' => 'eur',
 
-            ])
+            ]),
+            'subscribes' => $subscribes
         ]);
     }
 
-    public function store() {
+    public function subscribe(Request $request) {
+        $user = request()->user();
+
+        $paymentMethod = $request->payment_method;
+        $planId = $request->plan;
+
 
         Stripe::setApiKey(env('STRIPE_SECRET'));
 
-        header('Content-Type: application/json');
+        $customer = Customer::create([
+            'source' => $request->stripeToken
+        ]);
 
-        # retrieve json from POST body
-        $json_str = file_get_contents('php://input');
-        $json_obj = json_decode($json_str);
+//        $user->newSubscription('default', $planId)->create($paymentMethod);
 
-        $intent = null;
-        try {
-            if (isset($json_obj->payment_method_id)) {
-                # Create the PaymentIntent
-                $intent = PaymentIntent::create([
-                    'payment_method' => $json_obj->payment_method_id,
-                    'confirmation_method' => 'manual',
-                    'confirm' => true,
-                    'amount'   => 14.99,
-                    'currency' => 'eur',
-                    'description' => "Mon paiement"
-                ]);
-            }
-            if (isset($json_obj->payment_intent_id)) {
-                $intent = PaymentIntent::retrieve(
-                    $json_obj->payment_intent_id
-                );
-                $intent->confirm();
-            }
-            if ($intent->status == 'requires_action' &&
-                $intent->next_action->type == 'use_stripe_sdk') {
-                # Tell the client to handle the action
-                echo json_encode([
-                    'requires_action' => true,
-                    'payment_intent_client_secret' => $intent->client_secret
-                ]);
-            } else if ($intent->status == 'succeeded') {
-                // Paiement Stripe accepté
-                request()->user()->newSubscription('default', 'amount');
-                request()->user()->createAsStripeCustomer();
 
-                echo json_encode([
-                    "success" => true
-                ]);
-            } else {
-                http_response_code(500);
-                echo json_encode(['error' => 'Invalid PaymentIntent status']);
-            }
-        } catch (\Exception $e) {
-            # Display error on client
-            echo json_encode([
-                'error' => $e->getMessage()
-            ]);
-        }
+        $subscription = Subscription::create([
+            'customer' => $customer->id,
+            'items' => [
+                ['price' => 'price_1HAJeVLNXgoErTPaxHB6IYCw'],
+            ],
+        ]);
+
+        dd($customer, $subscription);
+
+//        $user->newSubscription('foodcard', $planId)->create($paymentMethod);
+
+        return response(['status' => 'success']);
     }
 }

@@ -2259,6 +2259,10 @@ div.mout-admin-middle-container form {
   width: 100%;
 }
 
+.mout-admin-middle-stripe-container div.mout-admin-middle-container {
+  flex-direction: column;
+}
+
 @media all and (min-width: 1024px) {
   header div.mout-admin-middle-header-container {
     height: 550px;

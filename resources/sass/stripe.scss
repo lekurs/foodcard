@@ -86,3 +86,11 @@ div.mout-admin-middle-container {
         width: 100%;
     }
 }
+
+
+.mout-admin-middle-stripe-container {
+
+    & div.mout-admin-middle-container {
+        flex-direction: column;
+    }
+}
