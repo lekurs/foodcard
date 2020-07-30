@@ -82,8 +82,6 @@ class BillingPortalController extends AdminMiddleController
 
         dd($customer, $subscription);
 
-//        $user->newSubscription('foodcard', $planId)->create($paymentMethod);
-
         return response(['status' => 'success']);
     }
 }
