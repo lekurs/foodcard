@@ -60,6 +60,7 @@ class CatalogueCategoryRepository
             $catalogueCategoryLocale->color = $datas['color'];
             $catalogueCategoryLocale->locale_id = $locale_id;
             $catalogueCategoryLocale->catalogue_category_id = $lastid;
+            $catalogueCategoryLocale->img_path = $datas['img-category']->getClientOriginalName();
             $catalogueCategoryLocale->slug = Str::slug($category);
 
             $catalogueCategoryLocale->save();

@@ -19,6 +19,7 @@ class CreateCatalogueCategoryLocalesTable extends Migration
             $table->text('icon');
             $table->string('slug');
             $table->text('color');
+            $table->string('img_path', 255);
             $table->unsignedInteger('locale_id');
             $table->unsignedInteger('catalogue_category_id');
             $table->timestamps();

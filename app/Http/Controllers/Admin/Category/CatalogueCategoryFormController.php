@@ -9,6 +9,7 @@ use App\Repository\CatalogueCategoryLocaleRepository;
 use App\Repository\CatalogueCategoryRepository;
 use App\Repository\LocaleRepository;
 use App\Requests\Catalogue\Category\CatalogueCategoryCreation;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class CatalogueCategoryFormController extends Controller
@@ -64,6 +65,22 @@ class CatalogueCategoryFormController extends Controller
     public function store(CatalogueCategoryCreation $validator)
     {
         $validates = $validator->all();
+
+        $file = request()->file('img-category');
+
+        $mimeTypes = ['image/png', 'image/jpeg', 'image/gif', 'image/svg+xml'];
+
+        if ($file->getError() !== 0) {
+
+            return back()->with('error', request()->file()->getErrorMessage());
+        }
+
+        if (!in_array($file->getMimeType(), $mimeTypes)) {
+
+            return back()->with('error', 'Pas le bon format de fichier');
+        }
+
+        $file->storeAs('/public/category/' . Str::slug(request()->request->get('category')[1]), request()->file('img-category')->getClientOriginalName());
 
         $this->catalogueCategoryRepository->store($validates);
 

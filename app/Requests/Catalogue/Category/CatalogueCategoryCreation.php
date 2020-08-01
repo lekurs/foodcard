@@ -18,6 +18,8 @@ class CatalogueCategoryCreation extends FormRequest
         return [
           'category' => 'required|max:255',
           'icon' => '',
+          'color' => '',
+          'img_path' => 'image'
         ];
     }
 }

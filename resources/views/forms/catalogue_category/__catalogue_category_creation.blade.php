@@ -11,17 +11,19 @@
                         {!! $menu !!}
                     </ol>
                     <form action="" id="form-navigation">
-                        <textarea name="navigation" id="nestable-output"></textarea>
+                        <textarea name="navigation" id="nestable-output" style="display: none"></textarea>
                     </form>
-                    <button type="submit" class="btn btn-dark mout-add-menus-button">Enregistrer</button>
+                    <button type="submit" class="btn mout-btn-login">Enregistrer la disposition</button>
                 </div>
                 @else
                     <p>Pas de navigation</p>
                 @endif
             </div>
         </div>
-        <button type="button" class="btn mout-btn-add" data-toggle="modal" data-target="#addCategory">
-            Ajouter une catégorie
-        </button>
+        <div class="mt-4">
+            <button type="button" class="btn mout-btn-add" data-toggle="modal" data-target="#addCategory">
+                Ajouter une catégorie
+            </button>
+        </div>
     </div>
 </form>

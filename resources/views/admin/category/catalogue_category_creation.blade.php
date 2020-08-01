@@ -4,6 +4,7 @@
 @section('body')
     <div class="mout-bo-section-container">
         <H2>Getion des catégories</H2>
+
         @include('forms.catalogue_category.__catalogue_category_creation')
     </div>
 

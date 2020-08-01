@@ -14,6 +14,7 @@ class CatalogueCategoryLocale extends Model
       'libelle',
       'icon',
       'color',
+      'img_path',
       'slug'
     ];
 
