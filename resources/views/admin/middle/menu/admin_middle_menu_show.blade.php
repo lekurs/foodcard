@@ -42,10 +42,12 @@
         </div>
 
         <div class="my-submenu-category-container">
+            @foreach($categories as $category)
             <div class="submenu-category-content">
                 <img src="{{asset('images/entree-froide.jpg')}}" alt="" class="img-fluid submenu-category">
                 <p class="submenu-category mout--regular">Entrée froide</p>
             </div>
+            @endforeach
 
             <div class="submenu-category-content">
                 <img src="{{asset('images/entree-froide.jpg')}}" alt="" class="img-fluid submenu-category">
