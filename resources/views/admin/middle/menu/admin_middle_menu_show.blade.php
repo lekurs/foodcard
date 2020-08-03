@@ -37,78 +37,43 @@
 
         <div class="my-menu-container" id="category-menu">
             @foreach($categories as $category)
-                <a href="#" class="btn btn-search-menu btn-my-category mout--regular" id="{{$category->slug}}" style="{{$category->color}}"><span class="btn-my-menu-icon-container">{!! $category->icon !!}</span>{{$category->libelle}}</a>
+                <a href="#" class="btn btn-search-menu btn-my-category mout--regular" id="{{$category->slug}}" style="{{$category->color}}" data-category="{{$category->catalogue_category_id}}"><span class="btn-my-menu-icon-container">{!! $category->icon !!}</span>{{$category->libelle}}</a>
             @endforeach
         </div>
 
         <div class="my-submenu-category-container">
-            @foreach($categories as $category)
-            <div class="submenu-category-content">
-                <img src="{{asset('images/entree-froide.jpg')}}" alt="" class="img-fluid submenu-category">
-                <p class="submenu-category mout--regular">Entrée froide</p>
-            </div>
-            @endforeach
 
-            <div class="submenu-category-content">
-                <img src="{{asset('images/entree-froide.jpg')}}" alt="" class="img-fluid submenu-category">
-                <p class="submenu-category mout--regular">Entrée froide</p>
-            </div>
-
-            <div class="submenu-category-content">
-                <img src="{{asset('images/entree-froide.jpg')}}" alt="" class="img-fluid submenu-category">
-                <p class="submenu-category mout--regular">Entrée froide</p>
-            </div>
-
-            <div class="submenu-category-content">
-                <img src="{{asset('images/entree-froide.jpg')}}" alt="" class="img-fluid submenu-category">
-                <p class="submenu-category mout--regular">Entrée froide</p>
-            </div>
-
-            <div class="submenu-category-content">
-                <img src="{{asset('images/entree-froide.jpg')}}" alt="" class="img-fluid submenu-category">
-                <p class="submenu-category mout--regular">Entrée froide</p>
-            </div>
-
-            <div class="submenu-category-content">
-                <img src="{{asset('images/entree-froide.jpg')}}" alt="" class="img-fluid submenu-category">
-                <p class="submenu-category mout--regular">Entrée froide</p>
-            </div>
-
-            <div class="submenu-category-content">
-                <img src="{{asset('images/entree-froide.jpg')}}" alt="" class="img-fluid submenu-category">
-                <p class="submenu-category mout--regular">Entrée froide</p>
-            </div>
         </div>
+    </div>
 
-        <div class="products-table-container">
-            <table class="table mout-table products-table">
-                <thead>
-                <tr>
-                    <th>entrées</th>
-                    <th>type</th>
-                    <th>libellé</th>
-                    <th>action</th>
-                    <th></th>
-                </tr>
-                <tbody>
-                <tr>
-                    <td>@isset($product)<img src="{{asset('images/entree-froide.jpg')}}" alt="" class="img-fluid product-table-img-mini">@endisset <i class="fal fa-image fa-2x"></i></td>
-                    <td>Entrée froide</td>
-                    <td>Salade César</td>
-                    <td><a href="#" class="btn mout-btn-login" data-product="">Renseigner ce plat</a></td>
-                    <td><i class="fal fa-eye fa-2x"></i></td>
-                </tr>
-                <tr>
-                    <td><img src="{{asset('images/entree-froide.jpg')}}" alt="" class="img-fluid product-table-img-mini"></td>
-                    <td>Entrée froide</td>
-                    <td>Salade César</td>
-                    <td><a href="#" class="btn mout-btn-login" data-product="">Renseigner ce plat</a></td>
-                    <td class="product-table-icon-container"><i class="fal fa-eye fa-2x"></i></td>
-                </tr>
-                </tbody>
-                </thead>
-            </table>
-        </div>
+    <div class="products-table-container">
+        <table class="table mout-table products-table">
+            <thead>
+            <tr>
+                <th>entrées</th>
+                <th>type</th>
+                <th>libellé</th>
+                <th>action</th>
+                <th></th>
+            </tr>
+            <tbody>
+            <tr>
+                <td>@isset($product)<img src="{{asset('images/entree-froide.jpg')}}" alt="" class="img-fluid product-table-img-mini">@endisset <i class="fal fa-image fa-2x"></i></td>
+                <td>Entrée froide</td>
+                <td>Salade César</td>
+                <td><a href="#" class="btn mout-btn-login" data-product="">Renseigner ce plat</a></td>
+                <td><i class="fal fa-eye fa-2x"></i></td>
+            </tr>
+            <tr>
+                <td><img src="{{asset('images/entree-froide.jpg')}}" alt="" class="img-fluid product-table-img-mini"></td>
+                <td>Entrée froide</td>
+                <td>Salade César</td>
+                <td><a href="#" class="btn mout-btn-login" data-product="">Renseigner ce plat</a></td>
+                <td class="product-table-icon-container"><i class="fal fa-eye fa-2x"></i></td>
+            </tr>
+            </tbody>
+            </thead>
+        </table>
     </div>
 
     <!-- Modal -->
@@ -135,4 +100,5 @@
 
 @section('js')
     <script src="{{asset('js/middle-admin/users-manager.js')}}"></script>
+    <script src="{{asset('js/middle-admin/subcategory-manager.js')}}"></script>
 @endsection

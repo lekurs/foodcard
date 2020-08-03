@@ -25,7 +25,7 @@ class CatalogueCategoryLocale extends Model
 
     public function catalogueCategory(): BelongsTo
     {
-        return $this->belongsTo(CatalogueCategory::class);
+        return $this->belongsTo(CatalogueCategory::class, 'catalogue_category_id');
     }
 
     public function catalogueCategoryByOrder(): BelongsTo
@@ -33,5 +33,17 @@ class CatalogueCategoryLocale extends Model
         return $this->belongsTo(CatalogueCategory::class, 'catalogue_category_id')
             ->orderBy('parent', 'ASC')
             ->orderBy('position', 'ASC');
+    }
+
+    public function catalogueCategoryByOrderNoSubCategory(): BelongsTo
+    {
+        return $this->belongsTo(CatalogueCategory::class, 'catalogue_category_id')
+            ->whereNull('parent')
+            ->orderBy('position', 'ASC');
+    }
+
+    public function withParent(): BelongsTo
+    {
+        return $this->belongsTo(CatalogueCategory::class, 'catalogue_category_id');
     }
 }
