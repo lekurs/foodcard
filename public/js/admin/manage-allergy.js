@@ -7,7 +7,7 @@ $(document).ready(function () {
             $(this).removeClass('btn-allergy-active').addClass('btn-allergy-inactive');
         }
 
-        $('.btn-allergy.btn-light').each(function () {
+        $('.btn-allergy.btn-allergy-active').each(function () {
             select.push($(this).data('allergy'));
         });
 

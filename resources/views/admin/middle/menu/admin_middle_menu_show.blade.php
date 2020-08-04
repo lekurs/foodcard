@@ -47,33 +47,7 @@
     </div>
 
     <div class="products-table-container">
-        <table class="table mout-table products-table">
-            <thead>
-            <tr>
-                <th>entrées</th>
-                <th>type</th>
-                <th>libellé</th>
-                <th>action</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>@isset($product)<img src="{{asset('images/entree-froide.jpg')}}" alt="" class="img-fluid product-table-img-mini">@endisset <i class="fal fa-image fa-2x"></i></td>
-                <td>Entrée froide</td>
-                <td>Salade César</td>
-                <td><a href="#" class="btn mout-btn-login" data-product="">Renseigner ce plat</a></td>
-                <td><i class="fal fa-eye fa-2x"></i></td>
-            </tr>
-            <tr>
-                <td><img src="{{asset('images/entree-froide.jpg')}}" alt="" class="img-fluid product-table-img-mini"></td>
-                <td>Entrée froide</td>
-                <td>Salade César</td>
-                <td><a href="#" class="btn mout-btn-login" data-product="">Renseigner ce plat</a></td>
-                <td class="product-table-icon-container"><i class="fal fa-eye fa-2x"></i></td>
-            </tr>
-            </tbody>
-        </table>
+
     </div>
 
     <!-- Modal -->

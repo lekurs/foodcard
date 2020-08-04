@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Stripe\Product;
 
 class CatalogueCategoryLocale extends Model
@@ -51,6 +52,11 @@ class CatalogueCategoryLocale extends Model
 
     public function products(): BelongsToMany
     {
-        return $this->belongsToMany(Product::class, 'products_categories');
+        return $this->belongsToMany(CatalogueProduct::class, 'products_categories');
+    }
+
+    public function withProducts(): BelongsToMany
+    {
+        return $this->belongsToMany(CatalogueProduct::class, 'products_categories');
     }
 }

@@ -51,8 +51,6 @@ class CatalogueProductFormController extends Controller
     {
         $datas = $validator->all();
 
-//        dd($validator->all());
-
         $this->catalogueProductRepository->store($datas);
 
         return back()->with('success', 'Produit crée');

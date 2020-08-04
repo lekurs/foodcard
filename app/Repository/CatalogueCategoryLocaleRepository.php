@@ -5,14 +5,26 @@ namespace App\Repository;
 
 
 use App\Entity\CatalogueCategoryLocale;
+use App\Entity\CatalogueProduct;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 
 class CatalogueCategoryLocaleRepository
 {
+
     public function getAll(): Collection
     {
         return CatalogueCategoryLocale::whereLocaleId(1)->get();
+    }
+
+    public function getOneById(int $id) {
+
+        return CatalogueCategoryLocale::whereId($id)->first();
+    }
+
+    public function getOneByIdWithProducts(int $id) {
+
+        return CatalogueCategoryLocale::with('products.langueFR')->whereId($id)->first();
     }
 
     public function getAllWithCatalogueCategories(): Collection
@@ -39,10 +51,15 @@ class CatalogueCategoryLocaleRepository
         $query = DB::select("select c.* FROM catalogue_category_locales as c LEFT JOIN catalogue_categories as cc ON c.catalogue_category_id = cc.id WHERE cc.parent = " . $id . " AND c.locale_id = 1");
 
         foreach ($query as $row) {
-            $result[] = ['libelle' => $row->libelle, 'img_path' => $row->img_path];
+            $result[] = ['id' => $row->id, 'libelle' => $row->libelle, 'img_path' => $row->img_path];
         }
 
         return $result;
+    }
+
+    public function getAllProductsByIdCategory(int $id) {
+
+       return CatalogueCategoryLocale::with('products.langueFR')->whereId($id)->get();
     }
 
     public function getOneBySlug(string $slug): CatalogueCategoryLocale
