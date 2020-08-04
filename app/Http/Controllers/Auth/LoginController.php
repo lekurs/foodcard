@@ -66,8 +66,9 @@ class LoginController extends Controller
     public function login(Request $request): RedirectResponse
     {
        $credentials = $request->only('email', 'password');
+       $remember = $request->get('remember');
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, $remember)) {
             if (Auth::user()->role === 1) {
                 return redirect()->intended('admin');
             } else {

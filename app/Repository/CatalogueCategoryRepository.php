@@ -46,6 +46,20 @@ class CatalogueCategoryRepository
         return $return;
     }
 
+    public function getCategoriesLabelByParent()
+    {
+        $return = [];
+        $req = CatalogueCategory::with('categoryLocalesFR')->get();
+
+        foreach ($req as $row) {
+            if (!is_null($row->parent)) {
+                $return[$row->parent][$row->categoryLocalesFR()->first()->libelle][] = $row->categoryLocalesFR()->first()->img_path;
+            }
+        }
+
+        return $return;
+    }
+
     public function store(array $datas)
     {
         $catalogueCategory = new CatalogueCategory();
