@@ -56,6 +56,7 @@
                 <th>action</th>
                 <th></th>
             </tr>
+            </thead>
             <tbody>
             <tr>
                 <td>@isset($product)<img src="{{asset('images/entree-froide.jpg')}}" alt="" class="img-fluid product-table-img-mini">@endisset <i class="fal fa-image fa-2x"></i></td>
@@ -72,7 +73,6 @@
                 <td class="product-table-icon-container"><i class="fal fa-eye fa-2x"></i></td>
             </tr>
             </tbody>
-            </thead>
         </table>
     </div>
 
