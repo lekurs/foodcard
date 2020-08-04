@@ -4,6 +4,8 @@
 namespace App\Repository;
 
 
+use App\Entity\CatalogueCategory;
+use App\Entity\CatalogueCategoryLocale;
 use App\Entity\CatalogueProduct;
 use App\Entity\CatalogueProductFloat;
 use App\Entity\CatalogueProductLocale;
@@ -49,6 +51,7 @@ class CatalogueProductRepository
     public function store(array $datas): void
     {
         if (is_null($datas['product_id'])) {
+
             $product = new CatalogueProduct();
             $product->allergy = $datas['allergy'];
             $product->save();
@@ -66,6 +69,12 @@ class CatalogueProductRepository
                 $productLocale->save();
             }
 
+            foreach ($datas['category'] as $value) {
+                $category = CatalogueCategoryLocale::whereId($value)->first();
+
+                $product->categoriesLocale()->sync([$category->id]);
+            }
+
             $productFloats = new CatalogueProductFloat();
             foreach ($datas['float'] as $field => $value) {
                 $productFloats->$field = $value;
@@ -73,6 +82,7 @@ class CatalogueProductRepository
             }
             $productFloats->product_id = $lastId;
             $productFloats->save();
+
         } else {
             //On update
             $product = CatalogueProduct::whereId($datas['product_id'])->first();

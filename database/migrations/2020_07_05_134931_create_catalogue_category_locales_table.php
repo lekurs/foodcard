@@ -16,10 +16,10 @@ class CreateCatalogueCategoryLocalesTable extends Migration
         Schema::create('catalogue_category_locales', function (Blueprint $table) {
             $table->increments('id');
             $table->string('libelle');
-            $table->text('icon');
+            $table->text('icon')->nullable();
             $table->string('slug');
-            $table->text('color');
-            $table->string('img_path', 255);
+            $table->text('color')->nullable();
+            $table->string('img_path', 255)->nullable();
             $table->unsignedInteger('locale_id');
             $table->unsignedInteger('catalogue_category_id');
             $table->timestamps();

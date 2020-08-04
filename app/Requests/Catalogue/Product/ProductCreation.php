@@ -22,7 +22,8 @@ class ProductCreation extends FormRequest
             'special_price' => '',
             'buying_price' => '',
             'allergy' => '',
-            'homemade' => ''
+            'homemade' => '',
+            'category' => ''
         ];
     }
 }

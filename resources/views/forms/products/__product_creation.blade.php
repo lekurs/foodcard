@@ -34,6 +34,13 @@
     </div>
 
     <div class="floating-label">
+        @foreach($categories as $category)
+            <input type="checkbox" value="{{$category->id}}" name="category[]" id="category_{{$category->id}}">
+            <label for="category_{{$category->libelle}}">{{$category->libelle}}</label>
+        @endforeach
+    </div>
+
+    <div class="floating-label">
       <input type="text" name="float[price]" id="product_price" class="floating-input product_price" placeholder=" " value="@if(isset($product)){{$product->catalogueProductFloats()->first()->price}}@endif">
         <label for="price" class="float">Prix</label>
     </div>
@@ -51,26 +58,26 @@
     <div class="floating-label">
         <h5 class="allergy mout--regular">allergènes</h5>
         <div class="button-allergy-container">
-            <button type="button" class="btn @if(isset($allergy) && in_array('egg', $allergy)) btn-allergy-active @else btn-allergy-inactive @endif  btn-allergy" data-allergy="egg"><i class="far fa-egg-fried"></i><br> Oeufs</button>
-            <button type="button" class="btn @if(isset($allergy) && in_array('fish', $allergy)) btn-allergy-active @else btn-allergy-inactive @endif  btn-allergy" data-allergy="fish"><i class="fal fa-fish"></i><br> Poisson</button>
-            <button type="button" class="btn @if(isset($allergy) && in_array('crustace', $allergy)) btn-allergy-active @else btn-allergy-inactive @endif  btn-allergy" data-allergy="crustace"><i class="fal fa-fish"></i><br> Crustacé</button>
-            <button type="button" class="btn @if(isset($allergy) && in_array('mollusque', $allergy)) btn-allergy-active @else btn-allergy-inactive @endif  btn-allergy" data-allergy="mollusque"><i class="fal fa-fish"></i><br> Mollusque</button>
-            <button type="button" class="btn @if(isset($allergy) && in_array('gluten', $allergy)) btn-allergy-active @else btn-allergy-inactive @endif  btn-allergy" data-allergy="gluten"><i class="fal fa-wheat"></i><br> Gluten</button>
-            <button type="button" class="btn @if(isset($allergy) && in_array('arachides', $allergy)) btn-allergy-active @else btn-allergy-inactive @endif  btn-allergy" data-allergy="arachides"><i class="fal fa-wheat"></i><br> Arachides</button>
-            <button type="button" class="btn @if(isset($allergy) && in_array('nutts', $allergy)) btn-allergy-active @else btn-allergy-inactive @endif  btn-allergy" data-allergy="nutts"><i class="fal fa-acorn"></i><br> Fruits à coque</button>
-            <button type="button" class="btn @if(isset($allergy) && in_array('soja', $allergy)) btn-allergy-active @else btn-allergy-inactive @endif  btn-allergy" data-allergy="soja"><i class="fal fa-acorn"></i><br> Soja</button>
-            <button type="button" class="btn @if(isset($allergy) && in_array('sesame', $allergy)) btn-allergy-active @else btn-allergy-inactive @endif  btn-allergy" data-allergy="sesame"><i class="fal fa-acorn"></i><br> Sésame</button>
-            <button type="button" class="btn @if(isset($allergy) && in_array('celery', $allergy)) btn-allergy-active @else btn-allergy-inactive @endif  btn-allergy" data-allergy="celery"><i class="fal fa-fish"></i><br> Céleri</button>
-            <button type="button" class="btn @if(isset($allergy) && in_array('lupin', $allergy)) btn-allergy-active @else btn-allergy-inactive @endif  btn-allergy" data-allergy="lupin"><i class="fas fa-wheat"></i><br> Lupin</button>
-            <button type="button" class="btn @if(isset($allergy) && in_array('milk', $allergy)) btn-allergy-active @else btn-allergy-inactive @endif  btn-allergy" data-allergy="milk"><i class="fal fa-jug"></i> <br>Produits laitiers</button>
-            <button type="button" class="btn @if(isset($allergy) && in_array('mustard', $allergy)) btn-allergy-active @else btn-allergy-inactive @endif  btn-allergy" data-allergy="mustard"><i class="fal fa-fish"></i><br> Moutarde</button>
-            <button type="button" class="btn @if(isset($allergy) && in_array('sulfite', $allergy)) btn-allergy-active @else btn-allergy-inactive @endif  btn-allergy" data-allergy="sulfite"><i class="fal fa-fish"></i><br> Sulfite</button>
+            <button type="button" class="btn text-dark @if(isset($allergy) && in_array('egg', $allergy)) btn-allergy-active @else btn-allergy-inactive @endif  btn-allergy" data-allergy="egg"><i class="far fa-egg-fried"></i><br> Oeufs</button>
+            <button type="button" class="btn text-dark @if(isset($allergy) && in_array('fish', $allergy)) btn-allergy-active @else btn-allergy-inactive @endif  btn-allergy" data-allergy="fish"><i class="fal fa-fish"></i><br> Poisson</button>
+            <button type="button" class="btn text-dark @if(isset($allergy) && in_array('crustace', $allergy)) btn-allergy-active @else btn-allergy-inactive @endif  btn-allergy" data-allergy="crustace"><i class="fal fa-fish"></i><br> Crustacé</button>
+            <button type="button" class="btn text-dark @if(isset($allergy) && in_array('mollusque', $allergy)) btn-allergy-active @else btn-allergy-inactive @endif  btn-allergy" data-allergy="mollusque"><i class="fal fa-fish"></i><br> Mollusque</button>
+            <button type="button" class="btn text-dark @if(isset($allergy) && in_array('gluten', $allergy)) btn-allergy-active @else btn-allergy-inactive @endif  btn-allergy" data-allergy="gluten"><i class="fal fa-wheat"></i><br> Gluten</button>
+            <button type="button" class="btn text-dark @if(isset($allergy) && in_array('arachides', $allergy)) btn-allergy-active @else btn-allergy-inactive @endif  btn-allergy" data-allergy="arachides"><i class="fal fa-wheat"></i><br> Arachides</button>
+            <button type="button" class="btn text-dark @if(isset($allergy) && in_array('nutts', $allergy)) btn-allergy-active @else btn-allergy-inactive @endif  btn-allergy" data-allergy="nutts"><i class="fal fa-acorn"></i><br> Fruits à coque</button>
+            <button type="button" class="btn text-dark @if(isset($allergy) && in_array('soja', $allergy)) btn-allergy-active @else btn-allergy-inactive @endif  btn-allergy" data-allergy="soja"><i class="fal fa-acorn"></i><br> Soja</button>
+            <button type="button" class="btn text-dark @if(isset($allergy) && in_array('sesame', $allergy)) btn-allergy-active @else btn-allergy-inactive @endif  btn-allergy" data-allergy="sesame"><i class="fal fa-acorn"></i><br> Sésame</button>
+            <button type="button" class="btn text-dark @if(isset($allergy) && in_array('celery', $allergy)) btn-allergy-active @else btn-allergy-inactive @endif  btn-allergy" data-allergy="celery"><i class="fal fa-fish"></i><br> Céleri</button>
+            <button type="button" class="btn text-dark @if(isset($allergy) && in_array('lupin', $allergy)) btn-allergy-active @else btn-allergy-inactive @endif  btn-allergy" data-allergy="lupin"><i class="fas fa-wheat"></i><br> Lupin</button>
+            <button type="button" class="btn text-dark @if(isset($allergy) && in_array('milk', $allergy)) btn-allergy-active @else btn-allergy-inactive @endif  btn-allergy" data-allergy="milk"><i class="fal fa-jug"></i> <br>Produits laitiers</button>
+            <button type="button" class="btn text-dark @if(isset($allergy) && in_array('mustard', $allergy)) btn-allergy-active @else btn-allergy-inactive @endif  btn-allergy" data-allergy="mustard"><i class="fal fa-fish"></i><br> Moutarde</button>
+            <button type="button" class="btn text-dark @if(isset($allergy) && in_array('sulfite', $allergy)) btn-allergy-active @else btn-allergy-inactive @endif  btn-allergy" data-allergy="sulfite"><i class="fal fa-fish"></i><br> Sulfite</button>
         </div>
         <textarea name="allergy" class="textarea-allergy" id="textarea-allergy">@if(isset($allergy)) {{implode('|', $allergy)}} @endif</textarea>
     </div>
 
     <div class="floating-label">
-        <input type="checkbox" value="1" name="homemade" id="homemade">
+        <input type="checkbox" value="1" name="homemade" id="homemade" @if(isset($product) && $product->homemade = 1) checked @endif>
         <label for="homemade">Fait maison</label>
     </div>
 
