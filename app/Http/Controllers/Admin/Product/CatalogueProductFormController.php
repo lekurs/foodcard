@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin\Product;
 
 use App\Entity\Locale;
 use App\Http\Controllers\Controller;
+use App\Repository\CatalogueCategoryLocaleRepository;
 use App\Repository\CatalogueProductLocaleRepository;
 use App\Repository\CatalogueProductRepository;
 use App\Repository\LocaleRepository;
@@ -25,22 +26,32 @@ class CatalogueProductFormController extends Controller
     private $catalogueProductRepository;
 
     /**
+     * @var CatalogueCategoryLocaleRepository $catalogueCategoryLocaleRepository
+     */
+    private CatalogueCategoryLocaleRepository $catalogueCategoryLocaleRepository;
+
+    /**
      * CatalogueProductFormController constructor.
      * @param CatalogueProductLocaleRepository $catalogueProductLocaleRepository
      * @param CatalogueProductRepository $catalogueProductRepository
+     * @param CatalogueCategoryLocaleRepository $catalogueCategoryLocaleRepository
      */
     public function __construct(
         CatalogueProductLocaleRepository $catalogueProductLocaleRepository,
-        CatalogueProductRepository $catalogueProductRepository
+        CatalogueProductRepository $catalogueProductRepository,
+        CatalogueCategoryLocaleRepository $catalogueCategoryLocaleRepository
     ) {
         $this->catalogueProductLocaleRepository = $catalogueProductLocaleRepository;
         $this->catalogueProductRepository = $catalogueProductRepository;
+        $this->catalogueCategoryLocaleRepository = $catalogueCategoryLocaleRepository;
     }
 
 
     public function store(ProductCreation $validator)
     {
         $datas = $validator->all();
+
+//        dd($validator->all());
 
         $this->catalogueProductRepository->store($datas);
 
@@ -54,17 +65,20 @@ class CatalogueProductFormController extends Controller
         }
 
         $locales = Locale::all();
+        $categories = $this->catalogueCategoryLocaleRepository->getAllWithCatalogueCategories();
 
         if(request()->request->get('id') != "") {
             $allergy = explode('|' , $product->allergy);
             $html = \view('forms.products.__product_creation', [
                 'product' => $product,
                 'locales' => $locales,
-                'allergy' => $allergy
+                'allergy' => $allergy,
+                'categories' => $categories
             ]);
         } else {
             $html = \view('forms.products.__product_creation', [
-                'locales' => $locales
+                'locales' => $locales,
+                'categories' => $categories
             ]);
         }
 

@@ -32,6 +32,7 @@ class StoreSeeder extends Seeder
             $store->address = $faker->address;
             $store->zip = str_pad(rand(1, 95000), 6, 0,  STR_PAD_LEFT);
             $store->city = $faker->city;
+            $store->main = rand(0, 1);
             $store->active = rand(0, 1);
             $store->slug = Str::slug($name);
             $store->store_type_id = rand(1, 5);

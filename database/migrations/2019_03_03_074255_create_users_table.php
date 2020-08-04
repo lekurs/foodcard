@@ -32,8 +32,6 @@ class CreateUsersTable extends Migration
 
             $table->foreign('user_fonction_id')->references('id')
                 ->on('user_fonctions');
-//            $table->foreign('store_id')->references('id')
-//                ->on('stores');
             $table->foreign('user_role_id')->references('id')
                 ->on('user_roles');
         });
