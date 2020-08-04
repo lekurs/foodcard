@@ -3,8 +3,6 @@
 
 namespace App\Repository;
 
-
-use App\Entity\CatalogueCategory;
 use App\Entity\CatalogueCategoryLocale;
 use App\Entity\CatalogueProduct;
 use App\Entity\CatalogueProductFloat;
