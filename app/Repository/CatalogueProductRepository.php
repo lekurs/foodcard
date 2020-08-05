@@ -7,6 +7,8 @@ use App\Entity\CatalogueCategoryLocale;
 use App\Entity\CatalogueProduct;
 use App\Entity\CatalogueProductFloat;
 use App\Entity\CatalogueProductLocale;
+use App\Entity\CatalogueProductMedia;
+use App\Entity\Store;
 use Illuminate\Database\Eloquent\Collection;
 
 class CatalogueProductRepository
@@ -52,7 +54,17 @@ class CatalogueProductRepository
 
             $product = new CatalogueProduct();
             $product->allergy = $datas['allergy'];
+
+            if(!is_null($datas['store_id'])) {
+                $product->visibility = 'local';
+                }
+
             $product->save();
+
+            if(!is_null($datas['store_id'])) {
+                $store = Store::find($datas['store_id']);
+                $store->products()->sync([$product->id]);
+            }
             $lastId = $product->id;
 
             foreach($datas['locale'] as $localeID => $values) {
@@ -80,6 +92,15 @@ class CatalogueProductRepository
             }
             $productFloats->product_id = $lastId;
             $productFloats->save();
+
+            if (isset($datas['image']) && !is_null($datas['image'])) {
+                foreach ($datas['image'] as $file) {
+                    $productMedia = new CatalogueProductMedia();
+                    $productMedia->path = $file->getClientOriginalName();
+                    $productMedia->product_id = $product->id;
+                    $productMedia->save();
+                }
+            }
 
         } else {
             //On update

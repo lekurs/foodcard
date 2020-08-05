@@ -23,7 +23,9 @@ class ProductCreation extends FormRequest
             'buying_price' => '',
             'allergy' => '',
             'homemade' => '',
-            'category' => ''
+            'category' => '',
+            'store_id' => '',
+            'images' => ''
         ];
     }
 }

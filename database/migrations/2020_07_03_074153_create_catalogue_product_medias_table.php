@@ -16,7 +16,7 @@ class CreateCatalogueProductMediasTable extends Migration
         Schema::create('catalogue_product_medias', function (Blueprint $table) {
             $table->increments('id');
             $table->string('path', 255)->unique();
-            $table->integer('position')->unsigned();
+            $table->integer('position')->unsigned()->nullable();
             $table->timestamps();
             $table->unsignedInteger('product_id');
 

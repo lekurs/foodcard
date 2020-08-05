@@ -146,6 +146,13 @@
 <script src="{{asset('vendor/nestable/nestable.js')}}"></script>
 
 <script src="{{asset('js/admin/bo-mout-nav-bar.js')}}"></script>
+<script>
+    $(document).ready(function () {
+        $(".alert-success").fadeTo(2000, 500).slideUp(500, function(){
+            $(".alert-success").slideUp(500);
+        });
+    });
+</script>
 @yield('js')
 
 </body>

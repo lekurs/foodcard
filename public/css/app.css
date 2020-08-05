@@ -1759,6 +1759,23 @@ input:checked + .slider:before {
   transition: all 0.3s ease-in-out !important;
 }
 
+.mout-btn-creation {
+  border: none !important;
+  border-radius: 25px !important;
+  text-transform: lowercase !important;
+  background: #00d136;
+  background: linear-gradient(90deg, #00d136 0%, #098a2a 50%, #11481f 100%);
+  width: 70%;
+  text-align: center;
+  margin-top: 1em;
+  position: relative;
+}
+
+.mout-btn-creation span {
+  position: absolute;
+  right: 20px;
+}
+
 table.dataTable thead th,
 table.dataTable thead td,
 table.dataTable.no-footer {
@@ -2924,6 +2941,7 @@ div.my-menu-container button.btn-my-category span i {
 div.my-menu-container a.btn-my-category span svg,
 div.my-menu-container button.btn-my-category span svg {
   width: 50%;
+  fill: #ffffff;
 }
 
 div.my-menu-container a:hover,
@@ -2944,30 +2962,67 @@ div.mout-admin-middle-content-panel div.my-menu-category-container {
   display: flex;
 }
 
-div.mout-admin-middle-content-panel div.my-menu-category-container div.my-menu-category-buttons-container {
-  width: 40%;
+div.mout-admin-middle-content-panel div.my-menu-category-buttons-container {
+  margin: 3em auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
-div.mout-admin-middle-content-panel div.my-menu-category-container div.my-menu-container#my-menu-container-creation {
-  width: 60%;
-  margin: 0;
+div.mout-admin-middle-content-panel div.my-menu-category-buttons-container div.my-menu-category-others-buttons-container {
+  display: flex;
+  margin-top: 1em;
 }
 
-div.mout-admin-middle-content-panel div.my-menu-category-container div.my-menu-container#my-menu-container-creation a,
-div.mout-admin-middle-content-panel div.my-menu-category-container div.my-menu-container#my-menu-container-creation button {
+div.mout-admin-middle-content-panel div.my-menu-category-buttons-container div.my-menu-category-others-buttons-container a.btn-my-category {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+}
+
+div.mout-admin-middle-content-panel div.my-menu-category-buttons-container a.btn-my-category {
+  width: 40px;
+  height: 40px;
+  font-size: 12px;
+  border: none;
+  border-radius: 15px;
+  color: #ffffff;
+  margin: 0 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+div.mout-admin-middle-content-panel div.my-menu-category-buttons-container a.btn-my-category.active {
   width: 100px;
   height: 100px;
   font-size: 16px;
 }
 
-div.mout-admin-middle-content-panel div.my-menu-category-container div.my-menu-container#my-menu-container-creation a span i,
-div.mout-admin-middle-content-panel div.my-menu-category-container div.my-menu-container#my-menu-container-creation button span i {
+div.mout-admin-middle-content-panel div.my-menu-category-buttons-container a.btn-my-category.active span i {
   font-size: 40px;
+  color: #ffffff;
 }
 
-div.mout-admin-middle-content-panel div.my-menu-category-container div.my-menu-container#my-menu-container-creation a svg,
-div.mout-admin-middle-content-panel div.my-menu-category-container div.my-menu-container#my-menu-container-creation button svg {
+div.mout-admin-middle-content-panel div.my-menu-category-buttons-container a.btn-my-category.active svg {
   width: 40%;
+  fill: #ffffff;
+}
+
+div.mout-admin-middle-content-panel div.my-menu-category-buttons-container a.btn-my-category span i {
+  font-size: 20px;
+  color: #ffffff;
+}
+
+div.mout-admin-middle-content-panel div.my-menu-category-buttons-container a.btn-my-category svg {
+  width: 22px;
+  fill: #ffffff;
+}
+
+div.mout-admin-middle-content-panel div.my-menu-add-product-container {
+  display: none;
 }
 
 div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container {
@@ -3104,6 +3159,10 @@ div.my-submenu-category-container div.submenu-category-content {
   margin: 0 10px 4em;
   cursor: pointer;
   border-right: 1px solid #000000;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 div.my-submenu-category-container div.submenu-category-content:nth-child(4n) {
