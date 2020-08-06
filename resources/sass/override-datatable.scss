@@ -1,0 +1,26 @@
+table.dataTable thead th,
+table.dataTable thead td,
+table.dataTable.no-footer {
+    border-bottom: 0 !important;
+}
+
+
+div.dropdown-actions {
+
+    & a {
+        color: $font-bo-color;
+
+    }
+
+    & > a {
+        font-size: 18px;
+    }
+
+    & div.dropdown-menu {
+        border-top: 1px solid $font-bo-color;
+        & a.dropdown-item {
+            font-size: 13px;
+            line-height: 15px;
+        }
+    }
+}

@@ -1,0 +1,22 @@
+$bo-font: "Assistant";
+$arista-regular: "AristaProAlternate";
+$arita-fat: "AristaProAlternateFat";
+$arista-extra-light: "AristaProAlternateHairline";
+$arista-light: "AristaProAlternateLight";
+$bo-font-awesome: "Font Awesome 5 Pro";
+
+.mout--regular {
+    font-family: $arista-regular;
+}
+
+.mout--light {
+    font-family: $arista-light;
+}
+
+.mout--ex-light {
+    font-family: $arista-extra-light;
+}
+
+.mout--fat {
+    font-family: $arita-fat;
+}

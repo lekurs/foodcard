@@ -1,0 +1,26 @@
+div.mout-bo-top-search-bar {
+
+    & form {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        align-items: center;
+
+        & div.floating-label {
+            width: 30%;
+            margin-bottom: 0 !important;
+        }
+    }
+}
+
+//Categories
+input.category_label:not(.category_1) {
+    display: none;
+}
+
+//Produits
+input.product_label:not(.product_1),
+div.textarea-container:not(.product_1),
+textarea.textarea-allergy {
+    display: none;
+}

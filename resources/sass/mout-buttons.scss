@@ -1,0 +1,179 @@
+// Toggle switch button //
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 20px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #e30000;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 12px;
+    width: 12px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #349360;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #349360;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(30px);
+    -ms-transform: translateX(30px);
+    transform: translateX(30px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+// !!Toggle switch button!! //
+
+[class*=" mout-btn-"] {
+    color: #ffffff !important;
+    text-transform: uppercase;
+    font-weight: 700 !important;
+
+    &:hover {
+        .btn-label {
+            opacity: 1;
+            margin-right: 10px;
+
+            & i {
+                width: auto;
+            }
+        }
+    }
+}
+
+.mout-btn-add {
+    background-color: #D90000 !important;
+}
+
+.mout-btn-register {
+    background-color: #FF7F00 !important;
+    border-radius: 20px !important;
+    padding: .275rem 1rem !important;
+    text-transform: lowercase !important;
+}
+
+.mout-btn-edit {
+    background-color: #7A63F9 !important;
+}
+
+.mout-btn-login {
+    background-color: #00C332 !important;
+    border-radius: 20px !important;
+    padding: .275rem 1rem !important;
+    text-transform: lowercase !important;
+}
+
+.mout-btn-other {
+    background-color: #03DBC2 !important;
+}
+
+.mout-btn-pdf {
+    background-color: #FF9D00 !important;
+}
+
+.btn-label {
+    opacity: 0;
+
+    & i {
+        width: 0;
+    }
+}
+
+.mout-btn-add-middle {
+    background-color: #FF0000 !important;
+    display: flex;
+
+    &.active {
+        background-color: #00C332 !important;
+    }
+}
+
+.mout-btn-edit-middle {
+    background-color: #FFB100 !important;
+}
+
+
+.btn-my-menu {
+    color: $bo-black-color;
+}
+
+.btn-allergy {
+    padding: .6rem .75rem !important;
+    border: none !important;
+    width: 100px;
+    height: 100px;
+    border-radius: 15px;
+    line-height: 16px;
+    color: #ffffff !important;
+
+    & i {
+        font-size: 40px;
+    }
+
+    & svg {
+
+    }
+}
+
+.btn-allergy-active {
+    border: none !important;
+    background: rgb(253,234,0);
+    background: linear-gradient(120deg, rgba(253,234,0,1) 0%, rgba(254,181,0,1) 50%, rgba(255,127,0,1) 100%);
+    transition: all .3s ease-in-out !important;
+}
+
+.mout-btn-creation {
+    border: none !important;
+    border-radius: 25px !important;
+    text-transform: lowercase !important;
+    background: rgb(0,209,54);
+    background: linear-gradient(90deg, rgba(0,209,54,1) 0%, rgba(9,138,42,1) 50%, rgba(17,72,31,1) 100%);
+    width: 70%;
+    text-align: center;
+    margin-top: 1em;
+    position: relative;
+
+    & span {
+        position: absolute;
+        right: 20px;
+    }
+}
