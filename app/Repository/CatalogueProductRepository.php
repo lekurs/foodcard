@@ -55,13 +55,13 @@ class CatalogueProductRepository
             $product = new CatalogueProduct();
             $product->allergy = $datas['allergy'];
 
-            if(!is_null($datas['store_id'])) {
+            if(isset($datas['store_id']) && !is_null($datas['store_id'])) {
                 $product->visibility = 'local';
                 }
 
             $product->save();
 
-            if(!is_null($datas['store_id'])) {
+            if(isset($datas['store_id']) && !is_null($datas['store_id'])) {
                 $store = Store::find($datas['store_id']);
                 $store->products()->sync([$product->id]);
             }
@@ -73,7 +73,9 @@ class CatalogueProductRepository
                     $productLocale->$field = $value;
                 }
 
-                $productLocale->homemade = $datas['homemade'];
+                if(isset($datas['homemade']) && !is_null($datas['homemade'])) {
+                    $productLocale->homemade = $datas['homemade'];
+                }
                 $productLocale->locale_id = $localeID;
                 $productLocale->product_id = $lastId;
                 $productLocale->save();
@@ -94,9 +96,10 @@ class CatalogueProductRepository
             $productFloats->save();
 
             if (isset($datas['image']) && !is_null($datas['image'])) {
-                foreach ($datas['image'] as $file) {
+                foreach ($datas['image'] as $key => $file) {
                     $productMedia = new CatalogueProductMedia();
                     $productMedia->path = $file->getClientOriginalName();
+                    $productMedia->position = $key;
                     $productMedia->product_id = $product->id;
                     $productMedia->save();
                 }

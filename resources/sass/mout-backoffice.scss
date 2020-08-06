@@ -785,6 +785,7 @@ li.placeholder-list {
 
 //Add Elements for forms
 div.slider-add-form {
+    display: none;
     position: absolute;
     top: 0;
     right: -100%;
@@ -793,6 +794,7 @@ div.slider-add-form {
     transition: all .5s ease-in-out;
 
     &.active {
+        display: block;
         width: 50%;
         right: 0;
     }

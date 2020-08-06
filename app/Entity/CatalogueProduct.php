@@ -20,7 +20,7 @@ class CatalogueProduct extends Model
 
     public function catalogueProductMedias(): HasMany
     {
-        return $this->hasMany(CatalogueProductMedia::class);
+        return $this->hasMany(CatalogueProductMedia::class, 'product_id');
     }
 
     public function catalogueProductCategories(): HasMany

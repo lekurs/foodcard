@@ -12,8 +12,8 @@
     @foreach($category->products as $product)
     <tr>
         <td>
-            @if(!is_null($category->img_path))
-                <img src="{{ asset('storage/category/' . $category->slug . '/' . $category->img_path) }}" alt="{{ $category->libelle }}"
+            @if(isset($product->catalogueProductMedias[0]) && !is_null($product->catalogueProductMedias[0]->path))
+                <img src="{{ asset('storage/products/' . '/' . $product->catalogueProductMedias[0]->path) }}" alt="{{ $category->libelle }}"
                      class="img-fluid product-table-img-mini">
             @else
                 <i class="fal fa-image fa-2x"></i>

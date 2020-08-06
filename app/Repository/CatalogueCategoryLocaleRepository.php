@@ -24,7 +24,7 @@ class CatalogueCategoryLocaleRepository
 
     public function getOneByIdWithProducts(int $id) {
 
-        return CatalogueCategoryLocale::with('products.langueFR')->whereId($id)->first();
+        return CatalogueCategoryLocale::with('products.langueFR', 'products.catalogueProductMedias')->whereId($id)->first();
     }
 
     public function getAllWithCatalogueCategories(): Collection
@@ -55,6 +55,10 @@ class CatalogueCategoryLocaleRepository
         }
 
         return $result;
+    }
+
+    public function getAllProductsWithMediasByIdCategory(int $id) {
+        return CatalogueCategoryLocale::with('products.catalogueProductMedias')->whereId($id)->get();
     }
 
     public function getAllProductsByIdCategory(int $id) {

@@ -53,6 +53,25 @@ class CatalogueProductFormController extends Controller
 
         $this->catalogueProductRepository->store($datas);
 
+        if ($datas['image']) {
+            foreach ($datas['image'] as $file) {
+
+                $mimeTypes = ['image/png', 'image/jpeg', 'image/gif', 'image/svg+xml'];
+
+                if ($file->getError() !== 0) {
+
+                    return back()->with('error', request()->file()->getErrorMessage());
+                }
+
+                if (!in_array($file->getMimeType(), $mimeTypes)) {
+
+                    return back()->with('error', 'Pas le bon format de fichier');
+                }
+
+                $file->storeAs('/public/products/', $file->getClientOriginalName());
+            }
+        }
+
         return back()->with('success', 'Produit crée');
     }
 
