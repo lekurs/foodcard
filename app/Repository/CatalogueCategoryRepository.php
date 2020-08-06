@@ -35,6 +35,10 @@ class CatalogueCategoryRepository
         return $categories;
     }
 
+    public function getOneById(int $id) {
+        return CatalogueCategory::whereId($id)->first();
+    }
+
     public function getCategoriesLabel()
     {
         $return = [];

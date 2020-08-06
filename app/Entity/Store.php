@@ -53,4 +53,9 @@ class Store extends Model
     {
         return $query->whereMain(true);
     }
+
+    public function products(): BelongsToMany
+    {
+        return $this->belongsToMany(CatalogueProduct::class, 'stores_products');
+    }
 }

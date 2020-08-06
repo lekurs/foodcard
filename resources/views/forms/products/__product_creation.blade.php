@@ -1,4 +1,4 @@
-<form action="{{route('productStore')}}" method="post">
+<form action="{{route('productStore')}}" method="post" enctype="multipart/form-data">
     @csrf
     @include('flashes.errors')
     <div class="input-group floating-label">
@@ -32,6 +32,12 @@
             </div>
         @endforeach
     </div>
+
+    <div class="floating-label">
+            <input type="file" name="image[]" multiple id="image">
+        <label for="image[]">Ajouter vos photos</label>
+    </div>
+
 
     <div class="floating-label">
         @foreach($categories as $category)

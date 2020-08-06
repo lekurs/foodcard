@@ -14,6 +14,8 @@ class CatalogueProductMedia extends Model
         'position'
     ];
 
+    protected $table = 'catalogue_product_medias';
+
     public function catalogueProduct(): BelongsTo
     {
         return $this->belongsTo(CatalogueProduct::class);

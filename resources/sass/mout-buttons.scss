@@ -160,3 +160,20 @@ input:checked + .slider:before {
     background: linear-gradient(120deg, rgba(253,234,0,1) 0%, rgba(254,181,0,1) 50%, rgba(255,127,0,1) 100%);
     transition: all .3s ease-in-out !important;
 }
+
+.mout-btn-creation {
+    border: none !important;
+    border-radius: 25px !important;
+    text-transform: lowercase !important;
+    background: rgb(0,209,54);
+    background: linear-gradient(90deg, rgba(0,209,54,1) 0%, rgba(9,138,42,1) 50%, rgba(17,72,31,1) 100%);
+    width: 70%;
+    text-align: center;
+    margin-top: 1em;
+    position: relative;
+
+    & span {
+        position: absolute;
+        right: 20px;
+    }
+}

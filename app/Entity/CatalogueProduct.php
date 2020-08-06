@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class CatalogueProduct extends Model
 {
@@ -19,7 +20,7 @@ class CatalogueProduct extends Model
 
     public function catalogueProductMedias(): HasMany
     {
-        return $this->hasMany(CatalogueProductMedia::class);
+        return $this->hasMany(CatalogueProductMedia::class, 'product_id');
     }
 
     public function catalogueProductCategories(): HasMany
@@ -32,9 +33,9 @@ class CatalogueProduct extends Model
         return $this->hasMany(CatalogueProductLocale::class, 'product_id');
     }
 
-    public function langueFR()
+    public function langueFR(): HasOne
     {
-        return $this->locales()->where('locale_id', '=', 1);
+        return $this->hasOne(CatalogueProductLocale::class, 'product_id')->where('locale_id', '=', 1);
     }
 
     public function catalogueProductFloats(): HasMany

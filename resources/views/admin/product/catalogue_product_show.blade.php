@@ -17,7 +17,7 @@
                     @foreach($products as $product)
                         <tr>
                             <td>{{$loop->index+1}}</td>
-                            <td>{{$product->langueFR()->first()->libelle}}</td>
+                            <td>{{$product->langueFR->libelle}}</td>
                             <td>
                                 <div class="dropdown-actions text-right">
                                     <a href="#" class="dropdown-actions-icons" role="button" id="dropdown-action-{{$product->id}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -67,4 +67,5 @@
             });
         });
     </script>
+
 @endsection

@@ -16,7 +16,9 @@
                 <div class="input-group-prepend choose-langage">
                     <div class="mout-dropdown">
                         <input class="mout-dropdown-toggle" type="text">
-                        <div id="chTxt" class="mout-dropdown-text"><img src="{{asset('images/flags/'. $locales->first()->label . '.png')}}" class="img-fluid choice-lg" data-id="{{$locales->first()->id}}"></div>
+                        <div id="chTxt" class="mout-dropdown-text">
+                            <img src="{{asset('images/flags/'. $locales->first()->label . '.png')}}" class="img-fluid choice-lg" data-id="{{$locales->first()->id}}">
+                        </div>
                         <ul class="mout-dropdown-content">
                             @foreach($locales as $locale)
                             <li>
@@ -29,15 +31,19 @@
                     </div>
                 </div>
                 @foreach($locales as $locale)
-                    <input type="text" name="locale[{{$locale->id}}][libelle]" id="product_{{$locale->id}}" class="form-control floating-input product_{{$locale->id}} product_label" placeholder=" " value="@if(isset($product)){{$product->locales()->whereLocaleId($locale->id)->first()->libelle}}@endif">
+                    <input type="text" name="locale[{{$locale->id}}][libelle]"
+                           id="product_{{$locale->id}}"
+                           class="form-control floating-input product_{{$locale->id}} product_label"
+                           placeholder=" "
+                           value="@if(isset($product)){{$product->locales()->whereLocaleId($locale->id)->first()->libelle}}@endif">
                     <label for="locale[{{$locale->id}}][libelle]" class="float">Intitulé</label>
                 @endforeach
                 <div class="input-group-append category">
-                    <span class="btn btn-search-menu btn-my-category mout--regular" id="{{$categoryInProgress->slug}}" style="{{$categoryInProgress->color}}"><span class="btn-my-menu-icon-container">{!! $categoryInProgress->icon !!}</span>{{$categoryInProgress->libelle}}</span>
+                    <span class="btn btn-search-menu btn-my-category mout--regular" id="{{$category->slug}}" style="{{$category->color}}">
+                        <span class="btn-my-menu-icon-container">{!! $category->icon !!}</span>
+                        {{$category->libelle}}
+                    </span>
                 </div>
-
-                <input type="hidden" name="product_id" value="@if(isset($product)){{$product->id}}@endif" id="product">
-                <input type="hidden" name="store_id" value="@if(request()->session()->get('store')){{request()->session()->get('store')->id}}@endif" id="store">
             </div>
 
             <div class="floating-label">
@@ -50,6 +56,10 @@
                     </div>
                 @endforeach
             </div>
+
+            <input type="hidden" id="category" name="category[]" value="{{ $category->catalogue_category_id }}">
+            <input type="hidden" name="product_id" value="@if(isset($product)){{$product->id}}@endif" id="product">
+            <input type="hidden" name="store_id" value="@if(request()->session()->get('store')){{request()->session()->get('store')->id}}@endif" id="store">
 
             <div class="floating-label">
                 <input type="text" name="float[price]" id="product_price" class="floating-input product_price" placeholder=" " value="@if(isset($product)){{$product->catalogueProductFloats()->first()->price}}@endif">

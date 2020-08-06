@@ -10,5 +10,17 @@ $(document).ready(function () {
 
             elt.html(data);
        });
+
+       let subMenu = $('.submenu-category-content');
+
+       $('body').on('click', '.submenu-category-content', function() {
+           let idSubcategory = $(this).attr('data-subcategory');
+
+           $.post('/foodcard/admin/ma-carte/products', {id: idSubcategory}, function (data) {
+                let elt = $('.products-table-container');
+
+                elt.html(data);
+           });
+       });
    })
 });
