@@ -2320,6 +2320,14 @@ div.mout-admin-middle-container form {
     display: none;
   }
 
+  div.my-menu-container {
+    width: 65%;
+  }
+
+  div.my-menu-container#category-menu {
+    width: 50%;
+  }
+
   div.mout-admin-middle-main-panel {
     width: calc(100% - 200px);
   }
@@ -2399,6 +2407,14 @@ div.mout-admin-middle-container form {
     font-size: 20px;
   }
 
+  div.my-menu-container {
+    width: 50%;
+  }
+
+  div.my-menu-container#category-menu {
+    width: 35%;
+  }
+
   div.mout-admin-middle-main-panel {
     width: calc(100% - 400px);
   }
@@ -2461,6 +2477,10 @@ header div.mout-admin-middle-header-container {
 header div.mout-admin-middle-header-container#home {
   background: url(/images/foodcard-admin-middle-header.jpg?8569772b0a2232c34461999ae02b85e7) no-repeat;
   background-size: cover;
+}
+
+header div.mout-admin-middle-header-container#home H2 {
+  margin-left: inherit !important;
 }
 
 header div.mout-admin-middle-header-container#store {
@@ -2886,7 +2906,6 @@ div.min-nav-container a.btn-min-nav {
 div.my-menu-container {
   display: flex;
   justify-content: space-around;
-  width: 50%;
   margin: 2em auto 0;
 }
 
@@ -2949,10 +2968,6 @@ div.my-menu-container button.btn-my-category span svg {
 div.my-menu-container a:hover,
 div.my-menu-container button:hover {
   color: #ffffff !important;
-}
-
-div.my-menu-container#category-menu {
-  width: 35%;
 }
 
 div.my-menu-container#category-menu-modal {

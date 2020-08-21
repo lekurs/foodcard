@@ -50,6 +50,14 @@
         }
     }
 
+    div.my-menu-container {
+        width: 65%;
+
+        &#category-menu {
+            width: 50%;
+        }
+    }
+
     div.mout-admin-middle-main-panel {
         width: calc(100% - 200px);
 
@@ -132,6 +140,14 @@
         }
     }
 
+    div.my-menu-container {
+        width: 50%;
+
+        &#category-menu {
+            width: 35%;
+        }
+    }
+
     div.mout-admin-middle-main-panel {
         width: calc(100% - 400px);
 
@@ -195,6 +211,10 @@ header {
         &#home {
             background: url("images/admin/middle/foodcard-admin-middle-header.jpg") no-repeat;
             background-size: cover;
+
+            & H2 {
+                margin-left: inherit !important;
+            }
         }
 
         &#store {
@@ -630,7 +650,7 @@ div.min-nav-container {
 div.my-menu-container {
     display: flex;
     justify-content: space-around;
-    width: 50%;
+    //width: 50%;
     margin: 2em auto 0;
 
     & a, button {
@@ -684,10 +704,10 @@ div.my-menu-container {
             color: #ffffff !important;
         }
     }
-
-    &#category-menu {
-        width: 35%;
-    }
+    //
+    //&#category-menu {
+    //    width: 35%;
+    //}
 
     &#category-menu-modal {
         width: 100%;
