@@ -4,8 +4,8 @@
 
     <div class="mout-admin-middle-menus-container">
         <div class="images">
-            <img src="{{asset('images/admin/middle/header-store.jpg')}}" alt="">
-            <img src="{{asset('images/admin/middle/foodcard-admin-middle-header.jpg')}}" alt="">
+{{--            <img src="{{asset('images/admin/middle/header-store.jpg')}}" alt="">--}}
+{{--            <img src="{{asset('images/admin/middle/foodcard-admin-middle-header.jpg')}}" alt="">--}}
         </div>
     </div>
 
