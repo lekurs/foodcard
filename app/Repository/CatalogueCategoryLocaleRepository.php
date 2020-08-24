@@ -27,6 +27,16 @@ class CatalogueCategoryLocaleRepository
         return CatalogueCategoryLocale::with('products.langueFR', 'products.catalogueProductMedias')->whereId($id)->first();
     }
 
+    public function getAllProductsByCategory(int $id) {
+
+         $category = CatalogueCategoryLocale::with('products', 'products.langueFR')->whereId($id)->first();
+
+         dd($category->products()->get());
+
+         return $products;
+
+    }
+
     public function getAllWithCatalogueCategories(): Collection
     {
         return CatalogueCategoryLocale::whereLocaleId(1)->with('catalogueCategoryByOrder')->get();

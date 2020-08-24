@@ -10,6 +10,7 @@ use App\Entity\CatalogueProductLocale;
 use App\Entity\CatalogueProductMedia;
 use App\Entity\Store;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\DB;
 
 class CatalogueProductRepository
 {
