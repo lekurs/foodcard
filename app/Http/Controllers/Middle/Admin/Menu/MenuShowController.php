@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Middle\Admin\Menu;
 use App\Http\Controllers\Middle\AdminMiddleController;
 use App\Repository\CatalogueCategoryLocaleRepository;
 use App\Repository\CatalogueCategoryRepository;
+use App\Repository\CatalogueProductRepository;
 use App\Repository\StoreRepository;
 use App\Repository\UserFonctionRepository;
 use App\Repository\UserRepository;
@@ -29,18 +30,22 @@ class MenuShowController extends AdminMiddleController
      */
     private CatalogueCategoryRepository $catalogueCategoryRepository;
 
+    private CatalogueProductRepository $catalogueProductRepository;
+
     public function __construct(
         UserRepository $userRepository,
         UserFonctionRepository $userFonctionRepository,
         StoreRepository $storeRepository,
         CatalogueCategoryLocaleRepository $catalogueCategoryLocaleRepository,
-        CatalogueCategoryRepository $catalogueCategoryRepository
+        CatalogueCategoryRepository $catalogueCategoryRepository,
+        CatalogueProductRepository $catalogueProductRepository
     ) {
         parent::__construct($userFonctionRepository, $storeRepository);
 
         $this->userRepository = $userRepository;
         $this->catalogueCategoryLocaleRepository = $catalogueCategoryLocaleRepository;
         $this->catalogueCategoryRepository = $catalogueCategoryRepository;
+        $this->catalogueProductRepository = $catalogueProductRepository;
     }
 
     public function show() {
@@ -66,7 +71,9 @@ class MenuShowController extends AdminMiddleController
     public function showProductsTable() {
         $id = request()->request->get('id');
 
-        $category = $this->catalogueCategoryLocaleRepository->getOneByIdWithProducts($id);
+        $category = $this->catalogueCategoryLocaleRepository->getAllProductsByCategory($id);
+
+        dd($category);
 
         return view('admin.middle.menu.admin_middle_menu_products_table', [
             'category' => $category,
