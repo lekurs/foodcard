@@ -71,12 +71,12 @@ class MenuShowController extends AdminMiddleController
     public function showProductsTable() {
         $id = request()->request->get('id');
 
-        $category = $this->catalogueCategoryLocaleRepository->getAllProductsByCategory($id);
-
-        dd($category);
+        $category = $this->catalogueCategoryRepository->getOneWithLocalesById($id);
+        $productList = $this->catalogueCategoryRepository->getAllProductsByCategory($id);
 
         return view('admin.middle.menu.admin_middle_menu_products_table', [
-            'category' => $category,
+            'productList' => $productList,
+            'category' => $category
         ]);
     }
 

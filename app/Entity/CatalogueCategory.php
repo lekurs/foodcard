@@ -29,4 +29,9 @@ class CatalogueCategory extends Model
     {
         return $this->catalogueCategoryLocales()->where('locale_id', '=', 1);
     }
+
+    public function products(): BelongsToMany
+    {
+        return $this->belongsToMany(CatalogueProduct::class ,'products_categories');
+    }
 }

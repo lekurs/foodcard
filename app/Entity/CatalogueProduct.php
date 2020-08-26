@@ -5,7 +5,6 @@ namespace App\Entity;
 
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -43,8 +42,13 @@ class CatalogueProduct extends Model
         return $this->hasMany(CatalogueProductFloat::class, 'product_id');
     }
 
-    public function categoriesLocale(): BelongsToMany
+    public function categories(): BelongsToMany
     {
-        return $this->belongsToMany(CatalogueCategoryLocale::class, 'products_categories');
+        return $this->belongsToMany(CatalogueCategory::class, 'products_categories');
+    }
+
+    public function stores(): BelongsToMany
+    {
+        return $this->belongsToMany(Store::class, 'stores_products');
     }
 }

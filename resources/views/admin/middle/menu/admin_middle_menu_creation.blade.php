@@ -28,9 +28,9 @@
     <div class="mout-admin-middle-content-panel">
         <div class="my-menu-container" id="my-menu-container-creation">
             <a href="{{route('adminMiddleMenuShow')}}" class="btn btn-search-menu btn-my-menu mout--regular"><span class="btn-my-menu-icon-container"><i class="fal fa-search"></i></span>Je recherche</a>
-            <button class="btn btn-create-menu btn-my-menu mout--regular" data-toggle="modal" data-target="#productCreation"><span class="btn-my-menu-icon-container"><i class="fal fa-bell"></i></span>Je crée </button>
-            <a href="#" class="btn btn-create-menu btn-my-menu mout--regular"><span class="btn-my-menu-icon-container"><i class="fal fa-concierge-bell"></i></span>Voir ma carte</a>
-            <a href="#" class="btn btn-create-menu btn-my-menu mout--regular"><span class="btn-my-menu-icon-container"><i class="fal fa-hat-chef"></i></span>Créer ma<br>formule</a>
+            <button type="button" class="btn btn-create-menu btn-my-menu mout--regular" data-toggle="modal" data-target="#productCreation"><span class="btn-my-menu-icon-container"><i class="fal fa-bell"></i></span>Je crée </button>
+            <button type="button" class="btn btn-create-menu btn-my-menu mout--regular"><span class="btn-my-menu-icon-container"><i class="fal fa-concierge-bell"></i></span>Voir ma carte</button>
+            <button type="button" class="btn btn-create-menu btn-my-menu mout--regular"><span class="btn-my-menu-icon-container"><i class="fal fa-hat-chef"></i></span>Créer ma<br>formule</button>
         </div>
 
         <div class="my-menu-category-buttons-container">
@@ -63,7 +63,7 @@
                     <img src="{{asset('/storage/category/' . \Illuminate\Support\Str::slug($subcategory['libelle']) . '/' . $subcategory['img_path'])}}" alt="{{$subcategory['libelle']}}">
                     <p class="submenu-category mout--regular">{{ $subcategory['libelle'] }}</p>
 
-                    <button class="btn mout-btn-creation mout--regular" data-category="{{ $subcategory['id'] }}">Je crée <span class="btn-my-menu-icon-container"><i class="fal fa-magic"></i></span> </button>
+                    <button class="btn mout-btn-creation mout--regular" data-category="{{ $subcategory['catalogue_category_id'] }}">Je crée <span class="btn-my-menu-icon-container"><i class="fal fa-magic"></i></span> </button>
                 </div>
             @endforeach
         </div>

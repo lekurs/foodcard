@@ -82,23 +82,23 @@ class CatalogueProductFormController extends Controller
         }
 
         $locales = Locale::all();
-        $categories = $this->catalogueCategoryLocaleRepository->getAllWithCatalogueCategories();
+        $catalogueCategories = $this->catalogueCategoryLocaleRepository->getAllWithCatalogueCategories();
 
         if(request()->request->get('id') != "") {
-            $allergy = explode('|' , $product->allergy);
+            $allergy = explode('|', $product->allergy);
+
             $html = \view('forms.products.__product_creation', [
                 'product' => $product,
                 'locales' => $locales,
                 'allergy' => $allergy,
-                'categories' => $categories
+                'categories' => $catalogueCategories
             ]);
         } else {
             $html = \view('forms.products.__product_creation', [
                 'locales' => $locales,
-                'categories' => $categories
+                'categories' => $catalogueCategories
             ]);
         }
-
 
         echo $html;
     }

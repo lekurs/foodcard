@@ -16,11 +16,6 @@ class CreateStoresProductsTable extends Migration
         Schema::create('stores_products', function (Blueprint $table) {
             $table->unsignedInteger('store_id');
             $table->unsignedInteger('catalogue_product_id');
-
-            $table->foreign('store_id')->references('id')
-                ->on('stores');
-            $table->foreign('catalogue_product_id')->references('id')
-                ->on('catalogue_products');
         });
     }
 

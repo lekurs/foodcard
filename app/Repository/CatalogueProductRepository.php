@@ -3,6 +3,7 @@
 
 namespace App\Repository;
 
+use App\Entity\CatalogueCategory;
 use App\Entity\CatalogueCategoryLocale;
 use App\Entity\CatalogueProduct;
 use App\Entity\CatalogueProductFloat;
@@ -63,8 +64,8 @@ class CatalogueProductRepository
             $product->save();
 
             if(isset($datas['store_id']) && !is_null($datas['store_id'])) {
-                $store = Store::find($datas['store_id']);
-                $store->products()->sync([$product->id]);
+                $store = Store::whereId($datas['store_id'])->first();
+                $product->stores()->sync([$store->id]);
             }
             $lastId = $product->id;
 
@@ -83,9 +84,9 @@ class CatalogueProductRepository
             }
 
             foreach ($datas['category'] as $value) {
-                $category = CatalogueCategoryLocale::whereId($value)->first();
+                $category = CatalogueCategory::whereId($value)->first();
 
-                $product->categoriesLocale()->sync([$category->id]);
+                $product->categories()->sync([$category->id]);
             }
 
             $productFloats = new CatalogueProductFloat();

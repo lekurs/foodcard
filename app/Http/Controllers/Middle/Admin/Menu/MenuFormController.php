@@ -83,7 +83,7 @@ class MenuFormController extends AdminMiddleController
 
         $this->catalogueProductRepository->store($validates);
 
-        if ($validates['image']) {
+        if (isset($validates['image'])) {
             foreach ($validates['image'] as $file) {
 
                 $mimeTypes = ['image/png', 'image/jpeg', 'image/gif', 'image/svg+xml'];

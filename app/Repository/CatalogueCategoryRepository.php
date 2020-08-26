@@ -39,6 +39,11 @@ class CatalogueCategoryRepository
         return CatalogueCategory::whereId($id)->first();
     }
 
+    public function getOneWithLocalesById(int $id) {
+
+        return CatalogueCategory::with('categoryLocalesFR')->whereId($id)->first();
+    }
+
     public function getCategoriesLabel()
     {
         $return = [];
@@ -62,6 +67,33 @@ class CatalogueCategoryRepository
         }
 
         return $return;
+    }
+
+    public function getAllProductsByCategory($id) {
+
+        $categories = CatalogueCategory::with('products.langueFR', 'products.stores')->whereId($id)->first();
+        $products = $categories->products;
+        $storeInProgress = request()->session()->get('store');
+
+        $result = [];
+
+        foreach ($products as $product) {
+            $visibility = $product->visibility;
+
+            if ($visibility == "all") {
+                array_push($result, $product);
+            } else {
+                if (count($product->stores) > 0) {
+                    foreach ($product->stores as $store) {
+                        if ($storeInProgress->id === $store->id) {
+                            array_push($result, $product);
+                        }
+                    }
+                }
+            }
+        }
+
+        return $result;
     }
 
     public function store(array $datas)

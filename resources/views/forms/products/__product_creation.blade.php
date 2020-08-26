@@ -1,8 +1,9 @@
 <form action="{{route('productStore')}}" method="post" enctype="multipart/form-data">
     @csrf
     @include('flashes.errors')
+
     <div class="input-group floating-label">
-        <input type="hidden" name="product_id" value="@if(isset($product)){{$product->id}}@endif" id="product">
+        <input type="hidden" name="product_id" value="@isset($product) {{ $product->id }}@endisset" id="product">
             <div class="input-group-prepend choose-langage">
                 <div class="mout-dropdown">
                     <input class="mout-dropdown-toggle" type="text">
@@ -26,9 +27,7 @@
     <div class="floating-label">
         @foreach($locales as $locale)
             <div class="textarea-container product_label product_{{$locale->id}}">
-                <textarea name="locale[{{$locale->id}}][description]" id="product_description_{{$locale->id}}" class="floating-textarea">
-                    @if(isset($product)){{$product->locales()->whereLocaleId($locale->id)->first()->description}}@endif
-                </textarea>
+                <textarea name="locale[{{$locale->id}}][description]" id="product_description_{{$locale->id}}" class="floating-textarea">@if(isset($product)){{$product->locales()->whereLocaleId($locale->id)->first()->description}}@endif</textarea>
             </div>
         @endforeach
     </div>
@@ -41,8 +40,9 @@
 
     <div class="floating-label">
         @foreach($categories as $category)
-            <input type="checkbox" value="{{$category->id}}" name="category[]" id="category_{{$category->id}}">
-            <label for="category_{{$category->libelle}}">{{$category->libelle}}</label>
+{{--            {{ dump($category) }}--}}
+            <input type="checkbox" value="{{ $category->catalogueCategoryByOrder->id }}" name="category[]" id="category_{{ $category->catalogueCategoryByOrder->id }}">
+            <label for="category_{{ $category->catalogueCategoryByOrder->id }}">{{ $category->libelle }}</label>
         @endforeach
     </div>
 
