@@ -1801,6 +1801,10 @@ div.dropdown-actions div.dropdown-menu a.dropdown-item {
   line-height: 15px;
 }
 
+.mout-table-img {
+  width: 100px;
+}
+
 div.mout-bo-top-search-bar form {
   display: flex;
   width: 100%;
@@ -1969,6 +1973,57 @@ div.my-menu-search-container {
 
 div.my-menu-search-container div.my-menu-search-content#left-content {
   border-right: 1px solid #D1D1D1;
+}
+
+.table#starters,
+.table#mainDishes,
+.table#deserts {
+  margin-top: 5em;
+}
+
+.table#starters td,
+.table#mainDishes td,
+.table#deserts td {
+  vertical-align: middle;
+  width: 15%;
+}
+
+.table#starters td:nth-of-type(4),
+.table#mainDishes td:nth-of-type(4),
+.table#deserts td:nth-of-type(4) {
+  width: auto !important;
+}
+
+.table#starters td:nth-of-type(6),
+.table#mainDishes td:nth-of-type(6),
+.table#deserts td:nth-of-type(6) {
+  width: 10%;
+}
+
+.table#starters td p,
+.table#mainDishes td p,
+.table#deserts td p {
+  line-height: 22px;
+  margin-bottom: 0;
+}
+
+.table#starters td.mout-add-element-table,
+.table#mainDishes td.mout-add-element-table,
+.table#deserts td.mout-add-element-table {
+  line-height: 1.5em;
+}
+
+.table#starters td.mout-add-element-table a,
+.table#mainDishes td.mout-add-element-table a,
+.table#deserts td.mout-add-element-table a {
+  text-transform: inherit !important;
+  text-decoration: none !important;
+}
+
+.table#starters tbody > tr,
+.table#mainDishes tbody > tr,
+.table#deserts tbody > tr {
+  line-height: 3em;
 }
 
 .mout-dropdown {
@@ -2320,10 +2375,6 @@ div.mout-admin-middle-container form {
     display: none;
   }
 
-  div.my-menu-container {
-    width: 65%;
-  }
-
   div.my-menu-container#category-menu {
     width: 50%;
   }
@@ -2405,10 +2456,6 @@ div.mout-admin-middle-container form {
 
   div.mout-admin-middle-user-informations-container div.mout-admin-middle-store-informations-container div.mout-admin-middle-store-description {
     font-size: 20px;
-  }
-
-  div.my-menu-container {
-    width: 50%;
   }
 
   div.my-menu-container#category-menu {
@@ -2904,8 +2951,6 @@ div.min-nav-container a.btn-min-nav {
 }
 
 div.my-menu-container {
-  display: flex;
-  justify-content: space-around;
   margin: 2em auto 0;
 }
 

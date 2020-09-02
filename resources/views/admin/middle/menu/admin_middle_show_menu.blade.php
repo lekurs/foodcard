@@ -1,0 +1,172 @@
+@extends('layouts.middle-layout')
+@section('title', ' Bienvenue')
+
+@section('header')
+    <div class="mout-admin-middle-header-container" id="store">
+        @if(isset($store) && !is_null($store->medias()->first()->logo))
+            {{--        <img src="{{asset('images/restaurant/' . $store->name . '/' . $store->medias()->first()->logo)}}" alt="{{$store->name}}" class="img-fluid">--}}
+
+        @else
+            <h2 class="mout-admin-middle-store-name mout--regular">{{request()->session()->get('store')->name}}</h2>
+        @endif
+
+        <div class="mout-admin-middle-header-nav-ariane" id="menu">
+            <i class="fal fa-concierge-bell"></i>
+            <p>ma carte</p>
+        </div>
+    </div>
+@endsection
+@section('navigation')
+    @parent
+    <div class="mout-admin-middle-nav-buttons-container">
+        <a href="{{ route('adminMiddleStoreShow') }}" class="btn mout-admin-middle-nav-buttons btn-store"><i class="fal fa-home"></i></a>
+        <a href="{{ route('adminMiddleAccountShow') }}" class="btn mout-admin-middle-nav-buttons btn-account"><i class="fal fa-smile"></i></a>
+    </div>
+@endsection
+
+@section('body')
+    <div class="mout-admin-middle-content-panel text-center">
+        <div class="my-menu-container">
+        {{-- Starters--}}
+            <table id="starters" class="table table-hover mout-bo-table table-starters">
+                <thead>
+                <tr>
+                    <th>{{ $starters->categoryLocales()->first()->libelle }}</th>
+                    <th>Type</th>
+                    <th>Libellé</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                    <th>Supprimer</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td class="mout-add-element-table" colspan="6">
+                        <a href="#" class="mout-btn-login mout--regular">Ajouter une entrée</a>
+                    </td>
+                </tr>
+                @foreach($starters->products as $product)
+                <tr>
+                    <td>@if(!is_null($product->catalogueProductMedias->first))
+                            <img src="{{ asset('storage/products/' . $product->catalogueProductMedias->first()->path) }}"
+                                 class="img-fluid mout-table-img" alt="{{ $product->langueFR->libelle }}">
+                        @else <i class="fal fa-image fa-2x"></i>
+                        @endif
+                    </td>
+                    <td>
+                        @foreach($product->categories as $category)
+                            @if(!is_null($category->parent))
+                                {{ $category->categoryLocales->first()->libelle }}
+                                @endif
+                        @endforeach
+                    </td>
+                    <td>{{ $product->langueFR->libelle }}</td>
+                    <td>{!! $product->langueFR->description !!}</td>
+                    <td><a href="" class="btn mout-btn-login dflex flex-row">Modifier <i class="far fa-magic ml-3"></i></a></td>
+                    <td><i class="far fa-trash-alt" style="font-size: 1.5em"></i></td>
+                </tr>
+                @endforeach
+                </tbody>
+            </table>
+
+            {{--main--}}
+            <table id="mainDishes" class="table table-hover mout-bo-table table-starters">
+                <thead>
+                <tr>
+                    <th>{{ $mainDishes->categoryLocales()->first()->libelle }}</th>
+                    <th>Type</th>
+                    <th>Libellé</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                    <th>Supprimer</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td class="mout-add-element-table" colspan="6">
+                        <a href="#" class="mout-btn-login mout--regular">Ajouter un plat</a>
+                    </td>
+                </tr>
+                @foreach($mainDishes->products as $product)
+                    <tr>
+                        <td>@if(!is_null($product->catalogueProductMedias->first))
+                                <img src="{{ asset('storage/products/' . $product->catalogueProductMedias->first()->path) }}"
+                                     class="img-fluid mout-table-img" alt="{{ $product->langueFR->libelle }}">
+                            @else <i class="fal fa-image fa-2x"></i>
+                            @endif
+                        </td>
+                        <td>
+                            @foreach($product->categories as $category)
+                                @if(!is_null($category->parent))
+                                    {{ $category->categoryLocales->first()->libelle }}
+                                @endif
+                            @endforeach
+                        </td>
+                        <td>{{ $product->langueFR->libelle }}</td>
+                        <td>{!! $product->langueFR->description !!}</td>
+                        <td><a href="" class="btn mout-btn-login dflex flex-row">Modifier <i class="far fa-magic ml-3"></i></a></td>
+                        <td><i class="far fa-trash-alt" style="font-size: 1.5em"></i></td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+
+            {{--deserts--}}
+            <table id="deserts" class="table table-hover mout-bo-table table-starters">
+                <thead>
+                <tr>
+                    <th>{{ $deserts->categoryLocales()->first()->libelle }}</th>
+                    <th>Type</th>
+                    <th>Libellé</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                    <th>Supprimer</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td class="mout-add-element-table" colspan="6">
+                        <a href="#" class="mout-btn-login mout--regular">Ajouter un dessert</a>
+                    </td>
+                </tr>
+                @foreach($deserts->products as $product)
+                    <tr>
+                        <td>@if(!is_null($product->catalogueProductMedias->first))
+                                <img src="{{ asset('storage/products/' . $product->catalogueProductMedias->first()->path) }}"
+                                     class="img-fluid mout-table-img" alt="{{ $product->langueFR->libelle }}">
+                            @else <i class="fal fa-image fa-2x"></i>
+                            @endif
+                        </td>
+                        <td>
+                            @foreach($product->categories as $category)
+                                @if(!is_null($category->parent))
+                                    {{ $category->categoryLocales->first()->libelle }}
+                                @endif
+                            @endforeach
+                        </td>
+                        <td>{{ $product->langueFR->libelle }}</td>
+                        <td>{!! $product->langueFR->description !!}</td>
+                        <td><a href="" class="btn mout-btn-login dflex flex-row">Modifier <i class="far fa-magic ml-3"></i></a></td>
+                        <td><i class="far fa-trash-alt" style="font-size: 1.5em"></i></td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+@endsection
+
+@section('js')
+    <script src="{{asset('js/middle-admin/users-manager.js')}}"></script>
+{{--    <script src="{{asset('js/middle-admin/subcategory-manager.js')}}"></script>--}}
+    <script>
+        $(document).ready(function () {
+           $('#starters').dataTable({
+
+           }) ;
+        });
+    </script>
+@endsection

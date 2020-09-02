@@ -16,6 +16,7 @@ class CreateStoresProductsTable extends Migration
         Schema::create('stores_products', function (Blueprint $table) {
             $table->unsignedInteger('store_id');
             $table->unsignedInteger('catalogue_product_id');
+            $table->boolean('online')->default(true);
         });
     }
 

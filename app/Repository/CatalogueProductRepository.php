@@ -50,6 +50,17 @@ class CatalogueProductRepository
         return $this->catalogueProduct::whereId($id)->with('locales')->with('catalogueProductFloats')->first();
     }
 
+    public function getAllBycategory(int $id): Collection
+    {
+        $products = $this->catalogueProduct::with('categories')->get();
+//
+//         foreach($products as $product) {
+//             dump($product->categories);
+//         }
+//
+//         die;
+    }
+
     public function store(array $datas): void
     {
         if (is_null($datas['product_id'])) {
@@ -86,7 +97,7 @@ class CatalogueProductRepository
             foreach ($datas['category'] as $value) {
                 $category = CatalogueCategory::whereId($value)->first();
 
-                $product->categories()->sync([$category->id]);
+                $product->categories()->sync([$category->id], false);
             }
 
             $productFloats = new CatalogueProductFloat();

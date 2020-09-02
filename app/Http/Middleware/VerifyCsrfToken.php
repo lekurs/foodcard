@@ -17,6 +17,7 @@ class VerifyCsrfToken extends Middleware
         '/foodcard/admin/store/utilisateur/trash',
         '/foodcard/admin/compte/subscribe',
         '/foodcard/admin/ma-carte/subcategory',
-        '/foodcard/admin/ma-carte/products'
+        '/foodcard/admin/ma-carte/products',
+        '/foodcard/admin/ma-carte/product/online/update'
     ];
 }

@@ -11,6 +11,7 @@ use App\Repository\CatalogueProductRepository;
 use App\Repository\StoreRepository;
 use App\Repository\UserFonctionRepository;
 use App\Repository\UserRepository;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 
 class MenuShowController extends AdminMiddleController
@@ -48,6 +49,25 @@ class MenuShowController extends AdminMiddleController
         $this->catalogueProductRepository = $catalogueProductRepository;
     }
 
+    public function showMenu() {
+        $stores = $this->userRepository->getStoresByUser(request()->user())->stores;
+        $categories = $this->catalogueCategoryLocaleRepository->getCategoriesLabelNoParent();
+
+        $starters = $this->catalogueCategoryRepository->getOneWithAllProductsById(5, 'FR');
+        $mainDishes = $this->catalogueCategoryRepository->getOneWithAllProductsById(6, 'FR');
+        $deserts = $this->catalogueCategoryRepository->getOneWithAllProductsById(1, 'FR');
+
+        return view('admin.middle.menu.admin_middle_show_menu', [
+            'stores' => $stores,
+            'userFonctions' => $this->userFonctions,
+            'categories' => $categories,
+            'starters' => $starters,
+            'mainDishes' => $mainDishes,
+            'deserts' => $deserts
+        ]);
+    }
+
+    //TODO : DELETE ALL METHOS UNDER THIS ONE
     public function show() {
         $stores = $this->userRepository->getStoresByUser(request()->user())->stores;
         $categories = $this->catalogueCategoryLocaleRepository->getCategoriesLabelNoParent();

@@ -27,3 +27,42 @@ div.my-menu-search-container {
         }
     }
 }
+
+//CategoriesTable
+.table#starters,
+.table#mainDishes,
+.table#deserts {
+    & td {
+        vertical-align: middle;
+        width: 15%;
+
+        &:nth-of-type(4) {
+            width: auto !important;
+        }
+
+        &:nth-of-type(6) {
+            width: 10%;
+        }
+
+        & p {
+            line-height: 22px;
+            margin-bottom: 0;
+        }
+
+        &.mout-add-element-table {
+            line-height: 1.5em;
+
+            & a {
+                text-transform: inherit !important;
+                text-decoration: none !important;
+            }
+        }
+
+    }
+
+    & tbody > tr {
+        line-height: 3em;
+    }
+
+    margin-top: 5em;
+}

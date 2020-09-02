@@ -44,6 +44,13 @@ class CatalogueCategoryRepository
         return CatalogueCategory::with('categoryLocalesFR')->whereId($id)->first();
     }
 
+    public function getOneWithAllProductsById(int $id, string $locale)
+    {
+        return CatalogueCategory::with('categoryLocales', 'products', 'products.langueFR', 'products.catalogueProductMedias', 'products.categories')
+            ->whereId($id)->first();
+
+    }
+
     public function getCategoriesLabel()
     {
         $return = [];

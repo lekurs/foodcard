@@ -85,11 +85,12 @@ Route::group(['prefix' => 'foodcard', 'middleware' => ['auth', 'role']], functio
         });
 
         Route::group(['prefix' => 'ma-carte'], function () {
-           Route::get('/', 'Middle\Admin\Menu\MenuShowController@show')->name('adminMiddleMenuShow');
+           Route::get('/', 'Middle\Admin\Menu\MenuShowController@showMenu')->name('adminMiddleMenuShow');
            Route::post('/subcategory', 'Middle\Admin\Menu\MenuShowController@showSubCategories')->name('adminMiddleMenuShowSubCategories');
            Route::post('/products', 'Middle\Admin\Menu\MenuShowController@showProductsTable')->name('adminMiddleMenuShowproducts');
            Route::get('/creer/{category}', 'Middle\Admin\Menu\MenuFormController@show')->name('adminMiddleMenuCreateShow');
            Route::post('/creer/{category}/store', 'Middle\Admin\Menu\MenuFormController@store')->name('adminMiddleMenuCreateStore');
+           Route::post('/product/online/update', 'Middle\Admin\Menu\CreateOnlineMenuController@updateOnline')->name('updateOnline');
         });
 
         Route::group(['prefix' => 'store/{slug}', 'middleware' => 'restrictionStore'], function() {

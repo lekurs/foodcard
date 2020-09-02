@@ -4,6 +4,7 @@
 namespace App\Repository;
 
 
+use App\Entity\CatalogueProduct;
 use App\Entity\Store;
 use App\Entity\User;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
@@ -94,5 +95,17 @@ class StoreRepository
     public function getUsersByStore(Store $store): Store
     {
         return $this->store::with('users')->whereId($store->id)->first();
+    }
+
+    public function setOnlineProductByStore(CatalogueProduct $product): void
+    {
+        $online = $this->store->products()->newPivotStatement()->whereCatalogueProductId($product->id)->first()->online;
+
+        $online > 0
+            ?
+            $this->store->products()->newPivotStatement()->whereCatalogueProductId($product->id)->update(['online' => false])
+            :
+            $this->store->products()->newPivotStatement()->whereCatalogueProductId($product->id)->update(['online' => true]);
+
     }
 }

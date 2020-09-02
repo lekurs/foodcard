@@ -1,6 +1,7 @@
 $(document).ready(function () {
    const category = $('.btn-my-category');
 
+   //Affichage des sous catégories
    $('body').on('click', '.btn-my-category', function () {
 
        let idParent = $(this).attr('data-category');
@@ -13,6 +14,7 @@ $(document).ready(function () {
 
        let subMenu = $('.submenu-category-content');
 
+       //Affichage des produits par catégorie
        $('body').on('click', '.submenu-category-content', function() {
            let idSubcategory = $(this).attr('data-subcategory');
 
@@ -21,6 +23,15 @@ $(document).ready(function () {
 
                 elt.html(data);
            });
+       });
+
+       //Mise en ligne du produit sur la carte
+       $('body').on('click', '.online-menu', function () {
+          let productId = $(this).attr('data-product-id');
+
+          $.post('/foodcard/admin/ma-carte/product/online/update', {idProduct: productId},function (data) {
+
+          });
        });
    })
 });
