@@ -10,6 +10,7 @@ use App\Repository\StoreRepository;
 use App\Repository\UserFonctionRepository;
 use App\Repository\UserRepository;
 use Illuminate\View\View;
+use Stripe\StripeClient;
 
 class InvoicesShowController extends Controller
 {
@@ -55,6 +56,14 @@ class InvoicesShowController extends Controller
 //        $invoices = $this->invoiceRepository->getAllByStore();
         $userFonctions = $this->userFonctionRepository->getAll();
         $stores = $this->userRepository->getStoresByUser(request()->user())->stores;
+
+        $stripe = new StripeClient(env('STRIPE_SECRET'));
+
+        $ch = $stripe->charges->capture(
+            'ch_1HMv5m2eZvKYlo2CiSPHrNex',
+            [],
+            ['api_key' => env('STRIPE_SECRET')]
+        );
 
         return view('admin.middle.account.admin_middle_invoices_show', [
 //            'invoices' => $invoices,

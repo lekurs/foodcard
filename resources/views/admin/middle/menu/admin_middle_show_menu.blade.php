@@ -43,7 +43,7 @@
                 <tbody>
                 <tr>
                     <td class="mout-add-element-table" colspan="6">
-                        <a href="#" class="mout-btn-login mout--regular">Ajouter une entrée</a>
+                        <a href="{{ route('adminMiddleMenuCreateShow', $starters->categoryLocales()->first()->slug) }}" class="mout-btn-login mout--regular">Ajouter une entrée</a>
                     </td>
                 </tr>
                 @foreach($starters->products as $product)
@@ -63,7 +63,7 @@
                     </td>
                     <td>{{ $product->langueFR->libelle }}</td>
                     <td>{!! $product->langueFR->description !!}</td>
-                    <td><a href="" class="btn mout-btn-login dflex flex-row">Modifier <i class="far fa-magic ml-3"></i></a></td>
+                    <td><a href="{{ route('editMenu', $product->id) }}" class="btn mout-btn-login dflex flex-row" data-product-id="{{ $product->id }}">Modifier <i class="far fa-magic ml-3"></i></a></td>
                     <td><i class="far fa-trash-alt" style="font-size: 1.5em"></i></td>
                 </tr>
                 @endforeach
@@ -86,7 +86,7 @@
                 <tbody>
                 <tr>
                     <td class="mout-add-element-table" colspan="6">
-                        <a href="#" class="mout-btn-login mout--regular">Ajouter un plat</a>
+                        <a href="#" class="mout-btn-edit-middle mout--regular">Ajouter un plat</a>
                     </td>
                 </tr>
                 @foreach($mainDishes->products as $product)
@@ -106,7 +106,7 @@
                         </td>
                         <td>{{ $product->langueFR->libelle }}</td>
                         <td>{!! $product->langueFR->description !!}</td>
-                        <td><a href="" class="btn mout-btn-login dflex flex-row">Modifier <i class="far fa-magic ml-3"></i></a></td>
+                        <td><a href="{{ route('editMenu', $product->id) }}" class="btn mout-btn-login dflex flex-row" data-product-id="{{ $product->id }}">Modifier <i class="far fa-magic ml-3"></i></a></td>
                         <td><i class="far fa-trash-alt" style="font-size: 1.5em"></i></td>
                     </tr>
                 @endforeach
@@ -129,7 +129,7 @@
                 <tbody>
                 <tr>
                     <td class="mout-add-element-table" colspan="6">
-                        <a href="#" class="mout-btn-login mout--regular">Ajouter un dessert</a>
+                        <a href="#" class="mout-btn-add-middle mout--regular">Ajouter un dessert</a>
                     </td>
                 </tr>
                 @foreach($deserts->products as $product)
@@ -149,7 +149,50 @@
                         </td>
                         <td>{{ $product->langueFR->libelle }}</td>
                         <td>{!! $product->langueFR->description !!}</td>
-                        <td><a href="" class="btn mout-btn-login dflex flex-row">Modifier <i class="far fa-magic ml-3"></i></a></td>
+                        <td><a href="{{ route('editMenu', $product->id) }}" class="btn mout-btn-login dflex flex-row" data-product-id="{{ $product->id }}">Modifier <i class="far fa-magic ml-3"></i></a></td>
+                        <td><i class="far fa-trash-alt" style="font-size: 1.5em"></i></td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+
+            {{--drinks--}}
+            <table id="drinks" class="table table-hover mout-bo-table table-drinks">
+                <thead>
+                <tr>
+                    <th>{{ $drinks->categoryLocales()->first()->libelle }}</th>
+                    <th>Type</th>
+                    <th>Libellé</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                    <th>Supprimer</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td class="mout-add-element-table" colspan="6">
+                        <a href="#" class="mout-btn-drink mout--regular">Ajouter une boisson</a>
+                    </td>
+                </tr>
+                @foreach($drinks->products as $product)
+                    <tr>
+                        <td>@if(!is_null($product->catalogueProductMedias->first))
+                                <img src="{{ asset('storage/products/' . $product->catalogueProductMedias->first()->path) }}"
+                                     class="img-fluid mout-table-img" alt="{{ $product->langueFR->libelle }}">
+                            @else <i class="fal fa-image fa-2x"></i>
+                            @endif
+                        </td>
+                        <td>
+                            @foreach($product->categories as $category)
+                                @if(!is_null($category->parent))
+                                    {{ $category->categoryLocales->first()->libelle }}
+                                @endif
+                            @endforeach
+                        </td>
+                        <td>{{ $product->langueFR->libelle }}</td>
+                        <td>{!! $product->langueFR->description !!}</td>
+                        <td><a href="{{ route('editMenu', $product->id) }}" class="btn mout-btn-login dflex flex-row" data-product-id="{{ $product->id }}">Modifier <i class="far fa-magic ml-3"></i></a></td>
                         <td><i class="far fa-trash-alt" style="font-size: 1.5em"></i></td>
                     </tr>
                 @endforeach

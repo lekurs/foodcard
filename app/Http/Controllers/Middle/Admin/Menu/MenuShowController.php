@@ -56,6 +56,7 @@ class MenuShowController extends AdminMiddleController
         $starters = $this->catalogueCategoryRepository->getOneWithAllProductsById(5, 'FR');
         $mainDishes = $this->catalogueCategoryRepository->getOneWithAllProductsById(6, 'FR');
         $deserts = $this->catalogueCategoryRepository->getOneWithAllProductsById(1, 'FR');
+        $drinks = $this->catalogueCategoryRepository->getOneWithAllProductsById(7, 'FR');
 
         return view('admin.middle.menu.admin_middle_show_menu', [
             'stores' => $stores,
@@ -63,7 +64,8 @@ class MenuShowController extends AdminMiddleController
             'categories' => $categories,
             'starters' => $starters,
             'mainDishes' => $mainDishes,
-            'deserts' => $deserts
+            'deserts' => $deserts,
+            'drinks' => $drinks
         ]);
     }
 
