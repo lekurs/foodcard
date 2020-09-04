@@ -91,7 +91,8 @@ Route::group(['prefix' => 'foodcard', 'middleware' => ['auth', 'role']], functio
            Route::get('/creer/{category}', 'Middle\Admin\Menu\MenuFormController@show')->name('adminMiddleMenuCreateShow');
            Route::post('/creer/{category}/store', 'Middle\Admin\Menu\MenuFormController@store')->name('adminMiddleMenuCreateStore');
            Route::post('/product/online/update', 'Middle\Admin\Menu\CreateOnlineMenuController@updateOnline')->name('updateOnline');
-           Route::get('/product/edit/{productId}', 'Middle\Admin\Menu\EditMenuController')->name('editMenu');
+           Route::post('/product/update', 'Middle\Admin\Menu\UpdateAjaxMenuController')->name('updateAjaxMenu');
+           Route::get('/product/edit/{categoryId}/{productId}', 'Middle\Admin\Menu\EditMenuController')->name('editMenu');
         });
 
         Route::group(['prefix' => 'store/{slug}', 'middleware' => 'restrictionStore'], function() {

@@ -47,7 +47,7 @@ class CatalogueProductRepository
 
     public function getOneWithLocales(int $id)
     {
-        return $this->catalogueProduct::whereId($id)->with('locales')->with('catalogueProductFloats')->first();
+        return $this->catalogueProduct::whereId($id)->with('locales', 'locales.locale', 'catalogueProductFloats')->first();
     }
 
     public function getAllBycategory(int $id): Collection

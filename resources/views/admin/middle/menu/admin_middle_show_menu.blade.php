@@ -63,7 +63,7 @@
                     </td>
                     <td>{{ $product->langueFR->libelle }}</td>
                     <td>{!! $product->langueFR->description !!}</td>
-                    <td><a href="{{ route('editMenu', $product->id) }}" class="btn mout-btn-login dflex flex-row" data-product-id="{{ $product->id }}">Modifier <i class="far fa-magic ml-3"></i></a></td>
+                    <td><a href="{{ route('editMenu', [$starters->id, $product->id]) }}" class="btn mout-btn-login dflex flex-row" data-product-id="{{ $product->id }}">Modifier <i class="far fa-magic ml-3"></i></a></td>
                     <td><i class="far fa-trash-alt" style="font-size: 1.5em"></i></td>
                 </tr>
                 @endforeach
@@ -106,7 +106,7 @@
                         </td>
                         <td>{{ $product->langueFR->libelle }}</td>
                         <td>{!! $product->langueFR->description !!}</td>
-                        <td><a href="{{ route('editMenu', $product->id) }}" class="btn mout-btn-login dflex flex-row" data-product-id="{{ $product->id }}">Modifier <i class="far fa-magic ml-3"></i></a></td>
+                        <td><a href="{{ route('editMenu', [$mainDishes->id, $product->id]) }}" class="btn mout-btn-login dflex flex-row" data-product-id="{{ $product->id }}">Modifier <i class="far fa-magic ml-3"></i></a></td>
                         <td><i class="far fa-trash-alt" style="font-size: 1.5em"></i></td>
                     </tr>
                 @endforeach
@@ -149,7 +149,7 @@
                         </td>
                         <td>{{ $product->langueFR->libelle }}</td>
                         <td>{!! $product->langueFR->description !!}</td>
-                        <td><a href="{{ route('editMenu', $product->id) }}" class="btn mout-btn-login dflex flex-row" data-product-id="{{ $product->id }}">Modifier <i class="far fa-magic ml-3"></i></a></td>
+                        <td><a href="{{ route('editMenu', [$deserts->id, $product->id]) }}" class="btn mout-btn-login dflex flex-row" data-product-id="{{ $product->id }}">Modifier <i class="far fa-magic ml-3"></i></a></td>
                         <td><i class="far fa-trash-alt" style="font-size: 1.5em"></i></td>
                     </tr>
                 @endforeach
@@ -192,7 +192,7 @@
                         </td>
                         <td>{{ $product->langueFR->libelle }}</td>
                         <td>{!! $product->langueFR->description !!}</td>
-                        <td><a href="{{ route('editMenu', $product->id) }}" class="btn mout-btn-login dflex flex-row" data-product-id="{{ $product->id }}">Modifier <i class="far fa-magic ml-3"></i></a></td>
+                        <td><a href="{{ route('editMenu', [$drinks->id, $product->id]) }}" class="btn mout-btn-login dflex flex-row" data-product-id="{{ $product->id }}">Modifier <i class="far fa-magic ml-3"></i></a></td>
                         <td><i class="far fa-trash-alt" style="font-size: 1.5em"></i></td>
                     </tr>
                 @endforeach
@@ -210,6 +210,18 @@
            $('#starters').dataTable({
 
            }) ;
+
+           $('#mainDishes').dataTable({
+
+           });
+
+           $('#deserts').dataTable({
+
+           });
+
+           $('#drinks').dataTable({
+
+           });
         });
     </script>
 @endsection

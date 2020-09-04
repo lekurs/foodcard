@@ -2471,20 +2471,6 @@ div.mout-admin-middle-container form {
   color: #707070;
 }
 
-label {
-  padding-bottom: 5px;
-  font-size: 13px;
-}
-
-input {
-  margin-top: 3px;
-  padding: 15px;
-  font-size: 16px;
-  width: 100%;
-  border-radius: 3px;
-  border: 1px solid #dcdcdc;
-}
-
 .ccicon {
   height: 38px;
   position: absolute;
@@ -4611,7 +4597,7 @@ div.my-menu-container {
 }
 
 div.my-menu-container a,
-div.my-menu-container button {
+div.my-menu-container button.btn-allergy {
   display: flex;
   flex-direction: column;
   padding: 15px;
@@ -4623,7 +4609,7 @@ div.my-menu-container button {
 }
 
 div.my-menu-container a.btn-my-menu,
-div.my-menu-container button.btn-my-menu {
+div.my-menu-container button.btn-allergy.btn-my-menu {
   width: 130px;
   height: 130px;
   line-height: 16px;
@@ -4633,41 +4619,41 @@ div.my-menu-container button.btn-my-menu {
 }
 
 div.my-menu-container a.btn-my-menu span,
-div.my-menu-container button.btn-my-menu span {
+div.my-menu-container button.btn-allergy.btn-my-menu span {
   margin-bottom: 10px;
 }
 
 div.my-menu-container a.btn-my-menu span i,
-div.my-menu-container button.btn-my-menu span i {
+div.my-menu-container button.btn-allergy.btn-my-menu span i {
   font-size: 50px;
   color: #ffffff;
 }
 
 div.my-menu-container a.btn-my-category,
-div.my-menu-container button.btn-my-category {
+div.my-menu-container button.btn-allergy.btn-my-category {
   width: 100px;
   height: 100px;
   color: #ffffff;
 }
 
 div.my-menu-container a.btn-my-category span,
-div.my-menu-container button.btn-my-category span {
+div.my-menu-container button.btn-allergy.btn-my-category span {
   margin-bottom: 10px;
 }
 
 div.my-menu-container a.btn-my-category span i,
-div.my-menu-container button.btn-my-category span i {
+div.my-menu-container button.btn-allergy.btn-my-category span i {
   font-size: 35px;
 }
 
 div.my-menu-container a.btn-my-category span svg,
-div.my-menu-container button.btn-my-category span svg {
+div.my-menu-container button.btn-allergy.btn-my-category span svg {
   width: 50%;
   fill: #ffffff;
 }
 
 div.my-menu-container a:hover,
-div.my-menu-container button:hover {
+div.my-menu-container button.btn-allergy:hover {
   color: #ffffff !important;
 }
 
@@ -4743,18 +4729,99 @@ div.mout-admin-middle-content-panel div.my-menu-add-product-container {
   display: none;
 }
 
-div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container {
+div.my-menu-creation-form-content {
+  width: 70%;
+  margin: 0 auto;
+  padding: 2em 0;
+  color: #ffffff;
+  min-height: 1300px;
+}
+
+div.my-menu-creation-form-content .textarea-container.product_label.product_1 {
+  margin-top: 5em;
+}
+
+div.my-menu-creation-form-content textarea {
+  width: 100%;
+  height: 90px;
+  border: none;
+  border-radius: 15px;
+  color: #000000 !important;
+}
+
+div.my-menu-creation-form-content .floating-label {
+  margin-bottom: 4em;
+}
+
+div.my-menu-creation-form-content label.float,
+div.my-menu-creation-form-content .floating-input,
+div.my-menu-creation-form-content label.check {
+  color: #ffffff !important;
+  font-family: "AristaProAlternate" !important;
+  font-size: 1.25rem !important;
+  top: -5px !important;
+}
+
+div.my-menu-creation-form-content .floating-input:not(:-moz-placeholder-shown) ~ label.float {
+  font-size: 14px !important;
+  top: -20px !important;
+}
+
+div.my-menu-creation-form-content .floating-input:not(:-ms-input-placeholder) ~ label.float {
+  font-size: 14px !important;
+  top: -20px !important;
+}
+
+div.my-menu-creation-form-content .floating-input:focus ~ label.float,
+div.my-menu-creation-form-content .floating-input:not(:placeholder-shown) ~ label.float {
+  font-size: 14px !important;
+  top: -20px !important;
+}
+
+div.my-menu-creation-form-content input.product_label {
+  border-bottom: 1px solid #00C332 !important;
+}
+
+div.my-menu-creation-form-content input#product_price {
+  border-bottom: 1px solid #FF7F00 !important;
+}
+
+div.my-menu-creation-form-content input#product_special_price {
+  border-bottom: 1px solid #FFCD00 !important;
+}
+
+div.my-menu-creation-form-content input#product_buying_price {
+  border-bottom: 1px solid #FF0000 !important;
+}
+
+div.my-menu-creation-form-content H5.allergy {
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid #00C332;
+  margin-bottom: 1em;
+}
+
+div.my-menu-creation-form-content div.button-allergy-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+div.my-menu-creation-form-content div.button-allergy-container .btn-allergy {
+  flex-basis: 14% !important;
+  margin: 10px;
+}
+
+div.my-menu-creation-form-container {
   background: #01100a;
   background: linear-gradient(180deg, #01100a 0%, #01301a 50%, #01522c 100%);
   position: relative;
 }
 
-div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container .input-group-prepend.choose-langage {
+div.my-menu-creation-form-container .input-group-prepend.choose-langage {
   position: absolute;
   left: -20%;
 }
 
-div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.product-langage-selection {
+div.my-menu-creation-form-container div.product-langage-selection {
   position: absolute;
   content: "";
   width: 100%;
@@ -4764,7 +4831,7 @@ div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-men
   background-color: rgba(247, 247, 247, 0.22);
 }
 
-div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container .input-group-append.category span.btn-my-category {
+div.my-menu-creation-form-container .input-group-append.category span.btn-my-category {
   width: 70px;
   height: 70px;
   display: flex;
@@ -4777,93 +4844,12 @@ div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-men
   top: -15px;
 }
 
-div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container .input-group-append.category span.btn-my-category i {
+div.my-menu-creation-form-container .input-group-append.category span.btn-my-category i {
   font-size: 25px;
 }
 
-div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container .input-group-append.category span.btn-my-category svg {
+div.my-menu-creation-form-container .input-group-append.category span.btn-my-category svg {
   width: 60%;
-}
-
-div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content {
-  width: 70%;
-  margin: 0 auto;
-  padding: 2em 0;
-  color: #ffffff;
-  min-height: 1300px;
-}
-
-div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content .textarea-container.product_label.product_1 {
-  margin-top: 5em;
-}
-
-div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content textarea {
-  width: 100%;
-  height: 90px;
-  border: none;
-  border-radius: 15px;
-  color: #000000 !important;
-}
-
-div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content .floating-label {
-  margin-bottom: 4em;
-}
-
-div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content label.float,
-div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content .floating-input,
-div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content label.check {
-  color: #ffffff !important;
-  font-family: "AristaProAlternate" !important;
-  font-size: 1.25rem !important;
-  top: -5px !important;
-}
-
-div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content .floating-input:not(:-moz-placeholder-shown) ~ label.float {
-  font-size: 14px !important;
-  top: -20px !important;
-}
-
-div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content .floating-input:not(:-ms-input-placeholder) ~ label.float {
-  font-size: 14px !important;
-  top: -20px !important;
-}
-
-div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content .floating-input:focus ~ label.float,
-div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content .floating-input:not(:placeholder-shown) ~ label.float {
-  font-size: 14px !important;
-  top: -20px !important;
-}
-
-div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content input.product_label {
-  border-bottom: 1px solid #00C332 !important;
-}
-
-div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content input#product_price {
-  border-bottom: 1px solid #FF7F00 !important;
-}
-
-div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content input#product_special_price {
-  border-bottom: 1px solid #FFCD00 !important;
-}
-
-div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content input#product_buying_price {
-  border-bottom: 1px solid #FF0000 !important;
-}
-
-div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content H5.allergy {
-  padding-bottom: 0.5em;
-  border-bottom: 1px solid #00C332;
-  margin-bottom: 1em;
-}
-
-div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content div.button-allergy-container {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-div.mout-admin-middle-content-panel div.my-menu-add-product-container div.my-menu-creation-form-container div.my-menu-creation-form-content div.button-allergy-container .btn-allergy {
-  flex-basis: 14% !important;
-  margin: 10px;
 }
 
 div.my-submenu-category-container {
@@ -4899,6 +4885,15 @@ div.my-submenu-category-container div.submenu-category-content img {
 div.my-submenu-category-container div.submenu-category-content p {
   font-size: 18px;
   margin-bottom: 0;
+}
+
+div.my-submenu-category-container#edit-product {
+  justify-content: center;
+}
+
+div.my-submenu-category-container#edit-product img {
+  width: 150px;
+  height: 150px;
 }
 
 div.products-table-container table.mout-table.products-table {

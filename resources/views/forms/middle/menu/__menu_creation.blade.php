@@ -1,4 +1,4 @@
-<form action="{{route('adminMiddleMenuCreateStore', request()->category)}}" method="post" enctype="multipart/form-data">
+<form action="{{ route('adminMiddleMenuCreateStore', request()->category) }}" method="post" enctype="multipart/form-data">
     @csrf
     @include('flashes.errors')
 

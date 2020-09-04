@@ -653,7 +653,7 @@ div.my-menu-container {
     //width: 50%;
     margin: 2em auto 0;
 
-    & a, button {
+    & a, button.btn-allergy {
         display: flex;
         flex-direction: column;
         padding: 15px;
@@ -784,119 +784,119 @@ div.mout-admin-middle-content-panel {
 
     & div.my-menu-add-product-container {
         display: none;
+    }
+}
 
-        & div.my-menu-creation-form-container {
-            background: rgb(1,16,10);
-            background: linear-gradient(180deg, rgba(1,16,10,1) 0%, rgba(1,48,26,1) 50%, rgba(1,82,44,1) 100%);
-            position: relative;
+div.my-menu-creation-form-content {
+    width: 70%;
+    margin: 0 auto;
+    padding: 2em 0;
+    color: #ffffff;
+    min-height: 1300px;
 
-            & .input-group-prepend.choose-langage {
-                position: absolute;
-                left: -20%;
+    & .textarea-container.product_label.product_1 {
+        margin-top: 5em;
+    }
+
+    & textarea {
+        width: 100%;
+        height: 90px;
+        border: none;
+        border-radius: 15px;
+        color: #000000 !important;
+    }
+
+    & .floating-label {
+        margin-bottom: 4em;
+    }
+
+    & label.float, .floating-input, label.check {
+        color: #ffffff !important;
+        font-family: $mout-font !important;
+        font-size: 1.25rem !important;
+        top: -5px !important;
+    }
+
+    & .floating-input:focus ~ label.float, .floating-input:not(:placeholder-shown) ~ label.float {
+        font-size: 14px !important;
+        top: -20px !important;
+    }
+
+    & input {
+
+        &.product_label {
+            border-bottom: 1px solid #00C332 !important;
+        }
+
+        &#product_price {
+            border-bottom: 1px solid #FF7F00 !important;
+        }
+        &#product_special_price {
+            border-bottom: 1px solid #FFCD00 !important;
+        }
+
+        &#product_buying_price {
+            border-bottom: 1px solid #FF0000 !important;
+        }
+    }
+
+    & H5.allergy {
+        padding-bottom: .5em;
+        border-bottom: 1px solid #00C332;
+        margin-bottom: 1em;
+    }
+
+    & div.button-allergy-container {
+        display: flex;
+        flex-wrap: wrap;
+
+        & .btn-allergy {
+            flex-basis: 14% !important;
+            margin: 10px;
+        }
+    }
+}
+
+div.my-menu-creation-form-container {
+    background: rgb(1,16,10);
+    background: linear-gradient(180deg, rgba(1,16,10,1) 0%, rgba(1,48,26,1) 50%, rgba(1,82,44,1) 100%);
+    position: relative;
+
+    & .input-group-prepend.choose-langage {
+        position: absolute;
+        left: -20%;
+    }
+
+    & div.product-langage-selection {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100px;
+        top: 0;
+        left: 0;
+        background-color: rgba(247, 247, 247, .22);
+    }
+
+    & .input-group-append.category {
+
+        & span.btn-my-category {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            color: #fff;
+            flex-direction: column;
+            border: none;
+            border-radius: 15px;
+            position: absolute;
+            right: -16%;
+            top: -15px;
+
+            & i {
+                font-size: 25px;
             }
 
-            & div.product-langage-selection {
-                position: absolute;
-                content: "";
-                width: 100%;
-                height: 100px;
-                top: 0;
-                left: 0;
-                background-color: rgba(247, 247, 247, .22);
-            }
-
-            & .input-group-append.category {
-
-                & span.btn-my-category {
-                    width: 70px;
-                    height: 70px;
-                    display: flex;
-                    color: #fff;
-                    flex-direction: column;
-                    border: none;
-                    border-radius: 15px;
-                    position: absolute;
-                    right: -16%;
-                    top: -15px;
-
-                    & i {
-                        font-size: 25px;
-                    }
-
-                    & svg {
-                        width: 60%;
-                    }
-                }
-            }
-
-            & div.my-menu-creation-form-content {
-                width: 70%;
-                margin: 0 auto;
-                padding: 2em 0;
-                color: #ffffff;
-                min-height: 1300px;
-
-                & .textarea-container.product_label.product_1 {
-                    margin-top: 5em;
-                }
-
-                & textarea {
-                    width: 100%;
-                    height: 90px;
-                    border: none;
-                    border-radius: 15px;
-                    color: #000000 !important;
-                }
-
-                & .floating-label {
-                    margin-bottom: 4em;
-                }
-
-                & label.float, .floating-input, label.check {
-                    color: #ffffff !important;
-                    font-family: $mout-font !important;
-                    font-size: 1.25rem !important;
-                    top: -5px !important;
-                }
-
-                & .floating-input:focus ~ label.float, .floating-input:not(:placeholder-shown) ~ label.float {
-                    font-size: 14px !important;
-                    top: -20px !important;
-                }
-
-                & input {
-
-                    &.product_label {
-                        border-bottom: 1px solid #00C332 !important;
-                    }
-
-                    &#product_price {
-                        border-bottom: 1px solid #FF7F00 !important;
-                    }
-                    &#product_special_price {
-                        border-bottom: 1px solid #FFCD00 !important;
-                    }
-
-                    &#product_buying_price {
-                        border-bottom: 1px solid #FF0000 !important;
-                    }
-                }
-
-                & H5.allergy {
-                    padding-bottom: .5em;
-                    border-bottom: 1px solid #00C332;
-                    margin-bottom: 1em;
-                }
-
-                & div.button-allergy-container {
-                    display: flex;
-                    flex-wrap: wrap;
-
-                    & .btn-allergy {
-                        flex-basis: 14% !important;
-                        margin: 10px;
-                    }
-                }
+            & svg {
+                width: 60%;
             }
         }
     }
@@ -934,6 +934,15 @@ div.my-submenu-category-container {
         & p {
             font-size: 18px;
             margin-bottom: 0;
+        }
+    }
+
+    &#edit-product {
+        justify-content: center;
+
+        & img {
+            width: 150px;
+            height: 150px;
         }
     }
 }
