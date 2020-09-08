@@ -53,7 +53,7 @@ class CatalogueProductFormController extends Controller
 
         $this->catalogueProductRepository->store($datas);
 
-        if ($datas['image']) {
+        if (isset($datas['image'])) {
             foreach ($datas['image'] as $file) {
 
                 $mimeTypes = ['image/png', 'image/jpeg', 'image/gif', 'image/svg+xml'];

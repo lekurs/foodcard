@@ -27,7 +27,7 @@
     <div class="floating-label">
         @foreach($locales as $locale)
             <div class="textarea-container product_label product_{{$locale->id}}">
-                <textarea name="locale[{{$locale->id}}][description]" id="product_description_{{$locale->id}}" class="floating-textarea">@if(isset($product)){{$product->locales()->whereLocaleId($locale->id)->first()->description}}@endif</textarea>
+                <textarea name="locale[{{$locale->id}}][description]" id="product_description_{{$locale->id}}" class="floating-textarea w-100" placeholder="Description" rows="10"">@if(isset($product)){{$product->locales()->whereLocaleId($locale->id)->first()->description}}@endif</textarea>
             </div>
         @endforeach
     </div>

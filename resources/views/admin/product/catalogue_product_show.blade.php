@@ -62,11 +62,6 @@
     <script>
         $(document).ready(function() {
             $('#product-type').DataTable();
-
-            tinymce.init({
-                selector: 'textarea:not(.textarea-allergy)',
-                toolbar_mode: 'floating',
-            });
         });
     </script>
 

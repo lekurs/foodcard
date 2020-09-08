@@ -102,6 +102,10 @@ class MenuFormController extends AdminMiddleController
             }
         }
 
+        if (request()->get('productId')) {
+            return redirect()->route('editMenu', request()->get('categoryId'));
+        }
+
         return back()->with('success', 'Produit ajouté');
 
     }

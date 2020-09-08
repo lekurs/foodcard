@@ -45,14 +45,12 @@ class EditMenuController extends AdminMiddleController
         $this->catalogueCategoryLocaleRepository = $catalogueCategoryLocaleRepository;
     }
 
-    public function __invoke(int $categoryId, int $productId)
+    public function __invoke(int $categoryId, int $productId = null)
     {
         $stores = $this->userRepository->getStoresByUser(request()->user())->stores;
         $locales = $this->localeRepository->getAll();
         $category = $this->catalogueCategoryRepository->getOneWithAllProductsById($categoryId, 'fr');
         $subCategories = $this->catalogueCategoryLocaleRepository->getAllSubCategoriesByIdCategory($category->id);
-
-//        dd($categoryId, $productId, $category);
 
         return view('admin.middle.menu.admin_middle_add_to_menu', [
             'stores' => $stores,
@@ -61,6 +59,5 @@ class EditMenuController extends AdminMiddleController
             'subcategories' => $subCategories,
             'locales' => $locales
         ]);
-
     }
 }

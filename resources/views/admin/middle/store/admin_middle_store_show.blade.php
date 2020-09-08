@@ -46,5 +46,5 @@
 @endsection
 
 @section('js')
-    <script src="{{asset('js/middle-admin/users-manager.js')}}"></script>
+    <script src="{{ asset('js/middle-admin/users-manager.js') }}"></script>
 @endsection

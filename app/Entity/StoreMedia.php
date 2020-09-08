@@ -15,8 +15,10 @@ class StoreMedia extends Model
       'type'
     ];
 
-    public function store(): BelongsTo
+    protected $table = "store_medias";
+
+    public function stores(): BelongsTo
     {
-        return $this->belongsTo(Store::class);
+        return $this->belongsTo(Store::class, 'store_media_id');
     }
 }

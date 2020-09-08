@@ -24,6 +24,7 @@ class CreateStoresTable extends Migration
             $table->boolean('main');
             $table->boolean('active')->default(true);
             $table->string('slug',255);
+            $table->string('tva', 50)->nullable();
             $table->unsignedInteger('store_type_id');
             $table->timestamps();
 

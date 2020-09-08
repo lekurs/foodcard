@@ -12,7 +12,7 @@ $(document).ready(function () {
         addProductContainer.find('input#category').after('<input type="hidden" id="category2" name="category[]">');
         $('input#category2').val(idSubcategory);
 
-        $.post('/foodcard/admin/ma-carte/products', {id: idSubcategory}, function (data) {
+        $.post('/admin-client/ma-carte/products', {id: idSubcategory}, function (data) {
             let elt = $('.products-table-container');
 
             elt.html(data);

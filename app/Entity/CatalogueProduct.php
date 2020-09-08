@@ -24,7 +24,7 @@ class CatalogueProduct extends Model
 
     public function catalogueProductCategories(): HasMany
     {
-        return $this->hasMany(CatalogueProductCategory::class);
+        return $this->hasMany(CatalogueProductCategory::class,'products_categories');
     }
 
     public function locales(): HasMany
@@ -49,6 +49,6 @@ class CatalogueProduct extends Model
 
     public function stores(): BelongsToMany
     {
-        return $this->belongsToMany(Store::class, 'stores_products');
+        return $this->belongsToMany(Store::class, 'stores_products')->withPivot('store_id', 'catalogue_product_id', 'online');
     }
 }

@@ -21,12 +21,6 @@ $(document).ready(function () {
         $.post('/admin/produits/update/view', {id: idProduct}, function (data) {
 
             $('#content-form-product').html(data);
-
-            tinymce.remove();
-            tinymce.init({
-                selector: 'textarea:not(.textarea-allergy)',
-                toolbar_mode: 'floating',
-            });
         });
     });
 });

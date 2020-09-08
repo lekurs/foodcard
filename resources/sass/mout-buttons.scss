@@ -181,3 +181,19 @@ input:checked + .slider:before {
         right: 20px;
     }
 }
+
+//Update online product
+td.online-menu {
+    cursor: pointer;
+    & i {
+        font-size: 1.5em;
+
+        &.online {
+            color: red;
+        }
+
+        &.offline {
+            color: green;
+        }
+    }
+}

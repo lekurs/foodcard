@@ -74,7 +74,8 @@
                                     <p class="mout--light" id="store-change" data-toggle="modal" data-target="#changeStore"><i class="fal fa-store"></i> Changer de magasin</p>
                                 @endif
                                 <p class="mout--regular text-break" id="store-mail">{{auth()->user()->email}}</p>
-                                <p class="edit-store" data-store=""><span class="mout-middle-edit-magic-icon"><i class="fal fa-magic"></i></span></p>
+                                <p class="edit-store" data-store="">
+                                    <a href="{{ route('storeInformations', session('store')->slug) }}" class="btn mout-btn-login mout--regular">modifier <i class="fal fa-magic"></i></a></p>
                                 @show
 
                             </div>

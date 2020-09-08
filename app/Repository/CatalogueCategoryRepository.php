@@ -6,6 +6,7 @@ namespace App\Repository;
 
 use App\Entity\CatalogueCategory;
 use App\Entity\CatalogueCategoryLocale;
+use App\Entity\Store;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -44,11 +45,42 @@ class CatalogueCategoryRepository
         return CatalogueCategory::with('categoryLocalesFR')->whereId($id)->first();
     }
 
+    public function getOneWithAllProductsOnlyLocalByIdAndByStore(int $idCategory, string $locale = null)
+    {
+        return CatalogueCategory::with(
+            [
+                'products' => function($q) {
+                    $q->where('visibility', 'local');
+                },
+                'categoryLocales',
+                'products.langueFR',
+                'products.catalogueProductMedias',
+                'products.categories',
+                'products.stores' => function($q) {
+                    $q->whereId(session()->get('store')->id);
+                },
+            ]
+            )
+            ->whereId($idCategory)->first();
+    }
+
     public function getOneWithAllProductsById(int $id, string $locale)
     {
         return CatalogueCategory::with('categoryLocales', 'products', 'products.langueFR', 'products.catalogueProductMedias', 'products.categories')
             ->whereId($id)->first();
 
+    }
+
+    public function getAllProductsByCategoryAndByStore(): Collection
+    {
+        return CatalogueCategory::with(
+            'products',
+            'categoryLocales',
+            'products.locales',
+            'products.locales.locale',
+            'products.catalogueProductFloats',
+            'products.catalogueProductMedias'
+        )->whereParent(null)->get();
     }
 
     public function getCategoriesLabel()

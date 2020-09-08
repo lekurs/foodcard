@@ -47,99 +47,90 @@ class CatalogueProductRepository
 
     public function getOneWithLocales(int $id)
     {
-        return $this->catalogueProduct::whereId($id)->with('locales', 'locales.locale', 'catalogueProductFloats')->first();
+        return $this->catalogueProduct::whereId($id)
+            ->with(
+                'locales',
+                'locales.locale',
+                'catalogueProductFloats',
+                'catalogueProductMedias'
+            )->first();
     }
 
-    public function getAllBycategory(int $id): Collection
-    {
-        $products = $this->catalogueProduct::with('categories')->get();
-//
-//         foreach($products as $product) {
-//             dump($product->categories);
-//         }
-//
-//         die;
-    }
+//    public function getAllBycategory(int $id): Collection
+//    {
+//        return $this->catalogueProduct::with('categories')->get();
+//    }
 
     public function store(array $datas): void
     {
         if (is_null($datas['product_id'])) {
-
             $product = new CatalogueProduct();
-            $product->allergy = $datas['allergy'];
+        } else {
+            $product = CatalogueProduct::whereId($datas['product_id'])->first();
+        }
+        $product->allergy = $datas['allergy'];
+        if (isset($datas['homemade']) && !is_null($datas['homemade'])) {
+            $product->homemade = $datas['homemade'];
+        } else {
+            $product->homemade = false;
+        }
 
-            if(isset($datas['store_id']) && !is_null($datas['store_id'])) {
-                $product->visibility = 'local';
-                }
+        if (isset($datas['store_id']) && !is_null($datas['store_id'])) {
+            $product->visibility = 'local';
+        }
 
-            $product->save();
+        $product->save();
 
-            if(isset($datas['store_id']) && !is_null($datas['store_id'])) {
-                $store = Store::whereId($datas['store_id'])->first();
-                $product->stores()->sync([$store->id]);
+        if (isset($datas['store_id']) && !is_null($datas['store_id'])) {
+            $store = Store::whereId($datas['store_id'])->first();
+            $product->stores()->sync([$store->id]);
+        }
+
+        $lastId = $product->id;
+
+
+        foreach ($datas['locale'] as $localeID => $values) {
+            $productLocale = new CatalogueProductLocale();
+            foreach ($values as $field => $value) {
+                $productLocale->$field = $value;
             }
-            $lastId = $product->id;
 
-            foreach($datas['locale'] as $localeID => $values) {
-                $productLocale = new CatalogueProductLocale();
-                foreach($values as $field => $value) {
-                    $productLocale->$field = $value;
-                }
+            $productLocale->locale_id = $localeID;
+            $productLocale->product_id = $lastId;
+            $productLocale->save();
+        }
 
-                if(isset($datas['homemade']) && !is_null($datas['homemade'])) {
-                    $productLocale->homemade = $datas['homemade'];
-                }
-                $productLocale->locale_id = $localeID;
-                $productLocale->product_id = $lastId;
-                $productLocale->save();
-            }
-
+        if (isset($datas['category']) && !is_null($datas['category'])) {
             foreach ($datas['category'] as $value) {
                 $category = CatalogueCategory::whereId($value)->first();
 
                 $product->categories()->sync([$category->id], false);
             }
+        }
 
+
+        if (is_null($datas['product_id'])) {
             $productFloats = new CatalogueProductFloat();
-            foreach ($datas['float'] as $field => $value) {
-                $productFloats->$field = $value;
-
-            }
-            $productFloats->product_id = $lastId;
-            $productFloats->save();
-
-            if (isset($datas['image']) && !is_null($datas['image'])) {
-                foreach ($datas['image'] as $key => $file) {
-                    $productMedia = new CatalogueProductMedia();
-                    $productMedia->path = $file->getClientOriginalName();
-                    $productMedia->position = $key;
-                    $productMedia->product_id = $product->id;
-                    $productMedia->save();
-                }
-            }
-
         } else {
-            //On update
-            $product = CatalogueProduct::whereId($datas['product_id'])->first();
-            $product->allergy = $datas['allergy'];
-            $product->save();
-            $lastId = $datas['product_id'];
-
-            foreach($datas['locale'] as $localeID => $values) {
-                $productLocale = CatalogueProductLocale::whereProductId($datas['product_id'])->whereLocaleId($localeID)->first();
-                foreach($values as $field => $value) {
-                    $productLocale->$field = $value;
-                }
-                $productLocale->locale_id = $localeID;
-                $productLocale->save();
-            }
-
             $productFloats = CatalogueProductFloat::whereProductId($datas['product_id'])->first();
-            foreach ($datas['float'] as $field => $value) {
-                $productFloats->$field = $value;
+        }
 
+        foreach ($datas['float'] as $field => $value) {
+            $productFloats->$field = $value;
+        }
+
+        $productFloats->product_id = $lastId;
+
+        $productFloats->save();
+
+        if (isset($datas['image']) && !is_null($datas['image'])) {
+            foreach ($datas['image'] as $key => $file) {
+                $productMedia = new CatalogueProductMedia();
+                $productMedia->path = $file->getClientOriginalName();
+                $productMedia->position = $key;
+                $productMedia->product_id = $product->id;
+                $productMedia->save();
             }
-            $productFloats->save();
         }
     }
 

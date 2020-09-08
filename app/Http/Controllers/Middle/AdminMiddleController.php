@@ -40,5 +40,9 @@ class AdminMiddleController extends Controller
         $this->storeRepository = $storeRepository;
 
         $this->userFonctions = $this->userFonctionRepository->getAll();
+
+        if (!session()->get('store')) {
+            redirect()->route('adminMiddleShow');
+        }
     }
 }

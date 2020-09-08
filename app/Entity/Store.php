@@ -36,7 +36,7 @@ class Store extends Model
 
     public function storeMedias(): HasMany
     {
-        return $this->hasMany(StoreMedia::class, 'store_media_id');
+        return $this->hasMany(StoreMedia::class, 'store_id');
     }
 
     public function catalogueProducts(): HasMany

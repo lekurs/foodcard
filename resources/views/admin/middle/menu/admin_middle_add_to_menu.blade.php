@@ -28,8 +28,15 @@
 
 @section('body')
     <div class="mout-admin-middle-content-panel">
-        <div class="my-menu-container">
-            <a href="{{route('adminMiddleMenuShow')}}" class="btn btn-search-menu btn-my-menu mout--regular"><span class="btn-my-menu-icon-container"><i class="fal fa-search"></i></span>Je recherche</a>
+        <div class="select-action-panel">
+            <button class="btn btn-search-menu btn-my-menu mout--regular">
+                <span class="btn-my-menu-icon-container"><i class="fal fa-magic"></i></span>Je crée
+            </button>
+
+            <p class="mout--regular">OU</p>
+
+        </div>
+        <div class="my-menu-container" id="insert_new_product">
             <div class="my-menu-subcategory-container">
                 <div class="my-submenu-category-container" id="edit-product">
                     @foreach($subcategories as $subcategory)
@@ -85,10 +92,11 @@
                     @csrf
                     @include('flashes.errors')
 
+                    <input type="hidden" name="product_id" id="product_id" value="{{ request()->productId }}">
+
                     <div class="mout-admin-middle-menus-container">
                         <div class="images">
-                            {{--            <img src="{{asset('images/admin/middle/header-store.jpg')}}" alt="">--}}
-                            {{--            <img src="{{asset('images/admin/middle/foodcard-admin-middle-header.jpg')}}" alt="">--}}
+
                         </div>
                     </div>
 
@@ -142,10 +150,6 @@
                                 @endforeach
                             </div>
 
-                            <input type="hidden" id="category" name="category[]"
-                                   value="{{ $category->catalogue_category_id }}">
-                            <input type="hidden" name="product_id" value=""
-                                   id="product">
                             <input type="hidden" name="store_id"
                                    value="@if(request()->session()->get('store')){{request()->session()->get('store')->id}}@endif"
                                    id="store">
@@ -243,6 +247,8 @@
                                 <button type="submit" class="btn mout-btn-login">
                                     <span class="btn-label"><i class="fas fa-chevron-right"></i></span>Enregistrer
                                 </button>
+
+                                <button type="button" class="btn mout-btn-add close-product-form">Annuler</button>
                             </div>
                         </div>
                     </div>
@@ -253,13 +259,20 @@
 @endsection
 
 @section('js')
-    <script src="{{asset('js/middle-admin/users-manager.js')}}"></script>
-    <script src="{{asset('/js/plugins/add-media.js')}}"></script>
-    <script src="{{asset('js/admin/manage-allergy.js')}}"></script>
-    <script src="{{asset('js/admin/manage-product-admin.js')}}"></script>
-    <script src="{{asset('js/middle-admin/product-creation-middle-manager.js')}}"></script>
+    <script src="{{ asset('js/middle-admin/users-manager.js') }}"></script>
+    <script src="{{ asset('/js/plugins/add-media.js') }}"></script>
+    <script src="{{ asset('js/admin/manage-allergy.js') }}"></script>
+    <script src="{{ asset('js/admin/manage-product-admin.js') }}"></script>
+    <script src="{{ asset('js/middle-admin/product-creation-middle-manager.js') }}"></script>
     <script>
         $(document).ready(function () {
+            @isset( request()->productId )
+                setTimeout(function () {
+                    $('.foodcard-edit-product[data-value="{{ request()->productId }}"]').trigger('click');
+
+            }, 10);
+            @endisset
+
             $('.images').addMedia({
                 width: '300px',
                 height: '300px',
@@ -284,22 +297,45 @@
 
             $('body').on('click', '.foodcard-edit-product', function () {
                 let idProduct = $(this).attr("data-value");
+                let formContainer = $('.my-menu-creation-container');
 
                 $('#edit-product-form')[0].reset();
+                $('.product_edit_block').remove();
+                formContainer.addClass('active');
 
-                $.post('/foodcard/admin/ma-carte/product/update', { "idProduct" : idProduct}, function (result) {
+                $('.close-product-form').on('click', function () {
+                    formContainer.removeClass('active');
+                })
 
-                    console.log(result);
+                $.post('/admin-client/ma-carte/product/update', { "idProduct" : idProduct}, function (result) {
+
                     $.each(result.locales, function (i, v) {
 
                         $('input.product_label_' + i).val(v.libelle);
                         $('textarea.product_description_' + i).val(v.description);
                     });
 
+                    $.each(result.images, function (i, v) {
+                        let container = $('.add-media-block');
+                        let imgcontent = $('<div>').addClass('add-media-block').addClass('product_edit_block');
+                        let img = $('<img>').addClass('add-media-preview-img').addClass('img-fluid').attr('src', 'http://mymenu.local/storage/products/' + v.path);
+                        let input = $('<input>').attr('type', 'file').attr('name', 'image[]').attr('accept', 'image/*');
+                        let removeBlock = $('<span>').addClass('mout--regular').addClass('add-media-remove').text('remove').click(function () {
+                            $(this).parent().remove();
+                        });
+
+                        container.before(imgcontent);
+                        imgcontent.prepend(img);
+                        img.before(input).after(removeBlock);
+                    });
+
                     $('input.product_price').val(result.price);
                     $('input.product_buy_price').val(result.buy_price);
                     $('input.product_special_price').val(result.special_price);
 
+                    $.each(result.allergy.split('|'), function (i, v) {
+                       $('.btn-allergy[data-allergy='+v+']').removeClass('btn-allergy-inactive').addClass('btn-allergy-active');
+                    });
                 });
             });
 

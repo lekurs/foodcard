@@ -30,6 +30,7 @@ class UpdateAjaxMenuController extends Controller
         $result = [
             "allergy" => $product->allergy,
             "price" => $product->catalogueProductFloats->first()->price,
+            'images' => $product->catalogueProductMedias()->get(),
             "buy_price" => $product->catalogueProductFloats->first()->buying_price,
             "special_price" => $product->catalogueProductFloats->first()->special_price,
             "locales" => []

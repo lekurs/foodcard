@@ -32,6 +32,10 @@ class MenuShowController extends AdminMiddleController
     private CatalogueCategoryRepository $catalogueCategoryRepository;
 
     private CatalogueProductRepository $catalogueProductRepository;
+    /**
+     * @var StoreRepository
+     */
+    private StoreRepository $storeRepository;
 
     public function __construct(
         UserRepository $userRepository,
@@ -47,21 +51,20 @@ class MenuShowController extends AdminMiddleController
         $this->catalogueCategoryLocaleRepository = $catalogueCategoryLocaleRepository;
         $this->catalogueCategoryRepository = $catalogueCategoryRepository;
         $this->catalogueProductRepository = $catalogueProductRepository;
+        $this->storeRepository = $storeRepository;
     }
 
     public function showMenu() {
         $stores = $this->userRepository->getStoresByUser(request()->user())->stores;
-        $categories = $this->catalogueCategoryLocaleRepository->getCategoriesLabelNoParent();
 
-        $starters = $this->catalogueCategoryRepository->getOneWithAllProductsById(5, 'FR');
-        $mainDishes = $this->catalogueCategoryRepository->getOneWithAllProductsById(6, 'FR');
-        $deserts = $this->catalogueCategoryRepository->getOneWithAllProductsById(1, 'FR');
-        $drinks = $this->catalogueCategoryRepository->getOneWithAllProductsById(7, 'FR');
+        $starters = $this->catalogueCategoryRepository->getOneWithAllProductsOnlyLocalByIdAndByStore(5);
+        $mainDishes = $this->catalogueCategoryRepository->getOneWithAllProductsOnlyLocalByIdAndByStore(6);
+        $deserts = $this->catalogueCategoryRepository->getOneWithAllProductsOnlyLocalByIdAndByStore(1);
+        $drinks = $this->catalogueCategoryRepository->getOneWithAllProductsOnlyLocalByIdAndByStore(7);
 
         return view('admin.middle.menu.admin_middle_show_menu', [
             'stores' => $stores,
             'userFonctions' => $this->userFonctions,
-            'categories' => $categories,
             'starters' => $starters,
             'mainDishes' => $mainDishes,
             'deserts' => $deserts,

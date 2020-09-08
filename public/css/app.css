@@ -1782,6 +1782,22 @@ input:checked + .slider:before {
   right: 20px;
 }
 
+td.online-menu {
+  cursor: pointer;
+}
+
+td.online-menu i {
+  font-size: 1.5em;
+}
+
+td.online-menu i.online {
+  color: red;
+}
+
+td.online-menu i.offline {
+  color: green;
+}
+
 table.dataTable thead th,
 table.dataTable thead td,
 table.dataTable.no-footer {
@@ -2023,7 +2039,14 @@ div.my-menu-search-container div.my-menu-search-content#left-content {
 .table#mainDishes td:nth-of-type(6),
 .table#deserts td:nth-of-type(6),
 .table#drinks td:nth-of-type(6) {
-  width: 10%;
+  width: 8%;
+}
+
+.table#starters td:nth-of-type(7),
+.table#mainDishes td:nth-of-type(7),
+.table#deserts td:nth-of-type(7),
+.table#drinks td:nth-of-type(7) {
+  width: 8%;
 }
 
 .table#starters td p,
@@ -4660,6 +4683,70 @@ div.my-menu-container button.btn-allergy:hover {
 div.my-menu-container#category-menu-modal {
   width: 100%;
   margin: inherit;
+}
+
+div.my-menu-container#insert_new_product div.my-menu-creation-container {
+  position: absolute;
+  padding: 40px;
+  left: 100%;
+  top: 0;
+  background: #ffffff;
+  transition: left 0.5s ease-in-out;
+}
+
+div.my-menu-container#insert_new_product div.my-menu-creation-container.active {
+  left: 0;
+}
+
+div.select-action-panel button.btn-search-menu {
+  margin: 0 auto;
+  width: 130px;
+  height: 130px;
+  line-height: 16px;
+  font-size: 18px;
+  background: #01120b;
+  background: linear-gradient(311deg, #01120b 0%, #01311b 50%, #01522c 100%);
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  border: none;
+  border-radius: 15px;
+}
+
+div.select-action-panel button.btn-search-menu span {
+  margin-bottom: 10px;
+}
+
+div.select-action-panel button.btn-search-menu span i {
+  font-size: 50px;
+}
+
+div.select-action-panel p {
+  text-align: center;
+  position: relative;
+  margin-top: 2em;
+  font-size: 25px;
+}
+
+div.select-action-panel p::before,
+div.select-action-panel p::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 30px;
+  height: 2px;
+  background: #00C332;
+}
+
+div.select-action-panel p::before {
+  left: 46%;
+}
+
+div.select-action-panel p::after {
+  right: 46%;
 }
 
 div.mout-admin-middle-content-panel div.my-menu-category-container {
