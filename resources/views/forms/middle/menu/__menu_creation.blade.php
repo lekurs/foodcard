@@ -1,4 +1,4 @@
-<form action="{{route('adminMiddleMenuCreateStore', request()->category)}}" method="post" enctype="multipart/form-data">
+<form action="{{ route('adminMiddleMenuCreateStore', request()->category) }}" method="post" enctype="multipart/form-data">
     @csrf
     @include('flashes.errors')
 
@@ -22,9 +22,9 @@
                         <ul class="mout-dropdown-content">
                             @foreach($locales as $locale)
                             <li>
-                                <a class="" href="#">
+{{--                                <a class="" href="">--}}
                                     <img src="{{asset('images/flags/'. $locale->label . '.png')}}" class="img-fluid choice-lg" data-id="{{$locale->id}}">
-                                </a>
+{{--                                </a>--}}
                             </li>
                             @endforeach
                         </ul>
@@ -50,9 +50,7 @@
                 @foreach($locales as $locale)
                     <div class="textarea-container product_label product_{{$locale->id}}">
                         <label for="locale[{{$locale->id}}][description]" class="mout--regular">Description*</label>
-                        <textarea name="locale[{{$locale->id}}][description]" id="product_description_{{$locale->id}}" class="floating-textarea">
-                            @if(isset($product)){{$product->locales()->whereLocaleId($locale->id)->first()->description}}@endif
-                        </textarea>
+                        <textarea name="locale[{{$locale->id}}][description]" id="product_description_{{$locale->id}}" class="floating-textarea">@if(isset($product)){{$product->locales()->whereLocaleId($locale->id)->first()->description}}@endif</textarea>
                     </div>
                 @endforeach
             </div>

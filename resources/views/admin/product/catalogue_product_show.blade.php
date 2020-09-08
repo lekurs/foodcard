@@ -10,6 +10,7 @@
                     <tr>
                         <th>#</th>
                         <th>Type</th>
+                        <th>Visibilité</th>
                         <th class="text-right">Action</th>
                     </tr>
                     </thead>
@@ -18,6 +19,7 @@
                         <tr>
                             <td>{{$loop->index+1}}</td>
                             <td>{{$product->langueFR->libelle}}</td>
+                            <td>{{$product->visibility }}</td>
                             <td>
                                 <div class="dropdown-actions text-right">
                                     <a href="#" class="dropdown-actions-icons" role="button" id="dropdown-action-{{$product->id}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -49,7 +51,7 @@
             <i class="fas fa-times"></i>
         </div>
         <div id="content-form-product">
-            @include('forms.products.__product_creation')
+{{--            Add form--}}
         </div>
     </div>
 @endsection
@@ -60,11 +62,6 @@
     <script>
         $(document).ready(function() {
             $('#product-type').DataTable();
-
-            tinymce.init({
-                selector: 'textarea:not(.textarea-allergy)',
-                toolbar_mode: 'floating',
-            });
         });
     </script>
 

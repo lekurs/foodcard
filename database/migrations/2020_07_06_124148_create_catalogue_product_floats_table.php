@@ -14,6 +14,7 @@ class CreateCatalogueProductFloatsTable extends Migration
     public function up()
     {
         Schema::create('catalogue_product_floats', function (Blueprint $table) {
+            $table->increments('id');
             $table->double('price')->nullable();
             $table->double('special_price')->nullable();
             $table->double('buying_price')->nullable();

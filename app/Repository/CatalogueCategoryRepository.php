@@ -6,6 +6,7 @@ namespace App\Repository;
 
 use App\Entity\CatalogueCategory;
 use App\Entity\CatalogueCategoryLocale;
+use App\Entity\Store;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -39,6 +40,49 @@ class CatalogueCategoryRepository
         return CatalogueCategory::whereId($id)->first();
     }
 
+    public function getOneWithLocalesById(int $id) {
+
+        return CatalogueCategory::with('categoryLocalesFR')->whereId($id)->first();
+    }
+
+    public function getOneWithAllProductsOnlyLocalByIdAndByStore(int $idCategory, string $locale = null)
+    {
+        return CatalogueCategory::with(
+            [
+                'products' => function($q) {
+                    $q->where('visibility', 'local');
+                },
+                'categoryLocales',
+                'products.langueFR',
+                'products.catalogueProductMedias',
+                'products.categories',
+                'products.stores' => function($q) {
+                    $q->whereId(session()->get('store')->id);
+                },
+            ]
+            )
+            ->whereId($idCategory)->first();
+    }
+
+    public function getOneWithAllProductsById(int $id, string $locale)
+    {
+        return CatalogueCategory::with('categoryLocales', 'products', 'products.langueFR', 'products.catalogueProductMedias', 'products.categories')
+            ->whereId($id)->first();
+
+    }
+
+    public function getAllProductsByCategoryAndByStore(): Collection
+    {
+        return CatalogueCategory::with(
+            'products',
+            'categoryLocales',
+            'products.locales',
+            'products.locales.locale',
+            'products.catalogueProductFloats',
+            'products.catalogueProductMedias'
+        )->whereParent(null)->get();
+    }
+
     public function getCategoriesLabel()
     {
         $return = [];
@@ -62,6 +106,33 @@ class CatalogueCategoryRepository
         }
 
         return $return;
+    }
+
+    public function getAllProductsByCategory($id) {
+
+        $categories = CatalogueCategory::with('products.langueFR', 'products.stores')->whereId($id)->first();
+        $products = $categories->products;
+        $storeInProgress = request()->session()->get('store');
+
+        $result = [];
+
+        foreach ($products as $product) {
+            $visibility = $product->visibility;
+
+            if ($visibility == "all") {
+                array_push($result, $product);
+            } else {
+                if (count($product->stores) > 0) {
+                    foreach ($product->stores as $store) {
+                        if ($storeInProgress->id === $store->id) {
+                            array_push($result, $product);
+                        }
+                    }
+                }
+            }
+        }
+
+        return $result;
     }
 
     public function store(array $datas)

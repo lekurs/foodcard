@@ -18,7 +18,7 @@ $(document).ready(function () {
 
         let idUser = $(this).attr('data-user');
 
-        $.post('/foodcard/admin/store/utilisateur/edit', {id:idUser}, function (data) {
+        $.post('/admin-client/store/utilisateur/edit', {id:idUser}, function (data) {
             $('.mout-admin-middle-form-container').html(data);
         });
     });
@@ -27,7 +27,7 @@ $(document).ready(function () {
         let idUser = $(this).attr('data-user');
         let elt = $(this);
 
-        $.post('/foodcard/admin/store/utilisateur/trash', {id: idUser}, function (data) {
+        $.post('/admin-client/store/utilisateur/trash', {id: idUser}, function (data) {
             elt.closest('.mout-middle-admin-usercards').remove();
         });
     });

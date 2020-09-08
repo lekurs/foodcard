@@ -27,15 +27,16 @@ class CatalogueCategoryLocaleRepository
         return CatalogueCategoryLocale::with('products.langueFR', 'products.catalogueProductMedias')->whereId($id)->first();
     }
 
-    public function getAllProductsByCategory(int $id) {
-
-         $category = CatalogueCategoryLocale::with('products', 'products.langueFR')->whereId($id)->first();
-
-         dd($category->products()->get());
-
-         return $products;
-
-    }
+//    public function getAllProductsByCategory(int $id) {
+//
+//        dd(CatalogueCategoryLocale::with('products', 'products.langueFR')->whereId($id)->first());
+//         return CatalogueCategoryLocale::with('products', 'products.langueFR')->whereId($id)->first();
+//
+////         dd($category->products()->get());
+//
+////         return $products;
+//
+//    }
 
     public function getAllWithCatalogueCategories(): Collection
     {
@@ -68,6 +69,7 @@ class CatalogueCategoryLocaleRepository
     }
 
     public function getAllProductsWithMediasByIdCategory(int $id) {
+
         return CatalogueCategoryLocale::with('products.catalogueProductMedias')->whereId($id)->get();
     }
 

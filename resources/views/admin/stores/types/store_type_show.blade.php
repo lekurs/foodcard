@@ -65,22 +65,18 @@
 
 @section('js')
     <script>
-        $(document).ready(function() {
-            $('#store-type').DataTable();
-        } );
-    </script>
-
-    <script>
         $(document).ready(function () {
+            $('#store-type').DataTable();
+
             $('#addStoreType').modal({
-               show: false,
+                show: false,
             });
 
-            $('.mout-btn-add').click(function () {
+            $('.mout-btn-add').on('click', function () {
                 $('#addStoreType').modal('show');
             });
 
-            $('.store-type-edit').click(function () {
+            $('.store-type-edit').on('click', function () {
                 let id = $(this).data('id');
                 let label = $(this).closest('tr').find('td.type-label').text();
                 $('#modal-type-id').val(id);

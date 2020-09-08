@@ -50,12 +50,7 @@ class CatalogueCategoryLocale extends Model
         return $this->belongsTo(CatalogueCategory::class, 'catalogue_category_id');
     }
 
-    public function products(): BelongsToMany
-    {
-        return $this->belongsToMany(CatalogueProduct::class, 'products_categories');
-    }
-
-    public function withProducts(): BelongsToMany
+    public function catalogueProducts(): BelongsToMany
     {
         return $this->belongsToMany(CatalogueProduct::class, 'products_categories');
     }

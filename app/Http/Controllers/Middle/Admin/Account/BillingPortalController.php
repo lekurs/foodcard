@@ -70,7 +70,7 @@ class BillingPortalController extends AdminMiddleController
             'source' => $request->stripeToken
         ]);
 
-//        $user->newSubscription('default', $planId)->create($paymentMethod);
+        $user->newSubscription('default', $planId)->create($paymentMethod);
 
 
         $subscription = Subscription::create([
@@ -79,8 +79,6 @@ class BillingPortalController extends AdminMiddleController
                 ['price' => 'price_1HAJeVLNXgoErTPaxHB6IYCw'],
             ],
         ]);
-
-        dd($customer, $subscription);
 
         return response(['status' => 'success']);
     }

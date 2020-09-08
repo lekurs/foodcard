@@ -1,15 +1,15 @@
 <table class="table mout-table products-table">
     <thead>
     <tr>
-        <th>{{ $category->libelle }}</th>
-        <th>type</th>
-        <th>libellé</th>
-        <th>action</th>
-        <th></th>
+        <th>#</th>
+        <th class="text-center">Catégorie</th>
+        <th class="text-center">libellé</th>
+        <th class="text-center">action</th>
+        <th class="text-center"></th>
     </tr>
     </thead>
     <tbody>
-    @foreach($category->products as $product)
+    @foreach($productList as $product)
     <tr>
         <td>
             @if(isset($product->catalogueProductMedias[0]) && !is_null($product->catalogueProductMedias[0]->path))
@@ -19,10 +19,10 @@
                 <i class="fal fa-image fa-2x"></i>
             @endif
         </td>
-        <td>{{ $category->libelle }}</td>
-        <td>{{ $product->langueFR->libelle }}</td>
-        <td><a href="#" class="btn mout-btn-login" data-product="{{ $product->id }}">Renseigner ce plat</a></td>
-        <td><i class="fal fa-eye fa-2x"></i></td>
+        <td class="text-center">{{ $category->categoryLocalesFR->first()->libelle }}</td>
+        <td class="text-center">{{ $product->langueFR->libelle }}</td>
+        <td class="text-center">@if($product->visibility === "all")<a href="#" class="btn mout-btn-login" data-product="{{ $product->id }}">Personnaliser ce plat</a>@endif</td>
+        <td class="text-center online-menu" data-store="{{ \Illuminate\Support\Str::slug(session('store')->name) }}" data-product-id="{{ $product->id }}"><i class="fal fa-eye fa-2x"></i></td>
     </tr>
     @endforeach
     </tbody>

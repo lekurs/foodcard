@@ -11,6 +11,7 @@ use App\Repository\CatalogueProductRepository;
 use App\Repository\StoreRepository;
 use App\Repository\UserFonctionRepository;
 use App\Repository\UserRepository;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 
 class MenuShowController extends AdminMiddleController
@@ -31,6 +32,10 @@ class MenuShowController extends AdminMiddleController
     private CatalogueCategoryRepository $catalogueCategoryRepository;
 
     private CatalogueProductRepository $catalogueProductRepository;
+    /**
+     * @var StoreRepository
+     */
+    private StoreRepository $storeRepository;
 
     public function __construct(
         UserRepository $userRepository,
@@ -46,8 +51,28 @@ class MenuShowController extends AdminMiddleController
         $this->catalogueCategoryLocaleRepository = $catalogueCategoryLocaleRepository;
         $this->catalogueCategoryRepository = $catalogueCategoryRepository;
         $this->catalogueProductRepository = $catalogueProductRepository;
+        $this->storeRepository = $storeRepository;
     }
 
+    public function showMenu() {
+        $stores = $this->userRepository->getStoresByUser(request()->user())->stores;
+
+        $starters = $this->catalogueCategoryRepository->getOneWithAllProductsOnlyLocalByIdAndByStore(5);
+        $mainDishes = $this->catalogueCategoryRepository->getOneWithAllProductsOnlyLocalByIdAndByStore(6);
+        $deserts = $this->catalogueCategoryRepository->getOneWithAllProductsOnlyLocalByIdAndByStore(1);
+        $drinks = $this->catalogueCategoryRepository->getOneWithAllProductsOnlyLocalByIdAndByStore(7);
+
+        return view('admin.middle.menu.admin_middle_show_menu', [
+            'stores' => $stores,
+            'userFonctions' => $this->userFonctions,
+            'starters' => $starters,
+            'mainDishes' => $mainDishes,
+            'deserts' => $deserts,
+            'drinks' => $drinks
+        ]);
+    }
+
+    //TODO : DELETE ALL METHOS UNDER THIS ONE
     public function show() {
         $stores = $this->userRepository->getStoresByUser(request()->user())->stores;
         $categories = $this->catalogueCategoryLocaleRepository->getCategoriesLabelNoParent();
@@ -71,12 +96,12 @@ class MenuShowController extends AdminMiddleController
     public function showProductsTable() {
         $id = request()->request->get('id');
 
-        $category = $this->catalogueCategoryLocaleRepository->getAllProductsByCategory($id);
-
-        dd($category);
+        $category = $this->catalogueCategoryRepository->getOneWithLocalesById($id);
+        $productList = $this->catalogueCategoryRepository->getAllProductsByCategory($id);
 
         return view('admin.middle.menu.admin_middle_menu_products_table', [
-            'category' => $category,
+            'productList' => $productList,
+            'category' => $category
         ]);
     }
 

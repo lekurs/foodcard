@@ -83,7 +83,7 @@ class MenuFormController extends AdminMiddleController
 
         $this->catalogueProductRepository->store($validates);
 
-        if ($validates['image']) {
+        if (isset($validates['image'])) {
             foreach ($validates['image'] as $file) {
 
                 $mimeTypes = ['image/png', 'image/jpeg', 'image/gif', 'image/svg+xml'];
@@ -100,6 +100,10 @@ class MenuFormController extends AdminMiddleController
 
                 $file->storeAs('/public/products/', $file->getClientOriginalName());
             }
+        }
+
+        if (request()->get('productId')) {
+            return redirect()->route('editMenu', request()->get('categoryId'));
         }
 
         return back()->with('success', 'Produit ajouté');

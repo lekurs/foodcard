@@ -16,6 +16,7 @@ class CreateCatalogueProductsTable extends Migration
         Schema::create('catalogue_products', function (Blueprint $table) {
             $table->increments('id');
             $table->string('allergy', 255)->nullable();
+            $table->boolean('homemade')->default(false);
             $table->boolean('active')->default(true);
             $table->enum('visibility',['all', 'local'])->default('all');
             $table->timestamps();

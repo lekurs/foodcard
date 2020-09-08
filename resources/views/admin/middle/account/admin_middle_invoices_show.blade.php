@@ -57,9 +57,9 @@
                         </tr>
                         </tbody>
                     </table>
-                <div class="mout-admin-middle-invoice-paginator">
-                    <i class="fal fa-chevron-right"></i>
-                </div>
+                    <div class="mout-admin-middle-invoice-paginator">
+{{--                        <i class="fal fa-chevron-right"></i>--}}
+                    </div>
                 </div>
             </div>
         </div>

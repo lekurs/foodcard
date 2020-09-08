@@ -51,7 +51,7 @@
     }
 
     div.my-menu-container {
-        width: 65%;
+        //width: 65%;
 
         &#category-menu {
             width: 50%;
@@ -141,7 +141,7 @@
     }
 
     div.my-menu-container {
-        width: 50%;
+        //width: 50%;
 
         &#category-menu {
             width: 35%;
@@ -648,12 +648,12 @@ div.min-nav-container {
 
 //My-menu pages
 div.my-menu-container {
-    display: flex;
-    justify-content: space-around;
+    //display: flex;
+    //justify-content: space-around;
     //width: 50%;
     margin: 2em auto 0;
 
-    & a, button {
+    & a, button.btn-allergy {
         display: flex;
         flex-direction: column;
         padding: 15px;
@@ -712,6 +712,78 @@ div.my-menu-container {
     &#category-menu-modal {
         width: 100%;
         margin: inherit;
+    }
+
+    &#insert_new_product{
+        //display: flex;
+
+        & div.my-menu-creation-container {
+            position: absolute;
+            padding: 40px;
+            left: 100%;
+            top: 0;
+            background: #ffffff;
+            transition: left .5s ease-in-out;
+
+            &.active {
+                left: 0;
+            }
+        }
+    }
+}
+
+div.select-action-panel {
+
+    button.btn-search-menu {
+        margin: 0 auto;
+        width: 130px;
+        height: 130px;
+        line-height: 16px;
+        font-size: 18px;
+        background: #01120b;
+        background: linear-gradient(311deg, #01120b 0%, #01311b 50%, #01522c 100%);
+
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        border: none;
+        border-radius: 15px;
+
+        & span {
+            margin-bottom: 10px;
+
+            & i {
+                font-size: 50px;
+            }
+        }
+    }
+
+    & p {
+        text-align: center;
+        position: relative;
+        margin-top: 2em;
+        font-size: 25px;
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 30px;
+            height: 2px;
+            background: #00C332;
+        }
+
+        &::before {
+            left: 46%;
+        }
+
+        &::after {
+            right: 46%;
+        }
     }
 }
 
@@ -784,119 +856,119 @@ div.mout-admin-middle-content-panel {
 
     & div.my-menu-add-product-container {
         display: none;
+    }
+}
 
-        & div.my-menu-creation-form-container {
-            background: rgb(1,16,10);
-            background: linear-gradient(180deg, rgba(1,16,10,1) 0%, rgba(1,48,26,1) 50%, rgba(1,82,44,1) 100%);
-            position: relative;
+div.my-menu-creation-form-content {
+    width: 70%;
+    margin: 0 auto;
+    padding: 2em 0;
+    color: #ffffff;
+    min-height: 1300px;
 
-            & .input-group-prepend.choose-langage {
-                position: absolute;
-                left: -20%;
+    & .textarea-container.product_label.product_1 {
+        margin-top: 5em;
+    }
+
+    & textarea {
+        width: 100%;
+        height: 90px;
+        border: none;
+        border-radius: 15px;
+        color: #000000 !important;
+    }
+
+    & .floating-label {
+        margin-bottom: 4em;
+    }
+
+    & label.float, .floating-input, label.check {
+        color: #ffffff !important;
+        font-family: $mout-font !important;
+        font-size: 1.25rem !important;
+        top: -5px !important;
+    }
+
+    & .floating-input:focus ~ label.float, .floating-input:not(:placeholder-shown) ~ label.float {
+        font-size: 14px !important;
+        top: -20px !important;
+    }
+
+    & input {
+
+        &.product_label {
+            border-bottom: 1px solid #00C332 !important;
+        }
+
+        &#product_price {
+            border-bottom: 1px solid #FF7F00 !important;
+        }
+        &#product_special_price {
+            border-bottom: 1px solid #FFCD00 !important;
+        }
+
+        &#product_buying_price {
+            border-bottom: 1px solid #FF0000 !important;
+        }
+    }
+
+    & H5.allergy {
+        padding-bottom: .5em;
+        border-bottom: 1px solid #00C332;
+        margin-bottom: 1em;
+    }
+
+    & div.button-allergy-container {
+        display: flex;
+        flex-wrap: wrap;
+
+        & .btn-allergy {
+            flex-basis: 14% !important;
+            margin: 10px;
+        }
+    }
+}
+
+div.my-menu-creation-form-container {
+    background: rgb(1,16,10);
+    background: linear-gradient(180deg, rgba(1,16,10,1) 0%, rgba(1,48,26,1) 50%, rgba(1,82,44,1) 100%);
+    position: relative;
+
+    & .input-group-prepend.choose-langage {
+        position: absolute;
+        left: -20%;
+    }
+
+    & div.product-langage-selection {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100px;
+        top: 0;
+        left: 0;
+        background-color: rgba(247, 247, 247, .22);
+    }
+
+    & .input-group-append.category {
+
+        & span.btn-my-category {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            color: #fff;
+            flex-direction: column;
+            border: none;
+            border-radius: 15px;
+            position: absolute;
+            right: -16%;
+            top: -15px;
+
+            & i {
+                font-size: 25px;
             }
 
-            & div.product-langage-selection {
-                position: absolute;
-                content: "";
-                width: 100%;
-                height: 100px;
-                top: 0;
-                left: 0;
-                background-color: rgba(247, 247, 247, .22);
-            }
-
-            & .input-group-append.category {
-
-                & span.btn-my-category {
-                    width: 70px;
-                    height: 70px;
-                    display: flex;
-                    color: #fff;
-                    flex-direction: column;
-                    border: none;
-                    border-radius: 15px;
-                    position: absolute;
-                    right: -16%;
-                    top: -15px;
-
-                    & i {
-                        font-size: 25px;
-                    }
-
-                    & svg {
-                        width: 60%;
-                    }
-                }
-            }
-
-            & div.my-menu-creation-form-content {
-                width: 70%;
-                margin: 0 auto;
-                padding: 2em 0;
-                color: #ffffff;
-                min-height: 1300px;
-
-                & .textarea-container.product_label.product_1 {
-                    margin-top: 5em;
-                }
-
-                & textarea {
-                    width: 100%;
-                    height: 90px;
-                    border: none;
-                    border-radius: 15px;
-                    color: #000000 !important;
-                }
-
-                & .floating-label {
-                    margin-bottom: 4em;
-                }
-
-                & label.float, .floating-input, label.check {
-                    color: #ffffff !important;
-                    font-family: $mout-font !important;
-                    font-size: 1.25rem !important;
-                    top: -5px !important;
-                }
-
-                & .floating-input:focus ~ label.float, .floating-input:not(:placeholder-shown) ~ label.float {
-                    font-size: 14px !important;
-                    top: -20px !important;
-                }
-
-                & input {
-
-                    &.product_label {
-                        border-bottom: 1px solid #00C332 !important;
-                    }
-
-                    &#product_price {
-                        border-bottom: 1px solid #FF7F00 !important;
-                    }
-                    &#product_special_price {
-                        border-bottom: 1px solid #FFCD00 !important;
-                    }
-
-                    &#product_buying_price {
-                        border-bottom: 1px solid #FF0000 !important;
-                    }
-                }
-
-                & H5.allergy {
-                    padding-bottom: .5em;
-                    border-bottom: 1px solid #00C332;
-                    margin-bottom: 1em;
-                }
-
-                & div.button-allergy-container {
-                    display: flex;
-                    flex-wrap: wrap;
-
-                    & .btn-allergy {
-                        flex-basis: 14% !important;
-                        margin: 10px;
-                    }
-                }
+            & svg {
+                width: 60%;
             }
         }
     }
@@ -934,6 +1006,15 @@ div.my-submenu-category-container {
         & p {
             font-size: 18px;
             margin-bottom: 0;
+        }
+    }
+
+    &#edit-product {
+        justify-content: center;
+
+        & img {
+            width: 150px;
+            height: 150px;
         }
     }
 }

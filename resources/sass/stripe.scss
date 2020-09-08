@@ -94,3 +94,549 @@ div.mout-admin-middle-container {
         flex-direction: column;
     }
 }
+
+
+//CreditCard
+.payment-title {
+    width: 100%;
+    text-align: center;
+}
+
+.form-container .field-container:first-of-type {
+    grid-area: name;
+}
+
+.form-container .field-container:nth-of-type(2) {
+    grid-area: number;
+}
+
+.form-container .field-container:nth-of-type(3) {
+    grid-area: expiration;
+}
+
+.form-container .field-container:nth-of-type(4) {
+    grid-area: security;
+}
+
+.field-container input {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.field-container {
+    position: relative;
+}
+
+.form-container {
+    display: grid;
+    grid-column-gap: 10px;
+    grid-template-columns: auto auto;
+    grid-template-rows: 90px 90px 90px;
+    grid-template-areas: "name name""number number""expiration security";
+    max-width: 400px;
+    padding: 20px;
+    color: #707070;
+}
+
+//label {
+//    padding-bottom: 5px;
+//    font-size: 13px;
+//}
+
+//input {
+//    margin-top: 3px;
+//    padding: 15px;
+//    font-size: 16px;
+//    width: 100%;
+//    border-radius: 3px;
+//    border: 1px solid #dcdcdc;
+//}
+
+.ccicon {
+    height: 38px;
+    position: absolute;
+    right: 6px;
+    top: calc(50% - 17px);
+    width: 60px;
+}
+
+/* CREDIT CARD IMAGE STYLING */
+.preload * {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -ms-transition: none !important;
+    -o-transition: none !important;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    max-height: 251px;
+    height: 54vw;
+    padding: 20px;
+}
+
+#ccsingle {
+    position: absolute;
+    right: 15px;
+    top: 20px;
+}
+
+#ccsingle svg {
+    width: 100px;
+    max-height: 60px;
+}
+
+.creditcard svg#cardfront,
+.creditcard svg#cardback {
+    width: 100%;
+    -webkit-box-shadow: 1px 5px 6px 0px black;
+    box-shadow: 1px 5px 6px 0px black;
+    border-radius: 22px;
+}
+
+#generatecard{
+    cursor: pointer;
+    float: right;
+    font-size: 12px;
+    color: #fff;
+    padding: 2px 4px;
+    background-color: #909090;
+    border-radius: 4px;
+    cursor: pointer;
+    float:right;
+}
+
+/* CHANGEABLE CARD ELEMENTS */
+.creditcard .lightcolor,
+.creditcard .darkcolor {
+    -webkit-transition: fill .5s;
+    transition: fill .5s;
+}
+
+.creditcard .lightblue {
+    fill: #03A9F4;
+}
+
+.creditcard .lightbluedark {
+    fill: #0288D1;
+}
+
+.creditcard .red {
+    fill: #ef5350;
+}
+
+.creditcard .reddark {
+    fill: #d32f2f;
+}
+
+.creditcard .purple {
+    fill: #ab47bc;
+}
+
+.creditcard .purpledark {
+    fill: #7b1fa2;
+}
+
+.creditcard .cyan {
+    fill: #26c6da;
+}
+
+.creditcard .cyandark {
+    fill: #0097a7;
+}
+
+.creditcard .green {
+    fill: #66bb6a;
+}
+
+.creditcard .greendark {
+    fill: #388e3c;
+}
+
+.creditcard .lime {
+    fill: #d4e157;
+}
+
+.creditcard .limedark {
+    fill: #afb42b;
+}
+
+.creditcard .yellow {
+    fill: #ffeb3b;
+}
+
+.creditcard .yellowdark {
+    fill: #f9a825;
+}
+
+.creditcard .orange {
+    fill: #ff9800;
+}
+
+.creditcard .orangedark {
+    fill: #ef6c00;
+}
+
+.creditcard .grey {
+    fill: #bdbdbd;
+}
+
+.creditcard .greydark {
+    fill: #616161;
+}
+
+/* FRONT OF CARD */
+#svgname {
+    text-transform: uppercase;
+}
+
+#cardfront .st2 {
+    fill: #FFFFFF;
+}
+
+#cardfront .st3 {
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 600;
+}
+
+#cardfront .st4 {
+    font-size: 54.7817px;
+}
+
+#cardfront .st5 {
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 400;
+}
+
+#cardfront .st6 {
+    font-size: 33.1112px;
+}
+
+#cardfront .st7 {
+    opacity: 0.6;
+    fill: #FFFFFF;
+}
+
+#cardfront .st8 {
+    font-size: 24px;
+}
+
+#cardfront .st9 {
+    font-size: 36.5498px;
+}
+
+#cardfront .st10 {
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 300;
+}
+
+#cardfront .st11 {
+    font-size: 16.1716px;
+}
+
+#cardfront .st12 {
+    fill: #4C4C4C;
+}
+
+/* BACK OF CARD */
+#cardback .st0 {
+    fill: none;
+    stroke: #0F0F0F;
+    stroke-miterlimit: 10;
+}
+
+#cardback .st2 {
+    fill: #111111;
+}
+
+#cardback .st3 {
+    fill: #F2F2F2;
+}
+
+#cardback .st4 {
+    fill: #D8D2DB;
+}
+
+#cardback .st5 {
+    fill: #C4C4C4;
+}
+
+#cardback .st6 {
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 400;
+}
+
+#cardback .st7 {
+    font-size: 27px;
+}
+
+#cardback .st8 {
+    opacity: 0.6;
+}
+
+#cardback .st9 {
+    fill: #FFFFFF;
+}
+
+#cardback .st10 {
+    font-size: 24px;
+}
+
+#cardback .st11 {
+    fill: #EAEAEA;
+}
+
+#cardback .st12 {
+    font-family: 'Rock Salt', cursive;
+}
+
+#cardback .st13 {
+    font-size: 37.769px;
+}
+
+/* FLIP ANIMATION */
+.container {
+    perspective: 1000px;
+}
+
+.creditcard {
+    width: 100%;
+    max-width: 400px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    transition: -webkit-transform 0.6s;
+    -webkit-transition: -webkit-transform 0.6s;
+    transition: transform 0.6s;
+    transition: transform 0.6s, -webkit-transform 0.6s;
+    cursor: pointer;
+}
+
+.creditcard .front,
+.creditcard .back {
+    position: absolute;
+    width: 100%;
+    max-width: 400px;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    color: #47525d;
+}
+
+.creditcard .back {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+.creditcard.flipped {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+
+
+//TEST
+.foodcard-stripe.foodcard-stripe2 {
+    background-color: #fff;
+}
+
+.foodcard-stripe.foodcard-stripe2 * {
+    font-family: Source Code Pro, Consolas, Menlo, monospace;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.foodcard-stripe.foodcard-stripe2 .row {
+    display: -ms-flexbox;
+    display: flex;
+    margin: 0 5px 10px;
+}
+
+.foodcard-stripe.foodcard-stripe2 .field {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 0 10px;
+}
+
+.foodcard-stripe.foodcard-stripe2 .field.half-width {
+    width: 50%;
+}
+
+.foodcard-stripe.foodcard-stripe2 .field.quarter-width {
+    width: calc(25% - 10px);
+}
+
+.foodcard-stripe.foodcard-stripe2 .baseline {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    left: 0;
+    bottom: 0;
+    background-color: #cfd7df;
+    transition: background-color 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.foodcard-stripe.foodcard-stripe2 label {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 8px;
+    color: #cfd7df;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transform-origin: 0 50%;
+    cursor: text;
+    pointer-events: none;
+    transition-property: color, transform;
+    transition-duration: 0.3s;
+    transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.foodcard-stripe.foodcard-stripe2 .input {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    padding-bottom: 7px;
+    color: #32325d;
+    background-color: transparent;
+}
+
+.foodcard-stripe.foodcard-stripe2 .input::-webkit-input-placeholder {
+    color: transparent;
+    transition: color 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.foodcard-stripe.foodcard-stripe2 .input::-moz-placeholder {
+    color: transparent;
+    transition: color 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.foodcard-stripe.foodcard-stripe2 .input:-ms-input-placeholder {
+    color: transparent;
+    transition: color 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.foodcard-stripe.foodcard-stripe2 .input.StripeElement {
+    opacity: 0;
+    transition: opacity 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    will-change: opacity;
+}
+
+.foodcard-stripe.foodcard-stripe2 .input.focused,
+.foodcard-stripe.foodcard-stripe2 .input:not(.empty) {
+    opacity: 1;
+}
+
+.foodcard-stripe.foodcard-stripe2 .input.focused::-webkit-input-placeholder,
+.foodcard-stripe.foodcard-stripe2 .input:not(.empty)::-webkit-input-placeholder {
+    color: #cfd7df;
+}
+
+.foodcard-stripe.foodcard-stripe2 .input.focused::-moz-placeholder,
+.foodcard-stripe.foodcard-stripe2 .input:not(.empty)::-moz-placeholder {
+    color: #cfd7df;
+}
+
+.foodcard-stripe.foodcard-stripe2 .input.focused:-ms-input-placeholder,
+.foodcard-stripe.foodcard-stripe2 .input:not(.empty):-ms-input-placeholder {
+    color: #cfd7df;
+}
+
+.foodcard-stripe.foodcard-stripe2 .input.focused + label,
+.foodcard-stripe.foodcard-stripe2 .input:not(.empty) + label {
+    color: #aab7c4;
+    transform: scale(0.85) translateY(-25px);
+    cursor: default;
+}
+
+.foodcard-stripe.foodcard-stripe2 .input.focused + label {
+    color: #24b47e;
+}
+
+.foodcard-stripe.foodcard-stripe2 .input.invalid + label {
+    color: #ffa27b;
+}
+
+.foodcard-stripe.foodcard-stripe2 .input.focused + label + .baseline {
+    background-color: #24b47e;
+}
+
+.foodcard-stripe.foodcard-stripe2 .input.focused.invalid + label + .baseline {
+    background-color: #e25950;
+}
+
+.foodcard-stripe.foodcard-stripe2 input, .foodcard-stripe.foodcard-stripe2 button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    border-style: none;
+}
+
+.foodcard-stripe.foodcard-stripe2 input:-webkit-autofill {
+    -webkit-text-fill-color: #e39f48;
+    transition: background-color 100000000s;
+    -webkit-animation: 1ms void-animation-out;
+}
+
+.foodcard-stripe.foodcard-stripe2 .StripeElement--webkit-autofill {
+    background: transparent !important;
+}
+
+.foodcard-stripe.foodcard-stripe2 input, .foodcard-stripe.foodcard-stripe2 button {
+    -webkit-animation: 1ms void-animation-out;
+}
+
+.foodcard-stripe.foodcard-stripe2 button {
+    display: block;
+    width: calc(100% - 30px);
+    height: 40px;
+    margin: 40px 15px 0;
+    background-color: #24b47e;
+    border-radius: 4px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.foodcard-stripe.foodcard-stripe2 .error svg {
+    margin-top: 0 !important;
+}
+
+.foodcard-stripe.foodcard-stripe2 .error svg .base {
+    fill: #e25950;
+}
+
+.foodcard-stripe.foodcard-stripe2 .error svg .glyph {
+    fill: #fff;
+}
+
+.foodcard-stripe.foodcard-stripe2 .error .message {
+    color: #e25950;
+}
+
+.foodcard-stripe.foodcard-stripe2 .success .icon .border {
+    stroke: #abe9d2;
+}
+
+.foodcard-stripe.foodcard-stripe2 .success .icon .checkmark {
+    stroke: #24b47e;
+}
+
+.foodcard-stripe.foodcard-stripe2 .success .title {
+    color: #32325d;
+    font-size: 16px !important;
+}
+
+.foodcard-stripe.foodcard-stripe2 .success .message {
+    color: #8898aa;
+    font-size: 13px !important;
+}
+
+.foodcard-stripe.foodcard-stripe2 .success .reset path {
+    fill: #24b47e;
+}
