@@ -34,8 +34,11 @@ class QRCodeController extends Controller
      * @param UserFonctionRepository $userFonctionRepository
      * @param StoreRepository $storeRepository
      */
-    public function __construct(UserRepository $userRepository, UserFonctionRepository $userFonctionRepository, StoreRepository $storeRepository)
-    {
+    public function __construct(
+        UserRepository $userRepository,
+        UserFonctionRepository $userFonctionRepository,
+        StoreRepository $storeRepository
+    ) {
         $this->userRepository = $userRepository;
         $this->userFonctionRepository = $userFonctionRepository;
         $this->storeRepository = $storeRepository;
@@ -46,10 +49,16 @@ class QRCodeController extends Controller
     {
         $userFonctions = $this->userFonctionRepository->getAll();
         $stores = $this->userRepository->getStoresByUser(request()->user())->stores;
+        $store = $this->storeRepository->getOneBySlug(session('store')->slug);
+        $medias = [];
+
+        foreach ($store->storeMedias as $mediasTab) {
+            $medias[$mediasTab->type] = $mediasTab;
+        }
 
         $qr = new QRcode();
         $qr->frame = $qr::LVL_FRAME_HUGE;
-        $qr->target = "http://www.google.com";
+        $qr->target = 'http://mymenu.local/api/' . $store->slug . '/home';
         $qr->logo = "https://ressources.blogdumoderateur.com/2013/10/google-logo.png";
         $qr->color = "006c50";
         $qrcode = $qr->output();
@@ -59,7 +68,9 @@ class QRCodeController extends Controller
         return view('admin.middle.account.qrcode.admin_middle_qrcode_show', [
             'qrcode' => $image,
             'userFonctions' => $userFonctions,
-            'stores' => $stores
+            'stores' => $stores,
+            'store' => $store,
+            'medias' => $medias
         ]);
     }
 }

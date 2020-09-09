@@ -48,10 +48,18 @@ class AccountShowController extends Controller
     {
         $userFonctions = $this->userFonctionRepository->getAll();
         $stores = $this->userRepository->getStoresByUser(request()->user())->stores;
+        $store = $this->storeRepository->getOneBySlug(session('store')->slug);
+        $medias = [];
+
+        foreach ($store->storeMedias as $mediasTab) {
+            $medias[$mediasTab->type] = $mediasTab;
+        }
 
         return view('admin.middle.account.admin_middle_account_show', [
             'userFonctions' => $userFonctions,
-            'stores' => $stores
+            'stores' => $stores,
+            'medias' => $medias,
+            'store' => $store
         ]);
     }
 }

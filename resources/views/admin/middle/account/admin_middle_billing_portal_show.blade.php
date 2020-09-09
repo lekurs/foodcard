@@ -2,10 +2,10 @@
 @section('title', ' Bienvenue')
 
 @section('header')
-    <div class="mout-admin-middle-header-container" id="store">
-        @if(isset($store) && !is_null($store->medias()->first()->logo))
-            {{--        <img src="{{asset('images/restaurant/' . $store->name . '/' . $store->medias()->first()->logo)}}" alt="{{$store->name}}" class="img-fluid">--}}
-
+    <div class="mout-admin-middle-header-container" id="store"
+         style="background-image:url('@if( isset($store) && !empty($medias['illustration']) ){{ asset('storage/store/' . \Illuminate\Support\Str::slug($store->name) . '/background/' . $medias['illustration']->path)}}@else {{ asset('public/foodcard-admin-middle-header.jpg') }}@endif') ">
+        @if( isset($store) && !empty($medias) )
+            <img src="{{ asset('storage/store/' . \Illuminate\Support\Str::slug($store->name) . '/' . $medias['logo']->path)}}" alt="{{$store->name}}" class="img-fluid">
         @else
             <h2 class="mout-admin-middle-store-name mout--regular">{{request()->session()->get('store')->name}}</h2>
         @endif

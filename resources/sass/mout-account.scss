@@ -1,0 +1,79 @@
+//Edit account
+div.mout-admin-middle-content-panel#edit-store {
+    background: rgb(255,137,0);
+    background: linear-gradient(90deg, rgba(255,137,0,1) 0%, rgba(240,69,0,1) 50%, rgba(224,0,0,1) 100%);
+
+    & div.store-form-container {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 2em;
+        color: #ffffff;
+
+        & div.store-form-left-container {
+            width: 45%;
+        }
+
+        & input, label {
+            color: #ffffff !important;
+            font-family: $mout-font;
+
+            &[type="file"] ~ label {
+                color: #333333 !important;
+            }
+        }
+
+        & input[type="text"] {
+            border-bottom: 1px solid #ffffff !important;
+            margin-block-end: 2em;
+            font-family: $mout-font;
+        }
+
+        & div.store-form-right-container {
+            width: 45%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            & img {
+
+                &[src=""] {
+                   display: none;
+                }
+
+                width: 50%;
+                height: 300px;
+                object-fit: cover;
+                display: block;
+            }
+
+            & div.download-informations-store {
+                padding-bottom: 2em;
+
+                &:first-of-type {
+                    border-bottom: 1px solid #ffffff;
+                }
+
+                &:nth-of-type(2) {
+                    margin-top: 2em;
+                }
+
+                & i {
+                    font-size: 1.5em;
+                    margin-bottom: .5em;
+                }
+            }
+
+            & div.button-container {
+                margin-top: 2em;
+            }
+        }
+
+        & div.floating-label {
+            display: flex;
+        }
+    }
+}
+
+p.testing {
+    color: red;
+}

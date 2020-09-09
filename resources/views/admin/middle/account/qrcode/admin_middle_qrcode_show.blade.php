@@ -2,12 +2,12 @@
 @section('title', ' Bienvenue')
 
 @section('header')
-    <div class="mout-admin-middle-header-container" id="store">
-        @if(isset($store) && !is_null($store->medias()->first()->logo))
-            {{--        <img src="{{asset('images/restaurant/' . $store->name . '/' . $store->medias()->first()->logo)}}" alt="{{$store->name}}" class="img-fluid">--}}
-
+    <div class="mout-admin-middle-header-container" id="store"
+         style="background-image:url('@if( isset($store) && !empty($medias['illustration']) ){{ asset('storage/store/' . \Illuminate\Support\Str::slug($store->name) . '/background/' . $medias['illustration']->path)}}@else {{ asset('/images/header-store.jpg') }}@endif') ">
+        @if( isset($store) && !empty($medias) )
+            <img src="{{ asset('storage/store/' . \Illuminate\Support\Str::slug($store->name) . '/' . $medias['logo']->path)}}" alt="{{$store->name}}" class="img-fluid">
         @else
-            <h2 class="mout-admin-middle-store-name mout--regular">{{request()->session()->get('store')->name}}</h2>
+            <h2 class="mout-admin-middle-store-name mout--regular">{{ request()->session()->get('store')->name }}</h2>
         @endif
 
         <div class="mout-admin-middle-header-nav-ariane" id="account">
@@ -20,7 +20,7 @@
     @parent
     <div class="mout-admin-middle-nav-buttons-container">
         <a href="{{route('adminMiddleStoreShow')}}" class="btn mout-admin-middle-nav-buttons btn-store"><i class="fal fa-home"></i></a>
-        <a href="#" class="btn mout-admin-middle-nav-buttons btn-menu"><i class="fal fa-concierge-bell"></i></a>
+        <a href="{{ route('adminMiddleMenuShow') }}" class="btn mout-admin-middle-nav-buttons btn-menu"><i class="fal fa-concierge-bell"></i></a>
         <a href="{{route('adminMiddleAccountInvoicesShow')}}" class="btn btn-min-nav btn-store btn-min-nav mout-admin-middle-nav-buttons btn-invoices"><i class="fal fa-file-alt"></i></a>
         <a href="{{route('adminMiddleAccountInvoicesShow')}}" class="btn btn-menu btn-min-nav mout-admin-middle-nav-buttons btn-payment"><i class="fal fa-credit-card"></i></a>
     </div>

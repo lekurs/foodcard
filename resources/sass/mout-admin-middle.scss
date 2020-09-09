@@ -208,6 +208,10 @@ header {
         align-items: center;
         position: relative;
 
+        & img {
+            margin-left: 400px;
+        }
+
         &#home {
             background: url("images/admin/middle/foodcard-admin-middle-header.jpg") no-repeat;
             background-size: cover;

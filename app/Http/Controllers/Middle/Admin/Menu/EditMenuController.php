@@ -16,8 +16,6 @@ class EditMenuController extends AdminMiddleController
 {
     private UserRepository $userRepository;
 
-    private UserFonctionRepository $userFonctionRepository;
-
     private StoreRepository $storeRepository;
 
     private CatalogueProductRepository  $productRepository;
@@ -30,19 +28,20 @@ class EditMenuController extends AdminMiddleController
 
     public function __construct(
         UserFonctionRepository $userFonctionRepository,
-        StoreRepository $storeRepository,
         CatalogueProductRepository $productRepository,
         CatalogueCategoryRepository $catalogueCategoryRepository,
         UserRepository $userRepository,
         LocaleRepository $localeRepository,
+        StoreRepository $storeRepository,
         CatalogueCategoryLocaleRepository $catalogueCategoryLocaleRepository
     ) {
-        parent::__construct($userFonctionRepository, $storeRepository);
+        parent::__construct($userFonctionRepository, $storeRepository, $userRepository);
         $this->productRepository = $productRepository;
         $this->catalogueCategoryRepository = $catalogueCategoryRepository;
         $this->userRepository = $userRepository;
         $this->localeRepository = $localeRepository;
         $this->catalogueCategoryLocaleRepository = $catalogueCategoryLocaleRepository;
+        $this->storeRepository = $storeRepository;
     }
 
     public function __invoke(int $categoryId, int $productId = null)
@@ -51,9 +50,18 @@ class EditMenuController extends AdminMiddleController
         $locales = $this->localeRepository->getAll();
         $category = $this->catalogueCategoryRepository->getOneWithAllProductsById($categoryId, 'fr');
         $subCategories = $this->catalogueCategoryLocaleRepository->getAllSubCategoriesByIdCategory($category->id);
+        $store = $this->storeRepository->getOneBySlug(session('store')->slug);
+        $medias = [];
+
+        foreach ($store->storeMedias as $mediasTab) {
+            $medias[$mediasTab->type] = $mediasTab;
+        }
+
 
         return view('admin.middle.menu.admin_middle_add_to_menu', [
             'stores' => $stores,
+            'store' => $store,
+            'medias' => $medias,
             'userFonctions' => $this->userFonctions,
             'category' => $category,
             'subcategories' => $subCategories,

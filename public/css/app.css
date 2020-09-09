@@ -2144,6 +2144,88 @@ div.my-menu-search-container div.my-menu-search-content#left-content {
   justify-content: space-evenly;
 }
 
+div.mout-admin-middle-content-panel#edit-store {
+  background: #ff8900;
+  background: linear-gradient(90deg, #ff8900 0%, #f04500 50%, #e00000 100%);
+}
+
+div.mout-admin-middle-content-panel#edit-store div.store-form-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2em;
+  color: #ffffff;
+}
+
+div.mout-admin-middle-content-panel#edit-store div.store-form-container div.store-form-left-container {
+  width: 45%;
+}
+
+div.mout-admin-middle-content-panel#edit-store div.store-form-container input,
+div.mout-admin-middle-content-panel#edit-store div.store-form-container label {
+  color: #ffffff !important;
+  font-family: "AristaProAlternate";
+}
+
+div.mout-admin-middle-content-panel#edit-store div.store-form-container input[type=file] ~ label,
+div.mout-admin-middle-content-panel#edit-store div.store-form-container label[type=file] ~ label {
+  color: #333333 !important;
+}
+
+div.mout-admin-middle-content-panel#edit-store div.store-form-container input[type=text] {
+  border-bottom: 1px solid #ffffff !important;
+  -webkit-margin-after: 2em;
+          margin-block-end: 2em;
+  font-family: "AristaProAlternate";
+}
+
+div.mout-admin-middle-content-panel#edit-store div.store-form-container div.store-form-right-container {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+div.mout-admin-middle-content-panel#edit-store div.store-form-container div.store-form-right-container img {
+  width: 50%;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+
+div.mout-admin-middle-content-panel#edit-store div.store-form-container div.store-form-right-container img[src=""] {
+  display: none;
+}
+
+div.mout-admin-middle-content-panel#edit-store div.store-form-container div.store-form-right-container div.download-informations-store {
+  padding-bottom: 2em;
+}
+
+div.mout-admin-middle-content-panel#edit-store div.store-form-container div.store-form-right-container div.download-informations-store:first-of-type {
+  border-bottom: 1px solid #ffffff;
+}
+
+div.mout-admin-middle-content-panel#edit-store div.store-form-container div.store-form-right-container div.download-informations-store:nth-of-type(2) {
+  margin-top: 2em;
+}
+
+div.mout-admin-middle-content-panel#edit-store div.store-form-container div.store-form-right-container div.download-informations-store i {
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+div.mout-admin-middle-content-panel#edit-store div.store-form-container div.store-form-right-container div.button-container {
+  margin-top: 2em;
+}
+
+div.mout-admin-middle-content-panel#edit-store div.store-form-container div.floating-label {
+  display: flex;
+}
+
+p.testing {
+  color: red;
+}
+
 .mout-dropdown {
   position: relative;
   text-align: center;
@@ -2242,6 +2324,81 @@ div.my-menu-search-container div.my-menu-search-content#left-content {
   opacity: 1;
   visibility: visible;
   top: 40px;
+}
+
+header div.foodcard-header-container {
+  min-height: 30vh;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header h2.foodcard-store-name {
+  color: #ffffff;
+  font-size: 40px;
+  font-family: "AristaProAlternate";
+}
+
+header img {
+  max-height: 15vh;
+}
+
+div.foodcard-navigation-container {
+  display: grid;
+  grid-template-rows: minmax(70px, 100px) auto;
+}
+
+div.foodcard-navigation-container div.foodcard-navigation {
+  background: #F4F4F4;
+  color: #000000;
+}
+
+div.foodcard-navigation-container div.foodcard-navigation i {
+  font-size: 2em;
+}
+
+div.foodcard-navigation-container div.foodcard-navigation svg {
+  width: 40px;
+  height: 40px;
+}
+
+div.foodcard-navigation-container div.foodcard-navigation p {
+  margin-bottom: 0;
+}
+
+div.foodcard-navigation-container div.foodcard-navigation#menu {
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+div.foodcard-navigation-container div.foodcard-navigation#all {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, minmax(100px, 150px));
+}
+
+div.foodcard-navigation-container div.foodcard-navigation#all a.foodcard-navigation-content {
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-decoration: none;
+}
+
+div.foodcard-navigation-container div.foodcard-navigation#all a.foodcard-navigation-content::after {
+  content: "";
+  position: absolute;
+  bottom: 20%;
+  left: 20%;
+  width: 60%;
+  height: 3px;
+  background-color: #ffffff;
 }
 
 .images {
@@ -4184,6 +4341,10 @@ header div.mout-admin-middle-header-container {
   justify-content: center;
   align-items: center;
   position: relative;
+}
+
+header div.mout-admin-middle-header-container img {
+  margin-left: 400px;
 }
 
 header div.mout-admin-middle-header-container#home {

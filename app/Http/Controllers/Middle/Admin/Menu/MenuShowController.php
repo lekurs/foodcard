@@ -45,7 +45,7 @@ class MenuShowController extends AdminMiddleController
         CatalogueCategoryRepository $catalogueCategoryRepository,
         CatalogueProductRepository $catalogueProductRepository
     ) {
-        parent::__construct($userFonctionRepository, $storeRepository);
+        parent::__construct($userFonctionRepository, $storeRepository, $userRepository);
 
         $this->userRepository = $userRepository;
         $this->catalogueCategoryLocaleRepository = $catalogueCategoryLocaleRepository;
@@ -56,6 +56,12 @@ class MenuShowController extends AdminMiddleController
 
     public function showMenu() {
         $stores = $this->userRepository->getStoresByUser(request()->user())->stores;
+        $store = $this->storeRepository->getOneBySlug(session('store')->slug);
+        $medias = [];
+
+        foreach ($store->storeMedias as $mediasTab) {
+            $medias[$mediasTab->type] = $mediasTab;
+        }
 
         $starters = $this->catalogueCategoryRepository->getOneWithAllProductsOnlyLocalByIdAndByStore(5);
         $mainDishes = $this->catalogueCategoryRepository->getOneWithAllProductsOnlyLocalByIdAndByStore(6);
@@ -64,6 +70,8 @@ class MenuShowController extends AdminMiddleController
 
         return view('admin.middle.menu.admin_middle_show_menu', [
             'stores' => $stores,
+            'store' => $store,
+            'medias' => $medias,
             'userFonctions' => $this->userFonctions,
             'starters' => $starters,
             'mainDishes' => $mainDishes,
