@@ -49,8 +49,8 @@
 </head>
 <body>
 <header>
-    @yield('header')
-
+{{--    @yield('header')--}}
+@include('includes.header-middle-admin', [$store, $medias, $page, $textPage]);
 </header>
 <div class="mout-middle-main-container">
     @include('flashes.flash-message')

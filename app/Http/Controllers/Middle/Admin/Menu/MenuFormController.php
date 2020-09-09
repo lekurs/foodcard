@@ -19,30 +19,17 @@ use function GuzzleHttp\Psr7\str;
 
 class MenuFormController extends AdminMiddleController
 {
-    /**
-     * @var UserRepository $userRepository
-     */
     private UserRepository $userRepository;
 
-    /**
-     * @var CatalogueCategoryLocaleRepository $catalogueCategoryLocaleRepository
-     */
     private CatalogueCategoryLocaleRepository $catalogueCategoryLocaleRepository;
 
-    /**
-     * @var LocaleRepository $localeRepository
-     */
     private LocaleRepository $localeRepository;
 
-    /**
-     * @var CatalogueCategoryRepository $catalogueCategoryRepository
-     */
     private CatalogueCategoryRepository $catalogueCategoryRepository;
 
-    /**
-     * @var CatalogueProductRepository $catalogueProductRepository
-     */
     private CatalogueProductRepository $catalogueProductRepository;
+
+    private StoreRepository $storeRepository;
 
     public function __construct(
         UserRepository $userRepository,
@@ -51,13 +38,15 @@ class MenuFormController extends AdminMiddleController
         CatalogueCategoryLocaleRepository $catalogueCategoryLocaleRepository,
         LocaleRepository $localeRepository,
         CatalogueProductRepository $catalogueProductRepository
+
     ) {
-        parent::__construct($userFonctionRepository, $storeRepository);
+        parent::__construct($userFonctionRepository, $storeRepository, $userRepository);
 
         $this->userRepository = $userRepository;
         $this->catalogueCategoryLocaleRepository = $catalogueCategoryLocaleRepository;
         $this->localeRepository = $localeRepository;
         $this->catalogueProductRepository = $catalogueProductRepository;
+        $this->storeRepository = $storeRepository;
     }
 
     public function show(string $slug) {
@@ -67,8 +56,17 @@ class MenuFormController extends AdminMiddleController
         $locales = $this->localeRepository->getAll();
         $subCategories = $this->catalogueCategoryLocaleRepository->getAllSubCategoriesByIdCategory($category->catalogue_category_id);
 
+        $store = $this->storeRepository->getOneBySlug(session('store')->slug);
+        $medias = [];
+
+        foreach ($store->storeMedias as $mediasTab) {
+            $medias[$mediasTab->type] = $mediasTab;
+        }
+
         return view('admin.middle.menu.admin_middle_menu_creation', [
             'stores' => $stores,
+            'store' => $store,
+            'medias' => $medias,
             'userFonctions' => $this->userFonctions,
             'categories' => $categories,
             'locales' => $locales,

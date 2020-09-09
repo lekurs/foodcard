@@ -16,7 +16,6 @@
     <link href="https://fonts.googleapis.com/css?family=Assistant:200,300,400,600,700,800|Playfair+Display:400,700" rel="stylesheet">
     <script src="https://kit.fontawesome.com/dd86c136c7.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="https://cdn.tiny.cloud/1/jzzmbwdr1zecf3rqasg7irasq2pbv5ys2tsh9l44n4iy2vbm/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -42,6 +41,7 @@
 <body>
 <header>
     @yield('header')
+{{--    @include('includes.header-middle-admin', [$store, $medias, $page, $textPage])--}}
 </header>
 @include('flashes.flash-message')
 

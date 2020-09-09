@@ -43,19 +43,16 @@ class StoreInformationsUpdateController extends Controller
 
         $this->storeRepository->updateStore($validates);
 
-        if (isset($validates['storelogo'])) {
-            $this->uploadService->moveFile($validates['storelogo'], '/public/store/' . Str::slug($validates['name']));
-            //Insert bdd
+        if (isset($validates['storeMedias']['logo'])) {
+            $this->uploadService->moveFile($validates['storeMedias']['logo'][0], '/public/store/' . Str::slug($validates['name']));
             $this->storeMediaRepository->store($validates);
         }
 
-        if (isset($validates['storeillustration'])) {
-            $this->uploadService->moveFile($validates['storeillustration'], '/storage/store/' . Str::slug($validates['name']));
-            //Insert bdd
+        if (isset($validates['storeMedias']['illustration'])) {
+            $this->uploadService->moveFile($validates['storeMedias']['illustration'][0], '/public/store/' . Str::slug($validates['name']) . '/' . 'background');
             $this->storeMediaRepository->store($validates);
         }
 
-
-        dd($validates);
+        return back()->with('success', 'Votre établissement à été mis à jour');
     }
 }

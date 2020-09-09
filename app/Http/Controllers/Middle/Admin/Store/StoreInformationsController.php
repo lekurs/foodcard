@@ -27,7 +27,7 @@ class StoreInformationsController extends AdminMiddleController
         UserRepository $userRepository,
         StoreTypeRepository $storeTypeRepository
     ) {
-        parent::__construct($userFonctionRepository, $storeRepository);
+        parent::__construct($userFonctionRepository, $storeRepository, $userRepository);
         $this->userFonctionRepository = $userFonctionRepository;
         $this->storeRepository = $storeRepository;
         $this->userRepository = $userRepository;
@@ -37,13 +37,19 @@ class StoreInformationsController extends AdminMiddleController
     public function __invoke($storeSlug): View
     {
         $stores = $this->userRepository->getStoresByUser(request()->user())->stores;
-        $store = $this->storeRepository->getOneBySlug($storeSlug);
         $storeTypes = $this->storeTypeRepository->getAll();
+        $store = $this->storeRepository->getOneBySlug(session('store')->slug);
+        $medias = [];
+
+        foreach ($store->storeMedias as $mediasTab) {
+                $medias[$mediasTab->type] = $mediasTab;
+        }
 
         return view('admin.middle.store.admin_middle_store_update', [
             'store' => $store,
             'stores' => $stores,
-            'storeTypes' => $storeTypes
+            'medias' => $medias,
+            'storeTypes' => $storeTypes,
         ]);
     }
 }

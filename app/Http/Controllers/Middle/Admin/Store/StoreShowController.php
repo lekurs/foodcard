@@ -50,9 +50,17 @@ class StoreShowController extends Controller
         $stores = $this->userRepository->getStoresByUser(request()->user())->stores;
         $userFonctions = $this->userFonctionRepository->getAll();
         $usersByStore = $this->storeRepository->getUsersByStore(request()->session()->get('store'));
+        $store = $this->storeRepository->getOneBySlug(session('store')->slug);
+        $medias = [];
+
+        foreach ($store->storeMedias as $mediasTab) {
+            $medias[$mediasTab->type] = $mediasTab;
+        }
 
         return view('admin.middle.store.admin_middle_store_show', [
             'stores' => $stores,
+            'store' => $store,
+            'medias' => $medias,
             'userFonctions' => $userFonctions,
             'usersByStore' => $usersByStore
         ]);

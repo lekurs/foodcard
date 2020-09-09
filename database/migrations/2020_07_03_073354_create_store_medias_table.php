@@ -15,7 +15,7 @@ class CreateStoreMediasTable extends Migration
     {
         Schema::create('store_medias', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('position');
+            $table->integer('position')->nullable();
             $table->enum('type', ['logo', 'illustration']);
             $table->string('path', 255);
             $table->unsignedInteger('store_id');

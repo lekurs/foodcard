@@ -4,6 +4,7 @@
 namespace App\Repository;
 
 
+use App\Entity\Store;
 use App\Entity\StoreMedia;
 
 class StoreMediaRepository
@@ -21,8 +22,17 @@ class StoreMediaRepository
 
     public function store(array $datas): void
     {
-//        if (isset($datas['store_id'])) {
-//            $storeMedia = $this->storeMedia::whereStoreId($datas['store_id'])->first();
-//        }
+        $store = Store::whereId($datas['store_id'])->with('storeMedias')->first();
+
+        if (empty($store->storeMedias->first())) {
+            foreach($datas['storeMedias'] as $key => $uploadFile) {
+                $storeMedia = new StoreMedia();
+                $storeMedia->type = $key;
+                $storeMedia->path = $uploadFile[0]->getClientOriginalName();
+                $storeMedia->store_id = $datas['store_id'];
+                $storeMedia->save();
+            }
+
+        }
     }
 }

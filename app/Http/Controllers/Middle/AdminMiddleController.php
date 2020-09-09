@@ -29,20 +29,23 @@ class AdminMiddleController extends Controller
     protected $userFonctions;
 
     /**
-     * QRCodeController constructor.
-     * @param UserRepository $userRepository
+     * AdminMiddleController constructor.
      * @param UserFonctionRepository $userFonctionRepository
      * @param StoreRepository $storeRepository
+     * @param UserRepository $userRepository
      */
-    public function __construct(UserFonctionRepository $userFonctionRepository, StoreRepository $storeRepository)
-    {
+    public function __construct(
+        UserFonctionRepository $userFonctionRepository,
+        StoreRepository $storeRepository,
+        UserRepository $userRepository
+    ) {
         $this->userFonctionRepository = $userFonctionRepository;
         $this->storeRepository = $storeRepository;
-
+        $this->userRepository = $userRepository;
         $this->userFonctions = $this->userFonctionRepository->getAll();
 
-        if (!session()->get('store')) {
-            redirect()->route('adminMiddleShow');
+        if (!session('store')) {
+            return redirect()->route('adminMiddleShow');
         }
     }
 }

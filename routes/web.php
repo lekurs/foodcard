@@ -56,52 +56,50 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:1']], function
    });
 });
 
-//Route::group(['prefix' => 'foodcard', 'middleware' => ['auth', 'role']], function () {
-    Route::group(['prefix' => 'admin-client', 'middleware' => ['auth', 'role']], function () {
-        Route::get('/', 'Middle\Admin\AdminShowController@show')->name('adminMiddleShow');
+Route::group(['prefix' => 'admin-client', 'middleware' => ['auth', 'role']], function () {
+    Route::get('/', 'Middle\Admin\AdminShowController@show')->name('adminMiddleShow');
 
-        Route::group(['prefix' => 'compte'], function () {
-            Route::get('/', 'Middle\Admin\Account\AccountShowController@show')->name('adminMiddleAccountShow');
-            Route::get('/factures', 'Middle\Admin\Account\InvoicesShowController@show')->name('adminMiddleAccountInvoicesShow');
-            Route::get('/paiement', 'Middle\Admin\Account\BillingPortalController@show')->name('adminMiddleBillingPortalShow');
-            Route::post('/store', 'Middle\Admin\Account\BillingPortalController@store')->name('adminMiddleBillingPortalStore');
-            Route::post('/subscribe', 'Middle\Admin\Account\BillingPortalController@subscribe')->name('adminMiddleBillingPortalSubscribe');
-        });
-
-        Route::group(['prefix' => 'store'], function () {
-            Route::get('/', 'Middle\Admin\Store\StoreShowController@show')->name('adminMiddleStoreShow');
-            Route::post('/change', 'Middle\Admin\AdminShowController@changeStore')->name('adminMiddleStoreChange');
-            Route::get('/renseigner/{storeSlug}', 'Middle\Admin\Store\StoreInformationsController')->name('storeInformations');
-            Route::post('/renseigner/{storeSlug}/update', 'Middle\Admin\Store\StoreInformationsUpdateController')->name('storeInformationsUpdate');
-
-            Route::group(['prefix' => 'qrcode'], function() {
-                Route::get('/', 'Middle\Admin\QRCode\QRCodeController@show')->name('adminMiddleQRCorde');
-            });
-
-                Route::group(['prefix' => 'utilisateur'], function () {
-                    Route::post('/ajouter', 'Middle\Admin\Account\UsersActionsController@createUser')->name('adminMiddleUserCreation');
-                    Route::post('/edit', 'Middle\Admin\Account\UsersActionsController@editUser')->name('adminMiddleUserEdit');
-                    Route::post('/trash', 'Middle\Admin\Account\UsersActionsController@trashUser')->name('adminMiddleUserTrash');
-                });
-
-        });
-
-        Route::group(['prefix' => 'ma-carte'], function () {
-           Route::get('/', 'Middle\Admin\Menu\MenuShowController@showMenu')->name('adminMiddleMenuShow');
-           Route::post('/subcategory', 'Middle\Admin\Menu\MenuShowController@showSubCategories')->name('adminMiddleMenuShowSubCategories');
-           Route::post('/products', 'Middle\Admin\Menu\MenuShowController@showProductsTable')->name('adminMiddleMenuShowproducts');
-           Route::get('/creer/{category}', 'Middle\Admin\Menu\MenuFormController@show')->name('adminMiddleMenuCreateShow');
-           Route::post('/creer/{category}/store', 'Middle\Admin\Menu\MenuFormController@store')->name('adminMiddleMenuCreateStore');
-           Route::post('/product/online/update', 'Middle\Admin\Menu\CreateOnlineMenuController@updateOnline')->name('updateOnline');
-           Route::post('/product/update', 'Middle\Admin\Menu\UpdateAjaxMenuController')->name('updateAjaxMenu');
-           Route::get('/product/edit/{categoryId?}/{productId?}', 'Middle\Admin\Menu\EditMenuController')->name('editMenu');
-        });
-
-        Route::group(['prefix' => 'store/{slug}', 'middleware' => 'restrictionStore'], function() {
-            Route::get('/', 'Middle\Admin\Store\StoreShowController@showOne')->name('adminMiddleStoreOne');
-        });
+    Route::group(['prefix' => 'compte'], function () {
+        Route::get('/', 'Middle\Admin\Account\AccountShowController@show')->name('adminMiddleAccountShow');
+        Route::get('/factures', 'Middle\Admin\Account\InvoicesShowController@show')->name('adminMiddleAccountInvoicesShow');
+        Route::get('/paiement', 'Middle\Admin\Account\BillingPortalController@show')->name('adminMiddleBillingPortalShow');
+        Route::post('/store', 'Middle\Admin\Account\BillingPortalController@store')->name('adminMiddleBillingPortalStore');
+        Route::post('/subscribe', 'Middle\Admin\Account\BillingPortalController@subscribe')->name('adminMiddleBillingPortalSubscribe');
     });
-//});
+
+    Route::group(['prefix' => 'store'], function () {
+        Route::get('/', 'Middle\Admin\Store\StoreShowController@show')->name('adminMiddleStoreShow');
+        Route::post('/change', 'Middle\Admin\AdminShowController@changeStore')->name('adminMiddleStoreChange');
+        Route::get('/renseigner/{storeSlug}', 'Middle\Admin\Store\StoreInformationsController')->name('storeInformations');
+        Route::post('/renseigner/{storeSlug}/update', 'Middle\Admin\Store\StoreInformationsUpdateController')->name('storeInformationsUpdate');
+
+        Route::group(['prefix' => 'qrcode'], function () {
+            Route::get('/', 'Middle\Admin\QRCode\QRCodeController@show')->name('adminMiddleQRCorde');
+        });
+
+        Route::group(['prefix' => 'utilisateur'], function () {
+            Route::post('/ajouter', 'Middle\Admin\Account\UsersActionsController@createUser')->name('adminMiddleUserCreation');
+            Route::post('/edit', 'Middle\Admin\Account\UsersActionsController@editUser')->name('adminMiddleUserEdit');
+            Route::post('/trash', 'Middle\Admin\Account\UsersActionsController@trashUser')->name('adminMiddleUserTrash');
+        });
+
+    });
+
+    Route::group(['prefix' => 'ma-carte'], function () {
+        Route::get('/', 'Middle\Admin\Menu\MenuShowController@showMenu')->name('adminMiddleMenuShow');
+        Route::post('/subcategory', 'Middle\Admin\Menu\MenuShowController@showSubCategories')->name('adminMiddleMenuShowSubCategories');
+        Route::post('/products', 'Middle\Admin\Menu\MenuShowController@showProductsTable')->name('adminMiddleMenuShowproducts');
+        Route::get('/creer/{category}', 'Middle\Admin\Menu\MenuFormController@show')->name('adminMiddleMenuCreateShow');
+        Route::post('/creer/{category}/store', 'Middle\Admin\Menu\MenuFormController@store')->name('adminMiddleMenuCreateStore');
+        Route::post('/product/online/update', 'Middle\Admin\Menu\CreateOnlineMenuController@updateOnline')->name('updateOnline');
+        Route::post('/product/update', 'Middle\Admin\Menu\UpdateAjaxMenuController')->name('updateAjaxMenu');
+        Route::get('/product/edit/{categoryId?}/{productId?}', 'Middle\Admin\Menu\EditMenuController')->name('editMenu');
+    });
+
+    Route::group(['prefix' => 'store/{slug}', 'middleware' => 'restrictionStore'], function () {
+        Route::get('/', 'Middle\Admin\Store\StoreShowController@showOne')->name('adminMiddleStoreOne');
+    });
+});
 
 Auth::routes();
 
