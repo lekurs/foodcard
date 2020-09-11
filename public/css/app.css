@@ -1740,6 +1740,10 @@ input:checked + .slider:before {
   background-color: #001EEB !important;
 }
 
+.mout-btn-client-subcategories {
+  background-color: #44735E !important;
+}
+
 .btn-my-menu {
   color: #000000;
 }
@@ -2344,6 +2348,71 @@ header img {
   max-height: 15vh;
 }
 
+div.foodcard-container {
+  display: grid;
+  grid-template-columns: 100px auto;
+}
+
+div.foodcard-container nav.foodcard-navigation {
+  display: grid;
+  grid-template-rows: repeat(6, auto);
+  height: calc(100vh - 200px);
+}
+
+div.foodcard-container nav.foodcard-navigation a {
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-decoration: none;
+  background: #F4F4F4;
+}
+
+div.foodcard-container nav.foodcard-navigation a i {
+  font-size: 2em;
+}
+
+div.foodcard-container nav.foodcard-navigation a svg {
+  width: 40px;
+  height: 40px;
+}
+
+div.foodcard-container nav.foodcard-navigation a p {
+  margin-bottom: 0;
+}
+
+div.foodcard-container nav.foodcard-navigation a:last-of-type::after {
+  height: 0;
+}
+
+div.foodcard-container nav.foodcard-navigation a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  width: 80%;
+  height: 3px;
+  background-color: #ffffff;
+}
+
+div.foodcard-container nav.foodcard-navigation a.active {
+  background-color: #44735E;
+  color: #ffffff;
+}
+
+div.foodcard-container nav.foodcard-navigation a.active i,
+div.foodcard-container nav.foodcard-navigation a.active p,
+div.foodcard-container nav.foodcard-navigation a.active svg {
+  color: #ffffff;
+  fill: #ffffff;
+}
+
+div.foodcard-container nav.foodcard-navigation a.active::after {
+  height: 0;
+}
+
 div.foodcard-navigation-container {
   display: grid;
   grid-template-rows: minmax(70px, 100px) auto;
@@ -2399,6 +2468,159 @@ div.foodcard-navigation-container div.foodcard-navigation#all a.foodcard-navigat
   width: 60%;
   height: 3px;
   background-color: #ffffff;
+}
+
+div.foodcard-category-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-auto-flow: row;
+  align-self: self-start;
+  margin-top: 20px;
+}
+
+div.foodcard-category-container#product {
+  grid-template-columns: auto;
+}
+
+div.foodcard-category-container#products,
+div.foodcard-category-container#product {
+  grid-gap: 15px;
+  padding: 0 10px;
+  grid-template-rows: 40px auto;
+}
+
+div.foodcard-category-container#category a.foodcard-category-content img {
+  width: 85px;
+  height: 85px;
+  border-radius: 15px;
+}
+
+div.foodcard-category-container div.subcategories-container {
+  grid-column: 1/span 2;
+}
+
+div.foodcard-category-container div.subcategories-container a {
+  width: 100%;
+  text-transform: inherit !important;
+  position: relative;
+}
+
+div.foodcard-category-container div.subcategories-container a span.client-subcategories.back {
+  position: absolute;
+  left: 10px;
+}
+
+div.foodcard-category-container a.foodcard-category-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #000000;
+  position: relative;
+}
+
+div.foodcard-category-container a.foodcard-category-content img {
+  width: 100%;
+  height: 100%;
+}
+
+div.foodcard-category-container a.foodcard-category-content div.product-information-container {
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  background-color: rgba(77, 114, 96, 0.7);
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+div.foodcard-category-container a.foodcard-category-content div.product-information-container p {
+  margin: 0.1em 0;
+  font-size: 14px;
+  line-height: 16px;
+  color: #ffffff;
+}
+
+div.foodcard-category-container a.foodcard-category-content p {
+  margin: 1em 0 0;
+}
+
+div.foodcard-category-container div.product-container {
+  grid-column: 1/span 2;
+}
+
+div.foodcard-category-container div.product-container .product-images-container {
+  width: 100%;
+}
+
+div.foodcard-category-container div.product-container .product-images-container img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+div.foodcard-category-container div.product-container div.product-informations-container {
+  text-align: center;
+  position: relative;
+}
+
+div.foodcard-category-container div.product-container div.product-informations-container H1,
+div.foodcard-category-container div.product-container div.product-informations-container p {
+  color: #1C3C26;
+  margin-bottom: 0;
+  font-family: "Assistant", "Helvetica", "sans-serif";
+}
+
+div.foodcard-category-container div.product-container div.product-informations-container h1.product-information#name {
+  font-size: 24px;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+div.foodcard-category-container div.product-container div.product-informations-container p#price {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+div.foodcard-category-container div.product-container div.product-informations-container p#description {
+  font-size: 18px;
+}
+
+div.foodcard-category-container div.product-container div.product-informations-container::after {
+  content: "";
+  position: absolute;
+  width: 90%;
+  height: 1px;
+  background-color: #D1D1D1;
+  bottom: -20px;
+  left: 5%;
+}
+
+.slick-dots {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 1rem 0;
+  list-style-type: none;
+}
+
+.slick-dots li {
+  margin: 0 0.25rem;
+}
+
+.slick-dots button {
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  padding: 0;
+  border: none;
+  border-radius: 100%;
+  background-color: blue;
+  text-indent: -9999px;
+}
+
+.slick-dots li.slick-active button {
+  background-color: red;
 }
 
 .images {

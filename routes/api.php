@@ -18,4 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/{storeSlug}/home', 'Store\StoreHomeController')->name('clientHome');
+Route::get('/{storeSlug}/home', 'Client\ClientHomeController')->name('apiClientHome');
+Route::get('/{storeSlug}/{categoryId}', 'Client\ClientCategorySelectionController')->name('apiClientChooseCategory');
+Route::get('/{storeSlug}/{categoryId}/{subcategoryId}/produits', 'Client\ClientProductsSelectionController')->name('apiClientProductSelection');
+Route::get('/{storeSlug}/{categoryId}/{subcategoryId}/{productId}', 'Client\ClientProductShowController')->name('apiClientProductShow');

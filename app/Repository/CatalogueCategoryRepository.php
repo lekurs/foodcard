@@ -45,6 +45,34 @@ class CatalogueCategoryRepository
         return CatalogueCategory::with('categoryLocalesFR')->whereId($id)->first();
     }
 
+    public function getAllMainCategories(): Collection
+    {
+        return CatalogueCategory::with(
+            [
+                'categoryLocales' => function ($q) {
+                    $q->whereLocaleId(1);
+                }
+            ]
+        )
+            ->whereNull('parent')
+            ->orderBy('position', 'ASC')
+            ->get();
+    }
+
+    public function getAllChildrenById(int $categoryId): Collection
+    {
+        return CatalogueCategory::with(
+            [
+                'categoryLocales' => function ($q) {
+                    $q->whereLocaleId(1);
+                }
+            ],
+        )
+            ->whereParent($categoryId)
+            ->whereNotNull('parent')
+            ->get();
+    }
+
     public function getOneWithAllProductsOnlyLocalByIdAndByStore(int $idCategory, string $locale = null)
     {
         return CatalogueCategory::with(
@@ -52,15 +80,39 @@ class CatalogueCategoryRepository
                 'products' => function($q) {
                     $q->where('visibility', 'local');
                 },
+                'products.catalogueProductFloats',
                 'categoryLocales',
                 'products.langueFR',
                 'products.catalogueProductMedias',
                 'products.categories',
                 'products.stores' => function($q) {
-                    $q->whereId(session()->get('store')->id);
+                        $q->whereId(session()->get('store')->id);
                 },
             ]
             )
+            ->whereId($idCategory)->first();
+    }
+
+    public function getOneByIdWithAllProductsOnlineByStore(int $idCategory, int $storeId)
+    {
+        return CatalogueCategory::with(
+            [
+                'products' => function ($q) {
+                    $q->where('visibility', 'local');
+                },
+                'products.catalogueProductFloats',
+                'categoryLocales',
+                'products.langueFR',
+                'products.catalogueProductMedias',
+                'products.categories' => function($q) use($idCategory) {
+                    $q->whereId($idCategory);
+                },
+                'products.stores' => function ($q) use($storeId) {
+                    $q->whereId($storeId);
+                    $q->wherePivot('online', 1);
+                },
+            ]
+        )
             ->whereId($idCategory)->first();
     }
 

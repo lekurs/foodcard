@@ -16,26 +16,17 @@ use Illuminate\Support\Facades\DB;
 
 class MenuShowController extends AdminMiddleController
 {
-    /**
-     * @var UserRepository $userRepository
-     */
     private UserRepository $userRepository;
 
-    /**
-     * @var CatalogueCategoryLocaleRepository $catalogueCategoryLocaleRepository
-     */
     private CatalogueCategoryLocaleRepository $catalogueCategoryLocaleRepository;
 
-    /**
-     * @var CatalogueCategoryRepository $catalogueCategoryRepository
-     */
     private CatalogueCategoryRepository $catalogueCategoryRepository;
 
     private CatalogueProductRepository $catalogueProductRepository;
-    /**
-     * @var StoreRepository
-     */
+
     private StoreRepository $storeRepository;
+
+    public $test;
 
     public function __construct(
         UserRepository $userRepository,

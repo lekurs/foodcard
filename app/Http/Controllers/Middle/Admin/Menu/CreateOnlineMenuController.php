@@ -9,6 +9,7 @@ use App\Http\Controllers\Middle\AdminMiddleController;
 use App\Repository\CatalogueProductRepository;
 use App\Repository\StoreRepository;
 use App\Repository\UserFonctionRepository;
+use App\Repository\UserRepository;
 use Illuminate\Http\JsonResponse;
 
 class CreateOnlineMenuController extends AdminMiddleController
@@ -18,14 +19,18 @@ class CreateOnlineMenuController extends AdminMiddleController
 
     private CatalogueProductRepository $catalogueProductRepository;
 
+    private UserRepository $userRepository;
+
     public function __construct(
         UserFonctionRepository $userFonctionRepository,
         StoreRepository $storeRepository,
-        CatalogueProductRepository $catalogueProductRepository
+        CatalogueProductRepository $catalogueProductRepository,
+        UserRepository $userRepository
     ) {
-        parent::__construct($userFonctionRepository, $storeRepository);
+        parent::__construct($userFonctionRepository, $storeRepository, $userRepository);
         $this->storeRepository = $storeRepository;
         $this->catalogueProductRepository = $catalogueProductRepository;
+        $this->userRepository = $userRepository;
     }
 
     public function updateOnline(): JsonResponse

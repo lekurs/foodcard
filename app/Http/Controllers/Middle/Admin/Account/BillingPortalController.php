@@ -32,7 +32,7 @@ class BillingPortalController extends AdminMiddleController
         UserFonctionRepository $userFonctionRepository,
         StoreRepository $storeRepository, StoreRepository $storeRepository1
     ) {
-        parent::__construct($userFonctionRepository, $storeRepository);
+        parent::__construct($userFonctionRepository, $storeRepository, $userRepository);
 
         $this->userRepository = $userRepository;
         $this->storeRepository = $storeRepository1;
