@@ -39,6 +39,11 @@
                     <p class="product-information" id="description">{!! $product->langueFR->description !!}</p>
                 </div>
             </div>
+            <div class="product-allergy-container">
+                @if(in_array('|', $product->allergy))
+                    {{ $product->allergy }}
+                @endif
+            </div>
         </div>
     </div>
 @endsection
