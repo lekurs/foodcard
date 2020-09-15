@@ -27,6 +27,10 @@
 @section('body')
     <div class="mout-admin-middle-content-panel text-center">
         <div class="my-menu-container">
+            <div class="options-menus-container">
+                <a href="{{ route('formulaShow') }}">Voir ma carte</a>
+                <a href="{{ route('formulaShow') }}">Créer ma formule</a>
+            </div>
             {{-- Starters--}}
             <table id="starters" class="table table-hover mout-bo-table table-starters">
                 <thead>
@@ -244,7 +248,7 @@
 @endsection
 
 @section('js')
-    <script src="{{asset('js/middle-admin/users-manager.js')}}"></script>
+{{--    <script src="{{asset('js/middle-admin/users-manager.js')}}"></script>--}}
     <script>
         $(document).ready(function () {
             //     $('#starters').dataTable({
