@@ -19,6 +19,69 @@ header {
     }
 }
 
+div.foodcard-container {
+    display: grid;
+    grid-template-columns: 100px auto;
+
+    & nav.foodcard-navigation {
+        display: grid;
+        grid-template-rows: repeat(6, auto);
+        height: calc(100vh - 200px);
+
+        & a {
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            text-decoration: none;
+            background: #F4F4F4;
+
+            & i {
+                font-size: 2em;
+            }
+
+            & svg {
+                width: 40px;
+                height: 40px;
+            }
+
+            & p {
+                margin-bottom: 0;
+            }
+
+            &:last-of-type::after {
+                height: 0;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 10%;
+                width: 80%;
+                height: 3px;
+                background-color: #ffffff;
+            }
+
+            &.active {
+                background-color: #44735E;
+                color: #ffffff;
+
+                & i, p, svg {
+                    color: #ffffff;
+                    fill: #ffffff;
+                }
+
+                &::after {
+                    height: 0;
+                }
+            }
+        }
+    }
+}
+
 div.foodcard-navigation-container {
     display: grid;
     grid-template-rows: minmax(70px, 100px) auto;
@@ -74,4 +137,164 @@ div.foodcard-navigation-container {
             }
         }
     }
+}
+
+div.foodcard-category-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-auto-flow: row;
+    align-self: self-start;
+    margin-top: 20px;
+
+    &#product {
+        grid-template-columns: auto;
+    }
+
+    &#products,
+    &#product {
+        grid-gap: 15px;
+        padding: 0 10px;
+        grid-template-rows: 40px auto;
+    }
+
+    &#category {
+        & a.foodcard-category-content {
+            & img {
+                width: 85px;
+                height: 85px;
+                border-radius: 15px;
+            }
+        }
+    }
+
+    div.subcategories-container {
+        grid-column: 1 / span 2;
+
+        & a {
+            width: 100%;
+            text-transform: inherit !important;
+            position: relative;
+
+            & span.client-subcategories.back {
+                position: absolute;
+                left: 10px;
+            }
+        }
+    }
+
+    & a.foodcard-category-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: #000000;
+        position: relative;
+
+        & img {
+            width: 100%;
+            height: 100%;
+        }
+
+        & div.product-information-container {
+            position: absolute;
+            width: 100%;
+            height: 40px;
+            background-color: rgba(77, 114, 96, .7);
+            bottom: 0;
+            left: 0;
+            right: 0;
+
+            & p {
+                margin: .1em 0;
+                font-size: 14px;
+                line-height: 16px;
+                color: #ffffff;
+            }
+        }
+
+        & p {
+            margin: 1em 0 0;
+        }
+    }
+
+    & div.product-container {
+        grid-column: 1 / span 2;
+
+        & .product-images-container {
+            width: 100%;
+
+            & img {
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+
+        & div.product-informations-container {
+            text-align: center;
+            position: relative;
+
+            & H1, p {
+                color: #1C3C26;
+                margin-bottom: 0;
+                font-family: 'Assistant', 'Helvetica', 'sans-serif';
+            }
+
+            & h1.product-information#name {
+                font-size: 24px;
+                text-transform: uppercase;
+                font-weight: 400;
+            }
+
+            & p#price {
+                font-size: 18px;
+                font-weight: 700;
+            }
+
+            & p#description {
+                font-size: 18px;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                width: 90%;
+                height: 1px;
+                background-color: #D1D1D1;
+                bottom: -20px;
+                left: 5%;
+            }
+        }
+    }
+}
+
+.slick-dots {
+    display: flex;
+    justify-content: center;
+
+    margin: 0;
+    padding: 1rem 0;
+
+    list-style-type: none;
+
+    li {
+        margin: 0 0.25rem;
+    }
+
+    button {
+        display: block;
+        width: 1rem;
+        height: 1rem;
+        padding: 0;
+
+        border: none;
+        border-radius: 100%;
+        background-color: blue;
+
+        text-indent: -9999px;
+    }
+
+    li.slick-active button {
+        background-color: red;
+    }
+
 }

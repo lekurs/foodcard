@@ -12,6 +12,7 @@ use App\Entity\CatalogueProductMedia;
 use App\Entity\Store;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class CatalogueProductRepository
 {
@@ -54,6 +55,19 @@ class CatalogueProductRepository
                 'catalogueProductFloats',
                 'catalogueProductMedias'
             )->first();
+    }
+
+    public function getOneWithLocalesAndMediasById(int $productId): CatalogueProduct
+    {
+        return $this->catalogueProduct->newQuery()->with(
+            [
+                'locales',
+                'catalogueProductFloats',
+                'catalogueProductMedias'
+            ]
+        )
+            ->whereId(Str::slug($productId))
+            ->first();
     }
 
 //    public function getAllBycategory(int $id): Collection
