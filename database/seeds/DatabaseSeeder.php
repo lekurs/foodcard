@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             UserAdmin::class,
             StoreTypeSeeder::class,
             StoreSeeder::class,
+            FormulatypeSeeder::class
         ]);
     }
 }

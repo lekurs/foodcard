@@ -1,21 +1,19 @@
 <?php
 
 
-namespace App\Http\Controllers\Middle\Admin\Account;
+namespace App\Http\Controllers\Middle\Admin\Menu\Formula;
 
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Middle\SessionRedirection;
+use App\Repository\FormulatypeRepository;
 use App\Repository\StoreRepository;
 use App\Repository\UserFonctionRepository;
 use App\Repository\UserRepository;
-use Illuminate\Contracts\Foundation\Application;
 use Illuminate\View\View;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 
-class AccountShowController extends Controller
+class FormulaShowController extends Controller
 {
-    use SessionRedirection;
+    private FormulatypeRepository  $formulatypeRepository;
 
     private UserRepository $userRepository;
 
@@ -24,46 +22,45 @@ class AccountShowController extends Controller
     private StoreRepository $storeRepository;
 
     /**
-     * AccountShowController constructor.
-     *
+     * FormulaShowController constructor.
+     * @param FormulatypeRepository $formulatypeRepository
      * @param UserRepository $userRepository
      * @param UserFonctionRepository $userFonctionRepository
      * @param StoreRepository $storeRepository
      */
     public function __construct(
+        FormulatypeRepository $formulatypeRepository,
         UserRepository $userRepository,
         UserFonctionRepository $userFonctionRepository,
         StoreRepository $storeRepository
-    ) {
+    )
+    {
+        $this->formulatypeRepository = $formulatypeRepository;
         $this->userRepository = $userRepository;
         $this->userFonctionRepository = $userFonctionRepository;
         $this->storeRepository = $storeRepository;
-
     }
 
-    /**
-     * @return Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|View
-     */
-    public function show()
+    public function __invoke(): View
     {
-        if ($response = $this->redirectNoSession()) {
-            return $response;
-        }
-
         $userFonctions = $this->userFonctionRepository->getAll();
         $stores = $this->userRepository->getStoresByUser(request()->user())->stores;
-        $store = $this->storeRepository->getOneBySlug(session('store')->slug);
-        $medias = [];
+//        $store = $this->storeRepository->getOneBySlug(session('store')->slug);
+//        $medias = [];
+//
+//        foreach ($store->storeMedias as $mediasTab) {
+//            $medias[$mediasTab->type] = $mediasTab;
+//        }
 
-        foreach ($store->storeMedias as $mediasTab) {
-            $medias[$mediasTab->type] = $mediasTab;
-        }
+        $formulatypes = $this->formulatypeRepository->getAll();
 
-        return view('admin.middle.account.admin_middle_account_show', [
+//        dd($formulatypes);
+
+        return \view('admin.middle.menu.formula.admin_middle_formula_show', [
             'userFonctions' => $userFonctions,
             'stores' => $stores,
-            'medias' => $medias,
-            'store' => $store
+//            'medias' => $medias,
+//            'store' => $store
         ]);
     }
 }

@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Middle\Admin\Account;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Middle\AdminMiddleController;
+use App\Http\Controllers\Middle\SessionRedirection;
 use App\Repository\CatalogueCategoryLocaleRepository;
 use App\Repository\StoreRepository;
 use App\Repository\UserFonctionRepository;
@@ -20,9 +21,8 @@ use Stripe\Subscription;
 
 class BillingPortalController extends AdminMiddleController
 {
-    /**
-     * @var UserRepository $userRepository
-     */
+    use SessionRedirection;
+
     private UserRepository $userRepository;
 
     private StoreRepository $storeRepository;
@@ -39,7 +39,16 @@ class BillingPortalController extends AdminMiddleController
     }
 
     public function show() {
+        $this->redirectNoSession();
+
         $stores = $this->userRepository->getStoresByUser(request()->user())->stores;
+        $store = $this->storeRepository->getOneBySlug(session('store')->slug);
+
+        $medias = [];
+
+        foreach ($store->storeMedias as $mediasTab) {
+            $medias[$mediasTab->type] = $mediasTab;
+        }
 
         $subscribes = [
             'price_1HAGA5LNXgoErTPaONjZ2QgL' => 'Mois'
@@ -53,12 +62,16 @@ class BillingPortalController extends AdminMiddleController
 //                'currency' => 'eur',
 
             ]),
-            'subscribes' => $subscribes
+            'subscribes' => $subscribes,
+            'medias' => $medias,
+            'store' => $store
         ]);
     }
 
     public function subscribe(Request $request) {
         $user = request()->user();
+
+        dd(request()->all());
 
         $paymentMethod = $request->payment_method;
         $planId = $request->plan;

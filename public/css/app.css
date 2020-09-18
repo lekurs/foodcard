@@ -1732,6 +1732,12 @@ input:checked + .slider:before {
   background-color: #00C332 !important;
 }
 
+button.close-product-form {
+  border-radius: 20px !important;
+  padding: 0.275rem 1rem !important;
+  text-transform: lowercase !important;
+}
+
 .mout-btn-edit-middle {
   background-color: #FFB100 !important;
 }
@@ -1997,6 +2003,20 @@ div.my-menu-search-container {
 
 div.my-menu-search-container div.my-menu-search-content#left-content {
   border-right: 1px solid #D1D1D1;
+}
+
+div.options-menus-container {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  margin: 0 auto;
+}
+
+div.options-menus-container a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 1em;
 }
 
 .table#starters,
@@ -5004,7 +5024,6 @@ div.my-menu-container {
 
 div.my-menu-container a,
 div.my-menu-container button.btn-allergy {
-  display: flex;
   flex-direction: column;
   padding: 15px;
   align-items: center;
@@ -5070,6 +5089,7 @@ div.my-menu-container#category-menu-modal {
 
 div.my-menu-container#insert_new_product div.my-menu-creation-container {
   position: absolute;
+  width: 100%;
   padding: 40px;
   left: 100%;
   top: 0;
@@ -5278,6 +5298,17 @@ div.my-menu-creation-form-content div.button-allergy-container {
 div.my-menu-creation-form-content div.button-allergy-container .btn-allergy {
   flex-basis: 14% !important;
   margin: 10px;
+  display: grid;
+  grid-template-rows: 30px 40px;
+}
+
+div.my-menu-creation-form-content div.button-allergy-container .btn-allergy svg {
+  width: 65px;
+  justify-self: center;
+}
+
+button.btn-allergy.allergy-admin svg {
+  fill: #343a40;
 }
 
 div.my-menu-creation-form-container {
