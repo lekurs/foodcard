@@ -127,6 +127,12 @@ input:checked + .slider:before {
     }
 }
 
+button.close-product-form {
+    border-radius: 20px !important;
+    padding: 0.275rem 1rem !important;
+    text-transform: lowercase !important;
+}
+
 .mout-btn-edit-middle {
     background-color: #FFB100 !important;
 }

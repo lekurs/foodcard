@@ -5,30 +5,27 @@ namespace App\Http\Controllers\Middle\Admin\Account;
 
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Middle\SessionRedirection;
 use App\Repository\StoreRepository;
 use App\Repository\UserFonctionRepository;
 use App\Repository\UserRepository;
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\View\View;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class AccountShowController extends Controller
 {
-    /**
-     * @var UserRepository $userRepository
-     */
+    use SessionRedirection;
+
     private UserRepository $userRepository;
 
-    /**
-     * @var UserFonctionRepository $userFonctionRepository
-     */
     private UserFonctionRepository $userFonctionRepository;
 
-    /**
-     * @var StoreRepository $storeRepository
-     */
     private StoreRepository $storeRepository;
 
     /**
      * AccountShowController constructor.
+     *
      * @param UserRepository $userRepository
      * @param UserFonctionRepository $userFonctionRepository
      * @param StoreRepository $storeRepository
@@ -41,11 +38,18 @@ class AccountShowController extends Controller
         $this->userRepository = $userRepository;
         $this->userFonctionRepository = $userFonctionRepository;
         $this->storeRepository = $storeRepository;
+
     }
 
-
-    public function show(): View
+    /**
+     * @return Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|View
+     */
+    public function show()
     {
+        if ($response = $this->redirectNoSession()) {
+            return $response;
+        }
+
         $userFonctions = $this->userFonctionRepository->getAll();
         $stores = $this->userRepository->getStoresByUser(request()->user())->stores;
         $store = $this->storeRepository->getOneBySlug(session('store')->slug);

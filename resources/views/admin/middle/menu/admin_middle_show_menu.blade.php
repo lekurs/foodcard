@@ -28,8 +28,16 @@
     <div class="mout-admin-middle-content-panel text-center">
         <div class="my-menu-container">
             <div class="options-menus-container">
-                <a href="{{ route('formulaShow') }}">Voir ma carte</a>
-                <a href="{{ route('formulaShow') }}">Créer ma formule</a>
+                <a href="{{ route('formulaShow') }}" class="btn btn-search-menu btn-my-menu mout--regular">
+                    <span class="btn-my-menu-icon-container">
+                        <i class="fal fa-concierge-bell"></i>
+                    </span>Voir ma carte
+                </a>
+                <a href="{{ route('formulaShow') }}" class="btn btn-search-menu btn-my-menu mout--regular">
+                    <span class="btn-my-menu-icon-container">
+                        <i class="fal fa-hat-chef"></i>
+                    </span>Créer ma formule
+                </a>
             </div>
             {{-- Starters--}}
             <table id="starters" class="table table-hover mout-bo-table table-starters">
