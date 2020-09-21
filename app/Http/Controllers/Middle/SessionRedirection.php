@@ -15,6 +15,22 @@ trait SessionRedirection
         $this->userRepository = $userRepository;
     }
 
+    private StoreRepository $storeRepository;
+
+    private UserRepository $userRepository;
+
+    /**
+     * AdminShowController constructor.
+     *
+     * @param StoreRepository $storeRepository
+     * @param UserRepository $userRepository
+     */
+    public function __construct(StoreRepository $storeRepository, UserRepository $userRepository)
+    {
+        $this->storeRepository = $storeRepository;
+        $this->userRepository = $userRepository;
+    }
+
     public function redirectNoSession()
     {
         $user = $this->userRepository->getStoresByUser(request()->user());
