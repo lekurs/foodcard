@@ -9,19 +9,12 @@ use App\Repository\UserRepository;
 
 trait SessionRedirection
 {
-    public function __construct(StoreRepository $storeRepository, UserRepository $userRepository)
-    {
-        $this->storeRepository = $storeRepository;
-        $this->userRepository = $userRepository;
-    }
-
     private StoreRepository $storeRepository;
 
     private UserRepository $userRepository;
 
     /**
-     * AdminShowController constructor.
-     *
+     * SessionRedirection constructor.
      * @param StoreRepository $storeRepository
      * @param UserRepository $userRepository
      */
