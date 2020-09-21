@@ -12,8 +12,11 @@ use App\Repository\StoreRepository;
 use App\Repository\UserFonctionRepository;
 use App\Repository\UserRepository;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use PhpParser\Node\Stmt\DeclareDeclare;
 use Stripe\Customer;
+use Stripe\Invoice;
+use Stripe\InvoiceItem;
 use Stripe\PaymentIntent;
 use Stripe\Stripe;
 use Stripe\StripeClient;
@@ -51,7 +54,8 @@ class BillingPortalController extends AdminMiddleController
         }
 
         $subscribes = [
-            'price_1HAGA5LNXgoErTPaONjZ2QgL' => 'Mois'
+            'price_1HTE5ULNXgoErTPagaOviWAl' => '15 € / Mois',
+            'price_1HAJeVLNXgoErTPaxHB6IYCw' => '159 € / An'
         ];
 
         return view('admin.middle.account.admin_middle_billing_portal_show', [
@@ -68,31 +72,40 @@ class BillingPortalController extends AdminMiddleController
         ]);
     }
 
-    public function subscribe(Request $request) {
+    public function subscribe() {
         $user = request()->user();
 
-        dd(request()->all());
+        $this->redirectNoSession();
 
-        $paymentMethod = $request->payment_method;
-        $planId = $request->plan;
-
-
-        Stripe::setApiKey(env('STRIPE_SECRET'));
-
-        $customer = Customer::create([
-            'source' => $request->stripeToken
+        request()->validate([
+            "amount" => ['required'],
+            "email" => ['required', 'email'],
+            "name" => ['required'],
+            "lastname" => ['required'],
+            "address" => ['required'],
+            "city" => ['required'],
+            "country" => ['required'],
+            "zip" => ['required'],
+            "stripeToken" => ['required']
         ]);
 
-        $user->newSubscription('default', $planId)->create($paymentMethod);
-
+        Stripe::setApiKey(env('STRIPE_SECRET'));
+        $customer = Customer::create([
+            'name' => request('name'),
+            'email' => request('email'),
+            'description' => 'Paiement de l\'application Foodcard',
+            'source' => request('stripeToken')
+        ]);
 
         $subscription = Subscription::create([
             'customer' => $customer->id,
             'items' => [
-                ['price' => 'price_1HAJeVLNXgoErTPaxHB6IYCw'],
+                ["price" => \request('amount')],
             ],
         ]);
 
-        return response(['status' => 'success']);
+        $this->userRepository->updateStripe(auth()->user()->id, $customer->id);
+
+        return redirect()->route('adminMiddleAccountShow')->with('success', 'Nous vous remercions pour votre abonnement');
     }
 }

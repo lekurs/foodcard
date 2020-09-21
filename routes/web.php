@@ -61,7 +61,7 @@ Route::group(['prefix' => 'admin-client', 'middleware' => ['auth', 'role']], fun
 
     Route::group(['prefix' => 'compte'], function () {
         Route::get('/', 'Middle\Admin\Account\AccountShowController@show')->name('adminMiddleAccountShow');
-        Route::get('/factures', 'Middle\Admin\Account\InvoicesShowController@show')->name('adminMiddleAccountInvoicesShow');
+        Route::get('/factures', 'Middle\Admin\Account\InvoicesShowController')->name('adminMiddleAccountInvoicesShow');
         Route::get('/paiement', 'Middle\Admin\Account\BillingPortalController@show')->name('adminMiddleBillingPortalShow');
         Route::post('/store', 'Middle\Admin\Account\BillingPortalController@store')->name('adminMiddleBillingPortalStore');
         Route::post('/subscribe', 'Middle\Admin\Account\BillingPortalController@subscribe')->name('adminMiddleBillingPortalSubscribe');

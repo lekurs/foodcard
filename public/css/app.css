@@ -1692,7 +1692,7 @@ input:checked + .slider:before {
 .mout-btn-register {
   background-color: #FF7F00 !important;
   border-radius: 20px !important;
-  padding: 0.275rem 1rem !important;
+  padding: 0.275rem 0.9rem !important;
   text-transform: lowercase !important;
 }
 
@@ -1703,7 +1703,7 @@ input:checked + .slider:before {
 .mout-btn-login {
   background-color: #00C332 !important;
   border-radius: 20px !important;
-  padding: 0.275rem 1rem !important;
+  padding: 0.275rem 0.9rem !important;
   text-transform: lowercase !important;
 }
 
@@ -1734,7 +1734,7 @@ input:checked + .slider:before {
 
 button.close-product-form {
   border-radius: 20px !important;
-  padding: 0.275rem 1rem !important;
+  padding: 0.275rem 0.9rem !important;
   text-transform: lowercase !important;
 }
 
@@ -4406,6 +4406,18 @@ div.mout-admin-middle-container form {
   }
 }
 
+@media all and (min-width: 960px) and (max-width: 1399px) {
+  div.mout-admin-middle-nav-buttons-container {
+    display: grid;
+    grid-template-columns: 150px 150px;
+    grid-template-rows: 150px;
+  }
+
+  div.mout-admin-middle-nav-buttons-container.nav-four-buttons {
+    grid-template-rows: repeat(2, 150px);
+  }
+}
+
 @media all and (min-width: 960px) and (max-width: 1599px) {
   div.mout-admin-middle-header-nav-ariane {
     width: 300px;
@@ -4467,7 +4479,8 @@ div.mout-admin-middle-container form {
   }
 
   div.mout-admin-middle-nav-buttons-container {
-    display: block;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 
   a.mout-admin-middle-nav-buttons {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Middle\Admin\Account;
 
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Middle\SessionRedirection;
 use App\Repository\InvoiceRepository;
 use App\Repository\StoreRepository;
 use App\Repository\UserFonctionRepository;
@@ -14,21 +15,14 @@ use Stripe\StripeClient;
 
 class InvoicesShowController extends Controller
 {
-    /**
-     * @var InvoiceRepository $invoiceRepository
-     */
+    use SessionRedirection;
+
     private InvoiceRepository $invoiceRepository;
 
     private UserRepository $userRepository;
 
-    /**
-     * @var StoreRepository $storeRepository
-     */
     private StoreRepository $storeRepository;
 
-    /**
-     * @var UserFonctionRepository $userFonctionRepository
-     */
     private UserFonctionRepository $userFonctionRepository;
 
     /**
@@ -51,22 +45,23 @@ class InvoicesShowController extends Controller
     }
 
 
-    public function show(): View
+    public function __invoke(): View
     {
-//        $invoices = $this->invoiceRepository->getAllByStore();
+        $this->redirectNoSession();
+
         $userFonctions = $this->userFonctionRepository->getAll();
         $stores = $this->userRepository->getStoresByUser(request()->user())->stores;
 
         $stripe = new StripeClient(env('STRIPE_SECRET'));
 
-        $ch = $stripe->charges->capture(
-            'ch_1HMv5m2eZvKYlo2CiSPHrNex',
-            [],
-            ['api_key' => env('STRIPE_SECRET')]
-        );
+        $customer = $stripe->customers->retrieve(auth()->user()->stripe_id);
+
+        $invoices = $stripe->invoices->all([
+            'customer' => $customer->id
+        ]);
 
         return view('admin.middle.account.admin_middle_invoices_show', [
-//            'invoices' => $invoices,
+            'invoices' => $invoices,
             'userFonctions' => $userFonctions,
             'stores' => $stores
         ]);

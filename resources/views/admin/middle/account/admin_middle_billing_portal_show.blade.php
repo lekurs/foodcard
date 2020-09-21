@@ -40,8 +40,36 @@
 {{--                    <input type="hidden" name="stripeToken" id="stripeToken">--}}
 
                     <div class="card-wrapper"></div>
+                    <div class="row">
+                        {{--                            <div class="field">--}}
+                        @foreach($subscribes as $key => $subcribe)
+{{--                            {{ dump($key) }}--}}
+                            <input type="radio" name="amount" id="amount-{{ $subcribe }}" value="{{ $key }}">
+                            <label for="amount-{{ $subcribe }}">{{ $subcribe }}</label>
+                        @endforeach
+{{--                        {{ die() }}--}}
+{{--                        <input type="radio" name="amount" id="amount-month" value="15">--}}
+{{--                        <label for="amount-month">15€ / Mois</label>--}}
 
+{{--                        <input type="radio" name="amount" id="amount-year" value="159">--}}
+{{--                        <label for="amount-month">159€ / An</label>--}}
+
+                        {{--                            </div>--}}
+                    </div>
                     <div class="cell foodcard-stripe foodcard-stripe2" id="foodcard-stripe-2">
+                    <div data-locale-reversible>
+                        <div class="row">
+                            <div class="field">
+                                <input id="foodcard-stripe2-email"
+                                       name="email"
+                                       data-tid="elements_foodcard-stripes.form.email_placeholder"
+                                       class="input empty"
+                                       type="email" placeholder="Email" required=""
+                                       autocomplete="email-line1">
+                                <label for="foodcard-stripe2-email" data-tid="elements_foodcard-stripes.form.email_label">Email</label>
+                                <div class="baseline"></div>
+                            </div>
+                        </div>
                         <div class="row" data-locale-reversible>
                             <div class="field half-width">
                                 <input id="foodcard-stripe2-name"

@@ -45,14 +45,16 @@
                         </thead>
 
                         <tbody>
+                        @foreach($invoices as $invoice)
                         <tr>
                             <td><i class="fal fa-file-download"></i></td>
-                            <td>n°123</td>
-                            <td>05/07/2020</td>
-                            <td>14,99€</td>
+                            <td>{{ $invoice->number }}</td>
+                            <td>{{ $invoice->created }}</td>
+                            <td>{{ $invoice->amount_paid }}</td>
                             <td>carte bancaire</td>
                             <td><i class="fal fa-print"></i></td>
                         </tr>
+                        @endforeach
                         </tbody>
                     </table>
                     <div class="mout-admin-middle-invoice-paginator">

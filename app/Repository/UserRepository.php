@@ -94,6 +94,13 @@ class UserRepository
         }
     }
 
+    public function updateStripe($userId, string $stipeCustomer): void
+    {
+        $user = $this->getOneById($userId);
+        $user->stripe_id = $stipeCustomer;
+        $user->save();
+    }
+
     public function trashUser(int $id)
     {
         $user = $this->getOneById($id);

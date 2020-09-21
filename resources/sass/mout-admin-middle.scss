@@ -16,6 +16,19 @@
     }
 }
 
+@media all and (min-width: 960px) and (max-width: 1399px) {
+    //Bouttons
+    div.mout-admin-middle-nav-buttons-container {
+        display: grid;
+        grid-template-columns: 150px 150px;
+        grid-template-rows: 150px;
+
+        &.nav-four-buttons {
+            grid-template-rows: repeat(2,150px);
+        }
+    }
+}
+
 //Large Medias
 @media all and (min-width: 960px) and (max-width: 1599px) {
     div.mout-admin-middle-header-nav-ariane {
@@ -83,7 +96,8 @@
 
     //Bouttons
     div.mout-admin-middle-nav-buttons-container {
-     display: block;
+     display: grid;
+     grid-template-columns: 1fr 1fr;
 
     }
 
