@@ -2246,8 +2246,41 @@ div.mout-admin-middle-content-panel#edit-store div.store-form-container div.floa
   display: flex;
 }
 
-p.testing {
-  color: red;
+div.amount-container {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+
+div.amount-container label {
+  margin: 0 1em 0 0.2em;
+}
+
+div.numbercard-container {
+  display: grid;
+  margin-bottom: 1em;
+  grid-template-columns: 60px 200px 35px;
+  width: 365px;
+  padding: 2em;
+  border: 1px solid #47525d;
+}
+
+div.numbercard-container div.brand-card-informations-content {
+  margin: 0 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+div.numbercard-container div.brand-card-informations-content p {
+  margin-bottom: 0;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+div.numbercard-container div.brand-card-delete {
+  display: flex;
 }
 
 .mout-dropdown {
@@ -4463,6 +4496,10 @@ div.mout-admin-middle-container form {
     grid-template-columns: 250px auto;
   }
 
+  div.mout-admin-middle-main-panel div.mout-admin-middle-users-container#payment-informations {
+    grid-template-columns: inherit !important;
+  }
+
   div.mout-admin-middle-main-panel div.mout-admin-middle-users-container div.mout-admin-middle-usercards-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -4546,6 +4583,10 @@ div.mout-admin-middle-container form {
   div.mout-admin-middle-main-panel div.mout-admin-middle-users-container {
     grid-template-columns: 300px auto;
     margin-right: 60px;
+  }
+
+  div.mout-admin-middle-main-panel div.mout-admin-middle-users-container#payment-informations {
+    grid-template-columns: 400px auto;
   }
 
   div.mout-admin-middle-main-panel div.mout-admin-middle-users-container div.mout-admin-middle-usercards-container {

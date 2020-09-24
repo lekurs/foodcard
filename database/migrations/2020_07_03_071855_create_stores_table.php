@@ -22,6 +22,7 @@ class CreateStoresTable extends Migration
             $table->integer('zip')->nullable();
             $table->string('city',255)->nullable();
             $table->boolean('main');
+            $table->string('stripe_customer_id', 255)->nullable();
             $table->boolean('active')->default(true);
             $table->string('slug',255);
             $table->string('tva', 50)->nullable();

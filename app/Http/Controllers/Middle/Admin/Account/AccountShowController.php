@@ -46,9 +46,7 @@ class AccountShowController extends Controller
      */
     public function show()
     {
-        if ($response = $this->redirectNoSession()) {
-            return $response;
-        }
+        $this->redirectNoSession();
 
         $userFonctions = $this->userFonctionRepository->getAll();
         $stores = $this->userRepository->getStoresByUser(request()->user())->stores;

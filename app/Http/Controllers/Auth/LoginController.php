@@ -72,7 +72,7 @@ class LoginController extends Controller
             if (Auth::user()->role === 1) {
                 return redirect()->intended('admin');
             } else {
-                return redirect()->intended('foodcard/admin');
+                return redirect()->intended('admin-client');
             }
         } else {
             return redirect('login');

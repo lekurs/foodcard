@@ -54,7 +54,7 @@ class InvoicesShowController extends Controller
 
         $stripe = new StripeClient(env('STRIPE_SECRET'));
 
-        $customer = $stripe->customers->retrieve(auth()->user()->stripe_id);
+        $customer = $stripe->customers->retrieve(session('store')->stripe_customer_id);
 
         $invoices = $stripe->invoices->all([
             'customer' => $customer->id

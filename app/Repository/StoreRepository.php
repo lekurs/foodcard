@@ -131,4 +131,11 @@ class StoreRepository
 
         $store->save();
     }
+
+    public function updateStripe(Store $store, $customerId): void
+    {
+//        $store = $this->store::find($storeInSession->id);
+        $store->stripe_customer_id = $customerId;
+        $store->save();
+    }
 }

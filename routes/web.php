@@ -65,6 +65,8 @@ Route::group(['prefix' => 'admin-client', 'middleware' => ['auth', 'role']], fun
         Route::get('/paiement', 'Middle\Admin\Account\BillingPortalController@show')->name('adminMiddleBillingPortalShow');
         Route::post('/store', 'Middle\Admin\Account\BillingPortalController@store')->name('adminMiddleBillingPortalStore');
         Route::post('/subscribe', 'Middle\Admin\Account\BillingPortalController@subscribe')->name('adminMiddleBillingPortalSubscribe');
+        Route::get('/edit-formule', 'Middle\Admin\Account\UpdateStripeSubscriptionController')->name('stripeEditSubscription');
+        Route::post('/edit-formule/store', 'Middle\Admin\Account\UpdateStripeSubscriptionStoreController')->name('stripeEditSubscriptionStore');
     });
 
     Route::group(['prefix' => 'store'], function () {

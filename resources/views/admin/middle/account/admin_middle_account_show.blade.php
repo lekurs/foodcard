@@ -10,9 +10,9 @@
             <h2 class="mout-admin-middle-store-name mout--regular">{{request()->session()->get('store')->name}}</h2>
         @endif
 
-        <div class="mout-admin-middle-header-nav-ariane" id="menu">
-            <i class="fal fa-concierge-bell"></i>
-            <p>ma carte</p>
+        <div class="mout-admin-middle-header-nav-ariane" id="account">
+            <i class="fal fa-home"></i>
+            <p>mon compte</p>
         </div>
     </div>
 @endsection

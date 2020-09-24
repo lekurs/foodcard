@@ -5,6 +5,7 @@ namespace App\Entity;
 
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -50,5 +51,10 @@ class CatalogueProduct extends Model
     public function stores(): BelongsToMany
     {
         return $this->belongsToMany(Store::class, 'stores_products')->withPivot('store_id', 'catalogue_product_id', 'online');
+    }
+
+    public function allergies(): BelongsToMany
+    {
+        return $this->belongsToMany(Allergy::class, 'allergies_catalogue_products');
     }
 }

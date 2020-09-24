@@ -77,6 +77,10 @@
         & div.mout-admin-middle-users-container {
             grid-template-columns: 250px auto;
 
+            &#payment-informations {
+                grid-template-columns: inherit !important;
+            }
+
             & div.mout-admin-middle-usercards-container {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
@@ -168,6 +172,10 @@
         & div.mout-admin-middle-users-container {
             grid-template-columns: 300px auto;
             margin-right: 60px;
+
+            &#payment-informations {
+                grid-template-columns: 400px auto;
+            }
 
             & div.mout-admin-middle-usercards-container {
                 display: grid;

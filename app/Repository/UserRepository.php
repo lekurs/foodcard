@@ -36,6 +36,13 @@ class UserRepository
         return $this->user->newQuery()->whereId($id)->first();
     }
 
+    public function getUserByStore($storeId)
+    {
+        return $this->user->newQuery()->with(['stores' => function($q) use ($storeId) {
+            $q->whereStoreId($storeId);
+        }])->first();
+    }
+
 
     public function createUser(array $datas)
     {
@@ -54,6 +61,11 @@ class UserRepository
         $store->slug = Str::slug($store->name);
         $store->store_type_id = $datas['store-type'];
         $store->active = true;
+        if (isset($datas['main'])) {
+            $store->main = $datas['main'];
+        } else {
+            $store->main = true;
+        }
         $store->save();
 
         $user->stores()->sync([$store->id]);

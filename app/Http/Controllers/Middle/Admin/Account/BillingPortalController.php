@@ -54,21 +54,33 @@ class BillingPortalController extends AdminMiddleController
         }
 
         $subscribes = [
-            'price_1HTE5ULNXgoErTPagaOviWAl' => '15 € / Mois',
+            'price_1HTE5ULNXgoErTPagaOviWAl' => '14.99 € / Mois',
             'price_1HAJeVLNXgoErTPaxHB6IYCw' => '159 € / An'
         ];
+
+        $paymentMethods = [];
+        $subscriptions = [];
+
+        $stripe = new StripeClient(env('STRIPE_SECRET'));
+        if(isset($store->stripe_customer_id)) {
+            $customer = $stripe->customers->retrieve($store->stripe_customer_id);
+
+            $paymentMethods = $stripe->paymentMethods->all([
+                'customer' => $customer->id,
+                'type' => 'card'
+            ]);
+
+            $subscriptions = $customer->subscriptions;
+        }
 
         return view('admin.middle.account.admin_middle_billing_portal_show', [
             'stores' => $stores,
             'userFonctions' => $this->userFonctions,
-            'intent' => request()->user()->createSetupIntent([
-//                'amount' => 14.99,
-//                'currency' => 'eur',
-
-            ]),
             'subscribes' => $subscribes,
             'medias' => $medias,
-            'store' => $store
+            'store' => $store,
+            'paymentMethods' => $paymentMethods,
+            'subscriptions' => $subscriptions,
         ]);
     }
 
@@ -81,10 +93,8 @@ class BillingPortalController extends AdminMiddleController
             "amount" => ['required'],
             "email" => ['required', 'email'],
             "name" => ['required'],
-            "lastname" => ['required'],
             "address" => ['required'],
             "city" => ['required'],
-            "country" => ['required'],
             "zip" => ['required'],
             "stripeToken" => ['required']
         ]);
@@ -104,7 +114,8 @@ class BillingPortalController extends AdminMiddleController
             ],
         ]);
 
-        $this->userRepository->updateStripe(auth()->user()->id, $customer->id);
+        $this->storeRepository->updateStripe(session('store'), $customer->id);
+//        $this->userRepository->updateStripe(auth()->user()->id, $customer->id);
 
         return redirect()->route('adminMiddleAccountShow')->with('success', 'Nous vous remercions pour votre abonnement');
     }
