@@ -41,7 +41,6 @@ class StoresShowController extends Controller
     {
         $stores = $this->storeRepository->getAllWithTypes();
 
-//        dd(request()->query->get('search-shop'), request()->query->get('search-type'));
         if (request()->query->get('search-shop') && is_null(request()->query->get('search-type'))) {
             $stores = $this->storeRepository->getAllWithTypesByName(request()->query->get('search-shop'));
         }

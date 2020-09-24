@@ -3,8 +3,6 @@
 
 namespace App\Http\Controllers\Admin\Product;
 
-
-use App\Entity\CatalogueCategory;
 use App\Http\Controllers\Controller;
 use App\Repository\CatalogueCategoryLocaleRepository;
 use App\Repository\CatalogueCategoryRepository;
@@ -14,24 +12,13 @@ use Illuminate\View\View;
 
 class CatalogueProductShowController extends Controller
 {
-    /**
-     * @var CatalogueProductRepository
-     */
-    private $catalogueProductRepository;
 
-    /**
-     * @var LocaleRepository
-     */
-    private $localeRepository;
+    private CatalogueProductRepository $catalogueProductRepository;
 
-    /**
-     * @var CatalogueCategoryLocaleRepository $catalogueCategoryLocaleRepository
-     */
+    private LocaleRepository $localeRepository;
+
     private CatalogueCategoryLocaleRepository $catalogueCategoryLocaleRepository;
 
-    /**
-     * @var CatalogueCategory
-     */
     private CatalogueCategoryRepository $catalogueCategoryRepository;
 
     /**
@@ -63,7 +50,7 @@ class CatalogueProductShowController extends Controller
         return \view('admin.product.catalogue_product_show', [
             'products' => $products,
             'locales' => $locales,
-            'categories' => $categories
+            'categories' => $categories,
         ]);
     }
 }

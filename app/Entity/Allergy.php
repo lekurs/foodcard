@@ -16,6 +16,6 @@ class Allergy extends Model
 
     public function products(): BelongsToMany
     {
-        return $this->belongsToMany(CatalogueProduct::class, 'allergies_catalogue_products');
+        return $this->belongsToMany(CatalogueProduct::class, 'products_allergies');
     }
 }

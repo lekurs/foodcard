@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin\Product;
 
 use App\Entity\Locale;
 use App\Http\Controllers\Controller;
+use App\Repository\AllergyRepository;
 use App\Repository\CatalogueCategoryLocaleRepository;
 use App\Repository\CatalogueProductLocaleRepository;
 use App\Repository\CatalogueProductRepository;
@@ -30,20 +31,25 @@ class CatalogueProductFormController extends Controller
      */
     private CatalogueCategoryLocaleRepository $catalogueCategoryLocaleRepository;
 
+    private AllergyRepository $allergyRepository;
+
     /**
      * CatalogueProductFormController constructor.
      * @param CatalogueProductLocaleRepository $catalogueProductLocaleRepository
      * @param CatalogueProductRepository $catalogueProductRepository
      * @param CatalogueCategoryLocaleRepository $catalogueCategoryLocaleRepository
+     * @param AllergyRepository $allergyRepository
      */
     public function __construct(
         CatalogueProductLocaleRepository $catalogueProductLocaleRepository,
         CatalogueProductRepository $catalogueProductRepository,
-        CatalogueCategoryLocaleRepository $catalogueCategoryLocaleRepository
+        CatalogueCategoryLocaleRepository $catalogueCategoryLocaleRepository,
+        AllergyRepository $allergyRepository
     ) {
         $this->catalogueProductLocaleRepository = $catalogueProductLocaleRepository;
         $this->catalogueProductRepository = $catalogueProductRepository;
         $this->catalogueCategoryLocaleRepository = $catalogueCategoryLocaleRepository;
+        $this->allergyRepository = $allergyRepository;
     }
 
 
@@ -83,20 +89,26 @@ class CatalogueProductFormController extends Controller
 
         $locales = Locale::all();
         $catalogueCategories = $this->catalogueCategoryLocaleRepository->getAllWithCatalogueCategories();
+        $allergies = $this->allergyRepository->getAll();
 
         if(request()->request->get('id') != "") {
-            $allergy = explode('|', $product->allergy);
+            $allergyByProduct = explode('|', $product->allergy);
+            $allergies = $this->allergyRepository->getAll();
+
+//            dd($allergenes);
 
             $html = \view('forms.products.__product_creation', [
                 'product' => $product,
                 'locales' => $locales,
-                'allergy' => $allergy,
-                'categories' => $catalogueCategories
+                'allergies' => $allergies,
+                'categories' => $catalogueCategories,
+                'allergyByProduct' => $allergyByProduct
             ]);
         } else {
             $html = \view('forms.products.__product_creation', [
                 'locales' => $locales,
-                'categories' => $catalogueCategories
+                'categories' => $catalogueCategories,
+                'allergies' => $allergies
             ]);
         }
 
