@@ -13,9 +13,4 @@ class Allergy extends Model
         'label',
         'icon'
     ];
-
-    public function products(): BelongsToMany
-    {
-        return $this->belongsToMany(CatalogueProduct::class, 'products_allergies');
-    }
 }

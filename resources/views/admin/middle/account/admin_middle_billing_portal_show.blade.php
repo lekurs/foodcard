@@ -29,29 +29,17 @@
 @section('body')
     <div class="mout-admin-middle-content-panel">
             @if( !empty($paymentMethods ))
-                <h4 class="mout--regular">Mon mode de paiement</h4>
+            <h4 class="mout--regular">Mon mode de paiement</h4>
             <div class="mout-admin-middle-users-container" id="payment-informations">
-                <div class="mout-admin-middle-users-manager">
+                <div class="mout-admin-middle-users-manager" id="credit-card-container">
                     @foreach($paymentMethods as $paymentMethod)
-                    <div class="numbercard-container">
-                        <div class="brand-card-content">
-                            <img src="{{ asset('/images/admin/middle/brand-card/' . $paymentMethod->card->brand . '.png') }}" alt="$paymentMethod->card->brand">
-                        </div>
-                        <div class="brand-card-informations-content">
-                            <p>**** **** **** {{ $paymentMethod->card->last4 }}</p>
-                            <p>Expire le : {{ $paymentMethod->card->exp_month }} / {{ $paymentMethod->card->exp_year }}</p>
-                        </div>
-                        <div class="brand-card-delete">
-                            <button class="btn mout-btn-add"><i class="fal fa-times"></i></button>
-                        </div>
-                    </div>
+                    <div data-card="{{ $paymentMethod->card->last4 }}" data-date="{{ $paymentMethod->card->exp_month }}/{{ $paymentMethod->card->exp_year }}" data-name="@isset($customer) {{ $customer->name }} @endisset" data-type="{{ $paymentMethod->card->brand }}" class="card"></div>
                     @endforeach
-                    <button type="button" data-toggle="modal" data-target="#addpaiement" class="btn mout-btn-login">Ajouter un moyen de paiement</button>
+                    <a href="{{ route('stripeAddCreditCard') }}" class="btn mout-btn-login btn-add-payment">Ajouter un moyen de paiement</a>
                 </div>
                 <div class="mout-admin-middle-usercards-container">
                         @foreach($subscriptions as $subscription)
                         <div class="mout-middle-admin-usercards">
-                            {{--                            {{ dump($subscription) }}--}}
                             <p class="mout--regular">{{ $subscription->plan->nickname }}</p>
                             <p>Début : {{ Carbon\Carbon::createFromTimestamp($subscription->current_period_start)->translatedFormat('d/m/Y') }}</p>
                             <p>Fin : {{ Carbon\Carbon::createFromTimestamp($subscription->current_period_end)->translatedFormat('d/m/Y') }}</p>
@@ -137,19 +125,6 @@
                                             <label for="foodcard-stripe2-zip" data-tid="elements_foodcard-stripes.form.postal_code_label">Code postal</label>
                                             <div class="baseline"></div>
                                         </div>
-{{--                                        <div class="field quarter-width">--}}
-{{--                                            <input id="foodcard-stripe2-state"--}}
-{{--                                                   name="country"--}}
-{{--                                                   data-tid="elements_foodcard-stripes.form.state_placeholder"--}}
-{{--                                                   class="input empty"--}}
-{{--                                                   type="text"--}}
-{{--                                                   placeholder="CA"--}}
-{{--                                                   required=""--}}
-{{--                                                   autocomplete="address-level1">--}}
-{{--                                            <label for="foodcard-stripe2-state"--}}
-{{--                                                   data-tid="elements_foodcard-stripes.form.state_label">Pays</label>--}}
-{{--                                            <div class="baseline"></div>--}}
-{{--                                        </div>--}}
                                     </div>
                                 </div>
                                 <div class="row">
@@ -205,73 +180,13 @@
     @endif
 @endsection
 
-<div class="modal fade" id="addpaiement" tabindex="-1" aria-labelledby="paiementModal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form id="add-payment" action="" method="post">
-                    <div class="cell foodcard-stripe foodcard-stripe2" id="foodcard-stripe-2">
-                        <div data-locale-reversible>
-                            <div class="row" data-locale-reversible>
-                                <div class="field">
-                                    <input id="foodcard-stripe2-name"
-                                           name="name"
-                                           data-tid="elements_foodcard-stripes.form.name_placeholder"
-                                           class="input empty"
-                                           type="text" placeholder="Starck"
-                                           required=""
-                                           autocomplete="name-level2">
-                                    <label for="foodcard-stripe2-name"
-                                           data-tid="elements_foodcard-stripes.form.name_label">Nom</label>
-                                    <div class="baseline"></div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="field">
-                                    <div id="foodcard-stripe-add-payment-card" class="input empty"></div>
-                                    <label for="foodcard-stripe-add-payment-card"
-                                           data-tid="elements_foodcard-stripes.form.card_number_label">Numéro de carte</label>
-                                    <div class="baseline"></div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="field half-width">
-                                    <div id="foodcard-stripe-add-payment-card-expiry" class="input empty"></div>
-                                    <label for="foodcard-stripe-add-payment-card-expiry"
-                                           data-tid="elements_foodcard-stripes.form.card_expiry_label">Expiration</label>
-                                    <div class="baseline"></div>
-                                </div>
-                                <div class="field quarter-width">
-                                    <div id="foodcard-stripe-add-payment-card-cvc" class="input empty"></div>
-                                    <label for="foodcard-stripe-add-payment-card-cvc"
-                                           data-tid="elements_foodcard-stripes.form.card_cvc_label">CVC</label>
-                                    <div class="baseline"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Send message</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-            @section('js')
+@section('js')
     <script src="https://js.stripe.com/v3/"></script>
-    <script src="{{ asset('js/plugins/jquery.card.js') }}"></script>
+    <script src="{{ asset('js/plugins/card.js') }}"></script>
 
     <script>
+        $(".card").card();
+
         const elementStyles = {
             base: {
                 color: '#32325D',
@@ -356,17 +271,6 @@
             let label = $('label[for="' + $(this).attr('id') + '"]').attr('data-value');
            $('.payment-button').text("Payer " + label);
         });
-
-        stripe.createPaymentMethod({
-                type: 'card',
-                card: cardElement,
-                billing_details: {
-                    name: 'Jenny Rosen',
-                },
-            })
-            .then(function(result) {
-                // Handle result.error or result.paymentMethod
-            });
 
     </script>
 @endsection

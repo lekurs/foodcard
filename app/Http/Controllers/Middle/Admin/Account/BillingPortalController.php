@@ -60,6 +60,7 @@ class BillingPortalController extends AdminMiddleController
 
         $paymentMethods = [];
         $subscriptions = [];
+        $customer = [];
 
         $stripe = new StripeClient(env('STRIPE_SECRET'));
         if(isset($store->stripe_customer_id)) {
@@ -81,6 +82,7 @@ class BillingPortalController extends AdminMiddleController
             'store' => $store,
             'paymentMethods' => $paymentMethods,
             'subscriptions' => $subscriptions,
+            'customer' => $customer
         ]);
     }
 

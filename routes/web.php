@@ -67,6 +67,8 @@ Route::group(['prefix' => 'admin-client', 'middleware' => ['auth', 'role']], fun
         Route::post('/subscribe', 'Middle\Admin\Account\BillingPortalController@subscribe')->name('adminMiddleBillingPortalSubscribe');
         Route::get('/edit-formule', 'Middle\Admin\Account\UpdateStripeSubscriptionController')->name('stripeEditSubscription');
         Route::post('/edit-formule/store', 'Middle\Admin\Account\UpdateStripeSubscriptionStoreController')->name('stripeEditSubscriptionStore');
+        Route::get('/credit-card/ajouter', 'Middle\Admin\Account\StripeCreateNewCreditCardController')->name('stripeAddCreditCard');
+        Route::post('/credit-card/ajouter/store', 'Middle\Admin\Account\StripeStoreNewPaymentMethodController')->name('stripeStorePaymentMethod');
     });
 
     Route::group(['prefix' => 'store'], function () {

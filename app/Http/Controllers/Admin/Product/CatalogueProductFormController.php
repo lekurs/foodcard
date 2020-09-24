@@ -95,8 +95,6 @@ class CatalogueProductFormController extends Controller
             $allergyByProduct = explode('|', $product->allergy);
             $allergies = $this->allergyRepository->getAll();
 
-//            dd($allergenes);
-
             $html = \view('forms.products.__product_creation', [
                 'product' => $product,
                 'locales' => $locales,

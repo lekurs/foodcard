@@ -52,9 +52,4 @@ class CatalogueProduct extends Model
     {
         return $this->belongsToMany(Store::class, 'stores_products')->withPivot('store_id', 'catalogue_product_id', 'online');
     }
-
-    public function allergies(): BelongsToMany
-    {
-        return $this->belongsToMany(Allergy::class, 'products_allergies');
-    }
 }

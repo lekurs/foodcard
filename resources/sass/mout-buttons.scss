@@ -207,3 +207,12 @@ td.online-menu {
         }
     }
 }
+
+.btn-add-payment {
+    width:80%;
+    margin: 0 auto;
+
+    &#add-credit-card {
+        width: 30%;
+    }
+}
