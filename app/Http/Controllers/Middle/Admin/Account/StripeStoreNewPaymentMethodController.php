@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Middle\SessionRedirection;
 use App\Repository\StoreRepository;
 use App\Repository\UserRepository;
+use Stripe\Stripe;
 use Stripe\StripeClient;
 
 class StripeStoreNewPaymentMethodController extends Controller
@@ -39,14 +40,23 @@ class StripeStoreNewPaymentMethodController extends Controller
 
         $stripe = new StripeClient(env('STRIPE_SECRET'));
 
-        $stripe->paymentMethods->create([
+        $customer = $stripe->customers->retrieve(
+            session('store')->stripe_customer_id
+        );
+
+        $payment = $stripe->paymentMethods->create([
             'type' => 'card',
             'card' => [
-                'number' => '4242424242424242',
-                'exp_month' => 9,
-                'exp_year' => 2021,
-                'cvc' => '314',
+                'token' => request('stripeToken'),
             ],
         ]);
+
+        $stripe->paymentMethods->attach(
+            $payment->id,
+            ['customer' => $customer->id]
+        );
+
+        return back()->with('success', 'Votre carte a bien été ajoutée');
+
     }
 }

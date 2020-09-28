@@ -28,8 +28,10 @@
 
 @section('body')
     <div class="mout-admin-middle-content-panel">
+        <h4 class="mout--regular">Ajouter une nouvelle carte de crédit</h4>
         <form id="add-payment" action="{{ route('stripeStorePaymentMethod') }}" method="post">
             @csrf
+
             <div class="cell foodcard-stripe foodcard-stripe2" id="foodcard-stripe-2">
                 <div data-locale-reversible>
                     <div class="row" data-locale-reversible>
@@ -78,7 +80,6 @@
     <script src="https://js.stripe.com/v3/"></script>
 
     <script>
-
         const elementStyles = {
             base: {
                 color: '#32325D',
@@ -130,7 +131,7 @@
         cardCvc.mount('#foodcard-stripe2-card-cvc');
 
         function stripeTokenHandler(token) {
-            var form = document.getElementById('payment-form');
+            var form = document.getElementById('add-payment');
             var hiddenInput = document.createElement('input');
             hiddenInput.setAttribute('type', 'hidden');
             hiddenInput.setAttribute('name', 'stripeToken');
@@ -153,7 +154,7 @@
         }
 
         // Create a token when the form is submitted.
-        var form = document.getElementById('payment-form');
+        var form = document.getElementById('add-payment');
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             createToken();

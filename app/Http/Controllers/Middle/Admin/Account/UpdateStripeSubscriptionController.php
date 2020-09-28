@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Middle\SessionRedirection;
 use App\Repository\StoreRepository;
 use App\Repository\UserRepository;
+use App\Services\PSP\PSPServices;
 use Stripe\StripeClient;
 
 class UpdateStripeSubscriptionController extends Controller
@@ -18,15 +19,19 @@ class UpdateStripeSubscriptionController extends Controller
 
     private StoreRepository $storeRepository;
 
+    private PSPServices $phpServices;
+
     /**
      * UpdateStripeSubscriptionController constructor.
      * @param UserRepository $userRepository
      * @param StoreRepository $storeRepository
+     * @param PSPServices $phpServices
      */
-    public function __construct(UserRepository $userRepository, StoreRepository $storeRepository)
+    public function __construct(UserRepository $userRepository, StoreRepository $storeRepository, PSPServices $phpServices)
     {
         $this->userRepository = $userRepository;
         $this->storeRepository = $storeRepository;
+        $this->phpServices = $phpServices;
     }
 
     public function __invoke()
@@ -50,14 +55,10 @@ class UpdateStripeSubscriptionController extends Controller
         $paymentMethods = [];
         $subscriptions = [];
 
-        $stripe = new StripeClient(env('STRIPE_SECRET'));
-        $subscriptions = $stripe->subscriptions->all([
-            'customer' => $store->stripe_customer_id
-        ]);
+        $subscriptions = $this->phpServices->getAllSubscriptionsByStore($store);
 
         return view('admin.middle.account.admin_middle_stripe_update_subscription_show', [
             'stores' => $stores,
-//            'userFonctions' => $this->userFonctions,
             'subscribes' => $subscribes,
             'medias' => $medias,
             'store' => $store,

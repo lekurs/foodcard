@@ -1,7 +1,9 @@
 .card {
     border: none !important;
+    min-height: 250px;
+    justify-content: center;
+    align-items: center;
 }
-
 .payment-title {
     width: 100%;
     text-align: center;
@@ -83,17 +85,17 @@ input {
 
 #ccsingle {
     position: absolute;
-    right: 45px;
-    top: 12px;
+    right: 65px;
+    top: 7px;
 }
 
 #ccsingle svg {
-    width: 75px;
+    width: 50px;
     max-height: 60px;
 }
 
 .creditcard svg#cardfront {
-    width: 83%;
+    width: 75%;
     -webkit-box-shadow: 1px 5px 6px 0px black;
     box-shadow: 1px 5px 6px 0px black;
     border-radius: 22px;
@@ -259,7 +261,7 @@ input {
 
 .creditcard .front
 {
-    position: absolute;
+    #position: absolute;
     width: 100%;
     max-width: 400px;
     -webkit-backface-visibility: hidden;
@@ -267,3 +269,43 @@ input {
     -webkit-font-smoothing: antialiased;
     color: #47525d;
 }
+
+.card-overlay{
+    position:absolute;
+    background: rgba(255,255,255,.75);
+    width: 100%;
+    height: calc(100% - 3px);
+    z-index: 99999;
+    border-radius: 22px;
+}
+
+a.card_pm_link {
+    position: absolute;
+    z-index: 999999;
+    top: calc(50% - 20px);
+    background: red;
+    padding: 5px;
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
+    left: calc(50% - 102px);
+}
+
+a.card_pm_del {
+    position: absolute;
+    color: red;
+    top: 0;
+    right: 10px;
+    z-index: 99999999;
+    width: 20px;
+    height: 20px;
+}
+
+.card a.card_pm_link, .card a.card_pm_del {
+    display: none;
+}
+
+.card:hover a.card_pm_link, .card:hover a.card_pm_del {
+    display: block;
+}
+

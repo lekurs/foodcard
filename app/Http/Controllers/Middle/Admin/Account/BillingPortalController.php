@@ -5,24 +5,13 @@ namespace App\Http\Controllers\Middle\Admin\Account;
 
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Middle\AdminMiddleController;
 use App\Http\Controllers\Middle\SessionRedirection;
-use App\Repository\CatalogueCategoryLocaleRepository;
 use App\Repository\StoreRepository;
 use App\Repository\UserFonctionRepository;
 use App\Repository\UserRepository;
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
-use PhpParser\Node\Stmt\DeclareDeclare;
-use Stripe\Customer;
-use Stripe\Invoice;
-use Stripe\InvoiceItem;
-use Stripe\PaymentIntent;
-use Stripe\Stripe;
-use Stripe\StripeClient;
-use Stripe\Subscription;
+use App\Services\PSP\PSPServices;
 
-class BillingPortalController extends AdminMiddleController
+class BillingPortalController extends Controller
 {
     use SessionRedirection;
 
@@ -30,15 +19,21 @@ class BillingPortalController extends AdminMiddleController
 
     private StoreRepository $storeRepository;
 
+    private UserFonctionRepository $userFonctionRepository;
+
+    private PSPServices $pspServices;
+
     public function __construct(
         UserRepository $userRepository,
         UserFonctionRepository $userFonctionRepository,
-        StoreRepository $storeRepository, StoreRepository $storeRepository1
+        StoreRepository $storeRepository,
+        PSPServices $pspServices
     ) {
-        parent::__construct($userFonctionRepository, $storeRepository, $userRepository);
 
         $this->userRepository = $userRepository;
-        $this->storeRepository = $storeRepository1;
+        $this->userFonctionRepository = $userFonctionRepository;
+        $this->storeRepository = $storeRepository;
+        $this->pspServices = $pspServices;
     }
 
     public function show() {
@@ -62,21 +57,16 @@ class BillingPortalController extends AdminMiddleController
         $subscriptions = [];
         $customer = [];
 
-        $stripe = new StripeClient(env('STRIPE_SECRET'));
         if(isset($store->stripe_customer_id)) {
-            $customer = $stripe->customers->retrieve($store->stripe_customer_id);
+            $customer = $this->pspServices->getCustomerByStore($store);
 
-            $paymentMethods = $stripe->paymentMethods->all([
-                'customer' => $customer->id,
-                'type' => 'card'
-            ]);
+            $paymentMethods = $this->pspServices->getAllPaymentMethodsByCustomer($customer);
 
             $subscriptions = $customer->subscriptions;
         }
 
         return view('admin.middle.account.admin_middle_billing_portal_show', [
             'stores' => $stores,
-            'userFonctions' => $this->userFonctions,
             'subscribes' => $subscribes,
             'medias' => $medias,
             'store' => $store,
@@ -87,6 +77,7 @@ class BillingPortalController extends AdminMiddleController
     }
 
     public function subscribe() {
+
         $user = request()->user();
 
         $this->redirectNoSession();
@@ -101,23 +92,18 @@ class BillingPortalController extends AdminMiddleController
             "stripeToken" => ['required']
         ]);
 
-        Stripe::setApiKey(env('STRIPE_SECRET'));
-        $customer = Customer::create([
+        $datasCustomer = [
             'name' => request('name'),
             'email' => request('email'),
             'description' => 'Paiement de l\'application Foodcard',
             'source' => request('stripeToken')
-        ]);
+        ];
 
-        $subscription = Subscription::create([
-            'customer' => $customer->id,
-            'items' => [
-                ["price" => \request('amount')],
-            ],
-        ]);
+        $customer = $this->pspServices->createCustomer($datasCustomer);
+
+        $this->pspServices->createSubscription($customer, request('amount'));
 
         $this->storeRepository->updateStripe(session('store'), $customer->id);
-//        $this->userRepository->updateStripe(auth()->user()->id, $customer->id);
 
         return redirect()->route('adminMiddleAccountShow')->with('success', 'Nous vous remercions pour votre abonnement');
     }

@@ -33,20 +33,44 @@
             <div class="mout-admin-middle-users-container" id="payment-informations">
                 <div class="mout-admin-middle-users-manager" id="credit-card-container">
                     @foreach($paymentMethods as $paymentMethod)
-                    <div data-card="{{ $paymentMethod->card->last4 }}" data-date="{{ $paymentMethod->card->exp_month }}/{{ $paymentMethod->card->exp_year }}" data-name="@isset($customer) {{ $customer->name }} @endisset" data-type="{{ $paymentMethod->card->brand }}" class="card"></div>
+                    <div data-card="{{ $paymentMethod->card->last4 }}"
+                         data-pm="{{ $paymentMethod->id }}"
+                         data-date="{{ $paymentMethod->card->exp_month }}/{{ $paymentMethod->card->exp_year }}"
+                         data-name="@isset($customer) {{ $customer->name }} @endisset"
+                         data-type="{{ $paymentMethod->card->brand }}"
+                         class="card"
+                         data-default=@if($customer->invoice_settings->default_payment_method === $paymentMethod->id) "true" @else "false" @endif>
+                    </div>
                     @endforeach
                     <a href="{{ route('stripeAddCreditCard') }}" class="btn mout-btn-login btn-add-payment">Ajouter un moyen de paiement</a>
                 </div>
                 <div class="mout-admin-middle-usercards-container">
+                    @if(!empty($subscriptions->data))
                         @foreach($subscriptions as $subscription)
                         <div class="mout-middle-admin-usercards">
                             <p class="mout--regular">{{ $subscription->plan->nickname }}</p>
                             <p>Début : {{ Carbon\Carbon::createFromTimestamp($subscription->current_period_start)->translatedFormat('d/m/Y') }}</p>
                             <p>Fin : {{ Carbon\Carbon::createFromTimestamp($subscription->current_period_end)->translatedFormat('d/m/Y') }}</p>
-                            <p>Prix : {{ $subscription->plan->amount_decimal }}</p>
+                            <p>Prix : {{ number_format($subscription->plan->amount_decimal / 100, 2, ',', '') }}</p>
                             <a href="{{ route('stripeEditSubscription') }}" class="btn mout-btn-login">Changer ma formule</a>
+                            <a href="{{ route('stripeDeleteSubscription') }}" class="btn mout-btn-add mout-btn-stop-subscription">Arrêter mon abonnement</a>
                     </div>
                         @endforeach
+                    @else
+                        <div class="mout-middle-amin-usercards">
+                            <h4 class="mout--regular">Choisir ma formule</h4>
+                            <form id="payment-form" action="{{ route('stripeAddSubscription') }}" method="post">
+                                @csrf
+                                <div class="row amount-container">
+                                    @foreach($subscribes as $key => $subcribe)
+                                        <input type="radio" name="amount" id="amount-{{ $subcribe }}" value="{{ $key }}" class="payment-amount"">
+                                        <label for="amount-{{ $subcribe }}" data-value="{{ $subcribe }}" id="{{ $key }}">{{ $subcribe }}</label>
+                                    @endforeach
+                                </div>
+                                <button type="submit" data-tid="elements_foodcard-stripes.form.pay_button" class="payment-button btn mout-btn-login">Payer</button>
+                            </form>
+                        </div>
+                    @endif
                 </div>
             </div>
             @else
@@ -184,9 +208,10 @@
     <script src="https://js.stripe.com/v3/"></script>
     <script src="{{ asset('js/plugins/card.js') }}"></script>
 
+@if( !empty($paymentMethods ))
+    <script>$(".card").card();</script>
+                    @else
     <script>
-        $(".card").card();
-
         const elementStyles = {
             base: {
                 color: '#32325D',
@@ -273,4 +298,5 @@
         });
 
     </script>
+    @endif
 @endsection

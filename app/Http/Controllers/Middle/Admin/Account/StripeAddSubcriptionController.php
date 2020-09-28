@@ -11,7 +11,7 @@ use App\Repository\UserRepository;
 use App\Services\PSP\PSPServices;
 use Stripe\StripeClient;
 
-class UpdateStripeSubscriptionStoreController extends Controller
+class StripeAddSubcriptionController extends Controller
 {
     use SessionRedirection;
 
@@ -27,8 +27,11 @@ class UpdateStripeSubscriptionStoreController extends Controller
      * @param StoreRepository $storeRepository
      * @param PSPServices $phpServices
      */
-    public function __construct(UserRepository $userRepository, StoreRepository $storeRepository, PSPServices $phpServices)
-    {
+    public function __construct(
+        UserRepository $userRepository,
+        StoreRepository $storeRepository,
+        PSPServices $phpServices
+    ) {
         $this->userRepository = $userRepository;
         $this->storeRepository = $storeRepository;
         $this->phpServices = $phpServices;
@@ -38,22 +41,23 @@ class UpdateStripeSubscriptionStoreController extends Controller
     {
         $this->redirectNoSession();
 
-        $stores = $this->userRepository->getStoresByUser(request()->user())->stores;
-        $store = session('store');
+        $customer = $this->phpServices->getCustomerByStore(
+            session('store')->stripe_customer_id,
+        );
 
-        $medias = [];
+        $newSubsription = $this->phpServices->createSubscription($customer, request('amount'));
 
-        foreach ($store->storeMedias as $mediasTab) {
-            $medias[$mediasTab->type] = $mediasTab;
+//        $newSubsription = $stripe->subscriptions->create([
+//            'customer' => $customer->id,
+//            'items' => [
+//                ['price' => request('amount')],
+//            ],
+//        ]);
+
+        if ($newSubsription->status === "active") {
+            return back()->with('success', 'Votre abonnement à bien été activé');
+        } else {
+            return back()->with('error', 'Une erreur est survenue');
         }
-
-        $subscriptions = $this->phpServices->getAllSubscriptionsByStore($store);
-
-        foreach ($subscriptions as $subscription) {
-
-            $this->phpServices->updateSubscriptionById($subscription, request('amount'));
-        }
-
-        return back()->with('success', 'Votre abonnement a bien été modifié');
     }
 }
