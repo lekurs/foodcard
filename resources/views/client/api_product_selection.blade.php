@@ -26,7 +26,7 @@
 
             @foreach($category->products as $product)
                 @if ( !is_null($product->stores->first()) )
-                <a href="{{ route('apiClientProductShow', [$store->slug, $category->id, $subcategory->id, $product->id]) }}" class="foodcard-category-content">
+                <a href="{{ route('apiClientProductShow', [$store->slug, $category->parent, $category->id, $product->id]) }}" class="foodcard-category-content">
                     <img src="{{ asset('/storage/products/' . $product->catalogueProductMedias->first()->path) }}" alt="{{ $product->langueFR->first()->libelle }}">
                     <div class="product-information-container">
                         <p class="text-center mout--regular">{{ $product->langueFR->libelle }}</p>

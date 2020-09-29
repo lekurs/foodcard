@@ -2668,6 +2668,48 @@ div.foodcard-category-container div.product-container div.product-informations-c
   left: 5%;
 }
 
+div.foodcard-category-container div.product-allergy-container {
+  background-color: #44735E;
+  grid-column: 1/span 2;
+  margin: 2em auto;
+  color: #ffffff;
+  padding: 20px 30px 25px;
+}
+
+div.foodcard-category-container div.product-allergy-container h4 {
+  font-family: "Assistant";
+  font-size: 12px;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+div.foodcard-category-container div.product-allergy-container div.allergy-container {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: minmax(80px, 100px);
+}
+
+div.foodcard-category-container div.product-allergy-container div.allergy-container span.allergy-client {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  color: #ffffff;
+  font-size: 10px;
+  line-height: 8px;
+}
+
+div.foodcard-category-container div.product-allergy-container div.allergy-container span.allergy-client i {
+  font-size: 2.5em;
+}
+
+div.foodcard-category-container div.product-allergy-container div.allergy-container span.allergy-client svg {
+  width: 4em;
+  fill: #ffffff;
+}
+
 .slick-dots {
   display: flex;
   justify-content: center;
@@ -3774,6 +3816,10 @@ a.card_pm_del {
     margin-left: 300px;
   }
 
+  H2.mout-admin-middle-store-name#home {
+    margin-left: inherit;
+  }
+
   div.mout-admin-middle-user-informations-container {
     width: 300px;
   }
@@ -3863,6 +3909,10 @@ a.card_pm_del {
 
   H2.mout-admin-middle-store-name {
     margin-left: 400px;
+  }
+
+  H2.mout-admin-middle-store-name#home {
+    margin-left: inherit;
   }
 
   div.mout-admin-middle-user-informations-container {
@@ -4087,6 +4137,17 @@ div.mout-admin-middle-container div.mout-admin-middle-content-panel div.mout-adm
 
 div.mout-admin-middle-container div.mout-middle-admin-usercards {
   position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+div.mout-admin-middle-container div.mout-middle-admin-usercards a {
+  width: 70%;
+  margin: 0 auto;
+}
+
+div.mout-admin-middle-container div.mout-middle-admin-usercards a:last-of-type {
+  margin-top: 1em;
 }
 
 div.mout-admin-middle-container div.mout-middle-admin-usercards p {

@@ -45,6 +45,10 @@
 
     H2.mout-admin-middle-store-name {
         margin-left: 300px;
+
+        &#home {
+            margin-left: inherit;
+        }
     }
 
     div.mout-admin-middle-user-informations-container {
@@ -143,6 +147,9 @@
 
     H2.mout-admin-middle-store-name {
         margin-left: 400px;
+        &#home {
+            margin-left: inherit;
+        }
     }
 
     div.mout-admin-middle-user-informations-container {
@@ -381,6 +388,17 @@ div.mout-admin-middle-container {
 
     & div.mout-middle-admin-usercards {
         position: relative;
+        display: flex;
+        flex-direction: column;
+
+        & a {
+            width: 70%;
+            margin: 0 auto;
+
+            &:last-of-type {
+                margin-top: 1em;
+            }
+        }
 
         & p {
             margin-bottom: 5px;

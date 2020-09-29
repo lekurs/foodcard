@@ -96,12 +96,10 @@ class PSPServices
         );
     }
 
-    public function deleteCard(Customer $customer)
+    public function detachPaymentMethod(string $paymentMethodId)
     {
-        dd($customer);
-//        return $this->stripe->customers->deleteSource(
-//            $customer->id,
-//            $customer->card->id,
-//        )
+        return $this->stripe->paymentMethods->detach(
+            $paymentMethodId
+        );
     }
 }

@@ -40,9 +40,14 @@
                 </div>
             </div>
             <div class="product-allergy-container">
-                @if(in_array('|', $product->allergy))
-                    {{ $product->allergy }}
-                @endif
+                <h4><i class="fal fa-comment-exclamation"></i> allergènes présents dans cette entrée</h4>
+                <div class="allergy-container">
+                @foreach($allergies as $allergy)
+                    @if (in_array($allergy->slug, $allergyByProduct))
+                        <span class="btn allergy-client" data-allergy="{{ $allergy->slug }}">{!! $allergy->icon !!}<br> {{ $allergy->label }}</span>
+                    @endif
+                @endforeach
+                </div>
             </div>
         </div>
     </div>

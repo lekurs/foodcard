@@ -8,7 +8,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Middle\SessionRedirection;
 use App\Repository\StoreRepository;
 use App\Repository\UserRepository;
-use Stripe\Stripe;
 use Stripe\StripeClient;
 
 class StripeStoreNewPaymentMethodController extends Controller

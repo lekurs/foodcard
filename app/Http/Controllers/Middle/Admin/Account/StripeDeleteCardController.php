@@ -27,8 +27,11 @@ class StripeDeleteCardController extends Controller
      * @param StoreRepository $storeRepository
      * @param PSPServices $pspServices
      */
-    public function __construct(UserRepository $userRepository, StoreRepository $storeRepository, PSPServices $pspServices)
-    {
+    public function __construct(
+        UserRepository $userRepository,
+        StoreRepository $storeRepository,
+        PSPServices $pspServices
+    ) {
         $this->userRepository = $userRepository;
         $this->storeRepository = $storeRepository;
         $this->pspServices = $pspServices;
@@ -38,7 +41,8 @@ class StripeDeleteCardController extends Controller
     {
         $this->redirectNoSession();
 
-        $this->pspServices->deleteCard(session('store'));
+        $this->pspServices->detachPaymentMethod(request('paymentMethodId'));
 
+        return back()->with('success', 'Votre carte a bien été supprimée');
     }
 }

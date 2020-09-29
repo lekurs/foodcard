@@ -11,7 +11,7 @@
         @endif
 
         <div class="mout-admin-middle-header-nav-ariane" id="account">
-            <i class="fal fa-home"></i>
+            <i class="fal fa-smile"></i>
             <p>mon compte</p>
         </div>
     </div>

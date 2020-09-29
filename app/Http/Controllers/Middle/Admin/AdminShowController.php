@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Middle\Admin;
 
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Middle\SessionRedirection;
 use App\Repository\StoreRepository;
 use App\Repository\UserRepository;
 use Illuminate\Http\RedirectResponse;
@@ -12,14 +13,10 @@ use Illuminate\View\View;
 
 class AdminShowController extends Controller
 {
-    /**
-     * @var StoreRepository
-     */
+    use SessionRedirection;
+
     private StoreRepository $storeRepository;
 
-    /**
-     * @var UserRepository
-     */
     private UserRepository $userRepository;
 
     /**
@@ -43,12 +40,21 @@ class AdminShowController extends Controller
         $user = $this->userRepository->getStoresByUser(request()->user());
         $stores = $user->stores;
 
+        $this->redirectNoSession();
+
+        $medias = [];
+
+        foreach (session('store')->storeMedias as $mediasTab) {
+            $medias[$mediasTab->type] = $mediasTab;
+        }
+
         if (!request()->session()->get('store')) {
             request()->session()->put('store', $stores->first());
         }
 
         return view('admin.middle.admin_middle', [
-            'stores' => $stores
+            'stores' => $stores,
+            'medias' => $medias
         ]);
     }
 
